@@ -126,13 +126,13 @@ Make sure you have the following installed:
 - Must installed **bun** before.
 
    ```sh
-   bunx @react-native-community/cli init **your-project-name** --template @kimei-global/react-native-boilerplate --pm bun --skip-git-init true --install-pods false
+   bunx @react-native-community/cli init **your-project-name** --template https://github.com/Kimei-Global-Co/react-native-boilerplate --pm bun --skip-git-init true --install-pods false
    ```
 
 2. **Use `npm`**
 
    ```sh 
-   npx @react-native-community/cli init **your-project-name** --template @kimei-global/react-native-boilerplate --skip-git-init true --install-pods false
+   npx @react-native-community/cli init **your-project-name** --template https://github.com/Kimei-Global-Co/react-native-boilerplate --skip-git-init true --install-pods false
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
