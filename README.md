@@ -29,7 +29,7 @@
 <br />
 <div align="center">
   <a href="https://kimei.vn/">
-    <img src="images/logo-dark.png" alt="Logo">
+    <img src="images/logo.png" alt="Logo">
   </a>
 
   <h3 align="center">This project was developed by KIMEI Global</h3>
@@ -126,13 +126,13 @@ Make sure you have the following installed:
 - Must installed **bun** before.
 
    ```sh
-   bunx @react-native-community/cli init **your-project-name** --template @kimei-global/react-native-boilerplate --pm bun --skip-git-init true
+   bunx @react-native-community/cli init **your-project-name** --template @kimei-global/react-native-boilerplate --pm bun --skip-git-init true --install-pods false
    ```
 
 2. **Use `npm`**
 
    ```sh 
-   npx @react-native-community/cli init **your-project-name** --template @kimei-global/react-native-boilerplate --skip-git-init true
+   npx @react-native-community/cli init **your-project-name** --template @kimei-global/react-native-boilerplate --skip-git-init true --install-pods false
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
