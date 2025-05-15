@@ -1,23 +1,31 @@
 {
-  "name": "my-app",
-  "version": "1.0.0",
-  "main": "index.ts",
+  "name": "@kimei-global/react-native-boilerplate",
+  "version": "0.0.1",
+  "description": "KIMEI Global's React Native Boilerplate",
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
-    "expo": "~53.0.9",
-    "expo-status-bar": "~2.2.3",
-    "react": "19.0.0",
-    "react-native": "0.79.2"
+  "files": [
+    "template",
+    "template.config.js",
+    "!template/node_modules/",
+    "!template/android/build/",
+    "!template/android/app/build/",
+    "!template/android/.idea/",
+    "!template/android/.gradle/"
+  ],
+  "repository": "https://github.com/Kimei-Global-Co/react-native-boilerplate",
+  "keywords": [
+    "react",
+    "native",
+    "boilerplate",
+    "react-native",
+    "kimei-global"
+  ],
+  "author": "Kimei Global Co., Ltd.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Kimei-Global-Co/react-native-boilerplate/issues"
   },
-  "devDependencies": {
-    "@babel/core": "^7.25.2",
-    "@types/react": "~19.0.10",
-    "typescript": "~5.8.3"
-  },
-  "private": true
+  "homepage": "https://github.com/Kimei-Global-Co/react-native-boilerplate#readme"
 }
