@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "RNBoilerplate",
-    "slug": "RNBoilerplate",
+    "slug": "boilerplate-mobile",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./src/assets/icon.png",
@@ -15,15 +15,23 @@
     "ios": {
       "supportsTablet": false,
       "bitcode": false,
-      "bundleIdentifier": "com.boilerplate.mobile"
+      "bundleIdentifier": "com.boilerplate.mobile",
+      "scheme": ["com.boilerplate.mobile"],
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false,
+        "CFBundleLocalizations": ["en", "vi"],
+        "CADisableMinimumFrameDurationOnPhones": true
+      }
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./src/assets/adaptive-icon.png",
+        "foregroundImage": "./src/assets/icon-android-foreground.png",
+        "backgroundImage": "./src/assets/icon-android-background.png",
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "package": "com.boilerplate.mobile"
+      "package": "com.boilerplate.mobile",
+      "scheme": ["com.boilerplate.mobile"]
     },
     "experiments": {
       "buildCacheProvider": "eas",
@@ -34,10 +42,26 @@
         "expo-build-properties",
         {
           "android": {
-            "enableProguardInReleaseBuilds": true
+            "enableProguardInReleaseBuilds": true,
+            "enableShrinkResourcesInReleaseBuilds": true
           }
         }
-      ]
-    ]
+      ],
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#ffffff",
+          "image": "./src/assets/splash-icon.png",
+          "imageWidth": 200
+        }
+      ],
+      ["expo-localization"]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "013b02d5-e722-4a67-9d71-06be7e2e239b"
+      }
+    },
+    "owner": "kimei-global"
   }
 }

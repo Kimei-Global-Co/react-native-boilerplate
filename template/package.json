@@ -14,27 +14,38 @@
     }
   },
   "scripts": {
-    "start": "EXPO_USE_FAST_RESOLVER=1 expo start",
+    "start": "EXPO_USE_FAST_RESOLVER=1 expo start --dev-client",
     "android": "expo run:android",
     "ios": "expo run:ios",
+    "prebuild": "expo prebuild",
+    "env:pull": "eas env:pull",
+    "intl:build": "bun extract && bun compile",
+    "extract": "lingui extract --overwrite --clean",
+    "compile": "lingui compile",
+    "bundle:visualizer": "EXPO_ATLAS=1 bunx expo start --dev-client --no-dev",
     "commit": "cz",
-    "lint": "npx eslint --fix .",
-    "depcheck": "npx depcheck",
-    "lint:husky": "eslint $(git diff --staged --name-only | grep -E '(.js$|.ts$|.tsx$)')"
+    "lint": "bunx eslint --fix \"**/*.{js,ts,tsx}\"",
+    "depcheck": "bunx depcheck",
+    "postinstall": "patch-package && bun intl:build",
+    "prepare": "husky"
   },
   "dependencies": {
-    "@discord/bottom-sheet": "bluesky-social/react-native-bottom-sheet",
+    "@discord/bottom-sheet": "Kimei-Global-Co/react-native-bottom-sheet",
+    "@formatjs/intl-locale": "^4.2.11",
+    "@formatjs/intl-pluralrules": "^5.4.4",
     "@hookform/resolvers": "^5.0.1",
+    "@lingui/core": "^5.3.1",
+    "@lingui/react": "^5.3.1",
     "@react-navigation/bottom-tabs": "^7.3.13",
     "@react-navigation/native": "^7.1.9",
     "@react-navigation/native-stack": "^7.3.13",
     "@tanstack/react-query": "^5.76.1",
-    "babel-plugin-react-compiler": "^19.0.0-beta-af1b7da-20250417",
     "dayjs": "^1.11.13",
-    "eas-build-cache-provider": "^16.4.2",
     "expo": "~53.0.9",
     "expo-build-properties": "^0.14.6",
     "expo-image": "^2.1.7",
+    "expo-localization": "^16.1.5",
+    "expo-splash-screen": "^0.30.8",
     "expo-status-bar": "~2.2.3",
     "expo-system-ui": "^5.0.7",
     "ky": "^1.8.1",
@@ -45,23 +56,304 @@
     "react-native-gesture-handler": "~2.24.0",
     "react-native-keyboard-controller": "^1.17.1",
     "react-native-mmkv": "^3.2.0",
+    "react-native-nitro-modules": "^0.25.2",
     "react-native-reanimated": "^3.17.5",
     "react-native-safe-area-context": "^5.4.0",
     "react-native-screens": "^4.10.0",
-    "react-native-unistyles": "^2.32.0",
+    "react-native-unistyles": "^3.0.0-rc.4",
     "zod": "^3.24.4"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
+    "@lingui/babel-plugin-lingui-macro": "^5.3.1",
+    "@lingui/cli": "^5.3.1",
+    "@lingui/macro": "^5.3.1",
+    "@lingui/metro-transformer": "^5.3.1",
+    "@react-native/eslint-config": "^0.79.2",
+    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "@types/lodash.get": "^4.4.9",
     "@types/react": "~19.0.10",
+    "@typescript-eslint/parser": "^8.19.0",
+    "babel-plugin-macros": "^3.1.0",
+    "babel-plugin-react-compiler": "^19.1.0-rc.2",
     "commitizen": "^4.3.1",
     "cz-conventional-changelog": "^3.3.0",
+    "eas-build-cache-provider": "^16.4.2",
+    "eslint": "^8.45.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-lingui": "^0.9.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-react": "^7.33.0",
     "eslint-plugin-react-compiler": "^19.1.0-rc.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-unused-imports": "^4.1.4",
+    "expo-atlas": "^0.4.0",
     "husky": "^9.1.7",
+    "lint-staged": "^16.0.0",
+    "patch-package": "^8.0.0",
+    "postinstall-postinstall": "^2.1.0",
+    "prettier": "^3.5.3",
+    "reassure": "^1.4.0",
     "typescript": "~5.8.3"
+  },
+  "lint-staged": {
+    "*{.js,.jsx,.ts,.tsx}": [
+      "eslint --cache --fix"
+    ],
+    "*{.js,.jsx,.ts,.tsx,.css}": [
+      "prettier --cache --write --ignore-unknown"
+    ]
+  },
+  "prettier": {
+    "bracketSameLine": true,
+    "singleQuote": true,
+    "semi": false,
+    "tabWidth": 2,
+    "bracketSpacing": true,
+    "arrowParens": "always",
+    "jsxBracketSameLine": false,
+    "insertPragma": false,
+    "jsxSingleQuote": true,
+    "printWidth": 80,
+    "proseWrap": "preserve",
+    "quoteProps": "as-needed",
+    "requirePragma": false,
+    "trailingComma": "none",
+    "useTabs": false,
+    "importOrderSeparation": true,
+    "importOrderSortSpecifiers": true,
+    "importOrder": [
+      "^(react-native-gesture-handler)$",
+      "^(react|react-native)$",
+      "<THIRD_PARTY_MODULES>",
+      "^[./]"
+    ],
+    "plugins": [
+      "@trivago/prettier-plugin-sort-imports"
+    ]
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "browser": true,
+      "es6": true,
+      "commonjs": true,
+      "node": true
+    },
+    "extends": [
+      "@react-native",
+      "eslint:recommended",
+      "plugin:react/recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:jsx-a11y/recommended",
+      "plugin:react-hooks/recommended",
+      "prettier"
+    ],
+    "globals": {
+      "SharedArrayBuffer": "readonly",
+      "__DEV__": "readonly",
+      "window": true,
+      "process": true
+    },
+    "parser": "@typescript-eslint/parser",
+    "ignorePatterns": [
+      "dist/*"
+    ],
+    "plugins": [
+      "lingui",
+      "@typescript-eslint",
+      "react",
+      "react-hooks",
+      "unused-imports",
+      "jsx-a11y",
+      "prettier",
+      "react-compiler"
+    ],
+    "rules": {
+      "react-compiler/react-compiler": "error",
+      "no-undef": "off",
+      "@typescript-eslint/no-require-imports": "off",
+      "@typescript-eslint/no-var-requires": "off",
+      "react/no-unescaped-entities": "off",
+      "react-hooks/rules-of-hooks": "warn",
+      "max-len": [
+        "error",
+        {
+          "code": 120,
+          "tabWidth": 2,
+          "comments": 150,
+          "ignoreUrls": true,
+          "ignoreRegExpLiterals": true,
+          "ignorePattern": "^import\\W.*",
+          "ignoreStrings": true,
+          "ignoreTemplateLiterals": true
+        }
+      ],
+      "arrow-parens": [
+        "error",
+        "always"
+      ],
+      "arrow-spacing": "error",
+      "comma-dangle": [
+        "error",
+        "never"
+      ],
+      "react/self-closing-comp": [
+        "error"
+      ],
+      "no-mixed-spaces-and-tabs": 0,
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        {
+          "vars": "all",
+          "args": "after-used",
+          "ignoreRestSiblings": true,
+          "argsIgnorePattern": "^_",
+          "varsIgnorePattern": "^_"
+        }
+      ],
+      "no-duplicate-imports": "error",
+      "no-var": "error",
+      "prefer-const": "error",
+      "no-const-assign": "error",
+      "no-dupe-args": "error",
+      "no-dupe-keys": "error",
+      "no-duplicate-case": "error",
+      "no-empty": "error",
+      "no-sparse-arrays": "error",
+      "no-multi-spaces": "error",
+      "no-useless-escape": "error",
+      "no-alert": "error",
+      "block-scoped-var": "error",
+      "dot-notation": 0,
+      "array-bracket-spacing": [
+        "error",
+        "never"
+      ],
+      "template-curly-spacing": "error",
+      "block-spacing": "error",
+      "brace-style": [
+        "error",
+        "1tbs",
+        {
+          "allowSingleLine": true
+        }
+      ],
+      "comma-style": "error",
+      "computed-property-spacing": "error",
+      "eol-last": "error",
+      "react-hooks/exhaustive-deps": "warn",
+      "react/jsx-boolean-value": [
+        "error",
+        "never"
+      ],
+      "react/jsx-curly-spacing": [
+        "error",
+        {
+          "when": "never"
+        }
+      ],
+      "react/jsx-equals-spacing": [
+        "error",
+        "never"
+      ],
+      "react/jsx-first-prop-new-line": [
+        "error",
+        "multiline"
+      ],
+      "react/jsx-indent": [
+        "error",
+        2
+      ],
+      "react/jsx-indent-props": [
+        "error",
+        2
+      ],
+      "react/jsx-max-props-per-line": [
+        "error",
+        {
+          "maximum": 1,
+          "when": "multiline"
+        }
+      ],
+      "react/jsx-no-duplicate-props": "error",
+      "react/jsx-sort-props": [
+        "error",
+        {
+          "callbacksLast": true,
+          "shorthandFirst": true,
+          "ignoreCase": true,
+          "reservedFirst": true,
+          "multiline": "last",
+          "locale": "auto",
+          "noSortAlphabetically": false
+        }
+      ],
+      "@typescript-eslint/explicit-function-return-type": "off",
+      "@typescript-eslint/explicit-module-boundary-types": "warn",
+      "@typescript-eslint/no-explicit-any": "warn",
+      "@typescript-eslint/no-non-null-assertion": "warn",
+      "func-style": [
+        "off",
+        "expression",
+        {
+          "allowArrowFunctions": true
+        }
+      ],
+      "key-spacing": [
+        "error",
+        {
+          "beforeColon": false
+        }
+      ],
+      "keyword-spacing": [
+        "error",
+        {
+          "before": true
+        }
+      ],
+      "jsx-quotes": [
+        "error",
+        "prefer-single"
+      ],
+      "react-native/no-inline-styles": "warn",
+      "react/jsx-uses-react": "off",
+      "react/react-in-jsx-scope": "off",
+      "react/prop-types": "off",
+      "unused-imports/no-unused-vars": [
+        "warn",
+        {
+          "argsIgnorePattern": "^_",
+          "varsIgnorePattern": "^_",
+          "caughtErrorsIgnorePattern": "^_"
+        }
+      ],
+      "react/display-name": "warn",
+      "no-async-promise-executor": "warn"
+    },
+    "overrides": [
+      {
+        "files": [
+          "*.ts",
+          "*.mts",
+          "*.cts",
+          "*.tsx"
+        ],
+        "rules": {
+          "@typescript-eslint/explicit-function-return-type": "warn"
+        }
+      }
+    ],
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    },
+    "reportUnusedDisableDirectives": true
   },
   "config": {
     "commitizen": {

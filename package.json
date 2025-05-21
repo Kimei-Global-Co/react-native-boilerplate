@@ -3,7 +3,10 @@
   "version": "0.0.1",
   "description": "KIMEI Global's React Native Boilerplate",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prestart": "cd template && bun start",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 -n ./generator/template-changelog.js",
+    "postinstall": "cd template && bun i"
   },
   "files": [
     "template",
@@ -28,10 +31,16 @@
     "react-native",
     "kimei-global"
   ],
-  "author": "Kimei Global Co., Ltd.",
+  "author": "KIMEI Global Mobile Team <ducnmanh@kimei.vn> (https://github.com/manhduckimei)",
+  "contributors": [
+    "Duc Nguyen <duc040301@gmail.com> (https://github.com/mduc-dev)"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Kimei-Global-Co/react-native-boilerplate/issues"
   },
-  "homepage": "https://github.com/Kimei-Global-Co/react-native-boilerplate/tree/main"
+  "homepage": "https://github.com/Kimei-Global-Co/react-native-boilerplate/tree/main",
+  "devDependencies": {
+    "conventional-changelog-cli": "^5.0.0"
+  }
 }

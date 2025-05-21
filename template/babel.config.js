@@ -1,16 +1,19 @@
 module.exports = function (api) {
-  api.cache(true);
-  const plugins = ["react-native-reanimated/plugin"];
+  api.cache(true)
+  const plugins = [
+    'react-native-reanimated/plugin',
+    ['babel-plugin-react-compiler', { target: '19' }]
+  ]
 
   return {
     presets: [
       [
-        "babel-preset-expo",
+        'babel-preset-expo',
         {
-          lazyImports: true,
-        },
-      ],
+          lazyImports: true
+        }
+      ]
     ],
-    plugins,
-  };
-};
+    plugins
+  }
+}
