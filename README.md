@@ -135,8 +135,6 @@ Make sure you have the following installed:
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
-<!-- USAGE EXAMPLES -->
 ## Usage
 
 After installation, you can:
@@ -210,6 +208,24 @@ We welcome contributions to make this boilerplate even better! Here's how you ca
 6. Commit your Changes (`git commit -m 'feat: add amazing feature'`)
 7. Push to the Branch (`git push origin feature/amazing-feature`)
 8. Open a Pull Request with detailed description
+
+### Using the Generator
+
+When contributing new components, use our Plop generator to maintain consistency:
+
+```bash
+bun plop # Generate project files
+```
+
+The generator enforces our conventions:
+- Component names in kebab-case (e.g., `my-component`)
+- Standard file structure:
+  ```
+  my-component/
+  ├── my-component.tsx
+  ├── my-component.styles.ts
+  └── my-component.types.ts
+  ```
 
 Please make sure to follow our [Code of Conduct](./CODE_OF_CONDUCT.md) and [Contributing Guidelines](./CONTRIBUTING.md).
 

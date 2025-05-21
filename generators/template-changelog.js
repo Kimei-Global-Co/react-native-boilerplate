@@ -3,17 +3,11 @@
 module.exports = {
   writerOpts: {
     transform: (commit, context) => {
+      // Skip if no type
+      if (!commit.type) return;
+
       // Create a mutable copy of the commit
       const newCommit = JSON.parse(JSON.stringify(commit));
-
-      const issues = [];
-
-      if (typeof newCommit.hash === "string") {
-        newCommit.hash = newCommit.hash.substring(0, 7);
-      }
-
-      // Skip if no type
-      if (!newCommit.type) return;
 
       // Transform commit types
       switch (newCommit.type.toLowerCase()) {
@@ -66,7 +60,6 @@ module.exports = {
       const repository = context.packageData.repository.url
         .replace("git+", "")
         .replace(".git", "");
-
       if (repository) {
         newCommit.commitUrl = `${repository}/commit/${newCommit.hash}`;
       }
@@ -85,30 +78,68 @@ module.exports = {
           newCommit.subject = newCommit.subject.replace(
             /#(\d+)/g,
             (_, issue) => {
-              issues.push(issue);
               return `[#${issue}](${url}${issue})`;
             }
           );
         }
       }
 
+      // Add date for grouping
+      if (newCommit.committerDate) {
+        newCommit.date = newCommit.committerDate.split(" ")[0]; // Extract YYYY-MM-DD
+      }
+
       return newCommit;
     },
-    groupBy: "type",
-    commitGroupsSort: [
-      "✨ Features",
-      "🐛 Bug Fixes",
-      "📚 Documentation",
-      "💎 Styles",
-      "♻️ Code Refactoring",
-      "⚡️ Performance Improvements",
-      "✅ Tests",
-      "📦 Build System",
-      "👷 CI",
-      "🔨 Chores",
-    ],
-    commitsSort: ["subject"],
-    noteGroupsSort: ["🚨 BREAKING CHANGES"],
-    mainTemplate: `# Changelog\n\n{{#each commitGroups}}\n### {{title}}\n\n{{#each commits}}\n* {{subject}} ([{{shortHash}}]({{commitUrl}}))\n{{/each}}\n{{/each}}\n`,
+
+    finalizeContext: (context, _, commits, __) => {
+      // Sort commits by date and type
+      const dateGroups = {};
+
+      commits.forEach((commit) => {
+        if (!commit.date) return;
+
+        if (!dateGroups[commit.date]) {
+          dateGroups[commit.date] = {};
+        }
+
+        if (!dateGroups[commit.date][commit.type]) {
+          dateGroups[commit.date][commit.type] = [];
+        }
+
+        dateGroups[commit.date][commit.type].push(commit);
+      });
+
+      // Generate the full changelog content directly
+      let changelog = "# Changelog\n\n";
+
+      // Sort dates (newest first)
+      Object.keys(dateGroups)
+        .sort((a, b) => new Date(b) - new Date(a))
+        .forEach((date) => {
+          changelog += `## ${date}\n\n`;
+
+          // For each type in this date
+          Object.keys(dateGroups[date]).forEach((type) => {
+            const commits = dateGroups[date][type];
+
+            changelog += `### ${type}\n`;
+            commits.forEach((commit) => {
+              changelog += `* ${commit.subject} ([${commit.shortHash}](${commit.commitUrl}))\n`;
+            });
+            changelog += "\n";
+          });
+        });
+
+      context.content = changelog;
+
+      return context;
+    },
+
+    groupBy: false,
+    commitGroupsSort: null,
+    commitsSort: null,
+
+    mainTemplate: "{{content}}",
   },
 };
