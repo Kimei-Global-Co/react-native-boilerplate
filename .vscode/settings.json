@@ -1,0 +1,6 @@
+{
+    "sonarlint.connectedMode.project": {
+        "connectionId": "react-native-boilerplate",
+        "projectKey": "react-native-boilerplate"
+    }
+}
