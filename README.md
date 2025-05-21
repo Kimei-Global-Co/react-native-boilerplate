@@ -10,21 +10,6 @@
 
 
 
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
-[![Contributors][contributors-shield]][contributors-url]
-[![Issues][issues-shield]][issues-url]
-[![License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -33,6 +18,12 @@
   </a>
 
   <h3 align="center">This project was developed by KIMEI Global</h3>
+
+  [![Contributors][contributors-shield]][contributors-url]
+  [![Issues][issues-shield]][issues-url]
+  [![License][license-shield]][license-url]
+  [![LinkedIn][linkedin-shield]][linkedin-url]
+  <a href="https://deepwiki.com/Kimei-Global-Co/react-native-boilerplate"><img src="https://deepwiki.com/badge.svg" alt="Ask DeepWiki"  style="width: 134px; height: 28px;"></a>
 </div>
 
 
@@ -93,7 +84,8 @@ This boilerplate saves you days of initial setup and configuration, allowing you
 
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
-[![React Native][React.js]][React Native-url]
+[![React][React.js]][React-url]
+[![React Native][React Native]][React Native-url]
 [![Expo]][Expo-url]
 
 
@@ -126,13 +118,18 @@ Make sure you have the following installed:
 - Must installed **bun** before.
 
    ```sh
-   bunx @react-native-community/cli init **your-project-name** --template https://github.com/Kimei-Global-Co/react-native-boilerplate --pm bun --skip-git-init true --install-pods false
+   bun create expo **your-project-name** --template Kimei-Global-Co/react-native-boilerplate/tree/main/template
    ```
 
 2. **Use `npm`**
 
    ```sh 
-   npx @react-native-community/cli init **your-project-name** --template https://github.com/Kimei-Global-Co/react-native-boilerplate --skip-git-init true --install-pods false
+   npx create-expo-app@latest **your-project-name** --template Kimei-Global-Co/react-native-boilerplate/tree/main/template
+   ```
+
+3. **Use `yarn`**
+   ```sh 
+   yarn create expo-app **your-project-name** --template Kimei-Global-Co/react-native-boilerplate/tree/main/template
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -183,9 +180,9 @@ _For detailed documentation, please refer to our [Wiki](https://github.com/Kimei
 
 - [x] Project structure setup
 - [x] TypeScript configuration
-- [ ] Navigation system
+- [x] Navigation system
 - [ ] State management
-- [ ] API integration
+- [x] API integration
 - [ ] Theming system
 - [ ] Authentication flow template
 - [ ] Offline storage
@@ -290,7 +287,9 @@ Use this space to list resources you find helpful and would like to give credit 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/mduc-dev
 [product-screenshot]: images/screenshot.png
-[React.js]: https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[React Native]: https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[React-url]: https://react.dev/
 [React Native-url]: https://reactnative.dev/
 [Expo]: https://img.shields.io/badge/Expo-20232A?style=for-the-badge&logo=expo
-[Expo-url]: https://expo.dev/
+[Expo-url]: https://docs.expo.dev/

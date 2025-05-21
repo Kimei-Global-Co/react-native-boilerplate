@@ -52,4 +52,4 @@ Thank you for your interest in contributing to our React Native Boilerplate!
 
 ## Questions?
 
-Feel free to create an issue or contact us at info@kimei.vn
+Feel free to create an issue or contact us at ducnmanh@kimei.vn
