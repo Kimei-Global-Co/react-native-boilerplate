@@ -2,6 +2,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
 import { StyleSheet, Text, View } from 'react-native'
 
+import { Block } from '@components/base/block'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import Colors from '@theme/colors'
 import { KeyboardProvider } from 'react-native-keyboard-controller'
@@ -29,7 +30,9 @@ export default function App(): React.JSX.Element {
         <KeyboardProvider>
           <GestureHandlerRootView style={styles.flex}>
             <View style={styles.container}>
-              <Text>Open up App.tsx to start working on your app!</Text>
+              <Block backgroundColor='rose_50' padding={20} radius={10}>
+                <Text>Open up App.tsx to start working on your app!</Text>
+              </Block>
             </View>
           </GestureHandlerRootView>
         </KeyboardProvider>

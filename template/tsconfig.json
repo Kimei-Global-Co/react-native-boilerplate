@@ -2,8 +2,14 @@
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
     "strict": true,
-    "verbatimModuleSyntax": true,
-    "noImplicitAny": true,
+    "jsx": "react-jsx",
+    "module": "esnext",
+    "types": ["node"],
+    "strictNullChecks": false,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "noImplicitAny": false,
     "baseUrl": "./src",
     "paths": {
       "@components": ["components"],
@@ -13,18 +19,17 @@
       "@hooks": ["hooks"],
       "@theme": ["theme"],
       "@store": ["store"],
+      "@utils": ["utils"],
       "@assets": ["assets"],
-      "untils": ["untils"],
-
       "@components/*": ["components/*"],
       "@context/*": ["context/*"],
       "@navigation/*": ["navigation/*"],
       "@features/*": ["features/*"],
       "@hooks/*": ["hooks/*"],
       "@theme/*": ["theme/*"],
-      "@store/*": ["store/*"],
       "@assets/*": ["assets/*"],
-      "untils/*": ["untils/*"]
+      "@utils/*": ["utils/*"]
     }
-  }
+  },
+  "include": ["**/*.ts", "**/*.tsx"]
 }
