@@ -55,7 +55,16 @@
           "imageWidth": 200
         }
       ],
-      ["expo-localization"]
+      ["expo-localization"],
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "node_modules/@expo-google-fonts/nunito/400Regular/Nunito_400Regular.ttf",
+            "node_modules/@expo-google-fonts/nunito/900Black/Nunito_900Black.ttf"
+          ]
+        }
+      ]
     ],
     "extra": {
       "eas": {

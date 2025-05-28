@@ -1,0 +1,9 @@
+{
+  "ref": "refs/heads/main",
+  "repository": {
+    "full_name": "Kimei-Global-Co/react-native-boilerplate"
+  },
+  "head_commit": {
+    "id": "latest_commit_sha"
+  }
+}
