@@ -24,6 +24,11 @@
   [![License][license-shield]][license-url]
   [![LinkedIn][linkedin-shield]][linkedin-url]
   <a href="https://deepwiki.com/Kimei-Global-Co/react-native-boilerplate"><img src="https://deepwiki.com/badge.svg" alt="Ask DeepWiki"  style="width: 134px; height: 28px;"></a>
+  [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=kimei-global_react-native-boilerplate&metric=alert_status&token=c74190a55877630cbebcbbc5dc0b7842ef7a14c2)](https://sonarcloud.io/summary/new_code?id=kimei-global_react-native-boilerplate)
+  [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=kimei-global_react-native-boilerplate&metric=ncloc&token=c74190a55877630cbebcbbc5dc0b7842ef7a14c2)](https://sonarcloud.io/summary/new_code?id=kimei-global_react-native-boilerplate)
+  [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=kimei-global_react-native-boilerplate&metric=code_smells&token=c74190a55877630cbebcbbc5dc0b7842ef7a14c2)](https://sonarcloud.io/summary/new_code?id=kimei-global_react-native-boilerplate)
+  [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=kimei-global_react-native-boilerplate&metric=sqale_rating&token=c74190a55877630cbebcbbc5dc0b7842ef7a14c2)](https://sonarcloud.io/summary/new_code?id=kimei-global_react-native-boilerplate)
+  [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=kimei-global_react-native-boilerplate&metric=security_rating&token=c74190a55877630cbebcbbc5dc0b7842ef7a14c2)](https://sonarcloud.io/summary/new_code?id=kimei-global_react-native-boilerplate)
 </div>
 
 

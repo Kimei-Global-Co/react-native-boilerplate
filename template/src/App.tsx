@@ -1,9 +1,8 @@
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
-import { StyleSheet, Text, View } from 'react-native'
+import { Platform, StyleSheet, Text, View } from 'react-native'
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import Colors from '@theme/colors'
 import { KeyboardProvider } from 'react-native-keyboard-controller'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 
@@ -29,7 +28,15 @@ export default function App(): React.JSX.Element {
         <KeyboardProvider>
           <GestureHandlerRootView style={styles.flex}>
             <View style={styles.container}>
-              <Text>Open up App.tsx to start working on your app!</Text>
+              <Text
+                style={{
+                  fontFamily: Platform.select({
+                    android: 'Nunito_400Regular',
+                    ios: 'Nunito-Regular'
+                  })
+                }}>
+                Open up App.tsx to start working on your app!
+              </Text>
             </View>
           </GestureHandlerRootView>
         </KeyboardProvider>
@@ -44,7 +51,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: Colors.white,
+    backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center'
   }

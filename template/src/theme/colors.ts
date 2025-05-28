@@ -2,6 +2,9 @@ const Colors = {
   transparent: 'transparent',
   white: '#ffffff',
 
+  primary: 'rgb(255, 248, 231)',
+  secondary: '#ff9e6c',
+
   // Rose colors
   rose_50: '#fff1f2',
   rose_100: '#ffe4e6',

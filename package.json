@@ -5,7 +5,7 @@
   "scripts": {
     "prestart": "cd template && bun start",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 -n ./generator/template-changelog.js",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 -n ./generators/template-changelog.js",
     "generate:modules": "plop",
     "postinstall": "cd template && bun i"
   },
