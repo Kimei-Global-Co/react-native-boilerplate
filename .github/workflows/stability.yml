@@ -1,0 +1,35 @@
+name: Check Performance Stability
+
+on: [workflow_dispatch]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ !contains(github.ref, 'main')}}
+
+jobs:
+  check-stability:
+    name: Check Performance Stability
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Deps
+        uses: ./.github/actions/setup-deps
+
+      - name: Run performance checks
+        working-directory: ./template
+        run: |
+            echo "🚀 Running Reassure performance tests..."
+            bun run perf-test || {
+              echo "❌ Reassure tests failed because no tests were found!"
+              echo "💡 Tip: Check your test paths: __perf__ folders or patterns like (perf|perf-test).(ts|tsx|js|jsx)"
+              exit 1
+            }
+        
+      - name: Run Danger.js
+        run: bun danger ci
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

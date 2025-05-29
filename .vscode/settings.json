@@ -1,0 +1,6 @@
+{
+  "sonarlint.connectedMode.project": {
+    "connectionId": "kimei-global",
+    "projectKey": "kimei-global_react-native-boilerplate"
+  }
+}

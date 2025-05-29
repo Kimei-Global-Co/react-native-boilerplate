@@ -10,7 +10,8 @@ module.exports = function (api) {
       [
         'babel-preset-expo',
         {
-          lazyImports: true
+          lazyImports: true,
+          disableImportExportTransform: true
         }
       ]
     ],
