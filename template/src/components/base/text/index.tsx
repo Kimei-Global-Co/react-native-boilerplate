@@ -13,7 +13,7 @@ export const Text = memo(function Text(props: CommonTextProps) {
   const {
     style,
     fontType = 'regular',
-    color = 'whiteF3',
+    color = 'black',
     size = 14,
     lineHeight,
     backgroundColor,

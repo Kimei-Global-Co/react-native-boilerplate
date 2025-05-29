@@ -1,11 +1,24 @@
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
-import { Platform, StyleSheet, Text, View } from 'react-native'
+import { StyleSheet } from 'react-native'
 
+import { Block } from '@components/base/block'
+import { InfiniteScrollList } from '@components/base/list'
+import { Text } from '@components/base/text'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { KeyboardProvider } from 'react-native-keyboard-controller'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 
+interface ListItem {
+  id: number
+  title: string
+  description: string
+}
+const SAMPLE_DATA: ListItem[] = Array.from({ length: 50 }).map((_, index) => ({
+  id: index + 1,
+  title: `Item ${index + 1}`,
+  description: `This is description for item ${index + 1}`
+}))
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -22,22 +35,35 @@ const queryClient = new QueryClient({
 })
 
 export default function App(): React.JSX.Element {
+  const renderItem = ({ item }: { item: ListItem }) => (
+    <Block
+      backgroundColor='gray_100'
+      margin={{ bottom: 8 }}
+      padding={16}
+      radius={8}>
+      <Text fontType='bold' size={16}>
+        {item.title}
+      </Text>
+      <Text color='gray_400' margin={{ top: 4 }}>
+        {item.description}
+      </Text>
+    </Block>
+  )
+
   return (
     <SafeAreaProvider>
       <QueryClientProvider client={queryClient}>
         <KeyboardProvider>
           <GestureHandlerRootView style={styles.flex}>
-            <View style={styles.container}>
-              <Text
-                style={{
-                  fontFamily: Platform.select({
-                    android: 'Nunito_400Regular',
-                    ios: 'Nunito-Regular'
-                  })
-                }}>
-                Open up App.tsx to start working on your app!
-              </Text>
-            </View>
+            <Block backgroundColor='white' flex={1}>
+              <Block flex={1}>
+                <InfiniteScrollList<ListItem>
+                  contentContainerStyle={styles.listContent}
+                  data={SAMPLE_DATA}
+                  renderItem={renderItem}
+                />
+              </Block>
+            </Block>
           </GestureHandlerRootView>
         </KeyboardProvider>
       </QueryClientProvider>
@@ -49,10 +75,7 @@ const styles = StyleSheet.create({
   flex: {
     flex: 1
   },
-  container: {
-    flex: 1,
-    backgroundColor: 'white',
-    alignItems: 'center',
-    justifyContent: 'center'
+  listContent: {
+    padding: 16
   }
 })

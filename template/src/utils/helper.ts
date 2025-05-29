@@ -1,6 +1,7 @@
 import { Dimensions, Platform } from 'react-native'
 
 import type { BlockProps } from '@components/base/block/type'
+import { IconComponentProps } from '@components/base/icon/type'
 import Colors from '@theme/colors'
 import get from 'lodash.get'
 import type { EdgeInsets } from 'react-native-safe-area-context'
@@ -113,10 +114,7 @@ export const handleInset = (
   if (typeof props.inset === 'string') {
     const capitalize =
       props.inset.charAt(0).toUpperCase() + props.inset.slice(1)
-    const initPadding = getInitPadding(
-      props.inset,
-      padding
-    )
+    const initPadding = getInitPadding(props.inset, padding)
     return {
       [`padding${capitalize}`]: safe[props.inset] + initPadding
     }
@@ -131,8 +129,10 @@ export const handleInset = (
   return paddingStyles
 }
 
-export const handleBorder = (border: BorderProps | BorderType): {
-    [key: string]: string | number | undefined;
+export const handleBorder = (
+  border: BorderProps | BorderType
+): {
+  [key: string]: string | number | undefined
 } => {
   if ('width' in border) {
     return { borderWidth: border.width, borderColor: Colors[border.color] }
@@ -150,7 +150,9 @@ export const handleBorder = (border: BorderProps | BorderType): {
   return borderBox
 }
 
-export const createDefaultStyle = (props: { [key: string]: unknown }): unknown[] => [
+export const createDefaultStyle = (props: {
+  [key: string]: unknown
+}): unknown[] => [
   props.flex && { flex: typeGuards(props.flex, 'number') ? props.flex : 1 },
   props.flexGrow && {
     flexGrow: typeGuards(props.flexGrow, 'number') ? props.flexGrow : 1
@@ -241,5 +243,11 @@ export const Helper = {
     defaultValue?: T[K]
   ): T[K] => {
     return get(obj, key, defaultValue)
+  },
+
+  isIcon(
+    icon: IconComponentProps | React.ReactNode
+  ): icon is IconComponentProps {
+    return (icon as IconComponentProps)?.name !== undefined
   }
 }

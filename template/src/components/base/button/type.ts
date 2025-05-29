@@ -37,4 +37,6 @@ export interface ButtonProps {
   textStyle?: TextStyle
   /** Callback on press */
   onPress?: () => void
+
+  isIconOnly: boolean
 }

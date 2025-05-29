@@ -17,6 +17,7 @@ const Button = ({
   color = 'primary',
   disabled = false,
   loading = false,
+  isIconOnly = false,
   borderWidth,
   borderColor: customBorderColor,
   borderRadius,
@@ -52,7 +53,7 @@ const Button = ({
 
   const buttonStyles = [
     styles.base,
-    sizeStyle,
+    !isIconOnly && sizeStyle,
     {
       backgroundColor,
       borderRadius,

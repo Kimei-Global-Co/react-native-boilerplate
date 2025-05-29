@@ -7,9 +7,9 @@ import { Image } from '../image'
 import { Text } from '../text'
 
 export interface IEmptyViewProps {
-  title: string
-  description: string
-  imageSource: ImageSource
+  title?: string
+  description?: string
+  imageSource?: ImageSource
 }
 
 const EmptyView = (props: IEmptyViewProps): JSX.Element => {

@@ -1,7 +1,7 @@
 const Colors = {
   transparent: 'transparent',
   white: '#ffffff',
-
+  black: '#000000',
   primary: 'rgb(255, 248, 231)',
   secondary: '#ff9e6c',
 
