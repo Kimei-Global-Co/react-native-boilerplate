@@ -30,8 +30,8 @@ export default function App(): React.JSX.Element {
         <KeyboardProvider>
           <GestureHandlerRootView style={styles.flex}>
             <View style={styles.container}>
-              <Block backgroundColor='rose_50' padding={20} radius={10}>
-                <Text>Open up App.tsx to start working on your app!</Text>
+              <Block>
+                <Text>Welcome to the React Native Template!</Text>
               </Block>
             </View>
           </GestureHandlerRootView>
