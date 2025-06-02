@@ -6,23 +6,14 @@ export type AccordionVariant = 'default' | 'shadow' | 'bordered'
 export interface AccordionContextType {
   isOpen: boolean
   toggle: () => void
-  variant: AccordionVariant
-  activeId?: string
 }
 
 export interface AccordionRootProps {
-  variant: AccordionVariant
+  variant?: 'default' | 'shadow' | 'bordered'
   children: ReactNode
   onChange?: (isOpen: boolean) => void
   style?: StyleProp<ViewStyle>
-  id?: string
 }
-
-export interface AccordionTriggerProps {
-  children: ReactNode
-  style?: StyleProp<ViewStyle>
-}
-
 export interface AccordionTriggerProps {
   children: ReactNode
   style?: StyleProp<ViewStyle>

@@ -9,13 +9,6 @@ import Row from '../row'
 import { Text } from '../text'
 import { TextInputBaseProps } from './type'
 
-const defaultProps = {
-  mode: 'default' as const,
-  clearable: false,
-  focusColor: theme.colors.blue_400,
-  required: false
-}
-
 export const TextInput = forwardRef<RNTextInput, TextInputBaseProps>(
   (props, ref) => {
     const {
@@ -23,15 +16,15 @@ export const TextInput = forwardRef<RNTextInput, TextInputBaseProps>(
       inputStyle,
       labelStyle,
       errorStyle,
-      mode = defaultProps.mode,
+      mode = 'default',
       label,
       error,
       leftIcon,
       rightIcon,
-      clearable = defaultProps.clearable,
-      focusColor = defaultProps.focusColor,
+      clearable = false,
+      focusColor = theme.colors.blue_400,
       helper,
-      required = defaultProps.required,
+      required = false,
       value: externalValue,
       onChangeText: externalOnChangeText,
       ...rest
@@ -54,16 +47,15 @@ export const TextInput = forwardRef<RNTextInput, TextInputBaseProps>(
       [isControlled, externalOnChangeText]
     )
 
-    const handleFocus = useCallback(() => setIsFocused(true), [])
-    const handleBlur = useCallback(() => setIsFocused(false), [])
+    const handleFocus = (): void => setIsFocused(true)
+    const handleBlur = (): void => setIsFocused(false)
     const handleClear = useCallback(
       () => handleChangeText(''),
       [handleChangeText]
     )
-    const toggleSecureEntry = useCallback(
-      () => setSecureEntry((prev) => !prev),
-      []
-    )
+    // eslint-disable-next-line react-compiler/react-compiler
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const toggleSecureEntry = (): void => setSecureEntry((prev) => !prev)
 
     const containerStyles = useMemo(
       () => [

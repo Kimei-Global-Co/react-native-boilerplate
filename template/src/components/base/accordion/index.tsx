@@ -1,7 +1,6 @@
 import {
   JSX,
   createContext,
-  useCallback,
   useContext,
   useEffect,
   useMemo,
@@ -19,14 +18,13 @@ import Animated, {
 } from 'react-native-reanimated'
 
 import { Block } from '../block'
-import { Image } from '../image'
+import Icon from '../icon'
 import { createVariantStyles } from './styles'
 import {
   AccordionContentProps,
   AccordionContextType,
   AccordionHeaderProps,
-  AccordionRootProps,
-  AccordionTriggerProps
+  AccordionRootProps
 } from './type'
 
 const AccordionContext = createContext<AccordionContextType>(undefined)
@@ -43,29 +41,22 @@ const Root = ({
   variant = 'default',
   children,
   onChange,
-  style,
-  id
+  style
 }: AccordionRootProps): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false)
 
-  const toggle = useCallback(() => {
+  // eslint-disable-next-line react-compiler/react-compiler
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const toggle = (): void => {
     setIsOpen((prev) => {
       const newValue = !prev
       onChange?.(newValue)
       return newValue
     })
-  }, [onChange])
+  }
   const variantStyle = createVariantStyles(variant)
 
-  const contextValue = useMemo(
-    () => ({
-      isOpen,
-      toggle,
-      variant,
-      id
-    }),
-    [isOpen, toggle, variant, id]
-  )
+  const contextValue = useMemo(() => ({ isOpen, toggle }), [isOpen, toggle])
 
   return (
     <AccordionContext.Provider value={contextValue}>
@@ -73,33 +64,27 @@ const Root = ({
     </AccordionContext.Provider>
   )
 }
-const Trigger = ({ children, style }: AccordionTriggerProps): JSX.Element => {
-  const { toggle } = useAccordion()
-
-  return (
-    <Pressable style={[styles.trigger, style]} onPress={toggle}>
-      {children}
-    </Pressable>
-  )
-}
 
 const Header = ({ children, style }: AccordionHeaderProps): JSX.Element => {
-  const { isOpen } = useAccordion()
+  const { isOpen, toggle } = useAccordion()
 
   return (
-    <Block style={[styles.header, style]}>
-      {children}
-      <Animated.View
-        style={{
-          transform: [
-            {
-              rotate: isOpen ? '180deg' : '0deg'
-            }
-          ]
-        }}>
-        <Image size={24} source={require('@assets/images/chevron.png')} />
-      </Animated.View>
-    </Block>
+    <Pressable onPress={toggle}>
+      <Block style={[styles.header, style]}>
+        {children}
+        <Animated.View
+          style={{
+            transform: [{ rotate: isOpen ? '180deg' : '0deg' }]
+          }}>
+          <Icon
+            color='blue_600'
+            name='chevron-circle-down'
+            size={24}
+            type='fontAwesome5'
+          />
+        </Animated.View>
+      </Block>
+    </Pressable>
   )
 }
 
@@ -137,7 +122,6 @@ const Content = ({ children, style }: AccordionContentProps): JSX.Element => {
 
 const Accordion = {
   Root,
-  Trigger,
   Header,
   Content
 }
@@ -151,7 +135,8 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    padding: 20
   },
   contentWrapper: {
     overflow: 'hidden'

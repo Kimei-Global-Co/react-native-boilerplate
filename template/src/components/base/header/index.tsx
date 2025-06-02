@@ -1,16 +1,17 @@
-import { JSX, memo } from 'react'
+import { JSX } from 'react'
 import { StyleSheet } from 'react-native'
 
 import { localImage } from '@assets/images'
 
 import { Block } from '../block'
-import Button from '../button'
+import { Button } from '../button'
+import Icon from '../icon'
 import { Image } from '../image'
 import Row from '../row'
 import { Text } from '../text'
 import { DEFAULT_ACTIONS, HeaderProps } from './type'
 
-const Header = ({
+export const Header = ({
   showBack = true,
   onBack,
   title = 'Header Label',
@@ -23,7 +24,7 @@ const Header = ({
     if (showBack) {
       return (
         <Button isIconOnly variant='ghost' onPress={onBack}>
-          <Image size={24} source={localImage().icBack} />
+          <Icon name='left' size={24} type='antDesign' />
         </Button>
       )
     }
@@ -46,8 +47,12 @@ const Header = ({
   const renderRightActions = (): JSX.Element => (
     <>
       {rightActions?.map((action) => (
-        <Button key={action.id} isIconOnly variant='ghost' onPress={action.onPress}>
-          <Image size={24} source={action.icon} />
+        <Button
+          key={action.id}
+          isIconOnly
+          variant='ghost'
+          onPress={action.onPress}>
+          <Icon name={action.name} size={24} type={action.type} />
         </Button>
       ))}
     </>
@@ -71,5 +76,3 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent'
   }
 })
-
-export default memo(Header)

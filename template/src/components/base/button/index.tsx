@@ -9,7 +9,7 @@ import { Text } from '../text'
 import { getButtonColors, getSizeStyle } from './style'
 import { ButtonProps } from './type'
 
-const Button = ({
+export const Button = ({
   children,
   text,
   variant = 'solid',
@@ -106,5 +106,3 @@ const styles = StyleSheet.create({
     fontWeight: '600'
   }
 })
-
-export default Button

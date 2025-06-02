@@ -30,7 +30,7 @@ const InfiniteScrollListComponent = <T extends BaseItem>(
     [numColumns, propRenderItem]
   )
 
-  const keyExtractor = useCallback((item: T) => item.id.toString(), [])
+  const keyExtractor = (item: T): string => item.id.toString()
 
   return (
     <Block style={[styles.container, containerStyle]}>
