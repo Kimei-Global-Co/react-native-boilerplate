@@ -1,9 +1,32 @@
-import { Text, View } from 'react-native'
+import {
+  commonScreens,
+  devScreens,
+  notLoggedInScreens
+} from '@navigation/config/routes'
+import { type RootStackRoutes, screenOptions } from '@navigation/config/type'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+
+const { Group, Navigator, Screen } =
+  createNativeStackNavigator<RootStackRoutes>()
 
 export default function RootScenes(): React.JSX.Element {
+  const screens = {
+    ...(__DEV__ ? devScreens : null),
+    ...notLoggedInScreens,
+    ...commonScreens
+  }
   return (
-    <View>
-      <Text>RootScenes</Text>
-    </View>
+    <Navigator screenOptions={{ headerShown: false }}>
+      <Group>
+        {Object.entries(screens).map(([name, component]: [string, unknown]) => (
+          <Screen
+            key={name}
+            component={component as () => React.JSX.Element}
+            name={name as keyof RootStackRoutes}
+            options={screenOptions[name]}
+          />
+        ))}
+      </Group>
+    </Navigator>
   )
 }

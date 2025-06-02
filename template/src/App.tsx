@@ -1,10 +1,15 @@
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
-import { Platform, StyleSheet, Text, View } from 'react-native'
+import { StyleSheet } from 'react-native'
 
+import MainNavigation from '@navigation/scenes'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import I18nProvider from 'locale/i18n-provider'
 import { KeyboardProvider } from 'react-native-keyboard-controller'
-import { SafeAreaProvider } from 'react-native-safe-area-context'
+import {
+  SafeAreaProvider,
+  initialWindowMetrics
+} from 'react-native-safe-area-context'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -23,36 +28,21 @@ const queryClient = new QueryClient({
 
 export default function App(): React.JSX.Element {
   return (
-    <SafeAreaProvider>
-      <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClient}>
+      <I18nProvider>
         <KeyboardProvider>
-          <GestureHandlerRootView style={styles.flex}>
-            <View style={styles.container}>
-              <Text
-                style={{
-                  fontFamily: Platform.select({
-                    android: 'Nunito_400Regular',
-                    ios: 'Nunito-Regular'
-                  })
-                }}>
-                Open up App.tsx to start working on your app!
-              </Text>
-            </View>
-          </GestureHandlerRootView>
+          <SafeAreaProvider initialMetrics={initialWindowMetrics}>
+            <GestureHandlerRootView style={styles.container}>
+              <MainNavigation />
+            </GestureHandlerRootView>
+          </SafeAreaProvider>
         </KeyboardProvider>
-      </QueryClientProvider>
-    </SafeAreaProvider>
+      </I18nProvider>
+    </QueryClientProvider>
   )
 }
-
 const styles = StyleSheet.create({
-  flex: {
-    flex: 1
-  },
   container: {
-    flex: 1,
-    backgroundColor: 'white',
-    alignItems: 'center',
-    justifyContent: 'center'
+    flex: 1
   }
 })

@@ -1,6 +1,7 @@
 module.exports = function (api) {
   api.cache(true)
   const plugins = [
+    '@lingui/babel-plugin-lingui-macro',
     'react-native-reanimated/plugin',
     ['babel-plugin-react-compiler', { target: '19' }]
   ]

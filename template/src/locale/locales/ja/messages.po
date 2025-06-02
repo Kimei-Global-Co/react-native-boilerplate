@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2025-05-20 10:46+0700\n"
+"POT-Creation-Date: 2025-06-02 15:05+0700\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,3 +12,8 @@ msgstr ""
 "Last-Translator: \n"
 "Language-Team: \n"
 "Plural-Forms: \n"
+
+#: src/features/__DEV__/example/example-typography.tsx:17
+#: src/features/__DEV__/example/example-lingui.tsx:17
+msgid "Hello world!"
+msgstr "ハローワールド！"
