@@ -13,7 +13,27 @@ export type RootStackRoutes = {
   Login: undefined
 }
 
+export type DevStackRoutes = {
+  DevMenu: undefined
+  Lingui: undefined
+  Accordion: undefined
+  Avatar: undefined
+  Button: undefined
+  Card: undefined
+  EmptyView: undefined
+  Header: undefined
+  Image: undefined
+  List: undefined
+  Row: undefined
+  Spacer: undefined
+  Spinner: undefined
+  Tag: undefined
+  Typography: undefined
+}
+
 export type RouteNames = keyof RootStackRoutes
+
+export type RouteDEVNames = keyof DevStackRoutes
 
 export type NavigationParams<T extends RouteNames> =
   RootStackRoutes[T] extends undefined ? never : RootStackRoutes[T]

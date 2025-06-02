@@ -1,5 +1,10 @@
 # Changelog
 
+## 2025-05-28
+
+### ✨ Features
+* Add GitHub Actions for Bun setup, SonarQube scanning, and performance stability checks ([7113d43](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/7113d43fe3541eced131378e43e2e4438f375bb2))
+
 ## 2025-05-22
 
 ### 🐛 Bug Fixes

@@ -5,8 +5,9 @@ import '@formatjs/intl-pluralrules/locale-data/vi'
 import '@formatjs/intl-pluralrules/polyfill-force'
 import { i18n } from '@lingui/core'
 
-import { messages as messagesEn } from './locales/en/messages'
-import { messages as messagesVi } from './locales/vi/messages'
+import { messages as messagesEn } from './locales/en/messages.po'
+import { messages as messagesJa } from './locales/ja/messages.po'
+import { messages as messagesVi } from './locales/vi/messages.po'
 
 // import * as persistedState from '../utils/persisted-state'
 
@@ -26,7 +27,7 @@ export async function dynamicActivateLocale(
       break
     }
     case AppLanguage.ja: {
-      i18n.loadAndActivate({ locale, messages: messagesVi })
+      i18n.loadAndActivate({ locale, messages: messagesJa })
       await import('@formatjs/intl-pluralrules/locale-data/ja')
       break
     }

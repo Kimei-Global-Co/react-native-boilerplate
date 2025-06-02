@@ -3,13 +3,15 @@
   "compilerOptions": {
     "strict": true,
     "jsx": "react-jsx",
-    "module": "esnext",
-    "types": ["node"],
     "strictNullChecks": false,
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "noImplicitAny": false,
+    "types": ["node"],
+    "lib": ["ESNext"],
+    "module": "ESNext",
+    "verbatimModuleSyntax": true,
+    "noImplicitAny": true,
     "baseUrl": "./src",
     "paths": {
       "@components": ["components"],
