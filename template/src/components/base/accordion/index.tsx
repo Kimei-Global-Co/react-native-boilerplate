@@ -1,5 +1,4 @@
-import {
-  JSX,
+import React, {
   createContext,
   useContext,
   useEffect,
@@ -20,14 +19,16 @@ import Animated, {
 import { Block } from '../block'
 import Icon from '../icon'
 import { createVariantStyles } from './styles'
-import {
+import type {
   AccordionContentProps,
   AccordionContextType,
   AccordionHeaderProps,
   AccordionRootProps
 } from './type'
 
-const AccordionContext = createContext<AccordionContextType>(undefined)
+const AccordionContext = createContext<AccordionContextType>(
+  {} as AccordionContextType
+)
 
 const useAccordion = (): AccordionContextType => {
   const context = useContext(AccordionContext)
@@ -42,7 +43,7 @@ const Root = ({
   children,
   onChange,
   style
-}: AccordionRootProps): JSX.Element => {
+}: AccordionRootProps): React.JSX.Element => {
   const [isOpen, setIsOpen] = useState(false)
 
   // eslint-disable-next-line react-compiler/react-compiler
@@ -65,7 +66,10 @@ const Root = ({
   )
 }
 
-const Header = ({ children, style }: AccordionHeaderProps): JSX.Element => {
+const Header = ({
+  children,
+  style
+}: AccordionHeaderProps): React.JSX.Element => {
   const { isOpen, toggle } = useAccordion()
 
   return (
@@ -88,7 +92,10 @@ const Header = ({ children, style }: AccordionHeaderProps): JSX.Element => {
   )
 }
 
-const Content = ({ children, style }: AccordionContentProps): JSX.Element => {
+const Content = ({
+  children,
+  style
+}: AccordionContentProps): React.JSX.Element => {
   const { isOpen } = useAccordion()
   const contentRef = useAnimatedRef<Animated.View>()
   const height = useSharedValue(0)
@@ -129,9 +136,6 @@ const Accordion = {
 export default Accordion
 
 const styles = StyleSheet.create({
-  trigger: {
-    padding: 20
-  },
   header: {
     flexDirection: 'row',
     alignItems: 'center',

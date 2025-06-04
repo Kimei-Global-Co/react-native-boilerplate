@@ -1,13 +1,18 @@
-import React, { createContext, JSX, ReactNode, useContext, useMemo } from 'react'
-import { ImageStyle, StyleSheet, ViewStyle } from 'react-native'
+import React, {
+  type ReactNode,
+  createContext,
+  useContext,
+  useMemo
+} from 'react'
+import { type ImageStyle, StyleSheet, type ViewStyle } from 'react-native'
 
-import { ImageSource } from 'expo-image'
+import type { ImageSource } from 'expo-image'
 
 import { Block } from '../block'
 import { Image } from '../image'
 
 type CardContextType = {
-  variant?:
+  mode?:
     | 'default'
     | 'withDivider'
     | 'withFooter'
@@ -15,11 +20,13 @@ type CardContextType = {
     | 'withAdsFooter'
     | 'coverImage'
     | 'centerImage'
+  variant?: 'default' | 'bodered' | 'shadow'
 }
 
 const CardContext = createContext<CardContextType>({})
 
 interface CardProps {
+  mode?: CardContextType['mode']
   variant?: CardContextType['variant']
   children: ReactNode
   style?: ViewStyle
@@ -27,14 +34,23 @@ interface CardProps {
 
 const Card = ({
   children,
+  mode = 'default',
   variant = 'default',
   style
-}: CardProps): JSX.Element => {
-  const contextValue = useMemo(() => ({ variant }), [variant])
+}: CardProps): React.JSX.Element => {
+  const contextValue = useMemo(() => ({ mode, variant }), [mode, variant])
 
   return (
     <CardContext.Provider value={contextValue}>
-      <Block style={[styles.card, style]}>{children}</Block>
+      <Block
+        style={[
+          styles.default,
+          variant === 'bodered' && styles.bodered,
+          variant === 'shadow' && styles.shadow,
+          style
+        ]}>
+        {children}
+      </Block>
     </CardContext.Provider>
   )
 }
@@ -45,13 +61,13 @@ const CardHeader = ({
 }: {
   children: ReactNode
   style?: ViewStyle
-}): JSX.Element => {
-  const { variant } = useContext(CardContext)
+}): React.JSX.Element => {
+  const { mode } = useContext(CardContext)
   return (
     <Block
       style={[
         styles.header,
-        variant === 'withAdsHeader' && styles.headerWithAds,
+        mode === 'withAdsHeader' && styles.headerWithAds,
         style
       ]}>
       {children}
@@ -65,13 +81,13 @@ const CardContent = ({
 }: {
   children: ReactNode
   style?: ViewStyle
-}): JSX.Element => {
-  const { variant } = useContext(CardContext)
+}): React.JSX.Element => {
+  const { mode } = useContext(CardContext)
   return (
     <Block
       style={[
         styles.content,
-        variant === 'withDivider' && styles.contentWithDivider,
+        mode === 'withDivider' && styles.contentWithDivider,
         style
       ]}>
       {children}
@@ -85,13 +101,13 @@ const CardFooter = ({
 }: {
   children: ReactNode
   style?: ViewStyle
-}): JSX.Element => {
-  const { variant } = useContext(CardContext)
+}): React.JSX.Element => {
+  const { mode } = useContext(CardContext)
   return (
     <Block
       style={[
         styles.footer,
-        variant === 'withAdsFooter' && styles.footerWithAds,
+        mode === 'withAdsFooter' && styles.footerWithAds,
         style
       ]}>
       {children}
@@ -105,17 +121,17 @@ const CardImage = ({
 }: {
   source: ImageSource
   style?: ImageStyle
-}): JSX.Element => {
-  const { variant } = useContext(CardContext)
+}): React.JSX.Element => {
+  const { mode } = useContext(CardContext)
 
   return (
     <Image
-      contentFit='cover'
+      contentFit='contain'
       source={source}
       style={[
         styles.image,
-        variant === 'coverImage' && styles.coverImage,
-        variant === 'centerImage' && styles.centerImage,
+        mode === 'coverImage' && styles.coverImage,
+        mode === 'centerImage' && styles.centerImage,
         style
       ]}
     />
@@ -123,7 +139,16 @@ const CardImage = ({
 }
 
 const styles = StyleSheet.create({
-  card: {
+  default: {
+    backgroundColor: 'white',
+    margin: 8
+  },
+  bodered: {
+    backgroundColor: 'white',
+    borderRadius: 16,
+    margin: 8
+  },
+  shadow: {
     backgroundColor: 'white',
     borderRadius: 8,
     shadowColor: '#000',
@@ -137,7 +162,7 @@ const styles = StyleSheet.create({
     padding: 16
   },
   headerWithAds: {
-    padding: 0
+    padding: 8
   },
   content: {
     padding: 16
@@ -151,7 +176,7 @@ const styles = StyleSheet.create({
     padding: 16
   },
   footerWithAds: {
-    padding: 0
+    padding: 8
   },
   image: {
     width: '100%',

@@ -1,4 +1,4 @@
-import { JSX, useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { Animated, Easing, StyleSheet } from 'react-native'
 
 import Colors from '@theme/colors'
@@ -41,10 +41,12 @@ const Spinner = ({
   color,
   durationMs = 1000,
   size = 'small'
-}: Props): JSX.Element => {
+}: Props): React.JSX.Element => {
   const rotationDegree = useRef(new Animated.Value(0)).current
   const spinnerSize = getSpinnerSize(size)
   const borderWidth = Math.max(Math.floor(spinnerSize / 6), 2)
+  const actualColor =
+    color in Colors ? Colors[color] : color
 
   useEffect(() => {
     startRotationAnimation(durationMs, rotationDegree)
@@ -58,7 +60,7 @@ const Spinner = ({
         style={[
           styles.background,
           {
-            borderColor: color,
+            borderColor: actualColor,
             borderRadius: spinnerSize / 2,
             borderWidth
           }
@@ -68,7 +70,7 @@ const Spinner = ({
         style={[
           styles.progress,
           {
-            borderTopColor: color,
+            borderTopColor: actualColor,
             borderRadius: spinnerSize / 2,
             borderWidth
           },

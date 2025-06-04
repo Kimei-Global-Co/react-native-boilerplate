@@ -9,7 +9,7 @@ import { getIconComponent } from '@assets/icons'
 import theme from '@theme'
 
 import { Block } from '../block'
-import { IconComponentProps } from './type'
+import { type IconComponentProps } from './type'
 
 const Icon: React.FC<IconComponentProps> = (props) => {
   const {
@@ -45,9 +45,13 @@ const Icon: React.FC<IconComponentProps> = (props) => {
         overflow='hidden'
         style={Platform.OS === 'android' ? initContainerStyle : {}}>
         <IconComponent
-          color={theme.colors[color] ?? color}
           name={name}
-          size={size || 0}
+          size={size ?? 0}
+          color={
+            color && color in theme.colors
+              ? theme.colors[color as keyof typeof theme.colors]
+              : color
+          }
         />
       </Block>
     </ButtonComponent>

@@ -1,4 +1,4 @@
-import { ImageSourcePropType, ViewStyle } from 'react-native'
+import type { ImageSourcePropType, ViewStyle } from 'react-native'
 
 import { Icons } from '@assets/icons'
 
@@ -17,11 +17,9 @@ export interface HeaderAction {
 
 export interface HeaderProps {
   /** Show back button */
-  showBack?: boolean
-  /** Back button press handler */
-  onBack?: () => void
+  isBack?: boolean
   /** Title text - Required */
-  title: string
+  title?: string
   /** Subtitle text */
   subtitle?: string
   /** Avatar image source */

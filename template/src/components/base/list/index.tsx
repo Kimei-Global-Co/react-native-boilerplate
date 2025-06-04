@@ -1,8 +1,13 @@
-import React, { JSX, forwardRef, useCallback } from 'react'
-import { FlatList, ListRenderItemInfo, StyleSheet, View } from 'react-native'
+import React, { forwardRef, useCallback } from 'react'
+import {
+  FlatList,
+  type ListRenderItemInfo,
+  StyleSheet,
+  View
+} from 'react-native'
 
 import { Block } from '../block'
-import { BaseItem, InfiniteScrollListProps } from './type'
+import type { BaseItem, InfiniteScrollListProps } from './type'
 
 const InfiniteScrollListComponent = <T extends BaseItem>(
   {
@@ -17,7 +22,7 @@ const InfiniteScrollListComponent = <T extends BaseItem>(
     ...rest
   }: InfiniteScrollListProps<T>,
   ref: React.Ref<FlatList<T>>
-): JSX.Element => {
+): React.JSX.Element => {
   const renderItem = useCallback(
     (info: ListRenderItemInfo<T>) => {
       if (!propRenderItem) return null

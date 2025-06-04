@@ -1,4 +1,4 @@
-import { FlatListProps, StyleProp, ViewStyle } from 'react-native'
+import type { FlatListProps, StyleProp, ViewStyle } from 'react-native'
 
 export type BaseItem = { id: string | number }
 export interface InfiniteScrollListProps<T extends BaseItem>

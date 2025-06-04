@@ -1,4 +1,5 @@
 import Accordion from './base/accordion'
+import Avatar from './base/avatar'
 import { Block } from './base/block'
 import { Button } from './base/button'
 import Card from './base/card'
@@ -10,11 +11,13 @@ import KeyboardDismissWrapper from './base/keyboard-dismiss-wrapper'
 import Row from './base/row'
 import { Spacer } from './base/spacer'
 import Spinner from './base/spinner'
+import { Tag } from './base/tag'
 import { Text } from './base/text'
 import { TextInput } from './base/text-input'
 
 export {
   Accordion,
+  Avatar,
   Block,
   Button,
   Card,
@@ -27,5 +30,6 @@ export {
   Spacer,
   Text,
   TextInput,
+  Tag,
   Row
 }

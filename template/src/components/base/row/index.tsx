@@ -15,9 +15,9 @@ const Row = (props: TRowProps): React.ReactElement => {
   return (
     <Block
       {...(between && { justify: 'space-between' })}
-      {...(start && { align: 'flex-start' })}
-      {...(center && { align: 'center' })}
-      {...(end && { align: 'flex-end' })}
+      {...(start && { justify: 'flex-start' })}
+      {...(center && { justify: 'center' })}
+      {...(end && { justify: 'flex-end' })}
       row
       role='row'
       {...rest}>

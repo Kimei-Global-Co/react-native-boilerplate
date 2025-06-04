@@ -3,7 +3,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   TouchableWithoutFeedback,
-  ViewStyle
+  type ViewStyle
 } from 'react-native'
 
 type KeyboardDismissWrapperProps = {

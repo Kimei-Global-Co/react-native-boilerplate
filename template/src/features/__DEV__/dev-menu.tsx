@@ -1,12 +1,7 @@
 import React from 'react'
-import {
-  FlatList,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View
-} from 'react-native'
+import { FlatList, StyleSheet, TouchableOpacity } from 'react-native'
 
+import { Block, Icon, Row, Text } from '@components'
 import type { DevStackRoutes } from '@navigation/config/type'
 import { type NavigationProp, useNavigation } from '@react-navigation/native'
 import Colors from '@theme/colors'
@@ -22,16 +17,15 @@ export default function DevMenu(): React.JSX.Element {
     <TouchableOpacity
       style={styles.itemContainer}
       onPress={() => navigation.navigate(item as keyof DevStackRoutes)}>
-      <View style={styles.card}>
-        <View style={styles.cardContent}>
-          <Text style={styles.itemText}>{item}</Text>
-        </View>
-      </View>
+      <Row between padding={15}>
+        <Text size={16}>{item}</Text>
+        <Icon name='right' size={22} type='antDesign' />
+      </Row>
     </TouchableOpacity>
   )
 
   return (
-    <View style={[styles.container, { paddingTop: top }]}>
+    <Block style={[styles.container, { paddingTop: top }]}>
       <FlatList
         contentContainerStyle={styles.listContainer}
         data={Object.keys(MENU_ITEMS)}
@@ -39,7 +33,7 @@ export default function DevMenu(): React.JSX.Element {
         renderItem={renderItem}
         showsVerticalScrollIndicator={false}
       />
-    </View>
+    </Block>
   )
 }
 
@@ -54,17 +48,13 @@ const styles = StyleSheet.create({
     flexGrow: 1
   },
   itemContainer: {
-    marginBottom: 10
-  },
-  card: {
-    borderRadius: 8,
-    elevation: 2
-  },
-  cardContent: {
-    padding: 15
-  },
-  itemText: {
-    fontSize: 18,
-    color: '#333'
+    marginBottom: 10,
+    backgroundColor: Colors.white,
+    borderRadius: 14,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.15,
+    shadowRadius: 4,
+    elevation: 3
   }
 })

@@ -1,5 +1,5 @@
 import { forwardRef, memo } from 'react'
-import { StyleSheet, ViewStyle } from 'react-native'
+import { StyleSheet,type ViewStyle } from 'react-native'
 
 import Colors from '@theme/colors'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'

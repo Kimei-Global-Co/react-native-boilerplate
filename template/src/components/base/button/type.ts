@@ -1,14 +1,14 @@
-import { ReactNode } from 'react'
-import { TextStyle, ViewStyle } from 'react-native'
+import type { ReactNode } from 'react'
+import type { TextStyle, ViewStyle } from 'react-native'
 
-export type ButtonVariant = 'solid' | 'bordered' | 'shadow' | 'ghost'
+export type ButtonVariant =
+  | 'solid'
+  | 'outline'
+  | 'bordered'
+  | 'shadow'
+  | 'ghost'
 export type ButtonSize = 'small' | 'medium' | 'large'
-export type ButtonPresetColors =
-  | 'primary'
-  | 'secondary'
-  | 'success'
-  | 'warning'
-  | 'danger'
+export type ButtonPresetColors = 'primary' | 'secondary' | 'success' | 'warning'
 
 export interface ButtonProps {
   /** Button content */
@@ -38,5 +38,5 @@ export interface ButtonProps {
   /** Callback on press */
   onPress?: () => void
 
-  isIconOnly: boolean
+  isIconOnly?: boolean
 }

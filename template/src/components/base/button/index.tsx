@@ -1,13 +1,11 @@
-import { JSX, useRef } from 'react'
-import { Animated, StyleSheet } from 'react-native'
-
-import RNTouchableBounce from 'react-native/Libraries/Components/Touchable/TouchableBounce'
+import React, { useRef } from 'react'
+import { Animated, Pressable, StyleSheet } from 'react-native'
 
 import Row from '../row'
 import Spinner from '../spinner'
 import { Text } from '../text'
 import { getButtonColors, getSizeStyle } from './style'
-import { ButtonProps } from './type'
+import type { ButtonProps } from './type'
 
 export const Button = ({
   children,
@@ -24,7 +22,7 @@ export const Button = ({
   style,
   textStyle,
   onPress
-}: ButtonProps): JSX.Element => {
+}: ButtonProps): React.JSX.Element => {
   const backgroundColorRef = useRef(new Animated.Value(0)).current
 
   const handlePress = (): void => {
@@ -57,9 +55,10 @@ export const Button = ({
     {
       backgroundColor,
       borderRadius,
-      borderWidth: borderWidth ?? (variant === 'bordered' ? 1 : 0),
+      ...(variant === 'outline' && { borderWidth: borderWidth ?? 1 }),
       borderColor: customBorderColor ?? variantBorderColor
     },
+    variant === 'bordered' && styles.bodered,
     variant === 'shadow' && styles.shadow,
     disabled && styles.disabled,
     style
@@ -73,7 +72,7 @@ export const Button = ({
   ]
 
   return (
-    <RNTouchableBounce
+    <Pressable
       disabled={disabled || loading}
       onPressIn={handlePress}
       onPressOut={handleRelease}>
@@ -83,7 +82,7 @@ export const Button = ({
           {loading && <Spinner color='white' />}
         </Row>
       </Animated.View>
-    </RNTouchableBounce>
+    </Pressable>
   )
 }
 
@@ -95,9 +94,12 @@ const styles = StyleSheet.create({
   shadow: {
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
+    shadowOpacity: 0.4,
+    shadowRadius: 2,
     elevation: 3
+  },
+  bodered: {
+    borderRadius: 16
   },
   disabled: {
     opacity: 0.6

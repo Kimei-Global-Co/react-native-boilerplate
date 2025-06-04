@@ -1,4 +1,4 @@
-import { AccordionVariant } from './type'
+import type { AccordionVariant } from './type'
 
 export const createVariantStyles = (
   variant: AccordionVariant

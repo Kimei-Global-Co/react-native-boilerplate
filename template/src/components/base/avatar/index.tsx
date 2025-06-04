@@ -1,10 +1,10 @@
-import { JSX, useCallback, useState } from 'react'
+import { useCallback, useState } from 'react'
 
 import { Block } from '../block'
 import { Image } from '../image'
-import { TAvatarProps } from './type'
+import { type TAvatarProps } from './type'
 
-export default function Avatar(props: TAvatarProps): JSX.Element {
+export default function Avatar(props: TAvatarProps): React.JSX.Element {
   const { size, borderRadius = 999, enableSkeleton, ...rest } = props
   const [isLoading, setIsLoading] = useState(enableSkeleton)
   const renderAvatar = useCallback(() => {

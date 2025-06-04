@@ -1,11 +1,10 @@
-import { ButtonPresetColors, ButtonSize, ButtonVariant } from './type'
+import type { ButtonPresetColors, ButtonSize, ButtonVariant } from './type'
 
 const COLORS = {
   primary: '#007AFF',
   secondary: '#5856D6',
   success: '#34C759',
-  warning: '#FF9500',
-  danger: '#FF3B30'
+  warning: '#FF3B30'
 }
 
 export const getButtonColors = (
@@ -22,10 +21,15 @@ export const getButtonColors = (
       textColor: '#FFFFFF',
       borderColor: 'transparent'
     },
-    bordered: {
+    outline: {
       backgroundColor: 'transparent',
       textColor: baseColor,
       borderColor: baseColor
+    },
+    bordered: {
+      backgroundColor: baseColor,
+      textColor: '#FFFFFF',
+      borderColor: 'transparent'
     },
     shadow: {
       backgroundColor: baseColor,
@@ -33,7 +37,7 @@ export const getButtonColors = (
       borderColor: 'transparent'
     },
     ghost: {
-      backgroundColor: '#FFFFFF',
+      backgroundColor: 'transparent',
       textColor: baseColor,
       borderColor: 'transparent'
     }

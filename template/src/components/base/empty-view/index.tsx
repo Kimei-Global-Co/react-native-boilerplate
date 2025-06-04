@@ -1,24 +1,23 @@
-import { JSX } from 'react'
 import { StyleSheet } from 'react-native'
 
-import { ImageSource } from 'expo-image'
+import { localImage } from '@assets/images'
 
+import { Block } from '../block'
 import { Image } from '../image'
 import { Text } from '../text'
 
 export interface IEmptyViewProps {
   title?: string
   description?: string
-  imageSource?: ImageSource
 }
 
-const EmptyView = (props: IEmptyViewProps): JSX.Element => {
-  const { title, imageSource, description } = props
+const EmptyView = (props: IEmptyViewProps): React.JSX.Element => {
+  const { title, description } = props
   return (
-    <>
+    <Block align='center' justify='center'>
       <Image
         resizeMode='contain'
-        source={imageSource}
+        source={localImage().icEmpty}
         style={styles.imageStyle}
       />
       <Text fontType='extraBold' size={24}>
@@ -27,7 +26,7 @@ const EmptyView = (props: IEmptyViewProps): JSX.Element => {
       <Text center margin={{ horizontal: 40 }}>
         {description}
       </Text>
-    </>
+    </Block>
   )
 }
 

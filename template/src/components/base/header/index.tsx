@@ -1,7 +1,7 @@
-import { JSX } from 'react'
 import { StyleSheet } from 'react-native'
 
 import { localImage } from '@assets/images'
+import { goBack } from '@navigation/config/navigation-services'
 
 import { Block } from '../block'
 import { Button } from '../button'
@@ -9,34 +9,33 @@ import Icon from '../icon'
 import { Image } from '../image'
 import Row from '../row'
 import { Text } from '../text'
-import { DEFAULT_ACTIONS, HeaderProps } from './type'
+import { DEFAULT_ACTIONS, type HeaderProps } from './type'
 
 export const Header = ({
-  showBack = true,
-  onBack,
+  isBack = false,
   title = 'Header Label',
   subtitle,
   avatar = localImage().icAvatar,
   rightActions = DEFAULT_ACTIONS,
   style
-}: HeaderProps): JSX.Element => {
-  const renderLeft = (): JSX.Element => {
-    if (showBack) {
+}: HeaderProps): React.JSX.Element => {
+  const renderLeft = (): React.JSX.Element => {
+    if (isBack) {
       return (
-        <Button isIconOnly variant='ghost' onPress={onBack}>
-          <Icon name='left' size={24} type='antDesign' />
+        <Button isIconOnly variant='ghost' onPress={goBack}>
+          <Icon name='left' size={22} type='antDesign' />
         </Button>
       )
     }
     return <Image size={40} source={avatar} />
   }
 
-  const renderContent = (): JSX.Element => (
+  const renderContent = (): React.JSX.Element => (
     <Block flex={1}>
-      <Text center={showBack} numberOfLines={1} size={16}>
+      <Text center={isBack} numberOfLines={1} size={16}>
         {title}
       </Text>
-      {!showBack && !!subtitle && (
+      {!isBack && !!subtitle && (
         <Text numberOfLines={1} size={12}>
           {subtitle}
         </Text>
@@ -44,7 +43,7 @@ export const Header = ({
     </Block>
   )
 
-  const renderRightActions = (): JSX.Element => (
+  const renderRightActions = (): React.JSX.Element => (
     <>
       {rightActions?.map((action) => (
         <Button
@@ -52,7 +51,7 @@ export const Header = ({
           isIconOnly
           variant='ghost'
           onPress={action.onPress}>
-          <Icon name={action.name} size={24} type={action.type} />
+          <Icon name={action.name} size={22} type={action.type} />
         </Button>
       ))}
     </>

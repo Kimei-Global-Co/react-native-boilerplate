@@ -7,7 +7,7 @@ import { Block } from '../block'
 import Icon from '../icon'
 import Row from '../row'
 import { Text } from '../text'
-import { TextInputBaseProps } from './type'
+import { type TextInputBaseProps } from './type'
 
 export const TextInput = forwardRef<RNTextInput, TextInputBaseProps>(
   (props, ref) => {
@@ -122,7 +122,7 @@ export const TextInput = forwardRef<RNTextInput, TextInputBaseProps>(
             color={error ? 'rose_400' : 'gray_400'}
             size={12}
             style={[styles.helper, errorStyle]}>
-            {error || helper}
+            {error ?? helper}
           </Text>
         ),
       [error, helper, errorStyle]
