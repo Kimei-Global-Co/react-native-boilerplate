@@ -1,9 +1,15 @@
-import { Text } from 'react-native'
+import { Block, Header } from '@components'
 
 import { createContainer } from '../create-container'
 
 const HeaderComponent = (): React.JSX.Element => {
-  return <Text>Header view</Text>
+  return (
+    <Block>
+      <Header isBack title='Header component' />
+      <Header />
+      <Header subtitle='Online' title='John Doe' />
+    </Block>
+  )
 }
 
 const Root = createContainer(HeaderComponent, 'Header')

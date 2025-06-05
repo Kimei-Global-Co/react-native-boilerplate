@@ -16,18 +16,17 @@
       "@hooks": ["hooks"],
       "@theme": ["theme"],
       "@store": ["store"],
+      "@utils": ["utils"],
       "@assets": ["assets"],
-      "untils": ["untils"],
-
       "@components/*": ["components/*"],
       "@context/*": ["context/*"],
       "@navigation/*": ["navigation/*"],
       "@features/*": ["features/*"],
       "@hooks/*": ["hooks/*"],
       "@theme/*": ["theme/*"],
-      "@store/*": ["store/*"],
       "@assets/*": ["assets/*"],
-      "untils/*": ["untils/*"]
+      "@utils/*": ["utils/*"]
     }
-  }
+  },
+  "include": ["**/*.ts", "**/*.tsx"]
 }
