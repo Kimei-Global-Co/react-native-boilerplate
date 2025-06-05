@@ -1,9 +1,4 @@
-import React, {
-  type ReactNode,
-  createContext,
-  useContext,
-  useMemo
-} from 'react'
+import React, { type ReactNode, createContext, useMemo } from 'react'
 import { type ImageStyle, StyleSheet, type ViewStyle } from 'react-native'
 
 import type { ImageSource } from 'expo-image'
@@ -12,21 +7,12 @@ import { Block } from '../block'
 import { Image } from '../image'
 
 type CardContextType = {
-  mode?:
-    | 'default'
-    | 'withDivider'
-    | 'withFooter'
-    | 'withAdsHeader'
-    | 'withAdsFooter'
-    | 'coverImage'
-    | 'centerImage'
   variant?: 'default' | 'bodered' | 'shadow'
 }
 
 const CardContext = createContext<CardContextType>({})
 
 interface CardProps {
-  mode?: CardContextType['mode']
   variant?: CardContextType['variant']
   children: ReactNode
   style?: ViewStyle
@@ -34,11 +20,10 @@ interface CardProps {
 
 const Card = ({
   children,
-  mode = 'default',
   variant = 'default',
   style
 }: CardProps): React.JSX.Element => {
-  const contextValue = useMemo(() => ({ mode, variant }), [mode, variant])
+  const contextValue = useMemo(() => ({ variant }), [variant])
 
   return (
     <CardContext.Provider value={contextValue}>
@@ -62,17 +47,7 @@ const CardHeader = ({
   children: ReactNode
   style?: ViewStyle
 }): React.JSX.Element => {
-  const { mode } = useContext(CardContext)
-  return (
-    <Block
-      style={[
-        styles.header,
-        mode === 'withAdsHeader' && styles.headerWithAds,
-        style
-      ]}>
-      {children}
-    </Block>
-  )
+  return <Block style={[styles.header, style]}>{children}</Block>
 }
 
 const CardContent = ({
@@ -82,17 +57,7 @@ const CardContent = ({
   children: ReactNode
   style?: ViewStyle
 }): React.JSX.Element => {
-  const { mode } = useContext(CardContext)
-  return (
-    <Block
-      style={[
-        styles.content,
-        mode === 'withDivider' && styles.contentWithDivider,
-        style
-      ]}>
-      {children}
-    </Block>
-  )
+  return <Block style={[styles.content, style]}>{children}</Block>
 }
 
 const CardFooter = ({
@@ -102,17 +67,7 @@ const CardFooter = ({
   children: ReactNode
   style?: ViewStyle
 }): React.JSX.Element => {
-  const { mode } = useContext(CardContext)
-  return (
-    <Block
-      style={[
-        styles.footer,
-        mode === 'withAdsFooter' && styles.footerWithAds,
-        style
-      ]}>
-      {children}
-    </Block>
-  )
+  return <Block style={[styles.footer, style]}>{children}</Block>
 }
 
 const CardImage = ({
@@ -122,20 +77,13 @@ const CardImage = ({
   source: ImageSource
   style?: ImageStyle
 }): React.JSX.Element => {
-  const { mode } = useContext(CardContext)
-
   return (
-    <Image
-      contentFit='contain'
-      source={source}
-      style={[
-        styles.image,
-        mode === 'coverImage' && styles.coverImage,
-        mode === 'centerImage' && styles.centerImage,
-        style
-      ]}
-    />
+    <Image contentFit='contain' source={source} style={[styles.image, style]} />
   )
+}
+
+const CardDivider = ({ style }: { style?: ImageStyle }): React.JSX.Element => {
+  return <Block style={[styles.divder, style]} />
 }
 
 const styles = StyleSheet.create({
@@ -161,38 +109,20 @@ const styles = StyleSheet.create({
   header: {
     padding: 16
   },
-  headerWithAds: {
-    padding: 8
-  },
   content: {
     padding: 16
   },
-  contentWithDivider: {
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
-    borderColor: '#E5E5E5'
+  divder: {
+    height: 1,
+    backgroundColor: '#E5E5E5',
+    marginVertical: 8
   },
   footer: {
     padding: 16
   },
-  footerWithAds: {
-    padding: 8
-  },
   image: {
     width: '100%',
     height: 200
-  },
-  coverImage: {
-    height: 250,
-    borderTopLeftRadius: 8,
-    borderTopRightRadius: 8
-  },
-  centerImage: {
-    height: 150,
-    width: '90%',
-    alignSelf: 'center',
-    margin: 16,
-    borderRadius: 8
   }
 })
 
@@ -200,5 +130,6 @@ Card.Header = CardHeader
 Card.Content = CardContent
 Card.Footer = CardFooter
 Card.Image = CardImage
+Card.Divider = CardDivider
 
 export default Card
