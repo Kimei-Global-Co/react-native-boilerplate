@@ -1,29 +1,25 @@
-import { type ReactNode } from 'react'
 import type { StyleProp, ViewStyle } from 'react-native'
 
-export type AccordionVariant = 'default' | 'shadow' | 'bordered'
+export type AccordionVariant = 'default' | 'shadow' | 'bordered' | 'split'
 
 export interface AccordionContextType {
-  isOpen: boolean
-  toggle: () => void
+  expandedKey: string | null
+  toggleItem: (key: string) => void
+  variant: AccordionVariant
 }
 
-export interface AccordionRootProps {
-  variant?: 'default' | 'shadow' | 'bordered'
-  children: ReactNode
-  onChange?: (isOpen: boolean) => void
-  style?: StyleProp<ViewStyle>
-}
-export interface AccordionTriggerProps {
-  children: ReactNode
-  style?: StyleProp<ViewStyle>
-}
-export interface AccordionHeaderProps {
-  children: ReactNode
+export interface AccordionProps {
+  children: React.ReactNode
+  variant?: AccordionVariant
+  defaultExpandedKey?: string
   style?: StyleProp<ViewStyle>
 }
 
-export interface AccordionContentProps {
-  children: ReactNode
+export interface AccordionItemProps {
+  itemKey: string
+  title: string | React.ReactNode
+  children: React.ReactNode
   style?: StyleProp<ViewStyle>
+  isFirst?: boolean
+  isLast?: boolean
 }

@@ -18,136 +18,149 @@ import Animated, {
 
 import { Block } from '../block'
 import Icon from '../icon'
-import { createVariantStyles } from './styles'
+import { Text } from '../text'
+import { createSplitItemStyles, createVariantStyles } from './styles'
 import type {
-  AccordionContentProps,
   AccordionContextType,
-  AccordionHeaderProps,
-  AccordionRootProps
+  AccordionItemProps,
+  AccordionProps
 } from './type'
 
-const AccordionContext = createContext<AccordionContextType>(
-  {} as AccordionContextType
+const AccordionContext = createContext<AccordionContextType | undefined>(
+  undefined
 )
 
 const useAccordion = (): AccordionContextType => {
   const context = useContext(AccordionContext)
   if (!context) {
-    throw new Error('Accordion components must be used within Accordion.Root')
+    throw new Error('Accordion.Item must be used within Accordion')
   }
   return context
 }
 
-const Root = ({
-  variant = 'default',
+const Accordion = ({
   children,
-  onChange,
+  variant = 'default',
+  defaultExpandedKey = '',
   style
-}: AccordionRootProps): React.JSX.Element => {
-  const [isOpen, setIsOpen] = useState(false)
+}: AccordionProps): React.JSX.Element => {
+  const [expandedKey, setExpandedKey] = useState<string | null>(
+    defaultExpandedKey || null
+  )
 
-  // eslint-disable-next-line react-compiler/react-compiler
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const toggle = (): void => {
-    setIsOpen((prev) => {
-      const newValue = !prev
-      onChange?.(newValue)
-      return newValue
-    })
+  const toggleItem = (key: string): void => {
+    setExpandedKey((prev) => (prev === key ? null : key))
   }
+
+  const contextValue = useMemo(
+    () => ({ expandedKey, toggleItem, variant }),
+    [expandedKey, variant]
+  )
+
   const variantStyle = createVariantStyles(variant)
 
-  const contextValue = useMemo(() => ({ isOpen, toggle }), [isOpen, toggle])
+  const containerStyle =
+    variant === 'split'
+      ? [styles.container, styles.splitContainer, style]
+      : [styles.container, variantStyle, style]
 
   return (
     <AccordionContext.Provider value={contextValue}>
-      <Block style={[variantStyle, style]}>{children}</Block>
+      <Block style={containerStyle}>{children}</Block>
     </AccordionContext.Provider>
   )
 }
 
-const Header = ({
+const AccordionItem = ({
+  itemKey,
+  title,
   children,
-  style
-}: AccordionHeaderProps): React.JSX.Element => {
-  const { isOpen, toggle } = useAccordion()
-
-  return (
-    <Pressable onPress={toggle}>
-      <Block style={[styles.header, style]}>
-        {children}
-        <Animated.View
-          style={{
-            transform: [{ rotate: isOpen ? '180deg' : '0deg' }]
-          }}>
-          <Icon
-            color='blue_600'
-            name='chevron-circle-down'
-            size={24}
-            type='fontAwesome5'
-          />
-        </Animated.View>
-      </Block>
-    </Pressable>
-  )
-}
-
-const Content = ({
-  children,
-  style
-}: AccordionContentProps): React.JSX.Element => {
-  const { isOpen } = useAccordion()
+  style,
+  isFirst = false,
+  isLast = false
+}: AccordionItemProps): React.JSX.Element => {
+  const { expandedKey, toggleItem, variant } = useAccordion()
+  const isExpanded = expandedKey === itemKey
   const contentRef = useAnimatedRef<Animated.View>()
   const height = useSharedValue(0)
 
   const animatedStyle = useAnimatedStyle(() => ({
-    height: height.value
+    height: height.value,
+    opacity: withTiming(isExpanded ? 1 : 0, { duration: 300 })
   }))
 
   useEffect(() => {
-    if (isOpen) {
+    if (isExpanded) {
       runOnUI(() => {
         'worklet'
         const measured = measure(contentRef)
         if (measured) {
-          height.value = withTiming(measured.height)
+          height.value = withTiming(measured.height, { duration: 300 })
         }
       })()
     } else {
-      height.value = withTiming(0)
+      height.value = withTiming(0, { duration: 300 })
     }
-  }, [contentRef, height, isOpen])
+  }, [contentRef, height, isExpanded])
+
+  const variantStyle = createVariantStyles(variant)
+  const splitItemStyle = createSplitItemStyles(variant, isFirst, isLast)
 
   return (
-    <Animated.View style={[styles.contentWrapper, animatedStyle]}>
-      <Animated.View ref={contentRef} style={[styles.content, style]}>
-        {children}
+    <Block style={[styles.item, variantStyle, splitItemStyle, style]}>
+      <Pressable onPress={() => toggleItem(itemKey)}>
+        <Block style={styles.header}>
+          <Text>{title}</Text>
+          <Animated.View
+            style={{
+              transform: [{ rotate: isExpanded ? '180deg' : '0deg' }]
+            }}>
+            <Icon
+              color='blue_600'
+              name='chevron-circle-down'
+              size={24}
+              type='fontAwesome5'
+            />
+          </Animated.View>
+        </Block>
+      </Pressable>
+      <Animated.View style={[styles.contentWrapper, animatedStyle]}>
+        <Animated.View ref={contentRef} style={styles.content}>
+          {children}
+        </Animated.View>
       </Animated.View>
-    </Animated.View>
+    </Block>
   )
 }
 
-const Accordion = {
-  Root,
-  Header,
-  Content
-}
-
-export default Accordion
-
 const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'column',
+    gap: 8
+  },
+  splitContainer: {
+    gap: 8
+  },
+  item: {
+    overflow: 'hidden'
+  },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: 20
+    padding: 16
   },
   contentWrapper: {
     overflow: 'hidden'
   },
   content: {
-    padding: 20,
+    padding: 16,
     width: '100%',
-    position: 'absolute'
+    position: 'absolute',
+    top: 0
   }
 })
+
+Accordion.Item = AccordionItem
+
+export default Accordion

@@ -3,58 +3,45 @@ import { Accordion, Block, Header, Text } from '@components'
 import { createContainer } from '../create-container'
 
 const AccordionComponent = (): React.JSX.Element => {
+  const defaultContent =
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
   return (
     <Block flex={1}>
       <Header isBack title={'Accordion component'} />
       <Block gap={8} padding={16}>
-        <Accordion.Root>
-          <Accordion.Header>
-            <Text>hellooooo</Text>
-          </Accordion.Header>
-          <Accordion.Content>
-            <Text>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </Text>
-          </Accordion.Content>
-        </Accordion.Root>
-        <Accordion.Root variant='bordered'>
-          <Accordion.Header>
-            <Text>hellooooo</Text>
-          </Accordion.Header>
-          <Accordion.Content>
-            <Text>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </Text>
-          </Accordion.Content>
-        </Accordion.Root>
-        <Accordion.Root variant='shadow'>
-          <Accordion.Header>
-            <Text>hellooooo</Text>
-          </Accordion.Header>
-          <Accordion.Content>
-            <Text>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </Text>
-          </Accordion.Content>
-        </Accordion.Root>
+        <Accordion variant='default'>
+          <Accordion.Item itemKey='1' title='Accordion 1'>
+            <Text>{defaultContent}</Text>
+          </Accordion.Item>
+          <Accordion.Item itemKey='2' title='Accordion 2'>
+            <Text>{defaultContent}</Text>
+          </Accordion.Item>
+          <Accordion.Item itemKey='3' title='Accordion 3'>
+            <Text>{defaultContent}</Text>
+          </Accordion.Item>
+        </Accordion>
+        <Accordion variant='bordered'>
+          <Accordion.Item itemKey='1' title='Accordion 1'>
+            <Text>{defaultContent}</Text>
+          </Accordion.Item>
+          <Accordion.Item itemKey='2' title='Accordion 2'>
+            <Text>{defaultContent}</Text>
+          </Accordion.Item>
+          <Accordion.Item itemKey='3' title='Accordion 3'>
+            <Text>{defaultContent}</Text>
+          </Accordion.Item>
+        </Accordion>
+        <Accordion variant='split'>
+          <Accordion.Item itemKey='1' title='Accordion 1'>
+            <Text>{defaultContent}</Text>
+          </Accordion.Item>
+          <Accordion.Item itemKey='2' title='Accordion 2'>
+            <Text>{defaultContent}</Text>
+          </Accordion.Item>
+          <Accordion.Item itemKey='3' title='Accordion 3'>
+            <Text>{defaultContent}</Text>
+          </Accordion.Item>
+        </Accordion>
       </Block>
     </Block>
   )

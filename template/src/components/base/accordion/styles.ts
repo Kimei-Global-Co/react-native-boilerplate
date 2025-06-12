@@ -19,10 +19,40 @@ export const createVariantStyles = (
     bordered: {
       backgroundColor: '#E3EDFB',
       borderRadius: 14,
-      borderWidth: 1,
       borderColor: '#0F56B3'
+    },
+    split: {
+      backgroundColor: '#E3EDFB',
+      borderWidth: 1,
+      borderColor: '#D1D5DB',
+      marginBottom: -1,
+      borderRadius: 14
     }
   }
 
   return variants[variant]
+}
+
+export const createSplitItemStyles = (
+  variant: AccordionVariant,
+  isFirst: boolean,
+  isLast: boolean
+): Record<string, string | number | { width: number; height: number }> => {
+  if (variant !== 'split') return {}
+
+  const baseStyles: Record<string, string | number> = {
+    marginBottom: isLast ? 0 : -1
+  }
+
+  if (isFirst) {
+    baseStyles.borderTopLeftRadius = 14
+    baseStyles.borderTopRightRadius = 14
+  }
+
+  if (isLast) {
+    baseStyles.borderBottomLeftRadius = 14
+    baseStyles.borderBottomRightRadius = 14
+  }
+
+  return baseStyles
 }
