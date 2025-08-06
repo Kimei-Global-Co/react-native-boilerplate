@@ -1,21 +1,22 @@
-import { Platform, Text } from 'react-native'
+import { Platform } from 'react-native'
 
+import { Typography } from '@components/base/typography'
 import { useLingui } from '@lingui/react/macro'
-
 import { createContainer } from '../create-container'
 
 const TypographyComponent = (): React.JSX.Element => {
   const { t } = useLingui()
   return (
-    <Text
+    <Typography
       style={{
         fontFamily: Platform.select({
           android: 'Nunito_400Regular',
           ios: 'Nunito-Regular'
         })
-      }}>
+      }}
+    >
       {t`Hello world!`}
-    </Text>
+    </Typography>
   )
 }
 

@@ -20,8 +20,8 @@ export default function RootScenes(): React.JSX.Element {
       <Group>
         {Object.entries(screens).map(([name, component]: [string, unknown]) => (
           <Screen
-            key={name}
             component={component as () => React.JSX.Element}
+            key={name}
             name={name as keyof RootStackRoutes}
             options={screenOptions[name]}
           />

@@ -1,5 +1,4 @@
 import ky, { HTTPError, type Options } from 'ky'
-
 import { API_CONFIG } from './config'
 
 export type Primitive =
@@ -116,11 +115,11 @@ const api = async <T>({
     const response = await ky(url, options)
     return await response.json<T>()
   } catch (error) {
-    if (__DEV__) console.log('Failed request:', { url, ...options, error })
+    if (__DEV__) console.error('Failed request:', { url, ...options, error })
     if (error instanceof HTTPError) {
       const errorData = await error.response.json().catch(() => ({}))
       if (error.response.status >= 500)
-        console.log('Máy chủ gặp sự cố, vui lòng thử lại sau.')
+        console.error('Máy chủ gặp sự cố, vui lòng thử lại sau.')
       if (errorData) throw new Error(errorData?.error?.message ?? error.message)
     }
     throw error

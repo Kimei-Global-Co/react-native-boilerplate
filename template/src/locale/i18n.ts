@@ -3,8 +3,8 @@ import { useEffect } from 'react'
 import '@formatjs/intl-locale/polyfill-force'
 import '@formatjs/intl-pluralrules/locale-data/vi'
 import '@formatjs/intl-pluralrules/polyfill-force'
-import { i18n } from '@lingui/core'
 
+import { i18n } from '@lingui/core'
 import { messages as messagesEn } from './locales/en/messages.po'
 import { messages as messagesJa } from './locales/ja/messages.po'
 import { messages as messagesVi } from './locales/vi/messages.po'
@@ -44,5 +44,5 @@ export function useLocaleLanguage(): void {
 
   useEffect(() => {
     dynamicActivateLocale(appLanguage as AppLanguage)
-  }, [appLanguage])
+  }, [])
 }

@@ -1,13 +1,14 @@
 {
-  "name": "@kimei-global/react-native-boilerplate",
-  "version": "0.0.1",
+  "author": "KIMEI Global Mobile Team <ducnmanh@kimei.vn> (https://github.com/manhduckimei)",
+  "bugs": {
+    "url": "https://github.com/Kimei-Global-Co/react-native-boilerplate/issues"
+  },
+  "contributors": [
+    "Duc Nguyen <duc040301@gmail.com> (https://github.com/mduc-dev)"
+  ],
   "description": "KIMEI Global's React Native Boilerplate",
-  "scripts": {
-    "prestart": "cd template && bun start",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 -n ./generators/template-changelog.js",
-    "generate:modules": "plop",
-    "postinstall": "bun scripts/postinstall.js"
+  "devDependencies": {
+    "conventional-changelog-cli": "^5.0.0"
   },
   "files": [
     "template",
@@ -18,13 +19,7 @@
     "!template/android/.idea/",
     "!template/android/.gradle/"
   ],
-  "publishConfig": {
-    "access": "public"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Kimei-Global-Co/react-native-boilerplate.git"
-  },
+  "homepage": "https://github.com/Kimei-Global-Co/react-native-boilerplate/tree/main",
   "keywords": [
     "react",
     "native",
@@ -32,16 +27,21 @@
     "react-native",
     "kimei-global"
   ],
-  "author": "KIMEI Global Mobile Team <ducnmanh@kimei.vn> (https://github.com/manhduckimei)",
-  "contributors": [
-    "Duc Nguyen <duc040301@gmail.com> (https://github.com/mduc-dev)"
-  ],
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Kimei-Global-Co/react-native-boilerplate/issues"
+  "name": "@kimei-global/react-native-boilerplate",
+  "publishConfig": {
+    "access": "public"
   },
-  "homepage": "https://github.com/Kimei-Global-Co/react-native-boilerplate/tree/main",
-  "devDependencies": {
-    "conventional-changelog-cli": "^5.0.0"
-  }
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kimei-Global-Co/react-native-boilerplate.git"
+  },
+  "scripts": {
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 -n ./generators/template-changelog.js",
+    "generate:modules": "plop",
+    "postinstall": "bun scripts/postinstall.js",
+    "prestart": "cd template && bun start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.0.1"
 }

@@ -2,11 +2,10 @@ import { useEffect, useRef } from 'react'
 import { StyleSheet } from 'react-native'
 
 import BottomSheet from '@discord/bottom-sheet/src'
-
 import {
+  createCustomBackdrop,
   DEFAULT_SNAPPOINTS,
-  HANDLE_HEIGHT,
-  createCustomBackdrop
+  HANDLE_HEIGHT
 } from './custom-backdrop'
 
 export const ModalsSheetContainer =
@@ -30,7 +29,7 @@ export const ModalsSheetContainer =
         return
       }
       bottomSheetRef.current?.close()
-    }, [bottomSheetRef, activeModalSheet?.name])
+    }, [])
 
     //#region render
     let snapPoints: (string | number)[] = DEFAULT_SNAPPOINTS
@@ -52,36 +51,37 @@ export const ModalsSheetContainer =
 
     return (
       <BottomSheet
-        ref={bottomSheetRef}
-        enablePanDownToClose
         android_keyboardInputMode='adjustResize'
-        backgroundStyle={styles.defaultBackgroundStyle}
-        handleHeight={HANDLE_HEIGHT}
-        handleIndicatorStyle={styles.handleIndicator}
-        handleStyle={[styles.defaultHandleStyle]}
-        index={activeModalSheet.name.length > 0 ? 0 : -1}
-        keyboardBlurBehavior='restore'
-        snapPoints={snapPoints}
         backdropComponent={
           activeModalSheet.name.length > 0
             ? createCustomBackdrop(onClose)
             : undefined
         }
-        onChange={onBottomSheetChange}>
+        backgroundStyle={styles.defaultBackgroundStyle}
+        enablePanDownToClose
+        handleHeight={HANDLE_HEIGHT}
+        handleIndicatorStyle={styles.handleIndicator}
+        handleStyle={[styles.defaultHandleStyle]}
+        index={activeModalSheet.name.length > 0 ? 0 : -1}
+        keyboardBlurBehavior='restore'
+        onChange={onBottomSheetChange}
+        ref={bottomSheetRef}
+        snapPoints={snapPoints}
+      >
         {element}
       </BottomSheet>
     )
   }
 
 const styles = StyleSheet.create({
+  defaultBackgroundStyle: {
+    backgroundColor: '#F4F6FA'
+  },
   defaultHandleStyle: {
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
     height: 0,
     maxHeight: 0
-  },
-  defaultBackgroundStyle: {
-    backgroundColor: '#F4F6FA'
   },
   handleIndicator: {
     backgroundColor: 'rgba(60, 60, 67, 0.3)'

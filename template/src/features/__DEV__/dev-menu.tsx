@@ -1,70 +1,47 @@
-import React from 'react'
-import {
-  FlatList,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View
-} from 'react-native'
+import { StyleSheet, TouchableOpacity } from 'react-native'
 
-import type { DevStackRoutes } from '@navigation/config/type'
-import { type NavigationProp, useNavigation } from '@react-navigation/native'
+import { Block, Icon, Row, Typography } from '@components'
+import { InfiniteScrollList } from '@components/base/list'
+import { navigate } from '@navigation/config/navigation-services'
 import Colors from '@theme/colors'
-import { useSafeAreaInsets } from 'react-native-safe-area-context'
-
 import { MENU_ITEMS } from './create-container'
-
 export default function DevMenu(): React.JSX.Element {
-  const { top } = useSafeAreaInsets()
-  const navigation = useNavigation<NavigationProp<DevStackRoutes>>()
-
   const renderItem = ({ item }: { item: string }): React.JSX.Element => (
     <TouchableOpacity
+      // @ts-expect-error: Dev menu routes are not part of main navigation types
+      onPress={() => navigate(item)}
       style={styles.itemContainer}
-      onPress={() => navigation.navigate(item as keyof DevStackRoutes)}>
-      <View style={styles.card}>
-        <View style={styles.cardContent}>
-          <Text style={styles.itemText}>{item}</Text>
-        </View>
-      </View>
+    >
+      <Row between padding={15}>
+        <Typography size={16}>{item}</Typography>
+        <Icon name='right' size={22} type='antDesign' />
+      </Row>
     </TouchableOpacity>
   )
 
   return (
-    <View style={[styles.container, { paddingTop: top }]}>
-      <FlatList
+    <Block backgroundColor='primary' flex inset='top'>
+      <InfiniteScrollList
         contentContainerStyle={styles.listContainer}
         data={Object.keys(MENU_ITEMS)}
         keyExtractor={(item) => item}
         renderItem={renderItem}
         showsVerticalScrollIndicator={false}
       />
-    </View>
+    </Block>
   )
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: Colors.primary
-  },
-  listContainer: {
-    padding: 10,
-    paddingBottom: 60,
-    flexGrow: 1
-  },
   itemContainer: {
+    backgroundColor: Colors.white,
+    borderRadius: 14,
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.15);',
     marginBottom: 10
   },
-  card: {
-    borderRadius: 8,
-    elevation: 2
-  },
-  cardContent: {
-    padding: 15
-  },
-  itemText: {
-    fontSize: 18,
-    color: '#333'
+  listContainer: {
+    flexGrow: 1,
+    padding: 10,
+    paddingBottom: 60
   }
 })

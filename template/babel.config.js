@@ -1,3 +1,4 @@
+/** biome-ignore-all assist/source/useSortedKeys: <explanation> */
 module.exports = function (api) {
   api.cache(true)
   const plugins = [
