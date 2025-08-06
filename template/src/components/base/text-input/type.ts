@@ -1,6 +1,11 @@
-import { StyleProp, TextInputProps, TextStyle, ViewStyle } from 'react-native'
+import type {
+  StyleProp,
+  TextInputProps,
+  TextStyle,
+  ViewStyle
+} from 'react-native'
 
-import { IconType } from '@assets/icons'
+import type { IconType } from '@assets/icons'
 import Colors from '@theme/colors'
 
 export type TextInputMode = 'default' | 'numeric' | 'password' | 'search'

@@ -1,5 +1,4 @@
-/* eslint-disable react-native/no-inline-styles */
-import React, { createContext, useContext, useMemo } from 'react'
+import { createContext, useContext, useMemo } from 'react'
 import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 
 import { Block } from '../block'
@@ -27,7 +26,7 @@ const Root: React.FC<RootProps> = ({
   size = 'sm',
   children
 }) => {
-  const contextValue = useMemo(() => ({ variant, size }), [variant, size])
+  const contextValue = useMemo(() => ({ size, variant }), [variant, size])
 
   const variantStyle = VARIANT_STYLES[variant]
   const sizeStyle = SIZE_STYLES[size]
@@ -39,12 +38,13 @@ const Root: React.FC<RootProps> = ({
           styles.root,
           {
             backgroundColor: variantStyle.backgroundColor,
-            borderWidth: variantStyle.borderWidth,
             borderColor: variantStyle.borderColor,
+            borderWidth: variantStyle.borderWidth,
             height: sizeStyle.height,
             paddingHorizontal: sizeStyle.paddingHorizontal
           }
-        ]}>
+        ]}
+      >
         {children}
       </Block>
     </TagContext.Provider>
@@ -64,7 +64,8 @@ const Label: React.FC<LabelProps> = ({ children }) => {
         color: variantStyle.textColor,
         fontSize: sizeStyle.fontSize,
         lineHeight: sizeStyle.fontSize * 1.2
-      }}>
+      }}
+    >
       {children}
     </Text>
   )
@@ -84,16 +85,18 @@ const CloseTrigger: React.FC<CloseTriggerProps> = ({ onClose }) => {
       accessibilityLabel='Close tag'
       accessibilityRole='button'
       disabled={!onClose}
-      hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+      hitSlop={{ bottom: 8, left: 8, right: 8, top: 8 }}
+      onPress={onClose}
       style={{ justifyContent: 'center', marginLeft: 4 }}
-      onPress={onClose}>
+    >
       <Text
         style={{
           color: variantStyle.textColor,
           fontSize: sizeStyle.fontSize * 1.5,
           fontWeight: 'bold',
           lineHeight: sizeStyle.fontSize * 1.5
-        }}>
+        }}
+      >
         ×
       </Text>
     </TouchableOpacity>
@@ -101,22 +104,22 @@ const CloseTrigger: React.FC<CloseTriggerProps> = ({ onClose }) => {
 }
 
 const styles = StyleSheet.create({
-  root: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderRadius: 4,
-    alignSelf: 'flex-start'
-  },
   endElement: {
-    marginLeft: 4,
+    alignItems: 'center',
     justifyContent: 'center',
-    alignItems: 'center'
+    marginLeft: 4
+  },
+  root: {
+    alignItems: 'center',
+    alignSelf: 'flex-start',
+    borderRadius: 4,
+    flexDirection: 'row'
   }
 })
 
 export const Tag = {
-  Root,
-  Label,
+  CloseTrigger,
   EndElement,
-  CloseTrigger
+  Label,
+  Root
 }

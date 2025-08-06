@@ -21,34 +21,34 @@ export interface CloseTriggerProps {
 }
 
 export const VARIANT_STYLES = {
-  subtle: {
-    backgroundColor: '#E2E8F0',
-    textColor: '#1A202C',
-    borderWidth: 0,
-    borderColor: 'transparent'
+  outline: {
+    backgroundColor: 'transparent',
+    borderColor: '#4A5568',
+    borderWidth: 1,
+    textColor: '#4A5568'
   },
   solid: {
     backgroundColor: '#4A5568',
-    textColor: '#FFFFFF',
+    borderColor: 'transparent',
     borderWidth: 0,
-    borderColor: 'transparent'
+    textColor: '#FFFFFF'
   },
-  outline: {
-    backgroundColor: 'transparent',
-    textColor: '#4A5568',
-    borderWidth: 1,
-    borderColor: '#4A5568'
+  subtle: {
+    backgroundColor: '#E2E8F0',
+    borderColor: 'transparent',
+    borderWidth: 0,
+    textColor: '#1A202C'
   },
   surface: {
     backgroundColor: '#F7FAFC',
-    textColor: '#1A202C',
+    borderColor: '#E2E8F0',
     borderWidth: 1,
-    borderColor: '#E2E8F0'
+    textColor: '#1A202C'
   }
 } as const
 
 export const SIZE_STYLES = {
-  sm: { height: 24, fontSize: 12, paddingHorizontal: 6 },
-  md: { height: 32, fontSize: 14, paddingHorizontal: 8 },
-  lg: { height: 40, fontSize: 16, paddingHorizontal: 10 }
+  lg: { fontSize: 16, height: 40, paddingHorizontal: 10 },
+  md: { fontSize: 14, height: 32, paddingHorizontal: 8 },
+  sm: { fontSize: 12, height: 24, paddingHorizontal: 6 }
 } as const

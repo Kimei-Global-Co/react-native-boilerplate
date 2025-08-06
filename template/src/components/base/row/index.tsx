@@ -18,9 +18,10 @@ const Row = (props: TRowProps): React.ReactElement => {
       {...(start && { justify: 'flex-start' })}
       {...(center && { justify: 'center' })}
       {...(end && { justify: 'flex-end' })}
-      row
       role='row'
-      {...rest}>
+      row
+      {...rest}
+    >
       {children}
     </Block>
   )

@@ -1,5 +1,4 @@
 import { Block, EmptyView, Header } from '@components'
-
 import { createContainer } from '../create-container'
 
 const EmptyViewComponent = (): React.JSX.Element => {

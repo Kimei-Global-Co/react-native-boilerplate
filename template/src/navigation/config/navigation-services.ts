@@ -1,10 +1,9 @@
 import {
   CommonActions,
+  createNavigationContainerRef,
   DrawerActions,
-  StackActions,
-  createNavigationContainerRef
+  StackActions
 } from '@react-navigation/native'
-
 import type { NavigationParams, RootStackRoutes, RouteNames } from './type'
 
 export const navigationRef = createNavigationContainerRef<RootStackRoutes>()
@@ -68,12 +67,12 @@ export function openDrawer(): void {
 }
 
 export default {
+  closeDrawer,
   navigate,
-  push,
-  replace,
+  navigationRef,
+  openDrawer,
   pop,
   popToTop,
-  closeDrawer,
-  openDrawer,
-  navigationRef
+  push,
+  replace
 }

@@ -7,21 +7,21 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import I18nProvider from 'locale/i18n-provider'
 import { KeyboardProvider } from 'react-native-keyboard-controller'
 import {
-  SafeAreaProvider,
-  initialWindowMetrics
+  initialWindowMetrics,
+  SafeAreaProvider
 } from 'react-native-safe-area-context'
 
 const queryClient = new QueryClient({
   defaultOptions: {
-    queries: {
-      retry: false,
-      refetchOnMount: false,
-      refetchOnWindowFocus: false,
-      refetchOnReconnect: false,
-      structuralSharing: false
-    },
     mutations: {
       retry: false
+    },
+    queries: {
+      refetchOnMount: false,
+      refetchOnReconnect: false,
+      refetchOnWindowFocus: false,
+      retry: false,
+      structuralSharing: false
     }
   }
 })

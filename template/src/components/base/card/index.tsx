@@ -1,8 +1,7 @@
-import React, { type ReactNode, createContext, useMemo } from 'react'
+import { createContext, type ReactNode, useMemo } from 'react'
 import { type ImageStyle, StyleSheet, type ViewStyle } from 'react-native'
 
 import type { ImageSource } from 'expo-image'
-
 import { Block } from '../block'
 import { Image } from '../image'
 
@@ -33,7 +32,8 @@ const Card = ({
           variant === 'bodered' && styles.bodered,
           variant === 'shadow' && styles.shadow,
           style
-        ]}>
+        ]}
+      >
         {children}
       </Block>
     </CardContext.Provider>
@@ -87,42 +87,42 @@ const CardDivider = ({ style }: { style?: ImageStyle }): React.JSX.Element => {
 }
 
 const styles = StyleSheet.create({
-  default: {
-    backgroundColor: 'white',
-    margin: 8
-  },
   bodered: {
     backgroundColor: 'white',
     borderRadius: 16,
     margin: 8
   },
-  shadow: {
-    backgroundColor: 'white',
-    borderRadius: 8,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
-    margin: 8
-  },
-  header: {
-    padding: 16
-  },
   content: {
     padding: 16
   },
+  default: {
+    backgroundColor: 'white',
+    margin: 8
+  },
   divder: {
-    height: 1,
     backgroundColor: '#E5E5E5',
+    height: 1,
     marginVertical: 8
   },
   footer: {
     padding: 16
   },
+  header: {
+    padding: 16
+  },
   image: {
-    width: '100%',
-    height: 200
+    height: 200,
+    width: '100%'
+  },
+  shadow: {
+    backgroundColor: 'white',
+    borderRadius: 8,
+    elevation: 3,
+    margin: 8,
+    shadowColor: '#000',
+    shadowOffset: { height: 2, width: 0 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4
   }
 })
 

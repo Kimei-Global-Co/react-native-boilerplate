@@ -1,5 +1,4 @@
 import { Block, Header, Tag } from '@components'
-
 import { createContainer } from '../create-container'
 
 const TagComponent = (): React.JSX.Element => {
@@ -32,7 +31,7 @@ const TagComponent = (): React.JSX.Element => {
         <Tag.Root>
           <Tag.Label>Closeable Tag</Tag.Label>
           <Tag.EndElement>
-            <Tag.CloseTrigger onClose={() => console.log('Tag closed')} />
+            <Tag.CloseTrigger onClose={() => console.info('Tag closed')} />
           </Tag.EndElement>
         </Tag.Root>
       </Block>

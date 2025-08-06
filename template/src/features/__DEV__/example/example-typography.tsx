@@ -1,7 +1,6 @@
 import { Platform, Text } from 'react-native'
 
 import { useLingui } from '@lingui/react/macro'
-
 import { createContainer } from '../create-container'
 
 const TypographyComponent = (): React.JSX.Element => {
@@ -13,7 +12,8 @@ const TypographyComponent = (): React.JSX.Element => {
           android: 'Nunito_400Regular',
           ios: 'Nunito-Regular'
         })
-      }}>
+      }}
+    >
       {t`Hello world!`}
     </Text>
   )

@@ -1,11 +1,9 @@
-import React from 'react'
 import { StyleSheet, View } from 'react-native'
 
 import Colors from '@theme/colors'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 export const MENU_ITEMS = {
-  Lingui: 'Lingui',
   Accordion: 'Accordion',
   Avatar: 'Avatar',
   Button: 'Button',
@@ -13,6 +11,7 @@ export const MENU_ITEMS = {
   EmptyView: 'EmptyView',
   Header: 'Header',
   Image: 'Image',
+  Lingui: 'Lingui',
   List: 'List',
   Row: 'Row',
   Spacer: 'Spacer',
@@ -42,7 +41,7 @@ export const createContainer = <Props extends object>(
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: Colors.primary
+    backgroundColor: Colors.primary,
+    flex: 1
   }
 })

@@ -2,7 +2,6 @@ import { ScrollView } from 'react-native'
 
 import { localImage } from '@assets/images'
 import { Block, Card, Header, Text } from '@components'
-
 import { createContainer } from '../create-container'
 
 const CardComponent = (): React.JSX.Element => {

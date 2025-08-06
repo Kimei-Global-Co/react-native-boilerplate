@@ -1,47 +1,8 @@
 import type { ViewStyle } from 'react-native'
 
 export const Layout = {
-  col: {
-    flexDirection: 'column'
-  },
-  colReverse: {
-    flexDirection: 'column-reverse'
-  },
-  wrap: {
-    flexWrap: 'wrap'
-  },
-  row: {
-    flexDirection: 'row'
-  },
-  rowReverse: {
-    flexDirection: 'row-reverse'
-  },
-  itemsCenter: {
-    alignItems: 'center'
-  },
-  itemsStart: {
-    alignItems: 'flex-start'
-  },
-  itemsStretch: {
-    alignItems: 'stretch'
-  },
-  itemsEnd: {
-    alignItems: 'flex-end'
-  },
-  justifyCenter: {
-    justifyContent: 'center'
-  },
-  justifyAround: {
-    justifyContent: 'space-around'
-  },
-  justifyBetween: {
-    justifyContent: 'space-between'
-  },
-  justifyEnd: {
-    justifyContent: 'flex-end'
-  },
-  justifyStart: {
-    justifyContent: 'flex-start'
+  absolute: {
+    position: 'absolute'
   },
   alignSelfCenter: {
     alignSelf: 'center'
@@ -52,25 +13,24 @@ export const Layout = {
   alignSelfStart: {
     alignSelf: 'flex-start'
   },
-  marginLeftAuto: {
-    marginLeft: 'auto'
+  bg_black2A: {
+    backgroundColor: '#2A2A2A'
+  },
+  bg_gray888: {
+    backgroundColor: '#888888'
   },
   /* Backgrounds */
   bg_primary: {
     backgroundColor: '#fff'
   },
-  bg_gray888: {
-    backgroundColor: '#888888'
+  bottom0: {
+    bottom: 0
   },
-  bg_black2A: {
-    backgroundColor: '#2A2A2A'
+  col: {
+    flexDirection: 'column'
   },
-  transparent_background: {
-    backgroundColor: 'transparent'
-  },
-  /* Sizes Layouts */
-  flex_none: {
-    flex: 0
+  colReverse: {
+    flexDirection: 'column-reverse'
   },
   flex_1: {
     flex: 1
@@ -78,39 +38,51 @@ export const Layout = {
   flex_grow: {
     flexGrow: 1
   },
-  fullWidth: {
-    width: '100%'
+  /* Sizes Layouts */
+  flex_none: {
+    flex: 0
   },
   fullHeight: {
     height: '100%'
   },
-  /* Positions */
-  relative: {
-    position: 'relative'
-  },
-  absolute: {
-    position: 'absolute'
+  fullWidth: {
+    width: '100%'
   },
   height8: {
     height: 8
   },
-  top0: {
-    top: 0
+  itemsCenter: {
+    alignItems: 'center'
   },
-  bottom0: {
-    bottom: 0
+  itemsEnd: {
+    alignItems: 'flex-end'
+  },
+  itemsStart: {
+    alignItems: 'flex-start'
+  },
+  itemsStretch: {
+    alignItems: 'stretch'
+  },
+  justifyAround: {
+    justifyContent: 'space-around'
+  },
+  justifyBetween: {
+    justifyContent: 'space-between'
+  },
+  justifyCenter: {
+    justifyContent: 'center'
+  },
+  justifyEnd: {
+    justifyContent: 'flex-end'
+  },
+  justifyStart: {
+    justifyContent: 'flex-start'
   },
   left0: {
     left: 0
   },
-  right0: {
-    right: 0
-  },
-  z1: {
-    zIndex: 1
-  },
-  z10: {
-    zIndex: 10
+  marginLeftAuto: {
+    marginLeft: 'auto'
   },
   mx10: {
     marginHorizontal: 10
@@ -120,19 +92,38 @@ export const Layout = {
   },
   px10: {
     paddingHorizontal: 10
+  },
+  /* Positions */
+  relative: {
+    position: 'relative'
+  },
+  right0: {
+    right: 0
+  },
+  row: {
+    flexDirection: 'row'
+  },
+  rowReverse: {
+    flexDirection: 'row-reverse'
+  },
+  top0: {
+    top: 0
+  },
+  transparent_background: {
+    backgroundColor: 'transparent'
+  },
+  wrap: {
+    flexWrap: 'wrap'
+  },
+  z1: {
+    zIndex: 1
+  },
+  z10: {
+    zIndex: 10
   }
 } as const satisfies Record<string, ViewStyle>
 
 export const Spacing = {
-  none: 0,
-  xxs: 1,
-  xs: 2,
-  x: 4,
-  s: 8,
-  m: 16,
-  l: 24,
-  xl: 40,
-  xxl: 2 * 40,
   _3: 3,
   _5: 5,
   _6: 6,
@@ -186,5 +177,14 @@ export const Spacing = {
   _155: 155,
   _157: 157,
   _178: 178,
-  _440: 440
+  _440: 440,
+  l: 24,
+  m: 16,
+  none: 0,
+  s: 8,
+  x: 4,
+  xl: 40,
+  xs: 2,
+  xxl: 2 * 40,
+  xxs: 1
 } as const satisfies Record<string, number>

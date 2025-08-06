@@ -1,37 +1,36 @@
 import { forwardRef, memo } from 'react'
-import { StyleSheet,type ViewStyle } from 'react-native'
+import { StyleSheet, type ViewStyle } from 'react-native'
 
 import Colors from '@theme/colors'
-import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import NativeView from 'react-native/Libraries/Components/View/ViewNativeComponent'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import {
   createDefaultStyle,
   handleGutter,
   handleInset,
   typeGuards
 } from 'utils/helper'
-
 import type { BlockProps } from './type'
 
 const createSizeStyle = (size: BlockProps['size']): ViewStyle => {
   if (typeGuards(size, 'number')) {
-    return { width: size, height: size }
+    return { height: size, width: size }
   }
   if (typeof size === 'object') {
     return {
-      width: size.width ?? 0,
-      height: size.height ?? 0
+      height: size.height ?? 0,
+      width: size.width ?? 0
     }
   }
   return {}
 }
 
 const createShadowStyle = (): ViewStyle => ({
+  elevation: 3,
   shadowColor: '#000',
-  shadowOffset: { width: 0, height: 2 },
+  shadowOffset: { height: 2, width: 0 },
   shadowOpacity: 0.15,
-  shadowRadius: 4,
-  elevation: 3
+  shadowRadius: 4
 })
 
 export const Block = memo(

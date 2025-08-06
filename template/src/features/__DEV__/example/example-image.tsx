@@ -1,7 +1,6 @@
 import { ScrollView } from 'react-native'
 
 import { Block, Header, Image, Row, Text } from '@components'
-
 import { createContainer } from '../create-container'
 
 const SAMPLE_IMAGE = 'https://picsum.photos/seed/picsum/200/300'

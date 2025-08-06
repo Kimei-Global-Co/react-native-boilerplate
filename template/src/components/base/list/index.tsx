@@ -1,4 +1,4 @@
-import React, { forwardRef, useCallback } from 'react'
+import { useCallback } from 'react'
 import {
   FlatList,
   type ListRenderItemInfo,
@@ -40,13 +40,13 @@ const InfiniteScrollListComponent = <T extends BaseItem>(
   return (
     <Block style={[styles.container, containerStyle]}>
       <FlatList
-        ref={ref}
         data={data}
         keyExtractor={keyExtractor}
         numColumns={numColumns}
+        onEndReached={onEndReached}
+        ref={ref}
         renderItem={renderItem}
         style={[styles.list, style]}
-        onEndReached={onEndReached}
         {...rest}
       />
       {isLoading && LoadingComponent && <LoadingComponent />}
@@ -54,7 +54,7 @@ const InfiniteScrollListComponent = <T extends BaseItem>(
   )
 }
 
-export const InfiniteScrollList = forwardRef(InfiniteScrollListComponent) as <
+export const InfiniteScrollList = InfiniteScrollListComponent as <
   T extends BaseItem
 >(
   props: InfiniteScrollListProps<T> & { ref?: React.Ref<FlatList<T>> }
@@ -64,10 +64,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   },
-  list: {
+  gridItem: {
     flex: 1
   },
-  gridItem: {
+  list: {
     flex: 1
   }
 })

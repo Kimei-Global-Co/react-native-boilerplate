@@ -1,8 +1,7 @@
-import React, { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { Animated, Easing, StyleSheet } from 'react-native'
 
 import Colors from '@theme/colors'
-
 import { Block } from '../block'
 
 interface Props {
@@ -12,9 +11,9 @@ interface Props {
 }
 
 const SPINNER_SIZES = {
-  small: 16,
+  large: 32,
   medium: 24,
-  large: 32
+  small: 16
 } as const
 
 const getSpinnerSize = (size: Props['size']): number => {
@@ -29,9 +28,9 @@ const startRotationAnimation = (
 ): void => {
   Animated.loop(
     Animated.timing(rotationDegree, {
-      toValue: 360,
       duration: durationMs,
       easing: Easing.linear,
+      toValue: 360,
       useNativeDriver: true
     })
   ).start()
@@ -45,8 +44,7 @@ const Spinner = ({
   const rotationDegree = useRef(new Animated.Value(0)).current
   const spinnerSize = getSpinnerSize(size)
   const borderWidth = Math.max(Math.floor(spinnerSize / 6), 2)
-  const actualColor =
-    color in Colors ? Colors[color] : color
+  const actualColor = color in Colors ? Colors[color] : color
 
   useEffect(() => {
     startRotationAnimation(durationMs, rotationDegree)
@@ -55,7 +53,8 @@ const Spinner = ({
   return (
     <Block
       accessibilityRole='progressbar'
-      style={[styles.container, { width: spinnerSize, height: spinnerSize }]}>
+      style={[styles.container, { height: spinnerSize, width: spinnerSize }]}
+    >
       <Block
         style={[
           styles.background,
@@ -70,8 +69,8 @@ const Spinner = ({
         style={[
           styles.progress,
           {
-            borderTopColor: actualColor,
             borderRadius: spinnerSize / 2,
+            borderTopColor: actualColor,
             borderWidth
           },
           {
@@ -91,22 +90,22 @@ const Spinner = ({
 }
 
 const styles = StyleSheet.create({
-  container: {
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
   background: {
-    width: '100%',
     height: '100%',
-    opacity: 0.25
+    opacity: 0.25,
+    width: '100%'
+  },
+  container: {
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   progress: {
-    width: '100%',
-    height: '100%',
+    borderBottomColor: 'transparent',
     borderLeftColor: 'transparent',
     borderRightColor: 'transparent',
-    borderBottomColor: 'transparent',
-    position: 'absolute'
+    height: '100%',
+    position: 'absolute',
+    width: '100%'
   }
 })
 

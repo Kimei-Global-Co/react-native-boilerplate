@@ -5,7 +5,6 @@ import { type IconComponentProps } from '@components/base/icon/type'
 import Colors from '@theme/colors'
 import get from 'lodash.get'
 import type { EdgeInsets } from 'react-native-safe-area-context'
-
 import type {
   BorderProps,
   BorderType,

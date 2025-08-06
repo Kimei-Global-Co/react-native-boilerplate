@@ -2,7 +2,6 @@ import { StyleSheet } from 'react-native'
 
 import { localImage } from '@assets/images'
 import { goBack } from '@navigation/config/navigation-services'
-
 import { Block } from '../block'
 import { Button } from '../button'
 import Icon from '../icon'
@@ -22,7 +21,7 @@ export const Header = ({
   const renderLeft = (): React.JSX.Element => {
     if (isBack) {
       return (
-        <Button isIconOnly variant='ghost' onPress={goBack}>
+        <Button isIconOnly onPress={goBack} variant='ghost'>
           <Icon name='left' size={22} type='antDesign' />
         </Button>
       )
@@ -47,10 +46,11 @@ export const Header = ({
     <>
       {rightActions?.map((action) => (
         <Button
-          key={action.id}
           isIconOnly
+          key={action.id}
+          onPress={action.onPress}
           variant='ghost'
-          onPress={action.onPress}>
+        >
           <Icon name={action.name} size={22} type={action.type} />
         </Button>
       ))}
@@ -70,8 +70,8 @@ export const Header = ({
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: 'transparent',
     paddingHorizontal: 16,
-    paddingVertical: 12,
-    backgroundColor: 'transparent'
+    paddingVertical: 12
   }
 })

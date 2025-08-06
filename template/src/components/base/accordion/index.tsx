@@ -1,10 +1,4 @@
-import React, {
-  createContext,
-  useContext,
-  useEffect,
-  useMemo,
-  useState
-} from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
 import { Pressable, StyleSheet } from 'react-native'
 
 import Animated, {
@@ -15,7 +9,6 @@ import Animated, {
   useSharedValue,
   withTiming
 } from 'react-native-reanimated'
-
 import { Block } from '../block'
 import Icon from '../icon'
 import { Text } from '../text'
@@ -48,14 +41,8 @@ const Accordion = ({
     defaultExpandedKey || null
   )
 
-  const toggleItem = (key: string): void => {
+  const toggleItem = (key: string): void =>
     setExpandedKey((prev) => (prev === key ? null : key))
-  }
-
-  const contextValue = useMemo(
-    () => ({ expandedKey, toggleItem, variant }),
-    [expandedKey, variant]
-  )
 
   const variantStyle = createVariantStyles(variant)
 
@@ -65,7 +52,7 @@ const Accordion = ({
       : [styles.container, variantStyle, style]
 
   return (
-    <AccordionContext.Provider value={contextValue}>
+    <AccordionContext.Provider value={{ expandedKey, toggleItem, variant }}>
       <Block style={containerStyle}>{children}</Block>
     </AccordionContext.Provider>
   )
@@ -114,7 +101,8 @@ const AccordionItem = ({
           <Animated.View
             style={{
               transform: [{ rotate: isExpanded ? '180deg' : '0deg' }]
-            }}>
+            }}
+          >
             <Icon
               color='blue_600'
               name='chevron-circle-down'
@@ -138,26 +126,26 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     gap: 8
   },
-  splitContainer: {
-    gap: 8
-  },
-  item: {
-    overflow: 'hidden'
-  },
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: 16
+  content: {
+    padding: 16,
+    position: 'absolute',
+    top: 0,
+    width: '100%'
   },
   contentWrapper: {
     overflow: 'hidden'
   },
-  content: {
-    padding: 16,
-    width: '100%',
-    position: 'absolute',
-    top: 0
+  header: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 16
+  },
+  item: {
+    overflow: 'hidden'
+  },
+  splitContainer: {
+    gap: 8
   }
 })
 

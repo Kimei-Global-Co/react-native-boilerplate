@@ -1,10 +1,8 @@
 import type { FlexStyle, ViewProps, ViewStyle } from 'react-native'
 
 import Colors from '@theme/colors'
-
-import type { DefaultStyleProps, SafeAreaInsetType } from 'utils/types';
-import type { Spacing } from '@theme/layout';
-
+import type { Spacing } from '@theme/layout'
+import type { DefaultStyleProps, SafeAreaInsetType } from 'utils/types'
 
 export interface BlockProps extends DefaultStyleProps, ViewProps {
   /**

@@ -2,7 +2,6 @@ import { ScrollView, StyleSheet } from 'react-native'
 
 import { Block, Header, Row, Text } from '@components'
 import type Colors from '@theme/colors'
-
 import { createContainer } from '../create-container'
 
 const BoxItem = ({ bg }: { bg: keyof typeof Colors }): React.JSX.Element => (
@@ -28,7 +27,7 @@ const RowComponent = (): React.JSX.Element => {
           {/*  Start */}
           <Block gap={8}>
             <Text> Start</Text>
-            <Row start gap={8}>
+            <Row gap={8} start>
               <BoxItem bg='rose_500' />
               <BoxItem bg='blue_500' />
               <BoxItem bg='green_500' />
@@ -88,7 +87,7 @@ export default function ExampleRow(): React.JSX.Element {
 
 const style = StyleSheet.create({
   container: {
-    width: 50,
-    height: 50
+    height: 50,
+    width: 50
   }
 })

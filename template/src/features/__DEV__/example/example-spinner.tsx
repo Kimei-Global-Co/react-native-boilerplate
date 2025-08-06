@@ -1,7 +1,6 @@
 import { ScrollView } from 'react-native'
 
 import { Block, Header, Row, Spinner, Text } from '@components'
-
 import { createContainer } from '../create-container'
 
 const SpinnerComponent = (): React.JSX.Element => {

@@ -4,10 +4,9 @@ import { StyleSheet } from 'react-native'
 import { useTheme } from '@theme'
 import { NativeText } from 'react-native/Libraries/Text/TextNativeComponent'
 import { createDefaultStyle, handleGutter, typeGuards } from 'utils/helper'
-
 import type { CommonTextProps } from './type'
 
-export const Text = memo(function Text(props: CommonTextProps) {
+export const Text = function Text(props: CommonTextProps) {
   const { colors, textVariants } = useTheme()
 
   const {
@@ -52,4 +51,4 @@ export const Text = memo(function Text(props: CommonTextProps) {
       {props.children}
     </NativeText>
   )
-})
+}

@@ -1,7 +1,6 @@
 import { ScrollView } from 'react-native'
 
 import { Avatar, Block, Header, Row, Text } from '@components'
-
 import { createContainer } from '../create-container'
 
 const AvatarComponent = (): React.JSX.Element => {

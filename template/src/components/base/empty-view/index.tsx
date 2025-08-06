@@ -1,7 +1,6 @@
 import { StyleSheet } from 'react-native'
 
 import { localImage } from '@assets/images'
-
 import { Block } from '../block'
 import { Image } from '../image'
 import { Text } from '../text'
@@ -34,7 +33,7 @@ export default EmptyView
 
 const styles = StyleSheet.create({
   imageStyle: {
-    width: 250,
-    height: 250
+    height: 250,
+    width: 250
   }
 })

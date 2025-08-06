@@ -1,5 +1,4 @@
 import { Accordion, Block, Header, Text } from '@components'
-
 import { createContainer } from '../create-container'
 
 const AccordionComponent = (): React.JSX.Element => {

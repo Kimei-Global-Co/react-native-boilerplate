@@ -1,7 +1,6 @@
 import { ScrollView, StyleSheet } from 'react-native'
 
 import { Block, Header, Row, Spacer, Text } from '@components'
-
 import { createContainer } from '../create-container'
 
 const BoxDemo = (): React.JSX.Element => (
@@ -79,7 +78,7 @@ export default function ExampleSpacer(): React.JSX.Element {
 
 const style = StyleSheet.create({
   container: {
-    width: 50,
-    height: 50
+    height: 50,
+    width: 50
   }
 })

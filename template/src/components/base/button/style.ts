@@ -16,30 +16,30 @@ export const getButtonColors = (
     color in COLORS ? COLORS[color as ButtonPresetColors] : color
 
   const variants = {
-    solid: {
-      backgroundColor: baseColor,
-      textColor: '#FFFFFF',
-      borderColor: 'transparent'
-    },
-    outline: {
-      backgroundColor: 'transparent',
-      textColor: baseColor,
-      borderColor: baseColor
-    },
     bordered: {
       backgroundColor: baseColor,
-      textColor: '#FFFFFF',
-      borderColor: 'transparent'
-    },
-    shadow: {
-      backgroundColor: baseColor,
-      textColor: '#FFFFFF',
-      borderColor: 'transparent'
+      borderColor: 'transparent',
+      textColor: '#FFFFFF'
     },
     ghost: {
       backgroundColor: 'transparent',
-      textColor: baseColor,
-      borderColor: 'transparent'
+      borderColor: 'transparent',
+      textColor: baseColor
+    },
+    outline: {
+      backgroundColor: 'transparent',
+      borderColor: baseColor,
+      textColor: baseColor
+    },
+    shadow: {
+      backgroundColor: baseColor,
+      borderColor: 'transparent',
+      textColor: '#FFFFFF'
+    },
+    solid: {
+      backgroundColor: baseColor,
+      borderColor: 'transparent',
+      textColor: '#FFFFFF'
     }
   }
 
@@ -54,20 +54,20 @@ export const getSizeStyle = (
   text: { fontSize: number }
 } => {
   const sizes = {
-    small: {
-      paddingVertical: 8,
-      paddingHorizontal: 12,
-      text: { fontSize: 14 }
+    large: {
+      paddingHorizontal: 20,
+      paddingVertical: 16,
+      text: { fontSize: 18 }
     },
     medium: {
-      paddingVertical: 12,
       paddingHorizontal: 16,
+      paddingVertical: 12,
       text: { fontSize: 16 }
     },
-    large: {
-      paddingVertical: 16,
-      paddingHorizontal: 20,
-      text: { fontSize: 18 }
+    small: {
+      paddingHorizontal: 12,
+      paddingVertical: 8,
+      text: { fontSize: 14 }
     }
   }
 

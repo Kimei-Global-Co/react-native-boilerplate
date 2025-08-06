@@ -38,10 +38,11 @@ export function createCustomBackdrop(
       <TouchableWithoutFeedback
         accessibilityHint=''
         accessibilityLabel='close'
-        onPress={onClose}
         onAccessibilityEscape={() => {
           if (onClose !== undefined) onClose()
-        }}>
+        }}
+        onPress={onClose}
+      >
         <Animated.View style={containerStyle} />
       </TouchableWithoutFeedback>
     )

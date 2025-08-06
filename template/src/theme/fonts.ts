@@ -1,11 +1,11 @@
 import { type TextStyle } from 'react-native'
 
 export const FontsFamily = {
-  regular: 'Inter_400Regular',
-  medium: 'Inter_500Medium',
-  semiBold: 'Inter_600SemiBold',
   bold: 'Inter_700Bold',
-  extraBold: 'Inter_800ExtraBold'
+  extraBold: 'Inter_800ExtraBold',
+  medium: 'Inter_500Medium',
+  regular: 'Inter_400Regular',
+  semiBold: 'Inter_600SemiBold'
 } as const
 
 export interface ThemeFontWeight {
@@ -23,24 +23,24 @@ export type FontBase = {
 }
 
 export default {
-  regular: {
-    fontSize: 14,
-    fontFamily: FontsFamily['regular']
-  },
-  medium: {
-    fontSize: 14,
-    fontFamily: FontsFamily['medium']
-  },
-  semiBold: {
-    fontSize: 14,
-    fontFamily: FontsFamily['semiBold']
-  },
   bold: {
-    fontSize: 14,
-    fontFamily: FontsFamily['bold']
+    fontFamily: FontsFamily['bold'],
+    fontSize: 14
   },
   extraBold: {
-    fontSize: 14,
-    fontFamily: FontsFamily['extraBold']
+    fontFamily: FontsFamily['extraBold'],
+    fontSize: 14
+  },
+  medium: {
+    fontFamily: FontsFamily['medium'],
+    fontSize: 14
+  },
+  regular: {
+    fontFamily: FontsFamily['regular'],
+    fontSize: 14
+  },
+  semiBold: {
+    fontFamily: FontsFamily['semiBold'],
+    fontSize: 14
   }
 } as ThemeFontWeight

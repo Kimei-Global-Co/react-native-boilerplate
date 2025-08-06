@@ -2,7 +2,6 @@ import { StyleSheet } from 'react-native'
 
 import { Block, Header, Text } from '@components'
 import { InfiniteScrollList } from '@components/base/list'
-
 import { createContainer } from '../create-container'
 
 interface ListItem {
@@ -11,9 +10,9 @@ interface ListItem {
   description: string
 }
 const SAMPLE_DATA: ListItem[] = Array.from({ length: 50 }).map((_, index) => ({
+  description: `This is description for item ${index + 1}`,
   id: index + 1,
-  title: `Item ${index + 1}`,
-  description: `This is description for item ${index + 1}`
+  title: `Item ${index + 1}`
 }))
 
 const ListComponent = (): React.JSX.Element => {
@@ -22,7 +21,8 @@ const ListComponent = (): React.JSX.Element => {
       backgroundColor='gray_100'
       margin={{ bottom: 8 }}
       padding={16}
-      radius={8}>
+      radius={8}
+    >
       <Text fontType='bold' size={16}>
         {item.title}
       </Text>

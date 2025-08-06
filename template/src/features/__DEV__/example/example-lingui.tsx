@@ -1,7 +1,6 @@
 import { Text } from 'react-native'
 
 import { useLingui } from '@lingui/react/macro'
-
 import { createContainer } from '../create-container'
 
 const LinguiComponent = (): React.JSX.Element => {

@@ -1,6 +1,5 @@
 import { i18n } from '@lingui/core'
 import { I18nProvider as DefaultI18nProvider } from '@lingui/react'
-
 import { useLocaleLanguage } from './i18n'
 
 export default function I18nProvider({

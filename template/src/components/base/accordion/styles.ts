@@ -4,29 +4,29 @@ export const createVariantStyles = (
   variant: AccordionVariant
 ): Record<string, string | number | { width: number; height: number }> => {
   const variants = {
+    bordered: {
+      backgroundColor: '#E3EDFB',
+      borderColor: '#0F56B3',
+      borderRadius: 14
+    },
     default: {
       backgroundColor: '#E3EDFB'
     },
     shadow: {
       backgroundColor: '#E3EDFB',
       borderRadius: 14,
+      elevation: 3,
       shadowColor: '#000',
-      shadowOffset: { width: 0, height: 2 },
+      shadowOffset: { height: 2, width: 0 },
       shadowOpacity: 0.15,
-      shadowRadius: 4,
-      elevation: 3
-    },
-    bordered: {
-      backgroundColor: '#E3EDFB',
-      borderRadius: 14,
-      borderColor: '#0F56B3'
+      shadowRadius: 4
     },
     split: {
       backgroundColor: '#E3EDFB',
-      borderWidth: 1,
       borderColor: '#D1D5DB',
-      marginBottom: -1,
-      borderRadius: 14
+      borderRadius: 14,
+      borderWidth: 1,
+      marginBottom: -1
     }
   }
 

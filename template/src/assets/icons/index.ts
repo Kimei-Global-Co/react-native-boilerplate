@@ -12,18 +12,18 @@ import Octicons from '@expo/vector-icons/Octicons'
 import SimpleLineIcons from '@expo/vector-icons/SimpleLineIcons'
 
 export const Icons = {
-  fontAwesome5: FontAwesome5,
   antDesign: AntDesign,
+  entypo: Entypo,
+  evilIcons: EvilIcons,
   feather: Feather,
   fontAwesome: FontAwesome,
+  fontAwesome5: FontAwesome5,
+  fontisto: Fontisto,
+  ionicons: Ionicons,
   materialCommunityIcons: MaterialCommunityIcons,
   materialIcons: MaterialIcons,
-  evilIcons: EvilIcons,
-  fontisto: Fontisto,
   octicons: Octicons,
-  ionicons: Ionicons,
-  simpleLineIcons: SimpleLineIcons,
-  entypo: Entypo
+  simpleLineIcons: SimpleLineIcons
 }
 export type IconType = keyof typeof Icons
 

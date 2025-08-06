@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import { useRef } from 'react'
 import { Animated, Pressable, StyleSheet } from 'react-native'
 
 import Row from '../row'
@@ -27,8 +27,8 @@ export const Button = ({
 
   const handlePress = (): void => {
     Animated.timing(backgroundColorRef, {
-      toValue: 1,
       duration: 60,
+      toValue: 1,
       useNativeDriver: true
     }).start()
     onPress?.()
@@ -36,8 +36,8 @@ export const Button = ({
 
   const handleRelease = (): void => {
     Animated.timing(backgroundColorRef, {
-      toValue: 0,
       duration: 60,
+      toValue: 0,
       useNativeDriver: true
     }).start()
   }
@@ -75,7 +75,8 @@ export const Button = ({
     <Pressable
       disabled={disabled || loading}
       onPressIn={handlePress}
-      onPressOut={handleRelease}>
+      onPressOut={handleRelease}
+    >
       <Animated.View style={buttonStyles}>
         <Row align='center' gap={10}>
           <Text style={textStyles}>{children || text}</Text>
@@ -91,18 +92,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
-  shadow: {
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.4,
-    shadowRadius: 2,
-    elevation: 3
-  },
   bodered: {
     borderRadius: 16
   },
   disabled: {
     opacity: 0.6
+  },
+  shadow: {
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOffset: { height: 2, width: 0 },
+    shadowOpacity: 0.4,
+    shadowRadius: 2
   },
   text: {
     fontWeight: '600'

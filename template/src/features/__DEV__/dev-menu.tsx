@@ -1,22 +1,20 @@
-import React from 'react'
 import { FlatList, StyleSheet, TouchableOpacity } from 'react-native'
 
 import { Block, Icon, Row, Text } from '@components'
+import { navigate } from '@navigation/config/navigation-services'
 import type { DevStackRoutes } from '@navigation/config/type'
-import { type NavigationProp, useNavigation } from '@react-navigation/native'
 import Colors from '@theme/colors'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
-
 import { MENU_ITEMS } from './create-container'
 
 export default function DevMenu(): React.JSX.Element {
   const { top } = useSafeAreaInsets()
-  const navigation = useNavigation<NavigationProp<DevStackRoutes>>()
 
   const renderItem = ({ item }: { item: string }): React.JSX.Element => (
     <TouchableOpacity
+      onPress={() => navigate(item)}
       style={styles.itemContainer}
-      onPress={() => navigation.navigate(item as keyof DevStackRoutes)}>
+    >
       <Row between padding={15}>
         <Text size={16}>{item}</Text>
         <Icon name='right' size={22} type='antDesign' />
@@ -39,22 +37,22 @@ export default function DevMenu(): React.JSX.Element {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: Colors.primary
-  },
-  listContainer: {
-    padding: 10,
-    paddingBottom: 60,
-    flexGrow: 1
+    backgroundColor: Colors.primary,
+    flex: 1
   },
   itemContainer: {
-    marginBottom: 10,
     backgroundColor: Colors.white,
     borderRadius: 14,
+    elevation: 3,
+    marginBottom: 10,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: { height: 2, width: 0 },
     shadowOpacity: 0.15,
-    shadowRadius: 4,
-    elevation: 3
+    shadowRadius: 4
+  },
+  listContainer: {
+    flexGrow: 1,
+    padding: 10,
+    paddingBottom: 60
   }
 })
