@@ -15,11 +15,7 @@ export const createVariantStyles = (
     shadow: {
       backgroundColor: '#E3EDFB',
       borderRadius: 14,
-      elevation: 3,
-      shadowColor: '#000',
-      shadowOffset: { height: 2, width: 0 },
-      shadowOpacity: 0.15,
-      shadowRadius: 4
+      boxShadow: '0 2px 4px rgba(0, 0, 0, 0.15);'
     },
     split: {
       backgroundColor: '#E3EDFB',

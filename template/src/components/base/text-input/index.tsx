@@ -1,16 +1,15 @@
-import { useCallback, useMemo, useState } from 'react'
+import { useState } from 'react'
 import { TextInput as RNTextInput, StyleSheet } from 'react-native'
 
 import { theme } from '@theme'
 import { Block } from '../block'
 import Icon from '../icon'
 import Row from '../row'
-import { Text } from '../text'
+import { Typography } from '../typography'
 import { type TextInputBaseProps } from './type'
 
 export const TextInput = (
-  props: TextInputBaseProps,
-  ref?: React.Ref<RNTextInput>
+  props: TextInputBaseProps & { ref?: React.Ref<RNTextInput> }
 ) => {
   const {
     containerStyle,
@@ -28,6 +27,7 @@ export const TextInput = (
     required = false,
     value: externalValue,
     onChangeText: externalOnChangeText,
+    ref,
     ...rest
   } = props
 
@@ -38,37 +38,30 @@ export const TextInput = (
   const isControlled = externalValue !== undefined
   const value = isControlled ? externalValue : internalValue
 
-  const handleChangeText = useCallback(
-    (text: string) => {
-      if (!isControlled) {
-        setInternalValue(text)
-      }
-      externalOnChangeText?.(text)
-    },
-    [isControlled, externalOnChangeText]
-  )
+  const handleChangeText = (text: string) => {
+    if (!isControlled) {
+      setInternalValue(text)
+    }
+    externalOnChangeText?.(text)
+  }
 
   const handleFocus = (): void => setIsFocused(true)
   const handleBlur = (): void => setIsFocused(false)
-  const handleClear = useCallback(
-    () => handleChangeText(''),
-    [handleChangeText]
-  )
+
+  const handleClear = (): void => handleChangeText('')
+
   const toggleSecureEntry = (): void => setSecureEntry((prev) => !prev)
 
-  const containerStyles = useMemo(
-    () => [
-      styles.container,
-      isFocused && { borderColor: focusColor },
-      error && styles.error,
-      containerStyle
-    ],
-    [isFocused, focusColor, error, containerStyle]
-  )
+  const containerStyles = [
+    styles.container,
+    isFocused && { borderColor: focusColor },
+    error && styles.error,
+    containerStyle
+  ]
 
-  const inputStyles = useMemo(() => [styles.input, inputStyle], [inputStyle])
+  const inputStyles = [styles.input, inputStyle]
 
-  const renderRightIcon = useMemo(() => {
+  const renderRightIcon = () => {
     if (rightIcon) return rightIcon
     if (mode === 'password') {
       return (
@@ -91,34 +84,26 @@ export const TextInput = (
       )
     }
     return null
-  }, [rightIcon, mode, secureEntry, clearable, value, handleClear])
+  }
 
-  const labelComponent = useMemo(
-    () =>
-      label && (
-        <Text
-          color={error ? 'rose_400' : 'black'}
-          style={[styles.label, labelStyle]}
-        >
-          {label}
-          {required && <Text color='rose_400'> *</Text>}
-        </Text>
-      ),
-    [label, error, labelStyle, required]
+  const labelComponent = label && (
+    <Typography
+      color={error ? 'rose_400' : 'black'}
+      style={[styles.label, labelStyle]}
+    >
+      {label}
+      {required && <Typography color='rose_400'> *</Typography>}
+    </Typography>
   )
 
-  const helperComponent = useMemo(
-    () =>
-      (error || helper) && (
-        <Text
-          color={error ? 'rose_400' : 'gray_400'}
-          size={12}
-          style={[styles.helper, errorStyle]}
-        >
-          {error ?? helper}
-        </Text>
-      ),
-    [error, helper, errorStyle]
+  const helperComponent = (error || helper) && (
+    <Typography
+      color={error ? 'rose_400' : 'gray_400'}
+      size={12}
+      style={[styles.helper, errorStyle]}
+    >
+      {error ?? helper}
+    </Typography>
   )
 
   return (
@@ -145,7 +130,7 @@ export const TextInput = (
           value={value}
         />
         {renderRightIcon && (
-          <Block margin={{ right: 12 }}>{renderRightIcon}</Block>
+          <Block margin={{ right: 12 }}>{renderRightIcon()}</Block>
         )}
       </Row>
       {helperComponent}

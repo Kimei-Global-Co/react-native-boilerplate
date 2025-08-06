@@ -7,7 +7,7 @@ import { Button } from '../button'
 import Icon from '../icon'
 import { Image } from '../image'
 import Row from '../row'
-import { Text } from '../text'
+import { Typography } from '../typography'
 import { DEFAULT_ACTIONS, type HeaderProps } from './type'
 
 export const Header = ({
@@ -31,13 +31,13 @@ export const Header = ({
 
   const renderContent = (): React.JSX.Element => (
     <Block flex={1}>
-      <Text center={isBack} numberOfLines={1} size={16}>
+      <Typography center={isBack} numberOfLines={1} size={16}>
         {title}
-      </Text>
+      </Typography>
       {!isBack && !!subtitle && (
-        <Text numberOfLines={1} size={12}>
+        <Typography numberOfLines={1} size={12}>
           {subtitle}
-        </Text>
+        </Typography>
       )}
     </Block>
   )

@@ -1,6 +1,6 @@
 import { ScrollView } from 'react-native'
 
-import { Block, Header, Row, Spinner, Text } from '@components'
+import { Block, Header, Row, Spinner, Typography } from '@components'
 import { createContainer } from '../create-container'
 
 const SpinnerComponent = (): React.JSX.Element => {
@@ -11,7 +11,7 @@ const SpinnerComponent = (): React.JSX.Element => {
         <Block gap={16} padding={16}>
           {/* Different Sizes */}
           <Block gap={8}>
-            <Text>Spinner Sizes</Text>
+            <Typography>Spinner Sizes</Typography>
             <Row center gap={16}>
               <Spinner color='black' size='small' />
               <Spinner color='black' size='medium' />
@@ -22,7 +22,7 @@ const SpinnerComponent = (): React.JSX.Element => {
 
           {/* Different Colors */}
           <Block gap={8}>
-            <Text>Spinner Colors</Text>
+            <Typography>Spinner Colors</Typography>
             <Row center gap={16}>
               <Spinner color='black' size='medium' />
               <Spinner color='rose_500' size='medium' />
@@ -33,7 +33,7 @@ const SpinnerComponent = (): React.JSX.Element => {
 
           {/* Different Speeds */}
           <Block gap={8}>
-            <Text>Spinner Speeds</Text>
+            <Typography>Spinner Speeds</Typography>
             <Row center gap={16}>
               <Spinner color='black' durationMs={500} size='medium' />
               <Spinner color='black' durationMs={1000} size='medium' />

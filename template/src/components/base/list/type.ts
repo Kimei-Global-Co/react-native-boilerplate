@@ -1,22 +1,13 @@
-import type { FlatListProps, StyleProp, ViewStyle } from 'react-native'
+import type { ComponentType } from 'react'
 
-export type BaseItem = { id: string | number }
-export interface InfiniteScrollListProps<T extends BaseItem>
-  extends Omit<FlatListProps<T>, 'keyExtractor'> {
-  /**
-   * Style for the container wrapping the FlatList
-   */
-  containerStyle?: StyleProp<ViewStyle>
-  /**
-   * Optional loading component to show during initial load
-   */
-  LoadingComponent?: React.ComponentType
-  /**
-   * Callback when list reaches end
-   */
-  onEndReached?: () => void
-  /**
-   * Whether data is currently loading
-   */
-  isLoading?: boolean
+import type { FlashListProps, FlashListRef } from '@shopify/flash-list'
+
+export type InfiniteScrollListProps<T> = FlashListProps<T> & {
+  ListHeaderComponent?: ComponentType<{
+    context?: unknown
+  }>
+  ListFooterComponent?: ComponentType<{
+    context?: unknown
+  }>
+  ref?: React.Ref<FlashListRef<T>>
 }

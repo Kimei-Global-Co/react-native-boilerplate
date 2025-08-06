@@ -1,7 +1,4 @@
-import { StyleSheet, View } from 'react-native'
-
-import Colors from '@theme/colors'
-import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import { Block } from '@components'
 
 export const MENU_ITEMS = {
   Accordion: 'Accordion',
@@ -10,6 +7,7 @@ export const MENU_ITEMS = {
   Card: 'Card',
   EmptyView: 'EmptyView',
   Header: 'Header',
+  Icon: 'Icon',
   Image: 'Image',
   Lingui: 'Lingui',
   List: 'List',
@@ -27,21 +25,13 @@ export const createContainer = <Props extends object>(
   displayName: DisplayNames[keyof DisplayNames]
 ): React.FC<Props> => {
   const MenuComponent: React.FC<Props> = (props: Props) => {
-    const { top } = useSafeAreaInsets()
     return (
-      <View style={[styles.container, { paddingTop: top }]}>
+      <Block backgroundColor='primary' flex inset='top'>
         <Component {...props} />
-      </View>
+      </Block>
     )
   }
   MenuComponent.displayName = displayName
 
   return MenuComponent
 }
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: Colors.primary,
-    flex: 1
-  }
-})

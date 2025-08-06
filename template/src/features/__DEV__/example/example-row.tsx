@@ -1,6 +1,6 @@
 import { ScrollView, StyleSheet } from 'react-native'
 
-import { Block, Header, Row, Text } from '@components'
+import { Block, Header, Row, Typography } from '@components'
 import type Colors from '@theme/colors'
 import { createContainer } from '../create-container'
 
@@ -16,7 +16,7 @@ const RowComponent = (): React.JSX.Element => {
         <Block gap={24} padding={16}>
           {/* Basic Row */}
           <Block gap={8}>
-            <Text>Basic Row</Text>
+            <Typography>Basic Row</Typography>
             <Row gap={8}>
               <BoxItem bg='rose_500' />
               <BoxItem bg='blue_500' />
@@ -26,7 +26,7 @@ const RowComponent = (): React.JSX.Element => {
 
           {/*  Start */}
           <Block gap={8}>
-            <Text> Start</Text>
+            <Typography> Start</Typography>
             <Row gap={8} start>
               <BoxItem bg='rose_500' />
               <BoxItem bg='blue_500' />
@@ -36,7 +36,7 @@ const RowComponent = (): React.JSX.Element => {
 
           {/*  Center */}
           <Block gap={8}>
-            <Text> Center</Text>
+            <Typography> Center</Typography>
             <Row center gap={8}>
               <BoxItem bg='rose_500' />
               <BoxItem bg='blue_500' />
@@ -46,7 +46,7 @@ const RowComponent = (): React.JSX.Element => {
 
           {/*  End */}
           <Block gap={8}>
-            <Text> End</Text>
+            <Typography> End</Typography>
             <Row end gap={8}>
               <BoxItem bg='rose_500' />
               <BoxItem bg='blue_500' />
@@ -56,7 +56,7 @@ const RowComponent = (): React.JSX.Element => {
 
           {/* Space Between */}
           <Block gap={8}>
-            <Text>Space Between</Text>
+            <Typography>Space Between</Typography>
             <Row between>
               <BoxItem bg='rose_500' />
               <BoxItem bg='blue_500' />
@@ -66,7 +66,7 @@ const RowComponent = (): React.JSX.Element => {
 
           {/* Combined Props */}
           <Block gap={8}>
-            <Text>Combined Props (Center + Gap + Padding)</Text>
+            <Typography>Combined Props (Center + Gap + Padding)</Typography>
             <Row center gap={16} padding={16}>
               <BoxItem bg='rose_500' />
               <BoxItem bg='blue_500' />

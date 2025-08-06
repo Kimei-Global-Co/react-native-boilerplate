@@ -1,6 +1,6 @@
 import { ScrollView } from 'react-native'
 
-import { Avatar, Block, Header, Row, Text } from '@components'
+import { Avatar, Block, Header, Row, Typography } from '@components'
 import { createContainer } from '../create-container'
 
 const AvatarComponent = (): React.JSX.Element => {
@@ -13,7 +13,7 @@ const AvatarComponent = (): React.JSX.Element => {
         <Block gap={16} padding={16}>
           {/* Different Sizes */}
           <Block gap={8}>
-            <Text>Avatar Sizes</Text>
+            <Typography>Avatar Sizes</Typography>
             <Row gap={8}>
               <Avatar size={32} url={sampleImageUrl} />
               <Avatar size={48} url={sampleImageUrl} />
@@ -24,7 +24,7 @@ const AvatarComponent = (): React.JSX.Element => {
 
           {/* Different Border Radius */}
           <Block gap={8}>
-            <Text>Border Radius Variants</Text>
+            <Typography>Border Radius Variants</Typography>
             <Row gap={8}>
               <Avatar borderRadius={8} size={48} url={sampleImageUrl} />
               <Avatar borderRadius={16} size={48} url={sampleImageUrl} />
@@ -35,7 +35,7 @@ const AvatarComponent = (): React.JSX.Element => {
 
           {/* With Loading Skeleton */}
           <Block gap={8}>
-            <Text>With Loading Skeleton</Text>
+            <Typography>With Loading Skeleton</Typography>
             <Avatar enableSkeleton size={48} url={sampleImageUrl} />
           </Block>
         </Block>

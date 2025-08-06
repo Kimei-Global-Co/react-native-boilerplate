@@ -1,4 +1,4 @@
-import { Accordion, Block, Header, Text } from '@components'
+import { Accordion, Block, Header, Typography } from '@components'
 import { createContainer } from '../create-container'
 
 const AccordionComponent = (): React.JSX.Element => {
@@ -10,35 +10,35 @@ const AccordionComponent = (): React.JSX.Element => {
       <Block gap={8} padding={16}>
         <Accordion variant='default'>
           <Accordion.Item itemKey='1' title='Accordion 1'>
-            <Text>{defaultContent}</Text>
+            <Typography>{defaultContent}</Typography>
           </Accordion.Item>
           <Accordion.Item itemKey='2' title='Accordion 2'>
-            <Text>{defaultContent}</Text>
+            <Typography>{defaultContent}</Typography>
           </Accordion.Item>
           <Accordion.Item itemKey='3' title='Accordion 3'>
-            <Text>{defaultContent}</Text>
+            <Typography>{defaultContent}</Typography>
           </Accordion.Item>
         </Accordion>
         <Accordion variant='bordered'>
           <Accordion.Item itemKey='1' title='Accordion 1'>
-            <Text>{defaultContent}</Text>
+            <Typography>{defaultContent}</Typography>
           </Accordion.Item>
           <Accordion.Item itemKey='2' title='Accordion 2'>
-            <Text>{defaultContent}</Text>
+            <Typography>{defaultContent}</Typography>
           </Accordion.Item>
           <Accordion.Item itemKey='3' title='Accordion 3'>
-            <Text>{defaultContent}</Text>
+            <Typography>{defaultContent}</Typography>
           </Accordion.Item>
         </Accordion>
         <Accordion variant='split'>
           <Accordion.Item itemKey='1' title='Accordion 1'>
-            <Text>{defaultContent}</Text>
+            <Typography>{defaultContent}</Typography>
           </Accordion.Item>
           <Accordion.Item itemKey='2' title='Accordion 2'>
-            <Text>{defaultContent}</Text>
+            <Typography>{defaultContent}</Typography>
           </Accordion.Item>
           <Accordion.Item itemKey='3' title='Accordion 3'>
-            <Text>{defaultContent}</Text>
+            <Typography>{defaultContent}</Typography>
           </Accordion.Item>
         </Accordion>
       </Block>

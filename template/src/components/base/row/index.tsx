@@ -1,5 +1,3 @@
-import { memo } from 'react'
-
 import { Block } from '../block'
 
 type TRowProps = {
@@ -26,4 +24,4 @@ const Row = (props: TRowProps): React.ReactElement => {
     </Block>
   )
 }
-export default memo(Row)
+export default Row

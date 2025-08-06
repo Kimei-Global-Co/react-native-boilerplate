@@ -12,8 +12,8 @@ import Row from './base/row'
 import { Spacer } from './base/spacer'
 import Spinner from './base/spinner'
 import { Tag } from './base/tag'
-import { Text } from './base/text'
 import { TextInput } from './base/text-input'
+import { Typography } from './base/typography'
 
 export {
   Accordion,
@@ -28,7 +28,7 @@ export {
   KeyboardDismissWrapper,
   Spinner,
   Spacer,
-  Text,
+  Typography,
   TextInput,
   Tag,
   Row

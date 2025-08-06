@@ -9,6 +9,9 @@
 			"path": "cz-conventional-changelog"
 		}
 	},
+  "files": [
+    "!src/features/__DEV__"
+  ],
 	"dependencies": {
 		"@discord/bottom-sheet": "Kimei-Global-Co/react-native-bottom-sheet",
 		"@expo-google-fonts/nunito": "^0.4.0",
@@ -43,6 +46,7 @@
 		"react-native-reanimated": "~3.17.4",
 		"react-native-safe-area-context": "5.4.0",
 		"react-native-screens": "~4.11.1",
+		"react-native-svg": "15.11.2",
 		"react-native-unistyles": "^3.0.7",
 		"zod": "^4.0.15"
 	},
@@ -109,7 +113,7 @@
 		"env:pull": "eas env:pull",
 		"intl:build": "lingui extract --overwrite --clean",
 		"ios": "expo run:ios",
-		"lint": "bunx biome check --error-on-warnings --no-erros-on-unmatched --staged ./**/*.{js,jsx,ts,tsx}",
+		"lint": "bunx biome check --error-on-warnings --no-errors-on-unmatched --staged ./**/*.{js,jsx,ts,tsx}",
 		"perf-test": "reassure",
 		"postinstall": "patch-package && bun intl:build",
 		"prebuild": "expo prebuild",

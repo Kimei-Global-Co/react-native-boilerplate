@@ -6,6 +6,7 @@ import ExampleButton from '@features/__DEV__/example/example-button'
 import ExampleCard from '@features/__DEV__/example/example-card'
 import ExampleEmptyView from '@features/__DEV__/example/example-empty-view'
 import ExampleHeader from '@features/__DEV__/example/example-header'
+import ExampleIcon from '@features/__DEV__/example/example-icon'
 import ExampleImage from '@features/__DEV__/example/example-image'
 import ExampleLingui from '@features/__DEV__/example/example-lingui'
 import ExampleRow from '@features/__DEV__/example/example-row'
@@ -61,16 +62,19 @@ export const bottomTabScreens = []
 /**
  * Dev screens
  */
-export const devScreens = {
+
+// biome-ignore assist/source/useSortedKeys: <explanation>
+export  const devScreens = {
   DevMenu: DevMenu,
-  Lingui: ExampleLingui,
   Accordion: ExampleAccordion,
   Avatar: ExampleAvatar,
   Button: ExampleButton,
   Card: ExampleCard,
   EmptyView: ExampleEmptyView,
   Header: ExampleHeader,
+  Icon: ExampleIcon,
   Image: ExampleImage,
+  Lingui: ExampleLingui,
   List: ExampleList,
   Row: ExampleRow,
   Spacer: ExampleSpacer,

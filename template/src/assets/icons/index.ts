@@ -24,8 +24,13 @@ export const Icons = {
   materialIcons: MaterialIcons,
   octicons: Octicons,
   simpleLineIcons: SimpleLineIcons
-}
+} as const
+
 export type IconType = keyof typeof Icons
+
+export type IconName<T extends IconType> = React.ComponentProps<
+  (typeof Icons)[T]
+>['name']
 
 export const getIconComponent = (
   componentName: IconType

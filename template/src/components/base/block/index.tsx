@@ -1,4 +1,3 @@
-import { forwardRef, memo } from 'react'
 import { StyleSheet, type ViewStyle } from 'react-native'
 
 import Colors from '@theme/colors'
@@ -26,18 +25,13 @@ const createSizeStyle = (size: BlockProps['size']): ViewStyle => {
 }
 
 const createShadowStyle = (): ViewStyle => ({
-  elevation: 3,
-  shadowColor: '#000',
-  shadowOffset: { height: 2, width: 0 },
-  shadowOpacity: 0.15,
-  shadowRadius: 4
+  boxShadow: '0 2px 4px rgba(0, 0, 0, 0.15);'
 })
 
-export const Block = memo(
-  forwardRef<NativeView, BlockProps>(function Block(
-    props: BlockProps,
-    ref: React.ForwardedRef<NativeView>
-  ) {
+export const Block = function Block(
+  props: BlockProps & { ref?: React.Ref<NativeView> }
+) {
+  {
     const safeArea = useSafeAreaInsets()
     const {
       children,
@@ -57,6 +51,7 @@ export const Block = memo(
       margin,
       shadow,
       overflow,
+      ref,
       ...rest
     } = props
 
@@ -88,5 +83,5 @@ export const Block = memo(
         {children}
       </NativeView>
     )
-  })
-)
+  }
+}

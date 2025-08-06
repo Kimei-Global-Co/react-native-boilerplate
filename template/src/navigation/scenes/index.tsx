@@ -1,9 +1,9 @@
 import { useEffect } from 'react'
 import { AppState } from 'react-native'
 
+import { Image } from 'expo-image'
 import { navigationRef } from '@navigation/config/navigation-services'
 import { NavigationContainer } from '@react-navigation/native'
-import { Image } from 'expo-image'
 import RootScenes from './root-scenes'
 
 export default function MainNavigation(): React.JSX.Element {

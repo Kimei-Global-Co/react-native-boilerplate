@@ -1,7 +1,7 @@
 import { ScrollView } from 'react-native'
 
 import { localImage } from '@assets/images'
-import { Block, Card, Header, Text } from '@components'
+import { Block, Card, Header, Typography } from '@components'
 import { createContainer } from '../create-container'
 
 const CardComponent = (): React.JSX.Element => {
@@ -12,28 +12,28 @@ const CardComponent = (): React.JSX.Element => {
         {/* Default Card */}
         <Card>
           <Card.Header>
-            <Text>Default Card Header</Text>
+            <Typography>Default Card Header</Typography>
           </Card.Header>
           <Card.Content>
-            <Text>This is the default card content</Text>
+            <Typography>This is the default card content</Typography>
           </Card.Content>
           <Card.Footer>
-            <Text>Default Card Footer</Text>
+            <Typography>Default Card Footer</Typography>
           </Card.Footer>
         </Card>
 
         {/* Card with Divider */}
         <Card variant='bodered'>
           <Card.Header>
-            <Text>Card with Divider</Text>
+            <Typography>Card with Divider</Typography>
           </Card.Header>
           <Card.Divider />
           <Card.Content>
-            <Text>Content with top and bottom dividers</Text>
+            <Typography>Content with top and bottom dividers</Typography>
           </Card.Content>
           <Card.Divider />
           <Card.Footer>
-            <Text>Footer</Text>
+            <Typography>Footer</Typography>
           </Card.Footer>
         </Card>
 
@@ -41,18 +41,18 @@ const CardComponent = (): React.JSX.Element => {
         <Card variant='shadow'>
           <Card.Image source={localImage().icEmpty} />
           <Card.Content>
-            <Text>Card with cover image</Text>
+            <Typography>Card with cover image</Typography>
           </Card.Content>
         </Card>
 
         {/* Card with Center Image */}
         <Card>
           <Card.Header>
-            <Text>Card with Center Image</Text>
+            <Typography>Card with Center Image</Typography>
           </Card.Header>
           <Card.Image source={localImage().icEmpty} />
           <Card.Content>
-            <Text>Content below centered image</Text>
+            <Typography>Content below centered image</Typography>
           </Card.Content>
         </Card>
       </ScrollView>

@@ -1,6 +1,6 @@
 import { ScrollView } from 'react-native'
 
-import { Block, Button, Header, Text } from '@components'
+import { Block, Button, Header, Typography } from '@components'
 import { createContainer } from '../create-container'
 
 const ButtonComponent = (): React.JSX.Element => {
@@ -11,7 +11,7 @@ const ButtonComponent = (): React.JSX.Element => {
         <Block gap={16} padding={16}>
           {/* Variants */}
           <Block gap={8}>
-            <Text>Button Variants</Text>
+            <Typography>Button Variants</Typography>
             <Button onPress={() => {}} text='Solid Button' variant='solid' />
             <Button
               onPress={() => {}}
@@ -28,7 +28,7 @@ const ButtonComponent = (): React.JSX.Element => {
 
           {/* Colors */}
           <Block gap={8}>
-            <Text>Button Colors</Text>
+            <Typography>Button Colors</Typography>
             <Button color='primary' onPress={() => {}} text='Primary Button' />
             <Button
               color='secondary'
@@ -42,7 +42,7 @@ const ButtonComponent = (): React.JSX.Element => {
 
           {/* Sizes */}
           <Block gap={8}>
-            <Text>Button Sizes</Text>
+            <Typography>Button Sizes</Typography>
             <Button onPress={() => {}} size='small' text='Small Button' />
             <Button onPress={() => {}} size='medium' text='Medium Button' />
             <Button onPress={() => {}} size='large' text='Large Button' />
@@ -50,14 +50,14 @@ const ButtonComponent = (): React.JSX.Element => {
 
           {/* States */}
           <Block gap={8}>
-            <Text>Button States</Text>
+            <Typography>Button States</Typography>
             <Button disabled onPress={() => {}} text='Disabled Button' />
             <Button loading onPress={() => {}} text='Loading Button' />
           </Block>
 
           {/* Custom Styling */}
           <Block gap={8}>
-            <Text>Custom Styling</Text>
+            <Typography>Custom Styling</Typography>
             <Button
               borderColor='#FF5733'
               borderRadius={25}
@@ -71,9 +71,9 @@ const ButtonComponent = (): React.JSX.Element => {
 
           {/* With Children */}
           <Block gap={8}>
-            <Text>Button with Children</Text>
+            <Typography>Button with Children</Typography>
             <Button onPress={() => {}}>
-              <Text color='white'>Custom Children Content</Text>
+              <Typography color='white'>Custom Children Content</Typography>
             </Button>
           </Block>
         </Block>

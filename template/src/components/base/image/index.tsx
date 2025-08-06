@@ -1,5 +1,3 @@
-import { useMemo } from 'react'
-
 import { Image as ExpoImage, type ImageSource } from 'expo-image'
 import type { TImageProps } from './type'
 
@@ -18,25 +16,18 @@ export const Image = function Image(
     ...rest
   } = props
 
-  const imageSource = useMemo(
-    () =>
-      typeof source === 'object'
-        ? {
-            ...source,
-            headers: {
-              Accept: 'image/webp,*/*;q=0.8'
-            }
+  const imageSource =
+    typeof source === 'object'
+      ? {
+          ...source,
+          headers: {
+            Accept: 'image/webp,*/*;q=0.8'
           }
-        : source,
-    [source]
-  )
+        }
+      : source
 
-  const imageSize = useMemo(() => {
-    if (typeof size === 'number') {
-      return { height: size, width: size }
-    }
-    return size
-  }, [size])
+  const imageSize =
+    typeof size === 'number' ? { height: size, width: size } : size
 
   if (typeof source === 'object' && !(source as ImageSource)?.uri) {
     console.warn('Image source is not a valid uri', source)

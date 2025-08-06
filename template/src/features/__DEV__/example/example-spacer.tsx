@@ -1,6 +1,6 @@
 import { ScrollView, StyleSheet } from 'react-native'
 
-import { Block, Header, Row, Spacer, Text } from '@components'
+import { Block, Header, Row, Spacer, Typography } from '@components'
 import { createContainer } from '../create-container'
 
 const BoxDemo = (): React.JSX.Element => (
@@ -15,7 +15,7 @@ const SpacerComponent = (): React.JSX.Element => {
         <Block padding={16}>
           {/* Vertical Spacing Demo */}
           <Block gap={8}>
-            <Text>Vertical Spacing (y prop)</Text>
+            <Typography>Vertical Spacing (y prop)</Typography>
             <BoxDemo />
             <Spacer y={8} />
             <BoxDemo />
@@ -29,7 +29,7 @@ const SpacerComponent = (): React.JSX.Element => {
 
           {/* Horizontal Spacing Demo */}
           <Block gap={8}>
-            <Text>Horizontal Spacing (x prop)</Text>
+            <Typography>Horizontal Spacing (x prop)</Typography>
             <Row>
               <BoxDemo />
               <Spacer x={8} />
@@ -43,7 +43,7 @@ const SpacerComponent = (): React.JSX.Element => {
 
           {/* Combined X and Y Spacing */}
           <Block gap={8}>
-            <Text>Combined X and Y Spacing</Text>
+            <Typography>Combined X and Y Spacing</Typography>
             <Row>
               <BoxDemo />
               <Spacer x={16} y={16} />
@@ -59,7 +59,7 @@ const SpacerComponent = (): React.JSX.Element => {
 
           {/* Default Theme Spacing */}
           <Block gap={8}>
-            <Text>Default Theme Spacing</Text>
+            <Typography>Default Theme Spacing</Typography>
             <BoxDemo />
             <Spacer />
             <BoxDemo />

@@ -1,112 +1,46 @@
-import { useEffect, useRef } from 'react'
-import { Animated, Easing, StyleSheet } from 'react-native'
+import { useEffect } from 'react'
 
-import Colors from '@theme/colors'
-import { Block } from '../block'
+import Animated, {
+  Easing,
+  useAnimatedStyle,
+  useSharedValue,
+  withRepeat,
+  withTiming
+} from 'react-native-reanimated'
+import { getSpinnerSize, type SpinnerProps, SpinnerView } from './spinner-view'
 
-interface Props {
-  color: keyof typeof Colors
-  durationMs?: number
-  size?: number | 'small' | 'medium' | 'large'
-}
-
-const SPINNER_SIZES = {
-  large: 32,
-  medium: 24,
-  small: 16
-} as const
-
-const getSpinnerSize = (size: Props['size']): number => {
-  if (typeof size === 'number') return size
-  if (!size) return SPINNER_SIZES.medium
-  return SPINNER_SIZES[size]
-}
-
-const startRotationAnimation = (
-  durationMs: number,
-  rotationDegree: Animated.Value
-): void => {
-  Animated.loop(
-    Animated.timing(rotationDegree, {
-      duration: durationMs,
-      easing: Easing.linear,
-      toValue: 360,
-      useNativeDriver: true
-    })
-  ).start()
-}
-
-const Spinner = ({
-  color,
-  durationMs = 1000,
-  size = 'small'
-}: Props): React.JSX.Element => {
-  const rotationDegree = useRef(new Animated.Value(0)).current
-  const spinnerSize = getSpinnerSize(size)
-  const borderWidth = Math.max(Math.floor(spinnerSize / 6), 2)
-  const actualColor = color in Colors ? Colors[color] : color
+const Spinner = ({ size, duration = 1000, ...rest }: SpinnerProps) => {
+  const transition = useSharedValue(0)
 
   useEffect(() => {
-    startRotationAnimation(durationMs, rotationDegree)
-  }, [durationMs, rotationDegree])
+    transition.set(
+      withRepeat(
+        withTiming(360, { duration, easing: Easing.linear }),
+        -1,
+        false
+      )
+    )
+  }, [duration, transition])
+
+  const animatedStyle = useAnimatedStyle(() => {
+    return {
+      transform: [{ rotateZ: transition.get() + 'deg' }]
+    }
+  }, [])
 
   return (
-    <Block
-      accessibilityRole='progressbar'
-      style={[styles.container, { height: spinnerSize, width: spinnerSize }]}
+    <Animated.View
+      role='progressbar'
+      style={[
+        {
+          height: getSpinnerSize(size),
+          width: getSpinnerSize(size)
+        },
+        animatedStyle
+      ]}
     >
-      <Block
-        style={[
-          styles.background,
-          {
-            borderColor: actualColor,
-            borderRadius: spinnerSize / 2,
-            borderWidth
-          }
-        ]}
-      />
-      <Animated.View
-        style={[
-          styles.progress,
-          {
-            borderRadius: spinnerSize / 2,
-            borderTopColor: actualColor,
-            borderWidth
-          },
-          {
-            transform: [
-              {
-                rotateZ: rotationDegree.interpolate({
-                  inputRange: [0, 360],
-                  outputRange: ['0deg', '360deg']
-                })
-              }
-            ]
-          }
-        ]}
-      />
-    </Block>
+      <SpinnerView size={size} {...rest} />
+    </Animated.View>
   )
 }
-
-const styles = StyleSheet.create({
-  background: {
-    height: '100%',
-    opacity: 0.25,
-    width: '100%'
-  },
-  container: {
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  progress: {
-    borderBottomColor: 'transparent',
-    borderLeftColor: 'transparent',
-    borderRightColor: 'transparent',
-    height: '100%',
-    position: 'absolute',
-    width: '100%'
-  }
-})
-
 export default Spinner

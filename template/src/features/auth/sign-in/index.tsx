@@ -1,9 +1,9 @@
-import { Text, View } from 'react-native'
+import { Block, Typography } from '@components'
 
 export default function Signin(): React.JSX.Element {
   return (
-    <View>
-      <Text>Signup</Text>
-    </View>
+    <Block>
+      <Typography>Signup</Typography>
+    </Block>
   )
 }

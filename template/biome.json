@@ -24,7 +24,7 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "includes": ["src/**"]
+    "includes": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"]
   },
   "formatter": {
     "attributePosition": "auto",
@@ -137,6 +137,8 @@
         "noUnreachableSuper": "error",
         "noUnsafeFinally": "error",
         "noUnsafeOptionalChaining": "error",
+        "noUnusedFunctionParameters": "error",
+        "noUnusedImports": "error",
         "noUnusedLabels": "error",
         "noUnusedVariables": "error",
         "useExhaustiveDependencies": "warn",

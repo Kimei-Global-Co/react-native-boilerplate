@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/__DEV__/example/example-lingui.tsx:8
-#: src/features/__DEV__/example/example-typography.tsx:17
+#: src/features/__DEV__/example/example-lingui.tsx:7
+#: src/features/__DEV__/example/example-typography.tsx:18
 msgid "Hello world!"
 msgstr "Hello world!"

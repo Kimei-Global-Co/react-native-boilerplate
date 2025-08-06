@@ -11,7 +11,7 @@ import Animated, {
 } from 'react-native-reanimated'
 import { Block } from '../block'
 import Icon from '../icon'
-import { Text } from '../text'
+import { Typography } from '../typography'
 import { createSplitItemStyles, createVariantStyles } from './styles'
 import type {
   AccordionContextType,
@@ -97,7 +97,7 @@ const AccordionItem = ({
     <Block style={[styles.item, variantStyle, splitItemStyle, style]}>
       <Pressable onPress={() => toggleItem(itemKey)}>
         <Block style={styles.header}>
-          <Text>{title}</Text>
+          <Typography>{title}</Typography>
           <Animated.View
             style={{
               transform: [{ rotate: isExpanded ? '180deg' : '0deg' }]

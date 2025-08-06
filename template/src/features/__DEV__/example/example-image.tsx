@@ -1,6 +1,6 @@
 import { ScrollView } from 'react-native'
 
-import { Block, Header, Image, Row, Text } from '@components'
+import { Block, Header, Image, Row, Typography } from '@components'
 import { createContainer } from '../create-container'
 
 const SAMPLE_IMAGE = 'https://picsum.photos/seed/picsum/200/300'
@@ -14,13 +14,13 @@ const ImageComponent = (): React.JSX.Element => {
         <Block gap={16} padding={16}>
           {/* Basic Usage */}
           <Block gap={8}>
-            <Text>Basic Image</Text>
+            <Typography>Basic Image</Typography>
             <Image size={200} source={SAMPLE_IMAGE} />
           </Block>
 
           {/* Square Images with Different Sizes */}
           <Block gap={8}>
-            <Text>Square Images (size prop)</Text>
+            <Typography>Square Images (size prop)</Typography>
             <Row gap={8}>
               <Image size={50} source={SAMPLE_IMAGE} />
               <Image size={80} source={SAMPLE_IMAGE} />
@@ -30,7 +30,7 @@ const ImageComponent = (): React.JSX.Element => {
 
           {/* Different Border Radius */}
           <Block gap={8}>
-            <Text>Border Radius Variants</Text>
+            <Typography>Border Radius Variants</Typography>
             <Row gap={8}>
               <Image borderRadius={8} size={80} source={SAMPLE_IMAGE} />
               <Image borderRadius={16} size={80} source={SAMPLE_IMAGE} />
@@ -40,7 +40,7 @@ const ImageComponent = (): React.JSX.Element => {
 
           {/* Content Fit Examples */}
           <Block gap={8}>
-            <Text>Content Fit Variants</Text>
+            <Typography>Content Fit Variants</Typography>
             <Row gap={8}>
               <Image contentFit='cover' size={100} source={SAMPLE_IMAGE} />
               <Image contentFit='contain' size={100} source={SAMPLE_IMAGE} />
@@ -50,7 +50,7 @@ const ImageComponent = (): React.JSX.Element => {
 
           {/* With Blurhash */}
           <Block gap={8}>
-            <Text>With Blurhash Loading</Text>
+            <Typography>With Blurhash Loading</Typography>
             <Image blurhash={BLURHASH} size={200} source={SAMPLE_IMAGE} />
           </Block>
         </Block>

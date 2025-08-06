@@ -1,7 +1,8 @@
-import { createContext, useContext, useMemo } from 'react'
-import { StyleSheet, Text, TouchableOpacity } from 'react-native'
+import { createContext, useContext } from 'react'
+import { StyleSheet, TouchableOpacity } from 'react-native'
 
 import { Block } from '../block'
+import { Typography } from '../typography'
 import {
   type CloseTriggerProps,
   type LabelProps,
@@ -26,13 +27,11 @@ const Root: React.FC<RootProps> = ({
   size = 'sm',
   children
 }) => {
-  const contextValue = useMemo(() => ({ size, variant }), [variant, size])
-
   const variantStyle = VARIANT_STYLES[variant]
   const sizeStyle = SIZE_STYLES[size]
 
   return (
-    <TagContext.Provider value={contextValue}>
+    <TagContext.Provider value={{ size, variant }}>
       <Block
         style={[
           styles.root,
@@ -57,7 +56,7 @@ const Label: React.FC<LabelProps> = ({ children }) => {
   const sizeStyle = SIZE_STYLES[size]
 
   return (
-    <Text
+    <Typography
       ellipsizeMode='tail'
       numberOfLines={1}
       style={{
@@ -67,7 +66,7 @@ const Label: React.FC<LabelProps> = ({ children }) => {
       }}
     >
       {children}
-    </Text>
+    </Typography>
   )
 }
 
@@ -89,7 +88,7 @@ const CloseTrigger: React.FC<CloseTriggerProps> = ({ onClose }) => {
       onPress={onClose}
       style={{ justifyContent: 'center', marginLeft: 4 }}
     >
-      <Text
+      <Typography
         style={{
           color: variantStyle.textColor,
           fontSize: sizeStyle.fontSize * 1.5,
@@ -98,7 +97,7 @@ const CloseTrigger: React.FC<CloseTriggerProps> = ({ onClose }) => {
         }}
       >
         ×
-      </Text>
+      </Typography>
     </TouchableOpacity>
   )
 }

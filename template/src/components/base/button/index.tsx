@@ -3,7 +3,7 @@ import { Animated, Pressable, StyleSheet } from 'react-native'
 
 import Row from '../row'
 import Spinner from '../spinner'
-import { Text } from '../text'
+import { Typography } from '../typography'
 import { getButtonColors, getSizeStyle } from './style'
 import type { ButtonProps } from './type'
 
@@ -79,7 +79,7 @@ export const Button = ({
     >
       <Animated.View style={buttonStyles}>
         <Row align='center' gap={10}>
-          <Text style={textStyles}>{children || text}</Text>
+          <Typography style={textStyles}>{children || text}</Typography>
           {loading && <Spinner color='white' />}
         </Row>
       </Animated.View>
@@ -99,11 +99,7 @@ const styles = StyleSheet.create({
     opacity: 0.6
   },
   shadow: {
-    elevation: 3,
-    shadowColor: '#000',
-    shadowOffset: { height: 2, width: 0 },
-    shadowOpacity: 0.4,
-    shadowRadius: 2
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.15);'
   },
   text: {
     fontWeight: '600'
