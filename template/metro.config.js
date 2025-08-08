@@ -1,6 +1,6 @@
 // Learn more https://docs.expo.io/guides/customizing-metro
 const { getDefaultConfig } = require('expo/metro-config')
-
+const { withRozenite } = require('@rozenite/metro');
 const defaultConfig = getDefaultConfig(__dirname)
 const { transformer, resolver } = defaultConfig
 
@@ -25,8 +25,8 @@ defaultConfig.transformer = {
 
 defaultConfig.resolver = {
   ...resolver,
-  unstable_enablePackageExports: false, //related issue => https://github.com/facebook/metro/pull/1448 and https://github.com/lingui/js-lingui/issues/2231
-  sourceExts: [...resolver.sourceExts, 'po', 'pot']
+  sourceExts: [...resolver.sourceExts, 'po', 'pot'],
+  unstable_enablePackageExports: false //related issue => https://github.com/facebook/metro/pull/1448 and https://github.com/lingui/js-lingui/issues/2231
 }
 
 defaultConfig.transformer.minifierConfig = {
@@ -35,4 +35,4 @@ defaultConfig.transformer.minifierConfig = {
   }
 }
 
-module.exports = defaultConfig
+module.exports = withRozenite(defaultConfig)

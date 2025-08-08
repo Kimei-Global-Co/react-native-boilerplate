@@ -4,12 +4,14 @@ import EvilIcons from '@expo/vector-icons/EvilIcons'
 import Feather from '@expo/vector-icons/Feather'
 import FontAwesome from '@expo/vector-icons/FontAwesome'
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5'
+import FontAwesome6 from '@expo/vector-icons/FontAwesome6'
 import Fontisto from '@expo/vector-icons/Fontisto'
 import Ionicons from '@expo/vector-icons/Ionicons'
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
 import MaterialIcons from '@expo/vector-icons/MaterialIcons'
 import Octicons from '@expo/vector-icons/Octicons'
 import SimpleLineIcons from '@expo/vector-icons/SimpleLineIcons'
+import * as Font from 'expo-font'
 
 export const Icons = {
   antDesign: AntDesign,
@@ -18,6 +20,7 @@ export const Icons = {
   feather: Feather,
   fontAwesome: FontAwesome,
   fontAwesome5: FontAwesome5,
+  fontAwesome6: FontAwesome6,
   fontisto: Fontisto,
   ionicons: Ionicons,
   materialCommunityIcons: MaterialCommunityIcons,
@@ -28,10 +31,18 @@ export const Icons = {
 
 export type IconType = keyof typeof Icons
 
+export function cacheFonts(fonts: string[]) {
+  return fonts.map((font) => Font.loadAsync(font))
+}
+
 export type IconName<T extends IconType> = React.ComponentProps<
   (typeof Icons)[T]
 >['name']
 
-export const getIconComponent = (
-  componentName: IconType
-): (typeof Icons)[IconType] => Icons[componentName]
+export const getIconComponent = Icons as {
+  [K in IconType]: React.ComponentType<{
+    name: IconName<K>
+    size?: number
+    color?: string
+  }>
+}

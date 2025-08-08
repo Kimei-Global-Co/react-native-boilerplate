@@ -1,12 +1,19 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { AppState } from 'react-native'
 
 import { Image } from 'expo-image'
+import { SheetsContainer } from '@components/common/sheets-container'
+import { useInitial } from '@hooks/use-initial'
+import { linking } from '@navigation/config/linking'
 import { navigationRef } from '@navigation/config/navigation-services'
 import { NavigationContainer } from '@react-navigation/native'
 import RootScenes from './root-scenes'
 
 export default function MainNavigation(): React.JSX.Element {
+  const trackedLinking = useRef(linking)
+
+  const linkingConfig = useInitial(trackedLinking)
+
   useEffect(() => {
     // a memory warning listener for free up FastImage Cache
     const memoryWarningSubscription = AppState.addEventListener(
@@ -29,8 +36,15 @@ export default function MainNavigation(): React.JSX.Element {
   }, [])
 
   return (
-    <NavigationContainer ref={navigationRef}>
+    <NavigationContainer
+      linking={
+        process.env.EXPO_PUBLIC_STAGE !== 'development' ? linking : undefined
+      }
+      onReady={linkingConfig.onReady}
+      ref={navigationRef}
+    >
       <RootScenes />
+      <SheetsContainer />
     </NavigationContainer>
   )
 }

@@ -13,6 +13,9 @@ import type {
   SafeAreaInsetType
 } from './types'
 
+export const wait = (ms: number) =>
+  new Promise((resolve) => setTimeout(resolve, ms))
+
 export const handleGutter = (
   type: 'padding' | 'margin',
   gutter: number | GutterProps
@@ -58,8 +61,8 @@ export const handleSquare = (
   number: number
 ): { width: number; height: number } => {
   return {
-    width: number,
-    height: number
+    height: number,
+    width: number
   }
 }
 
@@ -67,9 +70,9 @@ export const handleRound = (
   number: number
 ): { width: number; height: number; borderRadius: number } => {
   return {
-    width: number,
+    borderRadius: number / 2,
     height: number,
-    borderRadius: number / 2
+    width: number
   }
 }
 
@@ -134,7 +137,7 @@ export const handleBorder = (
   [key: string]: string | number | undefined
 } => {
   if ('width' in border) {
-    return { borderWidth: border.width, borderColor: Colors[border.color] }
+    return { borderColor: Colors[border.color], borderWidth: border.width }
   }
 
   const borderKeys = Object.keys(border) as Array<keyof BorderType>
@@ -173,36 +176,36 @@ export const { width: screenWidth, height: screenHeight } =
   Dimensions.get('screen')
 
 export const STALE = {
+  HOURS: {
+    FIVE: 1e3 * 60 * 60 * 5,
+    ONE: 1e3 * 60 * 60
+  },
+  INFINITY: Infinity,
+  MINUTES: {
+    FIFTEEN: 1e3 * 60 * 15,
+    FIVE: 1e3 * 60 * 5,
+    ONE: 1e3 * 60,
+    TEN: 1e3 * 60 * 10,
+    THIRTY: 1e3 * 60 * 30
+  },
   SECONDS: {
     FIFTEEN: 1e3 * 15,
     THIRTY: 1e3 * 30
-  },
-  MINUTES: {
-    ONE: 1e3 * 60,
-    FIVE: 1e3 * 60 * 5,
-    TEN: 1e3 * 60 * 10,
-    FIFTEEN: 1e3 * 60 * 15,
-    THIRTY: 1e3 * 60 * 30
-  },
-  HOURS: {
-    ONE: 1e3 * 60 * 60,
-    FIVE: 1e3 * 60 * 60 * 5
-  },
-  INFINITY: Infinity
+  }
 }
 
 export const HIT_SLOP = {
   10: {
-    top: 10,
     bottom: 10,
     left: 10,
-    right: 10
+    right: 10,
+    top: 10
   },
   20: {
-    top: 20,
     bottom: 20,
     left: 20,
-    right: 20
+    right: 20,
+    top: 20
   }
 }
 
@@ -210,9 +213,11 @@ function typeGuards(x: unknown): x is string
 function typeGuards(x: unknown, type: 'string'): x is string
 function typeGuards(x: unknown, type: 'number'): x is number
 function typeGuards(x: unknown, type: 'undefined'): x is undefined
+function typeGuards(x: unknown, type: 'object'): x is object
+function typeGuards(x: unknown, type: 'null'): x is null
 function typeGuards(
   x: unknown,
-  type?: 'string' | 'number' | 'undefined'
+  type?: 'string' | 'number' | 'undefined' | 'object' | 'null'
 ): boolean {
   switch (type) {
     case 'string':
@@ -221,6 +226,10 @@ function typeGuards(
       return typeof x === 'number'
     case 'undefined':
       return x === undefined
+    case 'object':
+      return typeof x === 'object'
+    case 'null':
+      return x === null
     default:
       return false
   }
@@ -228,14 +237,32 @@ function typeGuards(
 
 export { typeGuards }
 
-export const Helper = {
-  isIOS: (): boolean => {
-    return Platform.OS === 'ios'
-  },
-  isAndroid: (): boolean => {
-    return Platform.OS === 'android'
-  },
+function isResponseError(error: unknown, type: 'network'): boolean
+function isResponseError(error: unknown, type: 'server'): boolean
+function isResponseError(error: unknown, type: 'network' | 'server'): boolean {
+  const str = String(error)
 
+  if (type === 'network')
+    return (
+      str.includes('Abort') ||
+      str.includes('Network request failed') ||
+      str.includes('Failed to fetch') ||
+      str.includes('Network Error') ||
+      str.includes('timeout exceeded')
+    )
+
+  if (type === 'server')
+    return (
+      str.includes('Request failed with status code 502') ||
+      str.includes('Request failed with status code 500')
+    )
+
+  return false
+}
+
+export { isResponseError }
+
+export const Helper = {
   getValue: <T, K extends keyof T>(
     obj: T,
     key: K,
@@ -243,10 +270,16 @@ export const Helper = {
   ): T[K] => {
     return get(obj, key, defaultValue)
   },
+  isAndroid: (): boolean => {
+    return Platform.OS === 'android'
+  },
 
   isIcon(
     icon: IconComponentProps | React.ReactNode
   ): icon is IconComponentProps {
     return (icon as IconComponentProps)?.name !== undefined
+  },
+  isIOS: (): boolean => {
+    return Platform.OS === 'ios'
   }
 }

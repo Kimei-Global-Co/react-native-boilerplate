@@ -10,9 +10,11 @@ import ExampleIcon from '@features/__DEV__/example/example-icon'
 import ExampleImage from '@features/__DEV__/example/example-image'
 import ExampleLingui from '@features/__DEV__/example/example-lingui'
 import ExampleRow from '@features/__DEV__/example/example-row'
+import ExampleSheet from '@features/__DEV__/example/example-sheet'
 import ExampleSpacer from '@features/__DEV__/example/example-spacer'
 import ExampleSpinner from '@features/__DEV__/example/example-spinner'
 import ExampleTag from '@features/__DEV__/example/example-tag'
+import ExampleTextInput from '@features/__DEV__/example/example-text-input'
 import ExampleTypography from '@features/__DEV__/example/example-typography'
 import Signin from '@features/auth/sign-in'
 import Signup from '@features/auth/sign-up'
@@ -64,7 +66,7 @@ export const bottomTabScreens = []
  */
 
 // biome-ignore assist/source/useSortedKeys: <explanation>
-export  const devScreens = {
+export const devScreens = {
   DevMenu: DevMenu,
   Accordion: ExampleAccordion,
   Avatar: ExampleAvatar,
@@ -80,5 +82,7 @@ export  const devScreens = {
   Spacer: ExampleSpacer,
   Spinner: ExampleSpinner,
   Tag: ExampleTag,
+  TextInput: ExampleTextInput,
+  Sheet: ExampleSheet,
   Typography: ExampleTypography
 }

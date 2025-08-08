@@ -1,8 +1,12 @@
 import { StyleSheet, type ViewStyle } from 'react-native'
 
 import Colors from '@theme/colors'
+import { Spacing } from '@theme/layout'
 import NativeView from 'react-native/Libraries/Components/View/ViewNativeComponent'
-import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import {
+  type EdgeInsets,
+  useSafeAreaInsets
+} from 'react-native-safe-area-context'
 import {
   createDefaultStyle,
   handleGutter,
@@ -12,74 +16,78 @@ import {
 import type { BlockProps } from './type'
 
 const createSizeStyle = (size: BlockProps['size']): ViewStyle => {
-  if (typeGuards(size, 'number')) {
-    return { height: size, width: size }
-  }
-  if (typeof size === 'object') {
+  if (typeGuards(size, 'number')) return { height: size, width: size }
+
+  if (typeGuards(size, 'object'))
     return {
       height: size.height ?? 0,
       width: size.width ?? 0
     }
-  }
+
   return {}
 }
 
-const createShadowStyle = (): ViewStyle => ({
-  boxShadow: '0 2px 4px rgba(0, 0, 0, 0.15);'
-})
+const createBlockStyles = (
+  props: BlockProps,
+  safeArea: EdgeInsets
+): ViewStyle => {
+  const {
+    style,
+    size,
+    backgroundColor,
+    align,
+    justify,
+    row,
+    position,
+    top,
+    bottom,
+    left,
+    right,
+    gap,
+    padding,
+    margin,
+    shadow,
+    overflow,
+    linearGradient
+  } = props
+
+  return StyleSheet.flatten([
+    createDefaultStyle(props as { [key: string]: unknown }),
+    createSizeStyle(size),
+    align && { alignItems: align },
+    justify && { justifyContent: justify },
+    row && { flexDirection: 'row' },
+    position && { position },
+    !typeGuards(top, 'undefined') && { top },
+    !typeGuards(bottom, 'undefined') && { bottom },
+    !typeGuards(left, 'undefined') && { left },
+    !typeGuards(right, 'undefined') && { right },
+    overflow && { overflow },
+    padding && handleGutter('padding', padding),
+    margin && handleGutter('margin', margin),
+    typeGuards(gap, 'string')
+      ? { gap: Spacing[gap] }
+      : typeGuards(gap, 'number') && { gap },
+    shadow && { boxShadow: '0 2px 4px rgba(0, 0, 0, 0.15)' },
+    linearGradient && { experimental_backgroundImage: linearGradient },
+    handleInset(props, safeArea, padding),
+    backgroundColor && {
+      backgroundColor: Colors[backgroundColor] || backgroundColor
+    },
+    style
+  ]) as ViewStyle
+}
 
 export const Block = function Block(
   props: BlockProps & { ref?: React.Ref<NativeView> }
 ) {
   {
     const safeArea = useSafeAreaInsets()
-    const {
-      children,
-      style,
-      size,
-      backgroundColor,
-      align,
-      justify,
-      row,
-      position,
-      top,
-      bottom,
-      left,
-      right,
-      gap,
-      padding,
-      margin,
-      shadow,
-      overflow,
-      ref,
-      ...rest
-    } = props
-
-    const blockStyles = StyleSheet.flatten([
-      createDefaultStyle(props as { [key: string]: unknown }),
-      createSizeStyle(size),
-      align && { alignItems: align },
-      justify && { justifyContent: justify },
-      row && { flexDirection: 'row' },
-      position && { position },
-      !typeGuards(top, 'undefined') && { top },
-      !typeGuards(bottom, 'undefined') && { bottom },
-      !typeGuards(left, 'undefined') && { left },
-      !typeGuards(right, 'undefined') && { right },
-      overflow && { overflow },
-      padding && handleGutter('padding', padding),
-      margin && handleGutter('margin', margin),
-      gap && { gap },
-      shadow && createShadowStyle(),
-      handleInset(props, safeArea, padding),
-      backgroundColor && {
-        backgroundColor: Colors[backgroundColor] || backgroundColor
-      },
-      style
-    ])
+    const { children, ...rest } = props
+    const blockStyles = createBlockStyles(props, safeArea)
 
     return (
-      <NativeView {...rest} ref={ref} style={blockStyles}>
+      <NativeView {...rest} ref={props.ref} style={blockStyles}>
         {children}
       </NativeView>
     )

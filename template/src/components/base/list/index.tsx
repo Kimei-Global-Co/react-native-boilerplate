@@ -1,5 +1,3 @@
-import { type ReactElement } from 'react'
-
 import { FlashList, type ListRenderItemInfo } from '@shopify/flash-list'
 import { Block } from '../block'
 import EmptyView from '../empty-view'
@@ -60,4 +58,4 @@ function FlashListComponent<T>({
 
 export const InfiniteScrollList = FlashListComponent as <T>(
   props: InfiniteScrollListProps<T>
-) => ReactElement
+) => React.ReactElement

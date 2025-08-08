@@ -1,12 +1,12 @@
 import type { ImageSourcePropType, ViewStyle } from 'react-native'
 
-import { Icons } from '@assets/icons'
+import { type IconName, Icons } from '@assets/icons'
 
 export interface HeaderAction {
   /** Unique identifier for the action */
   id: string
   /** Icon name from Icons enum */
-  name: string
+  name: IconName<keyof typeof Icons>
   /** Icon type/family */
   type: keyof typeof Icons
   /** Action handler */

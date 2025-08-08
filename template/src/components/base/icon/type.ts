@@ -1,7 +1,6 @@
 import {
+  type StyleProp,
   type TouchableHighlightProps,
-  TouchableNativeFeedback,
-  TouchableOpacity,
   type ViewStyle
 } from 'react-native'
 
@@ -11,16 +10,8 @@ import type Colors from '@theme/colors'
 interface CommonIconProps extends TouchableHighlightProps {
   size?: number
   color?: keyof typeof Colors
-  disabledStyle?: ViewStyle
-  style?: ViewStyle
-
-  /**
-   * Button Component
-   * Default:
-   * - Android: TouchableNativeFeedback
-   * - Other: TouchableOpacity
-   */
-  ButtonComponent?: typeof TouchableNativeFeedback | typeof TouchableOpacity
+  disabledStyle?: StyleProp<ViewStyle>
+  style?: StyleProp<ViewStyle>
 }
 
 export type IconComponentProps = {

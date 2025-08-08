@@ -1,5 +1,5 @@
 /** biome-ignore-all assist/source/useSortedKeys: <explanation> */
-module.exports = function (api) {
+module.exports = (api) => {
   api.cache(true)
   const plugins = [
     '@lingui/babel-plugin-lingui-macro',

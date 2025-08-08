@@ -16,11 +16,20 @@
       "supportsTablet": false,
       "bitcode": false,
       "bundleIdentifier": "com.boilerplate.mobile",
-      "scheme": ["com.boilerplate.mobile"],
+      "scheme": [
+        "com.boilerplate.mobile"
+      ],
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false,
-        "CFBundleLocalizations": ["en", "vi"],
+        "CFBundleLocalizations": [
+          "en",
+          "vi"
+        ],
         "CADisableMinimumFrameDurationOnPhones": true
+      },
+      "entitlements": {
+        "com.apple.developer.kernel.increased-memory-limit": true,
+        "com.apple.developer.kernel.extended-virtual-addressing": true
       }
     },
     "android": {
@@ -31,19 +40,26 @@
       },
       "edgeToEdgeEnabled": true,
       "package": "com.boilerplate.mobile",
-      "scheme": ["com.boilerplate.mobile"]
+      "scheme": [
+        "com.boilerplate.mobile"
+      ]
     },
     "experiments": {
       "buildCacheProvider": "eas",
       "reactCompiler": true
     },
     "plugins": [
+      "./plugins/withAndroidManifestPlugin.js",
+      "./plugins/withAndroidGradleCachePlugin.js",
       [
         "expo-build-properties",
         {
           "android": {
             "enableProguardInReleaseBuilds": true,
             "enableShrinkResourcesInReleaseBuilds": true
+          },
+          "ios": {
+            "ccacheEnabled": true
           }
         }
       ],
@@ -55,7 +71,9 @@
           "imageWidth": 200
         }
       ],
-      ["expo-localization"],
+      [
+        "expo-localization"
+      ],
       [
         "expo-font",
         {

@@ -1,12 +1,28 @@
-import { type TextStyle } from 'react-native'
+import { Platform, type TextStyle } from 'react-native'
 
-export const FontsFamily = {
-  bold: 'Inter_700Bold',
-  extraBold: 'Inter_800ExtraBold',
-  medium: 'Inter_500Medium',
-  regular: 'Inter_400Regular',
-  semiBold: 'Inter_600SemiBold'
-} as const
+type FontWeight = 'regular' | 'medium' | 'semiBold' | 'bold' | 'extraBold'
+
+const fontMap: Record<FontWeight, { ios: string; android: string }> = {
+  bold: {
+    android: '',
+    ios: ''
+  },
+  extraBold: {
+    android: '',
+    ios: ''
+  },
+  medium: {
+    android: '',
+    ios: ''
+  },
+  regular: { android: 'Nunito_400Regular', ios: 'Nunito-Regular' },
+  semiBold: { android: 'Nunito_900Black', ios: 'Nunito-Black' }
+}
+
+export const getFontFamily = (weight: FontWeight): string => {
+  const platform = Platform.OS === 'ios' ? 'ios' : 'android'
+  return fontMap[weight][platform]
+}
 
 export interface ThemeFontWeight {
   regular: FontBase
@@ -22,25 +38,27 @@ export type FontBase = {
   fontWeight: TextStyle['fontWeight']
 }
 
+const baseFontSize = 14
+
 export default {
   bold: {
-    fontFamily: FontsFamily['bold'],
-    fontSize: 14
+    fontFamily: getFontFamily('bold'),
+    fontSize: baseFontSize
   },
   extraBold: {
-    fontFamily: FontsFamily['extraBold'],
-    fontSize: 14
+    fontFamily: getFontFamily('extraBold'),
+    fontSize: baseFontSize
   },
   medium: {
-    fontFamily: FontsFamily['medium'],
-    fontSize: 14
+    fontFamily: getFontFamily('medium'),
+    fontSize: baseFontSize
   },
   regular: {
-    fontFamily: FontsFamily['regular'],
-    fontSize: 14
+    fontFamily: getFontFamily('regular'),
+    fontSize: baseFontSize
   },
   semiBold: {
-    fontFamily: FontsFamily['semiBold'],
-    fontSize: 14
+    fontFamily: getFontFamily('semiBold'),
+    fontSize: baseFontSize
   }
 } as ThemeFontWeight

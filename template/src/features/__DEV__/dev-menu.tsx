@@ -14,7 +14,7 @@ export default function DevMenu(): React.JSX.Element {
     >
       <Row between padding={15}>
         <Typography size={16}>{item}</Typography>
-        <Icon name='right' size={22} type='antDesign' />
+        <Icon name={'right'} size={22} type='antDesign' />
       </Row>
     </TouchableOpacity>
   )

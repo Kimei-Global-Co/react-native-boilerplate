@@ -12,12 +12,11 @@ const Row = (props: TRowProps): React.ReactElement => {
 
   return (
     <Block
+      row
       {...(between && { justify: 'space-between' })}
       {...(start && { justify: 'flex-start' })}
       {...(center && { justify: 'center' })}
       {...(end && { justify: 'flex-end' })}
-      role='row'
-      row
       {...rest}
     >
       {children}

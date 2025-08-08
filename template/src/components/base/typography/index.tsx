@@ -1,13 +1,12 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet, type TextStyle } from 'react-native'
 
-import { useTheme } from '@theme'
+import Colors from '@theme/colors'
+import fonts from '@theme/fonts'
 import { NativeText } from 'react-native/Libraries/Text/TextNativeComponent'
 import { createDefaultStyle, handleGutter, typeGuards } from 'utils/helper'
 import type { CommonTextProps } from './type'
 
-export const Typography = function Typography(props: CommonTextProps) {
-  const { colors, textVariants } = useTheme()
-
+const createTypoStyles = (props: CommonTextProps): TextStyle => {
   const {
     style,
     fontType = 'regular',
@@ -19,21 +18,17 @@ export const Typography = function Typography(props: CommonTextProps) {
     margin,
     center,
     justify,
-    right,
-    width,
-    minWidth
+    right
   } = props
 
-  const textStyle = StyleSheet.flatten([
+  return StyleSheet.flatten([
     createDefaultStyle(props as { [key: string]: unknown }),
     backgroundColor && {
-      backgroundColor: colors[backgroundColor] || backgroundColor
+      backgroundColor: Colors[backgroundColor] || backgroundColor
     },
-    textVariants[fontType],
-    { color: colors[color] ?? color },
+    { ...fonts[fontType] },
+    { color: Colors[color] ?? color },
     size && { fontSize: size },
-    width && { width },
-    minWidth && { minWidth },
     typeGuards(lineHeight, 'number') && { lineHeight },
     center && { textAlign: 'center' },
     right && { textAlign: 'right' },
@@ -41,12 +36,15 @@ export const Typography = function Typography(props: CommonTextProps) {
     padding && handleGutter('padding', padding),
     margin && handleGutter('margin', margin),
     style
-  ])
+  ]) as TextStyle
+}
+export const Typography = function Typography(props: CommonTextProps) {
+  const typoStyles = createTypoStyles(props)
 
   if (props.children === undefined || props.children === null) return null
 
   return (
-    <NativeText allowFontScaling={false} {...props} style={textStyle}>
+    <NativeText allowFontScaling={false} {...props} style={typoStyles}>
       {props.children}
     </NativeText>
   )

@@ -8,7 +8,17 @@ import {
 import { getIconComponent } from '@assets/icons'
 import theme from '@theme'
 import { Block } from '../block'
-import { type IconComponentProps } from './type'
+import type { IconComponentProps } from './type'
+
+const BUTTON_COMPONENTS = {
+  withoutPress: Block,
+  withPress: Platform.select<
+    typeof TouchableNativeFeedback | typeof TouchableOpacity
+  >({
+    android: TouchableNativeFeedback,
+    default: TouchableOpacity
+  })
+} as const
 
 const Icon: React.FC<IconComponentProps> = (props) => {
   const {
@@ -19,38 +29,34 @@ const Icon: React.FC<IconComponentProps> = (props) => {
     disabledStyle,
     style,
     activeOpacity = 0.6,
-    ButtonComponent = props.onPress
-      ? Platform.select<
-          typeof TouchableNativeFeedback | typeof TouchableOpacity
-        >({
-          android: TouchableNativeFeedback,
-          default: TouchableOpacity
-        })
-      : Block,
     ...rest
   } = props
-  const IconComponent = getIconComponent(type)
 
-  const initContainerStyle = StyleSheet.flatten([disabledStyle, style])
+  const ButtonComponent =
+    BUTTON_COMPONENTS[props.onPress ? 'withPress' : 'withoutPress']
+
+  const IconComponent = getIconComponent[type]
+
+  const initContainerStyle = StyleSheet.flatten([
+    disabledStyle && disabledStyle,
+    style
+  ])
 
   return (
     <ButtonComponent
       {...rest}
-      {...(ButtonComponent === TouchableOpacity && { activeOpacity })}
+      {...{ activeOpacity }}
       {...(props.disabled && { opacity: 0.5 })}
       overflow='hidden'
       style={Platform.OS === 'android' ? {} : initContainerStyle}
     >
       <Block
+        collapsable={false}
         overflow='hidden'
         style={Platform.OS === 'android' ? initContainerStyle : {}}
       >
         <IconComponent
-          color={
-            color && color in theme.colors
-              ? theme.colors[color as keyof typeof theme.colors]
-              : color
-          }
+          color={theme.colors[color as keyof typeof theme.colors] ?? color}
           name={name}
           size={size ?? 0}
         />

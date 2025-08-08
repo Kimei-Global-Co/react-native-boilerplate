@@ -1,45 +1,88 @@
-import { ScrollView } from 'react-native'
-
 import { Avatar, Block, Header, Row, Typography } from '@components'
+import { useMutative } from '@hooks/use-mutative'
+import { useTimeout } from '@hooks/use-timeout'
 import { createContainer } from '../create-container'
 
 const AvatarComponent = (): React.JSX.Element => {
   const sampleImageUrl = 'https://i.pravatar.cc/300'
 
+  const [enableSkeleton, setEnableSkeleton] = useMutative(true)
+
+  useTimeout(() => {
+    setEnableSkeleton(false)
+  }, 3000)
+
   return (
-    <Block flex={1}>
+    <Block collapsable={false} flex>
       <Header isBack title={'Avatar component'} />
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <Block gap={16} padding={16}>
-          {/* Different Sizes */}
-          <Block gap={8}>
-            <Typography>Avatar Sizes</Typography>
-            <Row gap={8}>
-              <Avatar size={32} url={sampleImageUrl} />
-              <Avatar size={48} url={sampleImageUrl} />
-              <Avatar size={64} url={sampleImageUrl} />
-              <Avatar size={80} url={sampleImageUrl} />
-            </Row>
-          </Block>
-
-          {/* Different Border Radius */}
-          <Block gap={8}>
-            <Typography>Border Radius Variants</Typography>
-            <Row gap={8}>
-              <Avatar borderRadius={8} size={48} url={sampleImageUrl} />
-              <Avatar borderRadius={16} size={48} url={sampleImageUrl} />
-              <Avatar borderRadius={24} size={48} url={sampleImageUrl} />
-              <Avatar size={48} url={sampleImageUrl} />
-            </Row>
-          </Block>
-
-          {/* With Loading Skeleton */}
-          <Block gap={8}>
-            <Typography>With Loading Skeleton</Typography>
-            <Avatar enableSkeleton size={48} url={sampleImageUrl} />
-          </Block>
+      <Block gap={16} padding={16}>
+        {/* Different Sizes */}
+        <Block gap={8}>
+          <Typography>Avatar Sizes</Typography>
+          <Row gap={8}>
+            <Avatar
+              enableSkeleton={enableSkeleton}
+              size={32}
+              url={sampleImageUrl}
+            />
+            <Avatar
+              enableSkeleton={enableSkeleton}
+              size={48}
+              url={sampleImageUrl}
+            />
+            <Avatar
+              enableSkeleton={enableSkeleton}
+              size={64}
+              url={sampleImageUrl}
+            />
+            <Avatar
+              enableSkeleton={enableSkeleton}
+              size={80}
+              url={sampleImageUrl}
+            />
+          </Row>
         </Block>
-      </ScrollView>
+
+        {/* Different Border Radius */}
+        <Block gap={8}>
+          <Typography>Border Radius Variants</Typography>
+          <Row gap={8}>
+            <Avatar
+              borderRadius={8}
+              enableSkeleton={enableSkeleton}
+              size={48}
+              url={sampleImageUrl}
+            />
+            <Avatar
+              borderRadius={16}
+              enableSkeleton={enableSkeleton}
+              size={48}
+              url={sampleImageUrl}
+            />
+            <Avatar
+              borderRadius={24}
+              enableSkeleton={enableSkeleton}
+              size={48}
+              url={sampleImageUrl}
+            />
+            <Avatar
+              enableSkeleton={enableSkeleton}
+              size={48}
+              url={sampleImageUrl}
+            />
+          </Row>
+        </Block>
+
+        {/* With Loading Skeleton */}
+        <Block gap={8}>
+          <Typography>With Loading Skeleton</Typography>
+          <Avatar
+            enableSkeleton={enableSkeleton}
+            size={48}
+            url={sampleImageUrl}
+          />
+        </Block>
+      </Block>
     </Block>
   )
 }

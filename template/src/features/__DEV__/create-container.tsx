@@ -12,9 +12,11 @@ export const MENU_ITEMS = {
   Lingui: 'Lingui',
   List: 'List',
   Row: 'Row',
+  Sheet: 'Sheet',
   Spacer: 'Spacer',
   Spinner: 'Spinner',
   Tag: 'Tag',
+  TextInput: 'TextInput',
   Typography: 'Typography'
 } as const
 

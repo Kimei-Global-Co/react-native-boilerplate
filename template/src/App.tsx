@@ -1,9 +1,10 @@
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
-import { StyleSheet } from 'react-native'
-
+import { useExpoUpdate } from '@hooks/use-expo-updates'
 import MainNavigation from '@navigation/scenes'
+import { useTanStackQueryDevTools } from '@rozenite/tanstack-query-plugin'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { Layout } from '@theme/layout'
 import I18nProvider from 'locale/i18n-provider'
 import { KeyboardProvider } from 'react-native-keyboard-controller'
 import {
@@ -27,12 +28,14 @@ const queryClient = new QueryClient({
 })
 
 export default function App(): React.JSX.Element {
+  useExpoUpdate()
+  useTanStackQueryDevTools(queryClient)
   return (
     <QueryClientProvider client={queryClient}>
       <I18nProvider>
         <KeyboardProvider>
           <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-            <GestureHandlerRootView style={styles.container}>
+            <GestureHandlerRootView style={Layout.flex_1}>
               <MainNavigation />
             </GestureHandlerRootView>
           </SafeAreaProvider>
@@ -41,8 +44,3 @@ export default function App(): React.JSX.Element {
     </QueryClientProvider>
   )
 }
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  }
-})
