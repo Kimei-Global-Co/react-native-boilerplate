@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import { AppState } from 'react-native'
 
 import { Image } from 'expo-image'
-import { SheetsContainer } from '@components/common/sheets-container'
+import SheetsContainer from '@components/common/sheets-container'
 import { useInitial } from '@hooks/use-initial'
 import { linking } from '@navigation/config/linking'
 import { navigationRef } from '@navigation/config/navigation-services'

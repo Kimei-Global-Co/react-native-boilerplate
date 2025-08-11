@@ -1,4 +1,5 @@
-import { Block, Header } from '@components'
+import Block from '@components/base/block'
+import Header from '@components/base/header'
 import { createContainer } from '../create-container'
 
 const HeaderComponent = (): React.JSX.Element => {

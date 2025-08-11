@@ -1,14 +1,14 @@
 import { localImage } from '@assets/images'
-import { Block } from '../block'
-import { Image } from '../image'
-import { Typography } from '../typography'
+import Block from '../block'
+import Image from '../image'
+import Typography from '../typography'
 
 export interface IEmptyViewProps {
   title?: string
   description?: string
 }
 
-const EmptyView = (props: IEmptyViewProps): React.JSX.Element => {
+export default function EmptyView(props: IEmptyViewProps): React.JSX.Element {
   const { title, description } = props
   return (
     <Block align='center' justify='center'>
@@ -22,5 +22,3 @@ const EmptyView = (props: IEmptyViewProps): React.JSX.Element => {
     </Block>
   )
 }
-
-export default EmptyView

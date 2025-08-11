@@ -3,11 +3,11 @@ import { Animated, Pressable, StyleSheet } from 'react-native'
 
 import Row from '../row'
 import Spinner from '../spinner'
-import { Typography } from '../typography'
+import Typography from '../typography'
 import { getButtonColors, getSizeStyle } from './style'
 import type { ButtonProps } from './type'
 
-export const Button = ({
+export default function Button({
   children,
   text,
   variant = 'solid',
@@ -22,7 +22,7 @@ export const Button = ({
   style,
   textStyle,
   onPress
-}: ButtonProps): React.JSX.Element => {
+}: ButtonProps): React.JSX.Element {
   const backgroundColorRef = useRef(new Animated.Value(0)).current
 
   const handlePress = (): void => {

@@ -69,6 +69,8 @@
 		"@lingui/macro": "^5.3.1",
 		"@lingui/metro-transformer": "^5.3.1",
 		"@rozenite/metro": "^1.0.0-alpha.8",
+		"@rozenite/mmkv-plugin": "^1.0.0-alpha.8",
+		"@rozenite/network-activity-plugin": "^1.0.0-alpha.8",
 		"@rozenite/tanstack-query-plugin": "^1.0.0-alpha.8",
 		"@testing-library/react-native": "^13.2.0",
 		"@types/jest": "^29.5.14",

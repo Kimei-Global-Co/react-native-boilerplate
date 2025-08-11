@@ -1,12 +1,15 @@
 import { ScrollView } from 'react-native'
 
-import { Block, Button, Header, Typography } from '@components'
+import Block from '@components/base/block'
+import Button from '@components/base/button'
+import Header from '@components/base/header'
+import Typography from '@components/base/typography'
 import { createContainer } from '../create-container'
 
 const ButtonComponent = (): React.JSX.Element => {
   return (
-    <Block flex={1}>
-      <Header isBack title={'Button component'} />
+    <Block flex>
+      <Header isBack title='Button component' />
       <ScrollView showsVerticalScrollIndicator={false}>
         <Block gap={16} padding={16}>
           {/* Variants */}

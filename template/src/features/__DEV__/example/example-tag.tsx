@@ -1,4 +1,6 @@
-import { Block, Header, Tag } from '@components'
+import Block from '@components/base/block'
+import Header from '@components/base/header'
+import Tag from '@components/base/tag'
 import { createContainer } from '../create-container'
 
 const TagComponent = (): React.JSX.Element => {
@@ -7,33 +9,33 @@ const TagComponent = (): React.JSX.Element => {
       <Header isBack title='Tag component' />
       <Block gap={16} padding={16}>
         {/* Basic Tag */}
-        <Tag.Root>
+        <Tag>
           <Tag.Label>Basic Tag</Tag.Label>
-        </Tag.Root>
+        </Tag>
 
         {/* Different variants */}
-        <Tag.Root variant='solid'>
+        <Tag variant='solid'>
           <Tag.Label>Solid Tag</Tag.Label>
-        </Tag.Root>
-        <Tag.Root variant='outline'>
+        </Tag>
+        <Tag variant='outline'>
           <Tag.Label>Outline Tag</Tag.Label>
-        </Tag.Root>
+        </Tag>
 
         {/* Different sizes */}
-        <Tag.Root size='md'>
+        <Tag size='md'>
           <Tag.Label>Medium Tag</Tag.Label>
-        </Tag.Root>
-        <Tag.Root size='lg'>
+        </Tag>
+        <Tag size='lg'>
           <Tag.Label>Large Tag</Tag.Label>
-        </Tag.Root>
+        </Tag>
 
         {/* Tag with close button */}
-        <Tag.Root>
+        <Tag>
           <Tag.Label>Closeable Tag</Tag.Label>
           <Tag.EndElement>
             <Tag.CloseTrigger onClose={() => console.info('Tag closed')} />
           </Tag.EndElement>
-        </Tag.Root>
+        </Tag>
       </Block>
     </Block>
   )

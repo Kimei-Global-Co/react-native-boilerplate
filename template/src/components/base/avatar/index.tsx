@@ -1,7 +1,7 @@
 import { useMutative } from '@hooks/use-mutative'
 import Animated, { FadeIn } from 'react-native-reanimated'
-import { Block } from '../block'
-import { Image } from '../image'
+import Block from '../block'
+import Image from '../image'
 import Skeleton from '../skeleton'
 import type { TAvatarProps } from './type'
 

@@ -1,4 +1,5 @@
 import theme from '@theme'
+import Colors from '@theme/colors'
 import Svg, { Circle } from 'react-native-svg'
 
 const spinnerSizeMap = new Map<SpinnerProps['size'], number>([
@@ -10,8 +11,8 @@ const spinnerSizeMap = new Map<SpinnerProps['size'], number>([
 
 export type SpinnerProps = {
   size?: 'lg' | 'md' | 'sm' | 'smxl'
-  color?: string
-  secondaryColor?: string
+  color?: keyof typeof Colors
+  secondaryColor?: keyof typeof Colors
   duration?: number
 }
 
@@ -21,11 +22,11 @@ export const getSpinnerSize = (size: SpinnerProps['size']) => {
 
 export const SpinnerView = ({
   size = 'md',
-  color = theme.colors.black,
+  color = 'black',
   secondaryColor: secondaryColorProp
 }: SpinnerProps) => {
   const secondaryColor = secondaryColorProp
-    ? secondaryColorProp
+    ? Colors[secondaryColorProp]
     : theme.colors.whiteF0
 
   return (
@@ -47,7 +48,7 @@ export const SpinnerView = ({
         cy={16}
         fill='none'
         r={14}
-        stroke={color}
+        stroke={Colors[color]}
         strokeDasharray={80}
         strokeDashoffset={56}
         strokeWidth={4}

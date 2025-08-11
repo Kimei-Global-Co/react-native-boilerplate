@@ -3,7 +3,7 @@ const MODULE_TYPE = {
   Store: 'store'
 }
 
-module.exports = function (plop) {
+module.exports = (plop) => {
   const component = [
     {
       path: 'template/src/components/base/{{kebabCase name}}/index.tsx',

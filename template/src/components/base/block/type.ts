@@ -122,5 +122,13 @@ export interface BlockProps extends DefaultStyleProps, ViewProps {
    */
   linearGradient?: ViewStyle['experimental_backgroundImage']
 
+  /**
+   * Overflow style
+   * ```
+   * {
+      overflow: 'hidden'
+    }
+   * ```
+   */
   overflow?: ViewStyle['overflow']
 }

@@ -2,22 +2,22 @@ import { StyleSheet } from 'react-native'
 
 import { localImage } from '@assets/images'
 import { goBack } from '@navigation/config/navigation-services'
-import { Block } from '../block'
-import { Button } from '../button'
+import Block from '../block'
+import Button from '../button'
 import Icon from '../icon'
-import { Image } from '../image'
+import Image from '../image'
 import Row from '../row'
-import { Typography } from '../typography'
+import Typography from '../typography'
 import { DEFAULT_ACTIONS, type HeaderProps } from './type'
 
-export const Header = ({
+export default function Header({
   isBack = false,
   title = 'Header Label',
   subtitle,
   avatar = localImage().icAvatar,
   rightActions = DEFAULT_ACTIONS,
   style
-}: HeaderProps): React.JSX.Element => {
+}: HeaderProps): React.JSX.Element {
   const renderLeft = (): React.JSX.Element => {
     if (isBack) {
       return (

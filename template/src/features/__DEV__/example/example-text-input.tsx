@@ -1,4 +1,4 @@
-import { TextInput } from '@components'
+import TextInput from '@components/base/text-input'
 import { createContainer } from '../create-container'
 
 const TextInputComponent = (): React.JSX.Element => {

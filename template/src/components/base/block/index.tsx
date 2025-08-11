@@ -72,13 +72,13 @@ const createBlockStyles = (
     linearGradient && { experimental_backgroundImage: linearGradient },
     handleInset(props, safeArea, padding),
     backgroundColor && {
-      backgroundColor: Colors[backgroundColor] || backgroundColor
+      backgroundColor: Colors[backgroundColor] ?? backgroundColor
     },
     style
   ]) as ViewStyle
 }
 
-export const Block = function Block(
+export default function Block(
   props: BlockProps & { ref?: React.Ref<NativeView> }
 ) {
   {

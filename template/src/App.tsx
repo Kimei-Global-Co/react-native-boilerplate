@@ -2,6 +2,8 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
 import { useExpoUpdate } from '@hooks/use-expo-updates'
 import MainNavigation from '@navigation/scenes'
+import { useMMKVDevTools } from '@rozenite/mmkv-plugin'
+import { useNetworkActivityDevTools } from '@rozenite/network-activity-plugin'
 import { useTanStackQueryDevTools } from '@rozenite/tanstack-query-plugin'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { Layout } from '@theme/layout'
@@ -30,6 +32,8 @@ const queryClient = new QueryClient({
 export default function App(): React.JSX.Element {
   useExpoUpdate()
   useTanStackQueryDevTools(queryClient)
+  useNetworkActivityDevTools()
+  useMMKVDevTools()
   return (
     <QueryClientProvider client={queryClient}>
       <I18nProvider>

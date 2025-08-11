@@ -7,7 +7,7 @@ import {
 
 import { getIconComponent } from '@assets/icons'
 import theme from '@theme'
-import { Block } from '../block'
+import Block from '../block'
 import type { IconComponentProps } from './type'
 
 const BUTTON_COMPONENTS = {
@@ -20,7 +20,7 @@ const BUTTON_COMPONENTS = {
   })
 } as const
 
-const Icon: React.FC<IconComponentProps> = (props) => {
+export default function Icon(props: IconComponentProps): React.JSX.Element {
   const {
     type,
     name,
@@ -64,5 +64,3 @@ const Icon: React.FC<IconComponentProps> = (props) => {
     </ButtonComponent>
   )
 }
-
-export default Icon

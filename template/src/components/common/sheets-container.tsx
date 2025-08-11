@@ -9,7 +9,7 @@ import {
   HANDLE_HEIGHT
 } from './custom-backdrop'
 
-export const SheetsContainer = function SheetsContainer(): React.JSX.Element {
+export default function SheetsContainer(): React.JSX.Element {
   const bottomSheetRef = useRef<BottomSheet>(null)
   const activeSheets = useSheetStore((state) => state.activeSheets)
   const closeSheet = useSheetStore((state) => state.closeSheet)

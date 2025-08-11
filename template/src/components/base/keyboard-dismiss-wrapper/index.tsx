@@ -1,32 +1,28 @@
 import {
   Keyboard,
   KeyboardAvoidingView,
+  type KeyboardAvoidingViewProps,
   Platform,
-  TouchableWithoutFeedback,
-  type ViewStyle
+  TouchableWithoutFeedback
 } from 'react-native'
 
-type KeyboardDismissWrapperProps = {
-  children: React.ReactNode
-  style?: ViewStyle
-  behavior?: 'height' | 'position' | 'padding'
-}
-
-const KeyboardDismissWrapper: React.FC<KeyboardDismissWrapperProps> = ({
-  children,
-  style = { flex: 1 },
-  behavior = Platform.OS === 'ios' ? 'padding' : 'height'
-}) => {
+export default function KeyboardDismissWrapper(
+  props: KeyboardAvoidingViewProps
+): React.JSX.Element {
+  const {
+    children,
+    style = { flex: 1 },
+    behavior = Platform.OS === 'ios' ? 'padding' : 'height'
+  } = props
   return (
     <TouchableWithoutFeedback accessible={false} onPress={Keyboard.dismiss}>
       <KeyboardAvoidingView
         behavior={behavior}
         keyboardVerticalOffset={-150}
-        style={style}>
+        style={style}
+      >
         {children}
       </KeyboardAvoidingView>
     </TouchableWithoutFeedback>
   )
 }
-
-export default KeyboardDismissWrapper

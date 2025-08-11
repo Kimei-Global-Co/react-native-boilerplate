@@ -1,6 +1,10 @@
 import { ScrollView, StyleSheet } from 'react-native'
 
-import { Block, Header, Row, Spacer, Typography } from '@components'
+import Block from '@components/base/block'
+import Header from '@components/base/header'
+import Row from '@components/base/row'
+import Spacer from '@components/base/spacer'
+import Typography from '@components/base/typography'
 import { createContainer } from '../create-container'
 
 const BoxDemo = (): React.JSX.Element => (

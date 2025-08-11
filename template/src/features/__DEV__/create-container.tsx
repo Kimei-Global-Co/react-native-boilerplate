@@ -1,4 +1,4 @@
-import { Block } from '@components'
+import Block from '@components/base/block'
 
 export const MENU_ITEMS = {
   Accordion: 'Accordion',

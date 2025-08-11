@@ -1,6 +1,8 @@
 import { TouchableOpacity } from 'react-native'
 
-import { Block, Header, Typography } from '@components'
+import Block from '@components/base/block'
+import Header from '@components/base/header'
+import Typography from '@components/base/typography'
 import { useSheetStore } from 'store/sheet'
 import { createContainer } from '../create-container'
 

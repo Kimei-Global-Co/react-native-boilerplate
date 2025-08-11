@@ -1,7 +1,10 @@
 import { StyleSheet, TouchableOpacity } from 'react-native'
 
-import { Block, Icon, Row, Typography } from '@components'
-import { InfiniteScrollList } from '@components/base/list'
+import Block from '@components/base/block'
+import Icon from '@components/base/icon'
+import InfiniteScrollList from '@components/base/list'
+import Row from '@components/base/row'
+import Typography from '@components/base/typography'
 import { navigate } from '@navigation/config/navigation-services'
 import Colors from '@theme/colors'
 import { MENU_ITEMS } from './create-container'

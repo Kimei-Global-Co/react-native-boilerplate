@@ -1,7 +1,7 @@
 import { Image as ExpoImage, type ImageSource } from 'expo-image'
 import type { TImageProps } from './type'
 
-export const Image = function Image(props: TImageProps) {
+export default function Image(props: TImageProps) {
   const {
     borderRadius,
     source,

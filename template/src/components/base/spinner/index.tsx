@@ -9,7 +9,11 @@ import Animated, {
 } from 'react-native-reanimated'
 import { getSpinnerSize, type SpinnerProps, SpinnerView } from './spinner-view'
 
-const Spinner = ({ size, duration = 1000, ...rest }: SpinnerProps) => {
+export default function Spinner({
+  size,
+  duration = 1000,
+  ...rest
+}: SpinnerProps) {
   const transition = useSharedValue(0)
 
   useEffect(() => {
@@ -43,4 +47,3 @@ const Spinner = ({ size, duration = 1000, ...rest }: SpinnerProps) => {
     </Animated.View>
   )
 }
-export default Spinner

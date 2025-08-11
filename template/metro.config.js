@@ -1,6 +1,6 @@
 // Learn more https://docs.expo.io/guides/customizing-metro
 const { getDefaultConfig } = require('expo/metro-config')
-const { withRozenite } = require('@rozenite/metro');
+const { withRozenite } = require('@rozenite/metro')
 const defaultConfig = getDefaultConfig(__dirname)
 const { transformer, resolver } = defaultConfig
 

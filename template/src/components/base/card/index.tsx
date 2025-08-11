@@ -2,8 +2,8 @@ import { createContext } from 'react'
 import { type ImageStyle, StyleSheet, type ViewStyle } from 'react-native'
 
 import type { ImageSource } from 'expo-image'
-import { Block } from '../block'
-import { Image } from '../image'
+import Block from '../block'
+import Image from '../image'
 
 type CardContextType = {
   variant?: 'default' | 'bodered' | 'shadow'

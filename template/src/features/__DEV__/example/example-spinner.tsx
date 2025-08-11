@@ -1,6 +1,10 @@
 import { ScrollView } from 'react-native'
 
-import { Block, Header, Row, Spinner, Typography } from '@components'
+import Block from '@components/base/block'
+import Header from '@components/base/header'
+import Row from '@components/base/row'
+import Spinner from '@components/base/spinner'
+import Typography from '@components/base/typography'
 import { createContainer } from '../create-container'
 
 const SpinnerComponent = (): React.JSX.Element => {
@@ -13,10 +17,10 @@ const SpinnerComponent = (): React.JSX.Element => {
           <Block gap={8}>
             <Typography>Spinner Sizes</Typography>
             <Row center gap={16}>
-              <Spinner color='black' size='small' />
-              <Spinner color='black' size='medium' />
-              <Spinner color='black' size='large' />
-              <Spinner color='black' size={40} />
+              <Spinner color='black' size='sm' />
+              <Spinner color='black' size='md' />
+              <Spinner color='black' size='lg' />
+              <Spinner color='black' size='lg' />
             </Row>
           </Block>
 
@@ -24,10 +28,10 @@ const SpinnerComponent = (): React.JSX.Element => {
           <Block gap={8}>
             <Typography>Spinner Colors</Typography>
             <Row center gap={16}>
-              <Spinner color='black' size='medium' />
-              <Spinner color='rose_500' size='medium' />
-              <Spinner color='blue_500' size='medium' />
-              <Spinner color='green_500' size='medium' />
+              <Spinner color='black' size='md' />
+              <Spinner color='rose_500' secondaryColor='purple_300' size='md' />
+              <Spinner color='blue_500' size='md' />
+              <Spinner color='green_500' size='md' />
             </Row>
           </Block>
 
@@ -35,9 +39,9 @@ const SpinnerComponent = (): React.JSX.Element => {
           <Block gap={8}>
             <Typography>Spinner Speeds</Typography>
             <Row center gap={16}>
-              <Spinner color='black' durationMs={500} size='medium' />
-              <Spinner color='black' durationMs={1000} size='medium' />
-              <Spinner color='black' durationMs={2000} size='medium' />
+              <Spinner color='black' duration={500} size='md' />
+              <Spinner color='black' size='md' />
+              <Spinner color='black' duration={2000} size='md' />
             </Row>
           </Block>
         </Block>

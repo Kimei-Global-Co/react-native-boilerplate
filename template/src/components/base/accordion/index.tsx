@@ -9,10 +9,9 @@ import Animated, {
   useSharedValue,
   withTiming
 } from 'react-native-reanimated'
-import { Block } from '../block'
+import Block from '../block'
 import Icon from '../icon'
-
-import { Typography } from '../typography'
+import Typography from '../typography'
 import { createSplitItemStyles, createVariantStyles } from './styles'
 import type {
   AccordionContextType,

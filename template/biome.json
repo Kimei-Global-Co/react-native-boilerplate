@@ -1,5 +1,5 @@
 {
-	"$schema": "https://biomejs.dev/schemas/2.1.2/schema.json",
+	"$schema": "https://biomejs.dev/schemas/2.1.3/schema.json",
 	"assist": {
 		"actions": {
 			"source": {
@@ -161,10 +161,14 @@
 				"noUselessEscapeInString": "error",
 				"useExhaustiveSwitchCases": "error",
 				"useIndexOf": "error",
-				"useObjectSpread": "error"
+				"useObjectSpread": "error",
+				"noImportCycles": "error",
+				"noShadow": "error",
+				"noUnresolvedImports": "error"
 			},
 			"performance": {
-				"recommended": true
+				"recommended": true,
+				"noBarrelFile": "error"
 			},
 			"recommended": false,
 			"security": {

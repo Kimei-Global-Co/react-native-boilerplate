@@ -1,4 +1,4 @@
-import { Block } from '../block'
+import Block from '../block'
 
 type TRowProps = {
   start?: boolean
@@ -7,7 +7,7 @@ type TRowProps = {
   between?: boolean
 } & React.ComponentPropsWithoutRef<typeof Block>
 
-const Row = (props: TRowProps): React.ReactElement => {
+export default function Row(props: TRowProps): React.JSX.Element {
   const { start, center, end, between, children, ...rest } = props
 
   return (
@@ -23,4 +23,3 @@ const Row = (props: TRowProps): React.ReactElement => {
     </Block>
   )
 }
-export default Row

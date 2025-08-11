@@ -38,7 +38,7 @@ const createTypoStyles = (props: CommonTextProps): TextStyle => {
     style
   ]) as TextStyle
 }
-export const Typography = function Typography(props: CommonTextProps) {
+export default function Typography(props: CommonTextProps) {
   const typoStyles = createTypoStyles(props)
 
   if (props.children === undefined || props.children === null) return null

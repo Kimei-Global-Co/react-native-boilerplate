@@ -1,12 +1,15 @@
-import { Accordion, Block, Header, Typography } from '@components'
+import Accordion from '@components/base/accordion'
+import Block from '@components/base/block'
+import Header from '@components/base/header'
+import Typography from '@components/base/typography'
 import { createContainer } from '../create-container'
 
+const defaultContent =
+  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
 const AccordionComponent = (): React.JSX.Element => {
-  const defaultContent =
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
   return (
-    <Block flex={1}>
-      <Header isBack title={'Accordion component'} />
+    <Block flex>
+      <Header isBack title='Accordion component' />
       <Block gap={8} padding={16}>
         <Accordion variant='default'>
           <Accordion.Item itemKey='1' title='Accordion 1'>

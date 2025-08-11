@@ -2,15 +2,15 @@ import { useState } from 'react'
 import { TextInput as RNTextInput, StyleSheet } from 'react-native'
 
 import { theme } from '@theme'
-import { Block } from '../block'
+import Block from '../block'
 import Icon from '../icon'
 import Row from '../row'
-import { Typography } from '../typography'
+import Typography from '../typography'
 import { type TextInputBaseProps } from './type'
 
-export const TextInput = (
+export default function TextInput(
   props: TextInputBaseProps & { ref?: React.Ref<RNTextInput> }
-) => {
+): React.JSX.Element {
   const {
     containerStyle,
     inputStyle,
@@ -137,8 +137,6 @@ export const TextInput = (
     </Block>
   )
 }
-
-TextInput.displayName = 'TextInput'
 
 const styles = StyleSheet.create({
   container: {
