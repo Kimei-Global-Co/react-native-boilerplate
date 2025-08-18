@@ -24,7 +24,7 @@
       "@utils/*": ["utils/*"]
     },
     "strict": true,
-    "types": ["node"],
+    "types": ["jest", "node"],
     "verbatimModuleSyntax": true
   },
   "extends": "expo/tsconfig.base",

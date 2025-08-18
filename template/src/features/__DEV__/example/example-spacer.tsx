@@ -18,7 +18,7 @@ const SpacerComponent = (): React.JSX.Element => {
       <ScrollView showsVerticalScrollIndicator={false}>
         <Block padding={16}>
           {/* Vertical Spacing Demo */}
-          <Block gap={8}>
+          <Block collapsable={false} gap={8}>
             <Typography>Vertical Spacing (y prop)</Typography>
             <BoxDemo />
             <Spacer y={8} />
@@ -32,7 +32,7 @@ const SpacerComponent = (): React.JSX.Element => {
           <Spacer y={32} />
 
           {/* Horizontal Spacing Demo */}
-          <Block gap={8}>
+          <Block collapsable={false} gap={8}>
             <Typography>Horizontal Spacing (x prop)</Typography>
             <Row>
               <BoxDemo />
@@ -46,7 +46,7 @@ const SpacerComponent = (): React.JSX.Element => {
           <Spacer y={32} />
 
           {/* Combined X and Y Spacing */}
-          <Block gap={8}>
+          <Block collapsable={false} gap={8}>
             <Typography>Combined X and Y Spacing</Typography>
             <Row>
               <BoxDemo />
@@ -62,7 +62,7 @@ const SpacerComponent = (): React.JSX.Element => {
           </Block>
 
           {/* Default Theme Spacing */}
-          <Block gap={8}>
+          <Block collapsable={false} gap={8}>
             <Typography>Default Theme Spacing</Typography>
             <BoxDemo />
             <Spacer />

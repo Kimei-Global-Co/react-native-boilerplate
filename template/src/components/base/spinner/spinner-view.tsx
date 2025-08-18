@@ -1,4 +1,3 @@
-import theme from '@theme'
 import Colors from '@theme/colors'
 import Svg, { Circle } from 'react-native-svg'
 
@@ -27,7 +26,7 @@ export const SpinnerView = ({
 }: SpinnerProps) => {
   const secondaryColor = secondaryColorProp
     ? Colors[secondaryColorProp]
-    : theme.colors.whiteF0
+    : Colors.whiteF0
 
   return (
     <Svg

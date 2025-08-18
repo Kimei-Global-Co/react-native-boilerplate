@@ -82,6 +82,14 @@
             "node_modules/@expo-google-fonts/nunito/900Black/Nunito_900Black.ttf"
           ]
         }
+      ],
+      [
+      "react-native-vision-camera",
+        {
+          "cameraPermissionText": "$(PRODUCT_NAME) needs access to your Camera.",
+          "enableMicrophonePermission": true,
+          "microphonePermissionText": "$(PRODUCT_NAME) needs access to your Microphone."
+        }
       ]
     ],
     "extra": {

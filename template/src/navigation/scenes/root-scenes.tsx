@@ -16,7 +16,10 @@ export default function RootScenes(): React.JSX.Element {
     ...commonScreens
   }
   return (
-    <Navigator screenOptions={{ headerShown: false }}>
+    <Navigator
+      initialRouteName='DevMenu'
+      screenOptions={{ headerShown: false }}
+    >
       <Group>
         {Object.entries(screens).map(([name, component]: [string, unknown]) => (
           <Screen

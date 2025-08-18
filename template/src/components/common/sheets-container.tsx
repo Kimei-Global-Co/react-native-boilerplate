@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { StyleSheet } from 'react-native'
+import { Keyboard, StyleSheet } from 'react-native'
 
 import BottomSheet from '@discord/bottom-sheet/src'
 import { useSheetStore } from 'store/sheet'
@@ -26,6 +26,7 @@ export default function SheetsContainer(): React.JSX.Element {
   useEffect(() => {
     //checking is active modal
     if (isSheetActive) {
+      if (Keyboard.isVisible()) Keyboard.dismiss()
       bottomSheetRef.current?.snapToIndex(0)
       return
     }

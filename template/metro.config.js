@@ -25,8 +25,7 @@ defaultConfig.transformer = {
 
 defaultConfig.resolver = {
   ...resolver,
-  sourceExts: [...resolver.sourceExts, 'po', 'pot'],
-  unstable_enablePackageExports: false //related issue => https://github.com/facebook/metro/pull/1448 and https://github.com/lingui/js-lingui/issues/2231
+  sourceExts: [...resolver.sourceExts, 'po', 'pot']
 }
 
 defaultConfig.transformer.minifierConfig = {

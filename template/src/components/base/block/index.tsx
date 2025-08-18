@@ -1,12 +1,9 @@
-import { StyleSheet, type ViewStyle } from 'react-native'
+import { type ViewStyle } from 'react-native'
 
 import Colors from '@theme/colors'
 import { Spacing } from '@theme/layout'
 import NativeView from 'react-native/Libraries/Components/View/ViewNativeComponent'
-import {
-  type EdgeInsets,
-  useSafeAreaInsets
-} from 'react-native-safe-area-context'
+import { StyleSheet, UnistylesRuntime } from 'react-native-unistyles'
 import {
   createDefaultStyle,
   handleGutter,
@@ -27,10 +24,7 @@ const createSizeStyle = (size: BlockProps['size']): ViewStyle => {
   return {}
 }
 
-const createBlockStyles = (
-  props: BlockProps,
-  safeArea: EdgeInsets
-): ViewStyle => {
+const createBlockStyles = (props: BlockProps): ViewStyle => {
   const {
     style,
     size,
@@ -70,7 +64,7 @@ const createBlockStyles = (
       : typeGuards(gap, 'number') && { gap },
     shadow && { boxShadow: '0 2px 4px rgba(0, 0, 0, 0.15)' },
     linearGradient && { experimental_backgroundImage: linearGradient },
-    handleInset(props, safeArea, padding),
+    handleInset(props, UnistylesRuntime.insets, padding),
     backgroundColor && {
       backgroundColor: Colors[backgroundColor] ?? backgroundColor
     },
@@ -81,15 +75,12 @@ const createBlockStyles = (
 export default function Block(
   props: BlockProps & { ref?: React.Ref<NativeView> }
 ) {
-  {
-    const safeArea = useSafeAreaInsets()
-    const { children, ...rest } = props
-    const blockStyles = createBlockStyles(props, safeArea)
+  const { children, ...rest } = props
+  const blockStyles = createBlockStyles(props)
 
-    return (
-      <NativeView {...rest} ref={props.ref} style={blockStyles}>
-        {children}
-      </NativeView>
-    )
-  }
+  return (
+    <NativeView {...rest} ref={props.ref} style={blockStyles}>
+      {children}
+    </NativeView>
+  )
 }

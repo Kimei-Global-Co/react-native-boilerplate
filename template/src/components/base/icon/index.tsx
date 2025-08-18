@@ -6,7 +6,7 @@ import {
 } from 'react-native'
 
 import { getIconComponent } from '@assets/icons'
-import theme from '@theme'
+import { useUnistyles } from 'react-native-unistyles'
 import Block from '../block'
 import type { IconComponentProps } from './type'
 
@@ -21,6 +21,7 @@ const BUTTON_COMPONENTS = {
 } as const
 
 export default function Icon(props: IconComponentProps): React.JSX.Element {
+  const { theme } = useUnistyles()
   const {
     type,
     name,
