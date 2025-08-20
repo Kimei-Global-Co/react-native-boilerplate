@@ -158,7 +158,7 @@ const Colors = {
   green_200: '#bbf7d0',
   green_300: '#86efac',
   green_400: '#4ade80',
-  green_500: '#0CB504', // Custom color addition
+  green_500: '#0CB504',
   green_600: '#16a34a',
   green_700: '#15803d',
   green_800: '#166534',

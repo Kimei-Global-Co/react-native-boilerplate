@@ -1,42 +1,34 @@
-import type { ReactNode } from 'react'
-import type { TextStyle, ViewStyle } from 'react-native'
+import type { PressableProps, StyleProp, ViewStyle } from 'react-native'
 
-export type ButtonVariant =
-  | 'solid'
-  | 'outline'
-  | 'bordered'
-  | 'shadow'
-  | 'ghost'
-export type ButtonSize = 'small' | 'medium' | 'large'
-export type ButtonPresetColors = 'primary' | 'secondary' | 'success' | 'warning'
+export interface ButtonProps
+  extends Exclude<PressableProps, 'onPressIn' | 'onPressOut' | 'style'> {
+  /**
+   * Label of button
+   */
+  title?: string
 
-export interface ButtonProps {
-  /** Button content */
-  children?: ReactNode
-  /** Text to display */
-  text?: string
-  /** Visual variant of button */
-  variant?: ButtonVariant
-  /** Size preset of button */
-  size?: ButtonSize
-  /** Color preset or custom color */
-  color?: string
-  /** Disabled state */
-  disabled?: boolean
-  /** Loading state */
-  loading?: boolean
-  /** Border width of button */
-  borderWidth?: number
-  /** Border color of button */
-  borderColor?: string
-  /** Border radius of button */
-  borderRadius?: number
-  /** Custom styles for container */
-  style?: ViewStyle
-  /** Custom styles for text */
-  textStyle?: TextStyle
-  /** Callback on press */
-  onPress?: () => void
+  /**
+   * Left icon
+   */
+  leftIcon?: React.ReactNode
 
-  isIconOnly?: boolean
+  /**
+   * Right icon
+   */
+  rightIcon?: React.ReactNode
+
+  /**
+   * State for control button
+   */
+  state?: 'idle' | 'pending' | 'success' | 'error'
+
+  variant?: {
+    color: 'primary' | 'secondary' | 'shadow' | 'bordered'
+    radius: 'sm' | 'md' | 'lg'
+    size: 'sm' | 'md' | 'lg'
+  }
+
+  targetScale?: number
+
+  style?: StyleProp<ViewStyle>
 }

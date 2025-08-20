@@ -43,7 +43,7 @@ const baseFontSize = 14
 export default {
   bold: {
     fontFamily: getFontFamily('bold'),
-    fontSize: baseFontSize
+    fontSize: baseFontSize + 4
   },
   extraBold: {
     fontFamily: getFontFamily('extraBold'),
@@ -51,7 +51,7 @@ export default {
   },
   medium: {
     fontFamily: getFontFamily('medium'),
-    fontSize: baseFontSize
+    fontSize: baseFontSize + 2
   },
   regular: {
     fontFamily: getFontFamily('regular'),

@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native-unistyles'
 import Colors from './colors'
+import Fonts from './fonts'
 import { Layout, Spacing } from './layout'
 
 const lightTheme = {
@@ -9,6 +10,7 @@ const lightTheme = {
     backgroundColor: '#ffffff',
     typography: '#000000'
   },
+  fonts: { ...Fonts },
   gap: (v: number) => v * 8,
   layout: { ...Layout },
   spacing: { ...Spacing }
@@ -21,6 +23,7 @@ const darkTheme = {
     backgroundColor: '#000000',
     typography: '#ffffff'
   },
+  fonts: { ...Fonts },
   gap: (v: number) => v * 8,
   layout: { ...Layout },
   spacing: { ...Spacing }

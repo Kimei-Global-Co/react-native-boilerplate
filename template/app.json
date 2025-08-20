@@ -50,7 +50,6 @@
     },
     "plugins": [
       "./plugins/withAndroidManifestPlugin.js",
-      "./plugins/withAndroidGradleCachePlugin.js",
       [
         "expo-build-properties",
         {

@@ -21,7 +21,7 @@ export default function Header({
   const renderLeft = (): React.JSX.Element => {
     if (isBack) {
       return (
-        <Button isIconOnly onPress={goBack} variant='ghost'>
+        <Button onPress={goBack} style={{ width: 30 }}>
           <Icon name='left' size={22} type='antDesign' />
         </Button>
       )
@@ -45,12 +45,7 @@ export default function Header({
   const renderRightActions = (): React.JSX.Element => (
     <>
       {rightActions?.map((action) => (
-        <Button
-          isIconOnly
-          key={action.id}
-          onPress={action.onPress}
-          variant='ghost'
-        >
+        <Button key={action.id} onPress={action.onPress} style={{ width: 30 }}>
           <Icon name={action.name} size={22} type={action.type} />
         </Button>
       ))}

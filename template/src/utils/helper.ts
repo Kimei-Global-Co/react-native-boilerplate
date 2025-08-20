@@ -13,8 +13,47 @@ import type {
   SafeAreaInsetType
 } from './types'
 
-export const wait = (ms: number) =>
-  new Promise((resolve) => setTimeout(resolve, ms))
+export const clamp = (
+  value: number,
+  lowerBound: number,
+  upperBound: number
+) => {
+  'worklet'
+  return Math.min(Math.max(lowerBound, value), upperBound)
+}
+
+export const snapPoint = (
+  value: number,
+  velocity: number,
+  points: ReadonlyArray<number>
+): number => {
+  'worklet'
+  const point = value + 0.2 * velocity
+  const deltas = points.map((p) => Math.abs(point - p))
+  const minDelta = Math.min.apply(null, deltas)
+  return points.filter((p) => Math.abs(point - p) === minDelta)[0]
+}
+
+export function getColor(
+  disabled: boolean | undefined,
+  color:
+    | keyof typeof Colors
+    | { active: keyof typeof Colors; inActive: string },
+  disabledColor: string
+): { active: string; inActive: string } {
+  if (disabled) return { active: disabledColor, inActive: disabledColor }
+
+  if (typeGuards(color, 'string')) {
+    return {
+      active: Colors[color] ?? color,
+      inActive: Colors[color] ?? color
+    }
+  }
+  return {
+    active: Colors[color.active] ?? color.active,
+    inActive: Colors[color.inActive] ?? color.inActive
+  }
+}
 
 export const handleGutter = (
   type: 'padding' | 'margin',
@@ -208,6 +247,20 @@ export const HIT_SLOP = {
     top: 20
   }
 }
+
+function when<T>(condition: boolean, value: T): T | undefined
+function when<T, F>(condition: boolean, value: T, fallback: F): T | F
+function when<T, F>(
+  condition: boolean,
+  value: T,
+  fallback?: F
+): T | F | undefined {
+  'worklet'
+  if (condition) return value
+  if (fallback !== undefined) return fallback as T
+  return undefined
+}
+export { when }
 
 function typeGuards(x: unknown): x is string
 function typeGuards(x: unknown, type: 'string'): x is string

@@ -8,7 +8,7 @@ export interface IEmptyViewProps {
   description?: string
 }
 
-export default function EmptyView(props: IEmptyViewProps): React.JSX.Element {
+export default function EmptyView(props: Readonly<IEmptyViewProps>): React.JSX.Element {
   const { title, description } = props
   return (
     <Block align='center' justify='center'>

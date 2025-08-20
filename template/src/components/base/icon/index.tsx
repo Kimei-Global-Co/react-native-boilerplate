@@ -39,7 +39,7 @@ export default function Icon(props: IconComponentProps): React.JSX.Element {
   const IconComponent = getIconComponent[type]
 
   const initContainerStyle = StyleSheet.flatten([
-    disabledStyle && disabledStyle,
+    disabledStyle ?? {},
     style
   ])
 

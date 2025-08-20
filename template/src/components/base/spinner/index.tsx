@@ -13,7 +13,7 @@ export default function Spinner({
   size,
   duration = 1000,
   ...rest
-}: SpinnerProps) {
+}: Readonly<SpinnerProps>) {
   const transition = useSharedValue(0)
 
   useEffect(() => {

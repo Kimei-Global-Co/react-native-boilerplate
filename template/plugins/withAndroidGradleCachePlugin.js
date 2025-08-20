@@ -1,4 +1,5 @@
 // plugins/withModifyGradle.js
+// facing error with android gradle cache
 const { withGradleProperties } = require('@expo/config-plugins')
 
 const withModifyGradle = (config) => {

@@ -2,8 +2,7 @@ import { Gesture, GestureDetector } from 'react-native-gesture-handler'
 
 import { useEffect } from 'react'
 
-import Colors from '@theme/colors'
-import { typeGuards } from '@utils/helper'
+import { clamp, getColor, snapPoint } from '@utils/helper'
 import Animated, {
   interpolate,
   interpolateColor,
@@ -15,27 +14,12 @@ import Animated, {
 import { StyleSheet } from 'react-native-unistyles'
 import type { SwitchProps } from './type'
 
-const clamp = (value: number, lowerBound: number, upperBound: number) => {
-  'worklet'
-  return Math.min(Math.max(lowerBound, value), upperBound)
-}
-
-const snapPoint = (
-  value: number,
-  velocity: number,
-  points: ReadonlyArray<number>
-): number => {
-  'worklet'
-  const point = value + 0.2 * velocity
-  const deltas = points.map((p) => Math.abs(point - p))
-  const minDelta = Math.min.apply(null, deltas)
-  return points.filter((p) => Math.abs(point - p) === minDelta)[0]
-}
-
 const DEFAULT_TRACK_WIDTH = 50
 const DEFAULT_THUMB_WIDTH = 24
 
-export default function Switch(props: SwitchProps): React.JSX.Element {
+export default function Switch(
+  props: Readonly<SwitchProps>
+): React.JSX.Element {
   const {
     trackColor = { active: 'black', inActive: 'whiteEC' },
     thumbColor = 'white',
@@ -58,35 +42,17 @@ export default function Switch(props: SwitchProps): React.JSX.Element {
     )
   }, [trackThumbWidth, translateX, value])
 
-  const trackBgColor = disabled
-    ? {
-        active: 'rgba(143, 155, 179, 0.16)',
-        inActive: 'rgba(143, 155, 179, 0.16)'
-      }
-    : typeGuards(trackColor, 'string')
-      ? {
-          active: Colors[trackColor] ?? trackColor,
-          inActive: Colors[trackColor] ?? trackColor
-        }
-      : {
-          active: Colors[trackColor.active] ?? trackColor.active,
-          inActive: Colors[trackColor.inActive] ?? trackColor.inActive
-        }
+  const trackBgColor = getColor(
+    disabled,
+    trackColor,
+    'rgba(143, 155, 179, 0.16)'
+  )
 
-  const circleColor = disabled
-    ? {
-        active: 'rgba(143, 155, 179, 0.32)',
-        inActive: 'rgba(143, 155, 179, 0.32)'
-      }
-    : typeGuards(thumbColor, 'string')
-      ? {
-          active: Colors[thumbColor] ?? thumbColor,
-          inActive: Colors[thumbColor] ?? thumbColor
-        }
-      : {
-          active: Colors[thumbColor.active] ?? thumbColor.active,
-          inActive: Colors[thumbColor.inActive] ?? thumbColor.inActive
-        }
+  const circleColor = getColor(
+    disabled,
+    thumbColor,
+    'rgba(143, 155, 179, 0.32)'
+  )
 
   const animSwitchContainer = useAnimatedStyle(() => {
     return {
