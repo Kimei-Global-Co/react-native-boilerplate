@@ -262,6 +262,10 @@ function when<T, F>(
 }
 export { when }
 
+export const isFunction = (
+  value: unknown
+): value is (...args: any) => unknown => typeof value === 'function'
+
 function typeGuards(x: unknown): x is string
 function typeGuards(x: unknown, type: 'string'): x is string
 function typeGuards(x: unknown, type: 'number'): x is number
@@ -270,7 +274,7 @@ function typeGuards(x: unknown, type: 'object'): x is object
 function typeGuards(x: unknown, type: 'null'): x is null
 function typeGuards(
   x: unknown,
-  type?: 'string' | 'number' | 'undefined' | 'object' | 'null'
+  type?: 'string' | 'number' | 'undefined' | 'object' | 'null' | 'function'
 ): boolean {
   switch (type) {
     case 'string':
@@ -283,6 +287,8 @@ function typeGuards(
       return typeof x === 'object'
     case 'null':
       return x === null
+    case 'function':
+      return typeof x === 'function'
     default:
       return false
   }

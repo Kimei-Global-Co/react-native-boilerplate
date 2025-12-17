@@ -1,4 +1,4 @@
-// biome-ignore assist/source/useSortedKeys: <explanation>
+// biome-ignore assist/source/useSortedKeys: Some things need their place.
 const Colors = {
   transparent: 'transparent',
   white: '#ffffff',

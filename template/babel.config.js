@@ -1,4 +1,4 @@
-/** biome-ignore-all assist/source/useSortedKeys: <explanation> */
+/** biome-ignore-all assist/source/useSortedKeys: Some things need their place.*/
 module.exports = (api) => {
   api.cache(true)
   const unistylesPluginOptions = {
