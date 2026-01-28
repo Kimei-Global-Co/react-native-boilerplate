@@ -1,7 +1,9 @@
 import { Gesture, GestureDetector } from 'react-native-gesture-handler'
 
 import { useEffect } from 'react'
+import { StyleSheet } from 'react-native'
 
+import { Spacing } from '@theme/layout'
 import { clamp, getColor, snapPoint } from '@utils/helper'
 import Animated, {
   interpolate,
@@ -11,8 +13,7 @@ import Animated, {
   useSharedValue,
   withSpring
 } from 'react-native-reanimated'
-import { StyleSheet } from 'react-native-unistyles'
-import type { SwitchProps } from './type'
+import type { SwitchProps } from './switch.type'
 
 const DEFAULT_TRACK_WIDTH = 50
 const DEFAULT_THUMB_WIDTH = 24
@@ -134,10 +135,10 @@ export default function Switch(
   )
 }
 
-const styles = StyleSheet.create((theme) => ({
+const styles = StyleSheet.create({
   switchContainer: {
     borderRadius: 36.5,
-    paddingHorizontal: theme.spacing.xs,
-    paddingVertical: theme.spacing.xs
+    paddingHorizontal: Spacing.xs,
+    paddingVertical: Spacing.xs
   }
-}))
+})

@@ -6,9 +6,9 @@ import {
 } from 'react-native'
 
 import { getIconComponent } from '@assets/icons'
-import { useUnistyles } from 'react-native-unistyles'
+import Colors from '@theme/colors'
 import Block from '../block'
-import type { IconComponentProps } from './type'
+import type { IconComponentProps } from './icon.type'
 
 const BUTTON_COMPONENTS = {
   withoutPress: Block,
@@ -21,11 +21,10 @@ const BUTTON_COMPONENTS = {
 } as const
 
 export default function Icon(props: IconComponentProps): React.JSX.Element {
-  const { theme } = useUnistyles()
   const {
     type,
     name,
-    color = theme.colors.black,
+    color = Colors.black,
     size,
     disabledStyle,
     style,
@@ -38,10 +37,7 @@ export default function Icon(props: IconComponentProps): React.JSX.Element {
 
   const IconComponent = getIconComponent[type]
 
-  const initContainerStyle = StyleSheet.flatten([
-    disabledStyle ?? {},
-    style
-  ])
+  const initContainerStyle = StyleSheet.flatten([disabledStyle ?? {}, style])
 
   return (
     <ButtonComponent
@@ -57,7 +53,7 @@ export default function Icon(props: IconComponentProps): React.JSX.Element {
         style={Platform.OS === 'android' ? initContainerStyle : {}}
       >
         <IconComponent
-          color={theme.colors[color as keyof typeof theme.colors] ?? color}
+          color={Colors[color as keyof typeof Colors] ?? color}
           name={name}
           size={size ?? 0}
         />

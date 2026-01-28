@@ -38,7 +38,7 @@ export default function MainNavigation(): React.JSX.Element {
   return (
     <NavigationContainer
       linking={
-        process.env.EXPO_PUBLIC_STAGE !== 'development' ? linking : undefined
+        process.env.EXPO_PUBLIC_STAGE === 'development' ? undefined : linking
       }
       onReady={linkingConfig.onReady}
       ref={navigationRef}

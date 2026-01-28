@@ -10,7 +10,7 @@ import {
   SIZE_STYLES,
   type TagContextType,
   VARIANT_STYLES
-} from './type'
+} from './tag.type'
 
 const TagContext = createContext<TagContextType | undefined>(undefined)
 
@@ -22,7 +22,11 @@ const useTagContext = (): TagContextType => {
   return context
 }
 
-function Tag({ variant = 'subtle', size = 'sm', children }: RootProps) {
+function Tag({
+  variant = 'subtle',
+  size = 'sm',
+  children
+}: Readonly<RootProps>) {
   const variantStyle = VARIANT_STYLES[variant]
   const sizeStyle = SIZE_STYLES[size]
 
@@ -46,7 +50,7 @@ function Tag({ variant = 'subtle', size = 'sm', children }: RootProps) {
   )
 }
 
-function Label({ children }: LabelProps) {
+function Label({ children }: Readonly<LabelProps>) {
   const { variant, size } = useTagContext()
   const variantStyle = VARIANT_STYLES[variant]
   const sizeStyle = SIZE_STYLES[size]
@@ -66,11 +70,11 @@ function Label({ children }: LabelProps) {
   )
 }
 
-function EndElement({ children }: { children: React.ReactNode }) {
+function EndElement({ children }: Readonly<{ children: React.ReactNode }>) {
   return <Block style={styles.endElement}>{children}</Block>
 }
 
-function CloseTrigger({ onClose }: CloseTriggerProps) {
+function CloseTrigger({ onClose }: Readonly<CloseTriggerProps>) {
   const { variant, size } = useTagContext()
   const variantStyle = VARIANT_STYLES[variant]
   const sizeStyle = SIZE_STYLES[size]

@@ -20,7 +20,7 @@ import Animated, {
 import { StyleSheet } from 'react-native-unistyles'
 import Block from '../block'
 import Typography from '../typography'
-import type { ButtonProps } from './type'
+import type { ButtonProps } from './button.type'
 export const isNative = Platform.OS === 'ios' || Platform.OS === 'android'
 
 const DEFAULT_TARGET_SCALE = isNative ? 0.98 : 1

@@ -1,13 +1,12 @@
 import { useState } from 'react'
-import { TextInput as RNTextInput } from 'react-native'
+import { TextInput as RNTextInput, StyleSheet } from 'react-native'
 
-import { StyleSheet } from 'react-native-unistyles'
-// import { theme } from '@theme'
+import Colors from '@theme/colors'
 import Block from '../block'
 import Icon from '../icon'
 import Row from '../row'
 import Typography from '../typography'
-import { type TextInputBaseProps } from './type'
+import { type TextInputBaseProps } from './input.type'
 export default function TextInput(
   props: TextInputBaseProps & { ref?: React.Ref<RNTextInput> }
 ): React.JSX.Element {
@@ -138,23 +137,23 @@ export default function TextInput(
   )
 }
 
-const styles = StyleSheet.create((theme) => ({
+const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    backgroundColor: theme.colors.white,
-    borderColor: theme.colors.gray_400,
+    backgroundColor: Colors.white,
+    borderColor: Colors.gray_400,
     borderRadius: 10,
     borderWidth: 1,
     height: 48
   },
   error: {
-    borderColor: theme.colors.rose_400
+    borderColor: Colors.rose_400
   },
   helper: {
     marginTop: 4
   },
   input: {
-    color: theme.colors.black,
+    color: Colors.black,
     flex: 1,
     fontSize: 16,
     height: '100%',
@@ -163,4 +162,4 @@ const styles = StyleSheet.create((theme) => ({
   label: {
     marginBottom: 4
   }
-}))
+})

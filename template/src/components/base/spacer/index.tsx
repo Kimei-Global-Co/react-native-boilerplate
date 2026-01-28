@@ -1,19 +1,10 @@
-import { withUnistyles } from 'react-native-unistyles'
 import Block from '../block'
 
-const UniSpacer = withUnistyles(Block)
-
 type SpacerProps = {
-  x?: number
-  y?: number
+  readonly x?: number
+  readonly y?: number
 }
 
 export default function Spacer({ x, y }: SpacerProps) {
-  return (
-    <UniSpacer
-      uniProps={(theme) => ({
-        size: { height: y ?? theme.spacing.s, width: x ??0 }
-      })}
-    />
-  )
+  return <Block size={{ height: y, width: x }} />
 }

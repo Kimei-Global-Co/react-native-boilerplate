@@ -1,7 +1,7 @@
 import { Dimensions, Platform } from 'react-native'
 
-import type { BlockProps } from '@components/base/block/type'
-import type { IconComponentProps } from '@components/base/icon/type'
+import type { BlockProps } from '@components/base/block/block.type'
+import type { IconComponentProps } from '@components/base/icon/icon.type'
 import Colors from '@theme/colors'
 import get from 'lodash.get'
 import type { EdgeInsets } from 'react-native-safe-area-context'

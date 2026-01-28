@@ -1,11 +1,10 @@
-import { type TextStyle } from 'react-native'
+import { StyleSheet, type TextStyle } from 'react-native'
 
 import Colors from '@theme/colors'
 import fonts from '@theme/fonts'
 import { NativeText } from 'react-native/Libraries/Text/TextNativeComponent'
-import { StyleSheet } from 'react-native-unistyles'
 import { createDefaultStyle, handleGutter, typeGuards } from 'utils/helper'
-import type { CommonTextProps } from './type'
+import type { CommonTextProps } from './typo.type'
 
 const createTypoStyles = (props: CommonTextProps): TextStyle => {
   const {

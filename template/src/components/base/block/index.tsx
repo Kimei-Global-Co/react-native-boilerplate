@@ -1,15 +1,18 @@
-import { type ViewStyle } from 'react-native'
+import { StyleSheet, type ViewStyle } from 'react-native'
 
 import { Spacing } from '@theme/layout'
 import NativeView from 'react-native/Libraries/Components/View/ViewNativeComponent'
-import { StyleSheet, UnistylesRuntime } from 'react-native-unistyles'
+import {
+  type EdgeInsets,
+  useSafeAreaInsets
+} from 'react-native-safe-area-context'
 import {
   createDefaultStyle,
   handleGutter,
   handleInset,
   typeGuards
 } from 'utils/helper'
-import type { BlockProps } from './type'
+import type { BlockProps } from './block.type'
 
 const createSizeStyle = (size: BlockProps['size']): ViewStyle => {
   if (typeGuards(size, 'number')) return { height: size, width: size }
@@ -23,7 +26,28 @@ const createSizeStyle = (size: BlockProps['size']): ViewStyle => {
   return {}
 }
 
-const createBlockStyles = (props: BlockProps): ViewStyle => {
+const getShadowStyle = {
+  boxShadow: '0 2px 4px rgba(0, 0, 0, 0.15)'
+}
+
+const createPositionStyles = (
+  top: BlockProps['top'],
+  bottom: BlockProps['bottom'],
+  left: BlockProps['left'],
+  right: BlockProps['right']
+): ViewStyle => {
+  return StyleSheet.flatten([
+    !typeGuards(top, 'undefined') && { top },
+    !typeGuards(bottom, 'undefined') && { bottom },
+    !typeGuards(left, 'undefined') && { left },
+    !typeGuards(right, 'undefined') && { right }
+  ]) as ViewStyle
+}
+
+const createBlockStyles = (
+  props: BlockProps,
+  safeArea: EdgeInsets
+): ViewStyle => {
   const {
     style,
     size,
@@ -51,36 +75,30 @@ const createBlockStyles = (props: BlockProps): ViewStyle => {
     justify && { justifyContent: justify },
     row && { flexDirection: 'row' },
     position && { position },
-    !typeGuards(top, 'undefined') && { top },
-    !typeGuards(bottom, 'undefined') && { bottom },
-    !typeGuards(left, 'undefined') && { left },
-    !typeGuards(right, 'undefined') && { right },
+    createPositionStyles(top, bottom, left, right),
     overflow && { overflow },
     padding && handleGutter('padding', padding),
     margin && handleGutter('margin', margin),
     typeGuards(gap, 'string')
       ? { gap: Spacing[gap] }
       : typeGuards(gap, 'number') && { gap },
-    shadow && { boxShadow: '0 2px 4px rgba(0, 0, 0, 0.15)' },
+    shadow && getShadowStyle,
     linearGradient && { experimental_backgroundImage: linearGradient },
-    handleInset(props, UnistylesRuntime.insets, padding),
+    handleInset(props, safeArea, padding),
     backgroundColor && {
-      backgroundColor:
-        UnistylesRuntime.getTheme('light').colors[backgroundColor] ??
-        backgroundColor
+      backgroundColor: backgroundColor
     },
     style
   ]) as ViewStyle
 }
 
-export default function Block(
-  props: BlockProps & { ref?: React.Ref<NativeView> }
-) {
+export default function Block(props: Readonly<BlockProps>) {
+  const safeArea = useSafeAreaInsets()
   const { children, ...rest } = props
-  const blockStyles = createBlockStyles(props)
+  const blockStyles = createBlockStyles(props, safeArea)
 
   return (
-    <NativeView {...rest} ref={props.ref} style={blockStyles}>
+    <NativeView {...rest} style={blockStyles}>
       {children}
     </NativeView>
   )

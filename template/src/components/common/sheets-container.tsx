@@ -14,7 +14,7 @@ export default function SheetsContainer(): React.JSX.Element {
   const activeSheets = useSheetStore((state) => state.activeSheets)
   const closeSheet = useSheetStore((state) => state.closeSheet)
 
-  const activeModalSheet = activeSheets[activeSheets.length - 1]
+  const activeModalSheet = activeSheets.at(-1)
   const isSheetActive = activeSheets.length > 0
 
   const onClose: () => void = closeSheet

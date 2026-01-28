@@ -1,4 +1,4 @@
-import { TouchableOpacity } from 'react-native'
+import { StyleSheet, TouchableOpacity } from 'react-native'
 
 import Block from '@components/base/block'
 import Icon from '@components/base/icon'
@@ -7,7 +7,6 @@ import Row from '@components/base/row'
 import Typography from '@components/base/typography'
 import { navigate } from '@navigation/config/navigation-services'
 import Colors from '@theme/colors'
-import { StyleSheet } from 'react-native-unistyles'
 import { MENU_ITEMS } from './create-container'
 
 export default function DevMenu(): React.JSX.Element {

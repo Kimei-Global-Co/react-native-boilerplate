@@ -8,16 +8,18 @@ import Icon from '../icon'
 import Image from '../image'
 import Row from '../row'
 import Typography from '../typography'
-import { DEFAULT_ACTIONS, type HeaderProps } from './type'
+import { DEFAULT_ACTIONS, type HeaderProps } from './header.type'
+
+const DEFAULT_AVATAR = localImage().icAvatar
 
 export default function Header({
   isBack = false,
   title = 'Header Label',
   subtitle,
-  avatar = localImage().icAvatar,
+  avatar = DEFAULT_AVATAR,
   rightActions = DEFAULT_ACTIONS,
   style
-}: HeaderProps): React.JSX.Element {
+}: Readonly<HeaderProps>): React.JSX.Element {
   const renderLeft = (): React.JSX.Element => {
     if (isBack) {
       return (

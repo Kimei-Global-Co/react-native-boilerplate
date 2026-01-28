@@ -1,11 +1,10 @@
 import { useState } from 'react'
-import { Text } from 'react-native'
+import { StyleSheet, Text } from 'react-native'
 
 import Block from '@components/base/block'
 import Header from '@components/base/header'
 import Switch from '@components/base/switch'
-// import Typography from '@components/base/typography'
-import { StyleSheet } from 'react-native-unistyles'
+
 import { createContainer } from '../create-container'
 
 const styles = StyleSheet.create({

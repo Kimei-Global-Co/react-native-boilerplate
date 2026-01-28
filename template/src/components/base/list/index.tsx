@@ -1,7 +1,7 @@
 import { FlashList, type ListRenderItemInfo } from '@shopify/flash-list'
 import Block from '../block'
 import EmptyView from '../empty-view'
-import type { InfiniteScrollListProps } from './type'
+import type { InfiniteScrollListProps } from './list.type'
 
 function FlashListComponent<T>({
   style,
