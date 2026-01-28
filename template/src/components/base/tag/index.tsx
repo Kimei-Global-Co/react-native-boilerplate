@@ -1,8 +1,8 @@
 import { createContext, useContext } from 'react'
 import { StyleSheet, TouchableOpacity } from 'react-native'
 
-import { Block } from '../block'
-import { Typography } from '../typography'
+import Block from '../block'
+import Typography from '../typography'
 import {
   type CloseTriggerProps,
   type LabelProps,
@@ -10,7 +10,7 @@ import {
   SIZE_STYLES,
   type TagContextType,
   VARIANT_STYLES
-} from './type'
+} from './tag.type'
 
 const TagContext = createContext<TagContextType | undefined>(undefined)
 
@@ -22,11 +22,11 @@ const useTagContext = (): TagContextType => {
   return context
 }
 
-const Root: React.FC<RootProps> = ({
+function Tag({
   variant = 'subtle',
   size = 'sm',
   children
-}) => {
+}: Readonly<RootProps>) {
   const variantStyle = VARIANT_STYLES[variant]
   const sizeStyle = SIZE_STYLES[size]
 
@@ -50,7 +50,7 @@ const Root: React.FC<RootProps> = ({
   )
 }
 
-const Label: React.FC<LabelProps> = ({ children }) => {
+function Label({ children }: Readonly<LabelProps>) {
   const { variant, size } = useTagContext()
   const variantStyle = VARIANT_STYLES[variant]
   const sizeStyle = SIZE_STYLES[size]
@@ -70,11 +70,11 @@ const Label: React.FC<LabelProps> = ({ children }) => {
   )
 }
 
-const EndElement: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+function EndElement({ children }: Readonly<{ children: React.ReactNode }>) {
   return <Block style={styles.endElement}>{children}</Block>
 }
 
-const CloseTrigger: React.FC<CloseTriggerProps> = ({ onClose }) => {
+function CloseTrigger({ onClose }: Readonly<CloseTriggerProps>) {
   const { variant, size } = useTagContext()
   const variantStyle = VARIANT_STYLES[variant]
   const sizeStyle = SIZE_STYLES[size]
@@ -115,10 +115,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row'
   }
 })
+Tag.Label = Label
+Tag.EndElement = EndElement
+Tag.CloseTrigger = CloseTrigger
 
-export const Tag = {
-  CloseTrigger,
-  EndElement,
-  Label,
-  Root
-}
+export default Tag

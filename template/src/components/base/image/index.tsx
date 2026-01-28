@@ -1,10 +1,7 @@
 import { Image as ExpoImage, type ImageSource } from 'expo-image'
-import type { TImageProps } from './type'
+import type { TImageProps } from './image.type'
 
-export const Image = function Image(
-  props: TImageProps,
-  ref?: React.Ref<ExpoImage>
-) {
+export default function Image(props: TImageProps) {
   const {
     borderRadius,
     source,
@@ -13,6 +10,7 @@ export const Image = function Image(
     contentFit,
     resizeMode,
     blurhash,
+    ref,
     ...rest
   } = props
 

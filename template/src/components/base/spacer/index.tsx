@@ -1,7 +1,10 @@
-import theme from '@theme'
-import { Block } from '../block'
+import Block from '../block'
 
-export const Spacer: React.FC<{ x?: number; y?: number }> = ({
-  x = 0,
-  y = theme.spacing.s
-}) => <Block size={{ height: y, width: x }} />
+type SpacerProps = {
+  readonly x?: number
+  readonly y?: number
+}
+
+export default function Spacer({ x, y }: SpacerProps) {
+  return <Block size={{ height: y, width: x }} />
+}

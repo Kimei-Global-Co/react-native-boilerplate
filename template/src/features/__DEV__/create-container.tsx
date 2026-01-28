@@ -1,9 +1,10 @@
-import { Block } from '@components'
+import Block from '@components/base/block'
 
 export const MENU_ITEMS = {
   Accordion: 'Accordion',
   Avatar: 'Avatar',
   Button: 'Button',
+  Camera: 'Camera',
   Card: 'Card',
   EmptyView: 'EmptyView',
   Header: 'Header',
@@ -12,9 +13,12 @@ export const MENU_ITEMS = {
   Lingui: 'Lingui',
   List: 'List',
   Row: 'Row',
+  Sheet: 'Sheet',
   Spacer: 'Spacer',
   Spinner: 'Spinner',
+  Switch: 'Switch',
   Tag: 'Tag',
+  TextInput: 'TextInput',
   Typography: 'Typography'
 } as const
 

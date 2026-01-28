@@ -22,6 +22,6 @@ if (currentDir !== 'template') {
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀
       𐙚
      -♡´-˙✧˖°📷 ༘ ⋆｡˚˙✧˖°📷 ༘ ⋆｡˚˚˖𓍢ִ໋🌷͙֒✧˚.🎀༘⋆˚‧｡⋆🌻⋆｡‧˚⛷🧚‍♀️🛖`)
-  execSync('cd template && bun i', { stdio: 'inherit' })
+  execSync('cd template && bun i --frozen-lockfile', { stdio: 'inherit' })
   console.info('🍀 Good luck and happy coding! 🍀')
 }

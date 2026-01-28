@@ -9,9 +9,9 @@ import Animated, {
   useSharedValue,
   withTiming
 } from 'react-native-reanimated'
-import { Block } from '../block'
+import Block from '../block'
 import Icon from '../icon'
-import { Typography } from '../typography'
+import Typography from '../typography'
 import { createSplitItemStyles, createVariantStyles } from './styles'
 import type {
   AccordionContextType,
@@ -72,7 +72,7 @@ const AccordionItem = ({
   const height = useSharedValue(0)
 
   const animatedStyle = useAnimatedStyle(() => ({
-    height: height.value,
+    height: height.get(),
     opacity: withTiming(isExpanded ? 1 : 0, { duration: 300 })
   }))
 
@@ -82,11 +82,11 @@ const AccordionItem = ({
         'worklet'
         const measured = measure(contentRef)
         if (measured) {
-          height.value = withTiming(measured.height, { duration: 300 })
+          height.set(withTiming(measured.height, { duration: 300 }))
         }
       })()
     } else {
-      height.value = withTiming(0, { duration: 300 })
+      height.set(withTiming(0, { duration: 300 }))
     }
   }, [contentRef, height, isExpanded])
 

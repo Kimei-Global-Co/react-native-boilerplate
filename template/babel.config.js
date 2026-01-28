@@ -1,6 +1,7 @@
-/** biome-ignore-all assist/source/useSortedKeys: <explanation> */
-module.exports = function (api) {
+/** biome-ignore-all assist/source/useSortedKeys: Some things need their place.*/
+module.exports = (api) => {
   api.cache(true)
+
   const plugins = [
     '@lingui/babel-plugin-lingui-macro',
     'react-native-reanimated/plugin',
@@ -13,7 +14,7 @@ module.exports = function (api) {
         'babel-preset-expo',
         {
           lazyImports: true,
-          disableImportExportTransform: true
+          disableImportExportTransform: true // can not writing test when it is true
         }
       ]
     ],

@@ -2,8 +2,8 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "lib": ["ESNext"],
-    "module": "ESNext",
-    "noImplicitAny": true,
+    "module": "esnext",
+    "noImplicitAny": false,
     "paths": {
       "@assets": ["assets"],
       "@assets/*": ["assets/*"],
@@ -24,9 +24,8 @@
       "@utils/*": ["utils/*"]
     },
     "strict": true,
-    "types": ["node"],
+    "types": ["jest", "node"],
     "verbatimModuleSyntax": true
   },
   "extends": "expo/tsconfig.base",
-  "include": ["**/*.ts", "**/*.tsx"]
 }

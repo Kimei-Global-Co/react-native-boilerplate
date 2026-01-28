@@ -1,11 +1,11 @@
 /** @type {import('@lingui/conf').LinguiConfig} */
 module.exports = {
-  locales: ['en', 'vi', 'ja'],
   catalogs: [
     {
-      path: '<rootDir>/src/locale/locales/{locale}/messages',
-      include: ['src']
+      include: ['src'],
+      path: '<rootDir>/src/locale/locales/{locale}/messages'
     }
   ],
-  format: 'po'
+  format: 'po',
+  locales: ['en', 'vi', 'ja']
 }

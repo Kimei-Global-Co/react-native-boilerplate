@@ -1,16 +1,15 @@
 import { useState } from 'react'
 import { TextInput as RNTextInput, StyleSheet } from 'react-native'
 
-import { theme } from '@theme'
-import { Block } from '../block'
+import Colors from '@theme/colors'
+import Block from '../block'
 import Icon from '../icon'
 import Row from '../row'
-import { Typography } from '../typography'
-import { type TextInputBaseProps } from './type'
-
-export const TextInput = (
+import Typography from '../typography'
+import { type TextInputBaseProps } from './input.type'
+export default function TextInput(
   props: TextInputBaseProps & { ref?: React.Ref<RNTextInput> }
-) => {
+): React.JSX.Element {
   const {
     containerStyle,
     inputStyle,
@@ -22,7 +21,7 @@ export const TextInput = (
     leftIcon,
     rightIcon,
     clearable = false,
-    focusColor = theme.colors.blue_400,
+    focusColor = 'blue_400',
     helper,
     required = false,
     value: externalValue,
@@ -124,7 +123,7 @@ export const TextInput = (
           onBlur={handleBlur}
           onChangeText={handleChangeText}
           onFocus={handleFocus}
-          placeholderTextColor={theme.colors.gray_400}
+          // placeholderTextColor={theme.colors.gray_400}
           secureTextEntry={secureEntry}
           style={inputStyles}
           value={value}
@@ -138,25 +137,23 @@ export const TextInput = (
   )
 }
 
-TextInput.displayName = 'TextInput'
-
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    backgroundColor: theme.colors.white,
-    borderColor: theme.colors.gray_400,
+    backgroundColor: Colors.white,
+    borderColor: Colors.gray_400,
     borderRadius: 10,
     borderWidth: 1,
     height: 48
   },
   error: {
-    borderColor: theme.colors.rose_400
+    borderColor: Colors.rose_400
   },
   helper: {
     marginTop: 4
   },
   input: {
-    color: theme.colors.black,
+    color: Colors.black,
     flex: 1,
     fontSize: 16,
     height: '100%',

@@ -1,4 +1,5 @@
 module.exports = {
-  placeholderName: "RNBoilerplate",
-  templateDir: "./template",
-};
+  placeholderName: 'RNBoilerplate',
+  postInitScript: './scripts/clean-up.js',
+  templateDir: './template'
+}

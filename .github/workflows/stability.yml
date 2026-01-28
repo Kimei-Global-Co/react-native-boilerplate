@@ -2,6 +2,10 @@ name: Check Performance Stability
 
 on: [workflow_dispatch]
 
+permissions:
+  pull-requests: write # required for Danger to post comments
+  statuses: write # required for Danger to post commit statuses
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: ${{ !contains(github.ref, 'main')}}
@@ -22,13 +26,13 @@ jobs:
       - name: Run performance checks
         working-directory: ./template
         run: |
-            echo "🚀 Running Reassure performance tests..."
-            bun run perf-test || {
-              echo "❌ Reassure tests failed because no tests were found!"
-              echo "💡 Tip: Check your test paths: __perf__ folders or patterns like (perf|perf-test).(ts|tsx|js|jsx)"
-              exit 1
-            }
-        
+          echo "🚀 Running Reassure performance tests..."
+          bun run perf-test || {
+            echo "❌ Reassure tests failed because no tests were found!"
+            echo "💡 Tip: Check your test paths: __perf__ folders or patterns like (perf|perf-test).(ts|tsx|js|jsx)"
+            exit 1
+          }
+
       - name: Run Danger.js
         run: bun danger ci
         env:

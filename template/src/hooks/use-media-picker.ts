@@ -1,0 +1,3 @@
+function useMediaPicker() {}
+
+export { useMediaPicker }

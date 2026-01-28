@@ -112,5 +112,23 @@ export interface BlockProps extends DefaultStyleProps, ViewProps {
    */
   shadow?: boolean
 
+  /**
+   * Render content within the linear gradient
+   * ```
+   * {
+      linearGradient: 'linear-gradient(90deg, #ddd 0px,#e8e8e8 40px, #ddd 80px)'
+    }
+   * ```
+   */
+  linearGradient?: ViewStyle['experimental_backgroundImage']
+
+  /**
+   * Overflow style
+   * ```
+   * {
+      overflow: 'hidden'
+    }
+   * ```
+   */
   overflow?: ViewStyle['overflow']
 }

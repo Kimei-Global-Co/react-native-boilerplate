@@ -17,7 +17,8 @@
     "!template/android/build/",
     "!template/android/app/build/",
     "!template/android/.idea/",
-    "!template/android/.gradle/"
+    "!template/android/.gradle/",
+    "!template/src/features/__DEV__"
   ],
   "homepage": "https://github.com/Kimei-Global-Co/react-native-boilerplate/tree/main",
   "keywords": [

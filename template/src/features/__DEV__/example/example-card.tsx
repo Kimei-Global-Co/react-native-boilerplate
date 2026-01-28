@@ -1,13 +1,16 @@
 import { ScrollView } from 'react-native'
 
 import { localImage } from '@assets/images'
-import { Block, Card, Header, Typography } from '@components'
+import Block from '@components/base/block'
+import Card from '@components/base/card'
+import Header from '@components/base/header'
+import Typography from '@components/base/typography'
 import { createContainer } from '../create-container'
 
 const CardComponent = (): React.JSX.Element => {
   return (
     <Block flex>
-      <Header isBack title={'Card component'} />
+      <Header isBack title='Card component' />
       <ScrollView showsVerticalScrollIndicator={false}>
         {/* Default Card */}
         <Card>

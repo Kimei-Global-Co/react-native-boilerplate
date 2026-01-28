@@ -2,26 +2,28 @@ import { StyleSheet } from 'react-native'
 
 import { localImage } from '@assets/images'
 import { goBack } from '@navigation/config/navigation-services'
-import { Block } from '../block'
-import { Button } from '../button'
+import Block from '../block'
+import Button from '../button'
 import Icon from '../icon'
-import { Image } from '../image'
+import Image from '../image'
 import Row from '../row'
-import { Typography } from '../typography'
-import { DEFAULT_ACTIONS, type HeaderProps } from './type'
+import Typography from '../typography'
+import { DEFAULT_ACTIONS, type HeaderProps } from './header.type'
 
-export const Header = ({
+const DEFAULT_AVATAR = localImage().icAvatar
+
+export default function Header({
   isBack = false,
   title = 'Header Label',
   subtitle,
-  avatar = localImage().icAvatar,
+  avatar = DEFAULT_AVATAR,
   rightActions = DEFAULT_ACTIONS,
   style
-}: HeaderProps): React.JSX.Element => {
+}: Readonly<HeaderProps>): React.JSX.Element {
   const renderLeft = (): React.JSX.Element => {
     if (isBack) {
       return (
-        <Button isIconOnly onPress={goBack} variant='ghost'>
+        <Button onPress={goBack} style={{ width: 30 }}>
           <Icon name='left' size={22} type='antDesign' />
         </Button>
       )
@@ -45,12 +47,7 @@ export const Header = ({
   const renderRightActions = (): React.JSX.Element => (
     <>
       {rightActions?.map((action) => (
-        <Button
-          isIconOnly
-          key={action.id}
-          onPress={action.onPress}
-          variant='ghost'
-        >
+        <Button key={action.id} onPress={action.onPress} style={{ width: 30 }}>
           <Icon name={action.name} size={22} type={action.type} />
         </Button>
       ))}

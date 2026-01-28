@@ -1,4 +1,4 @@
-import { Typography } from '@components/base/typography'
+import Typography from '@components/base/typography'
 import { useLingui } from '@lingui/react/macro'
 import { createContainer } from '../create-container'
 

@@ -1,4 +1,7 @@
-import type { ImageProps as ExpoImageProps } from 'expo-image'
+import type {
+  Image as ExpoImage,
+  ImageProps as ExpoImageProps
+} from 'expo-image'
 
 export type ContentFit = 'cover' | 'contain' | 'fill' | 'none' | 'scale-down'
 
@@ -28,4 +31,5 @@ export type TImageProps = Omit<ImgProps, 'resizeMode'> & {
   alt?: string
   blurhash?: string
   resizeMode?: ResizeMode
+  ref?: React.Ref<ExpoImage>
 }

@@ -1,7 +1,9 @@
 import { StyleSheet } from 'react-native'
 
-import { Block, Header, Typography } from '@components'
-import { InfiniteScrollList } from '@components/base/list'
+import Block from '@components/base/block'
+import Header from '@components/base/header'
+import InfiniteScrollList from '@components/base/list'
+import Typography from '@components/base/typography'
 import { createContainer } from '../create-container'
 
 interface ListItem {

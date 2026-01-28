@@ -13,16 +13,6 @@ export const Layout = {
   alignSelfStart: {
     alignSelf: 'flex-start'
   },
-  bg_black2A: {
-    backgroundColor: '#2A2A2A'
-  },
-  bg_gray888: {
-    backgroundColor: '#888888'
-  },
-  /* Backgrounds */
-  bg_primary: {
-    backgroundColor: '#fff'
-  },
   bottom0: {
     bottom: 0
   },

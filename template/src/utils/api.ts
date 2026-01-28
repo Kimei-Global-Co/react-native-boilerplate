@@ -41,16 +41,16 @@ const api = async <T>({
   // const accessToken = persistedState.getAccessToken()
 
   const options: Options = {
-    method,
-    retry: 0,
-    signal: unmountSignal,
-    prefixUrl: API_CONFIG.baseURL,
-    json: data,
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
       ...headers
     },
+    json: data,
+    method,
+    prefixUrl: API_CONFIG.baseURL,
+    retry: 0,
+    signal: unmountSignal,
     // hooks: {
     //   beforeRequest: [
     //     (request) => {
