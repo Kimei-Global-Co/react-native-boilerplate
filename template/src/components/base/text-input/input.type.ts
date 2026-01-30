@@ -6,7 +6,7 @@ import type {
 } from 'react-native'
 
 import type { IconType } from '@assets/icons'
-import Colors from '@theme/colors'
+import type Colors from '@theme/colors'
 
 export type TextInputMode = 'default' | 'numeric' | 'password' | 'search'
 

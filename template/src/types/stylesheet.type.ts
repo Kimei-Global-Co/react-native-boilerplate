@@ -1,6 +1,6 @@
 import type { FlexStyle, ViewStyle } from 'react-native'
 
-import Colors from '@theme/colors'
+import type Colors from '@theme/colors'
 
 
 export interface DefaultStyleProps {

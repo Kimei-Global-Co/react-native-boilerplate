@@ -1,6 +1,6 @@
 import type { ImageSourcePropType, ViewStyle } from 'react-native'
 
-import { type IconName, Icons } from '@assets/icons'
+import type { IconName, Icons } from '@assets/icons'
 
 export interface HeaderAction {
   /** Unique identifier for the action */

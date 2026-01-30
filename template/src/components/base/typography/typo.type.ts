@@ -1,6 +1,6 @@
 import type { FlexStyle, TextProps } from 'react-native'
 
-import Colors from '@theme/colors'
+import type Colors from '@theme/colors'
 import type { ThemeFontWeight } from '@theme/fonts'
 import type { DefaultStyleProps } from 'types/stylesheet.type'
 

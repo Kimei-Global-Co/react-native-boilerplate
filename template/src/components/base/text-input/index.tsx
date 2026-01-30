@@ -6,7 +6,7 @@ import Block from '../block'
 import Icon from '../icon'
 import Row from '../row'
 import Typography from '../typography'
-import { type TextInputBaseProps } from './input.type'
+import type { TextInputBaseProps } from './input.type'
 export default function TextInput(
   props: TextInputBaseProps & { ref?: React.Ref<RNTextInput> }
 ): React.JSX.Element {
