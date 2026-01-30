@@ -22,30 +22,41 @@ const packageJsonFile = path.join(process.cwd(), 'package.json')
 // Logic to move template files from dotfiles directory to root
 const dotfilesDir = path.join(process.cwd(), 'dotfiles')
 const renameList = [
-  { from: 'gitignore', to: '.gitignore' },
-  { from: 'biomeignore', to: '.biomeignore' },
-  { from: 'env.example', to: '.env.example' },
-  { from: 'vscode', to: '.vscode' },
-  { from: 'husky', to: '.husky' },
-  { from: 'agents', to: '.agents' },
-  { from: 'codex', to: '.codex' },
+  { from: 'git-ignore', to: '.gitignore' },
+  { from: 'biome-ignore', to: '.biomeignore' },
+  { from: 'env-example', to: '.env.example' },
+  { from: 'vs-code', to: '.vscode' },
+  { from: 'husky-setup', to: '.husky' },
+  { from: 'agents-setup', to: '.agents' },
+  { from: 'codex-setup', to: '.codex' },
 ]
 
 if (fs.existsSync(dotfilesDir)) {
+  console.info('📦 Initializing dotfiles...')
   for (const { from, to } of renameList) {
     const fromPath = path.join(dotfilesDir, from)
     const toPath = path.join(process.cwd(), to)
     if (fs.existsSync(fromPath)) {
-      if (fs.existsSync(toPath)) {
-        fs.rmSync(toPath, { recursive: true, force: true })
+      try {
+        if (fs.existsSync(toPath)) {
+          fs.rmSync(toPath, { recursive: true, force: true })
+        }
+        fs.renameSync(fromPath, toPath)
+        console.info(`  ✅ Created ${to}`)
+      } catch (error) {
+        console.error(`  ❌ Failed to create ${to}:`, error)
       }
-      fs.renameSync(fromPath, toPath)
-      console.info(`✅ Initialized ${to}`)
+    } else {
+      console.warn(`  ⚠️  Source ${from} not found in dotfiles/`)
     }
   }
-  // Clean up the dotfiles directory including README
-  fs.rmSync(dotfilesDir, { recursive: true, force: true })
-  console.info('🧹 Cleaned up template dotfiles directory')
+  // Clean up the dotfiles directory
+  try {
+    fs.rmSync(dotfilesDir, { recursive: true, force: true })
+    console.info('🧹 Cleaned up template dotfiles directory')
+  } catch (error) {
+    console.error('  ❌ Failed to remove dotfiles directory:', error)
+  }
 }
 
 if (fs.existsSync(devDir)) {
