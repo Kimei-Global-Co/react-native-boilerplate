@@ -130,12 +130,12 @@ Make sure you have the following installed:
 2. **Use `npm`**
 
    ```sh 
-   npx create-expo-app@latest **your-project-name** --template Kimei-Global-Co/react-native-boilerplate/tree/main/template
+   npx create-expo@latest **your-project-name** --template Kimei-Global-Co/react-native-boilerplate/tree/main/template
    ```
 
 3. **Use `yarn`**
    ```sh 
-   yarn create expo-app **your-project-name** --template Kimei-Global-Co/react-native-boilerplate/tree/main/template
+   yarn create expo **your-project-name** --template Kimei-Global-Co/react-native-boilerplate/tree/main/template
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+bun.lock
+yarn.lock
+
+# Build outputs
+dist/
+
+
+# Logs
+*.log
+
+
+# OS generated files
+.DS_Store
+*.pem

@@ -19,6 +19,35 @@ const rootScenesFile = path.join(
 const readmeFile = path.join(process.cwd(), 'README.md')
 const packageJsonFile = path.join(process.cwd(), 'package.json')
 
+// Logic to move template files from dotfiles directory to root
+const dotfilesDir = path.join(process.cwd(), 'dotfiles')
+const renameList = [
+  { from: 'gitignore', to: '.gitignore' },
+  { from: 'biomeignore', to: '.biomeignore' },
+  { from: 'env.example', to: '.env.example' },
+  { from: 'vscode', to: '.vscode' },
+  { from: 'husky', to: '.husky' },
+  { from: 'agents', to: '.agents' },
+  { from: 'codex', to: '.codex' },
+]
+
+if (fs.existsSync(dotfilesDir)) {
+  for (const { from, to } of renameList) {
+    const fromPath = path.join(dotfilesDir, from)
+    const toPath = path.join(process.cwd(), to)
+    if (fs.existsSync(fromPath)) {
+      if (fs.existsSync(toPath)) {
+        fs.rmSync(toPath, { recursive: true, force: true })
+      }
+      fs.renameSync(fromPath, toPath)
+      console.info(`✅ Initialized ${to}`)
+    }
+  }
+  // Clean up the dotfiles directory including README
+  fs.rmSync(dotfilesDir, { recursive: true, force: true })
+  console.info('🧹 Cleaned up template dotfiles directory')
+}
+
 if (fs.existsSync(devDir)) {
   fs.rmSync(devDir, { force: true, recursive: true })
   console.info('🧹 Removed __DEV__ folder')
@@ -65,8 +94,8 @@ if (fs.existsSync(readmeFile) && fs.existsSync(packageJsonFile)) {
     if (projectName) {
       // Convert kebab-case or snake_case to PascalCase
       const pascalCaseName = projectName
-        .replace(/(-\w)/g, (m) => m[1].toUpperCase()) // kebab-case to camelCase
-        .replace(/(_\w)/g, (m) => m[1].toUpperCase()) // snake_case to camelCase
+        .replaceAll(/(-\w)/g, (m) => m[1].toUpperCase()) // kebab-case to camelCase
+        .replaceAll(/(_\w)/g, (m) => m[1].toUpperCase()) // snake_case to camelCase
         .replace(/^\w/, (c) => c.toUpperCase()) // First char to upper
 
       let content = fs.readFileSync(readmeFile, 'utf8')
@@ -82,7 +111,7 @@ if (fs.existsSync(readmeFile) && fs.existsSync(packageJsonFile)) {
     }
 
     // Remove the clean-up script from postinstall
-    if (packageJson.scripts && packageJson.scripts.postinstall) {
+    if (packageJson.scripts?.postinstall) {
        packageJson.scripts.postinstall = packageJson.scripts.postinstall
         .replace('bun scripts/clean-up.js && ', '')
         .replace('bun scripts/clean-up.js', '')
