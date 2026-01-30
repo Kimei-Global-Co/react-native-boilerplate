@@ -115,29 +115,29 @@
 				"noUselessTypeConstraint": "error",
 				"noUselessUndefinedInitialization": "warn",
 				"noVoid": "warn",
-				"useLiteralKeys": "off",
+				"useLiteralKeys": "warn",
 				"useArrowFunction": "error",
 				"useFlatMap": "error",
 				"useOptionalChain": "error",
 				"useWhile": "error",
-				"useIndexOf":"error"
+				"useIndexOf": "error"
 			},
 			"correctness": {
 				"noChildrenProp": "error",
 				"noConstAssign": "error",
-				"noConstantCondition": "off",
+				"noConstantCondition": "warn",
 				"noEmptyCharacterClassInRegex": "warn",
 				"noEmptyPattern": "error",
 				"noGlobalObjectCalls": "warn",
-				"noInnerDeclarations": "off",
+				"noInnerDeclarations": "error",
 				"noInvalidConstructorSuper": "error",
-				"noInvalidUseBeforeDeclaration": "off",
+				"noInvalidUseBeforeDeclaration": "error",
 				"noNonoctalDecimalEscape": "error",
 				"noPrecisionLoss": "error",
 				"noSelfAssign": "error",
 				"noSetterReturn": "error",
 				"noSwitchDeclarations": "error",
-				"noUndeclaredVariables": "off",
+				"noUndeclaredVariables": "error",
 				"noUnreachable": "error",
 				"noUnreachableSuper": "error",
 				"noUnsafeFinally": "error",
@@ -146,14 +146,14 @@
 				"noUnusedImports": "error",
 				"noUnusedLabels": "error",
 				"noUnusedVariables": "error",
-				"useExhaustiveDependencies": "warn",
-				"useHookAtTopLevel": "warn",
+				"useExhaustiveDependencies": "error",
+				"useHookAtTopLevel": "error",
 				"useIsNan": "warn",
 				"useJsxKeyInIterable": "error",
 				"useValidForDirection": "error",
 				"useValidTypeof": "warn",
 				"useYield": "error",
-				"noGlobalDirnameFilename":"error"
+				"noGlobalDirnameFilename": "error"
 			},
 			"nursery": {
 				"useExhaustiveSwitchCases": "error",
@@ -163,28 +163,28 @@
 			},
 			"performance": {
 				"recommended": true,
-				"noAwaitInLoops":"error",
+				"noAwaitInLoops": "error",
 				"noBarrelFile": "error"
 			},
-			"recommended": false,
+			"recommended": true,
 			"security": {
 				"noDangerouslySetInnerHtmlWithChildren": "error",
 				"noGlobalEval": "error"
 			},
 			"style": {
-				"noCommonJs": "off",
+				"noCommonJs": "error",
 				"noNamespace": "error",
-				"noNestedTernary": "off",
+				"noNestedTernary": "warn",
 				"noNonNullAssertion": "warn",
 				"noYodaExpression": "warn",
 				"useArrayLiterals": "error",
 				"useAsConstAssertion": "error",
-				"useBlockStatements": "off",
-				"useCollapsedElseIf": "off",
+				"useBlockStatements": "error",
+				"useCollapsedElseIf": "error",
 				"useConsistentBuiltinInstantiation": "warn",
 				"useConst": "error",
-				"useDefaultSwitchClause": "off",
-				"useSingleVarDeclarator": "off",
+				"useDefaultSwitchClause": "error",
+				"useSingleVarDeclarator": "error",
 				"useObjectSpread": "error"
 			},
 			"suspicious": {
@@ -238,11 +238,11 @@
 				"useAwait": "error",
 				"useDefaultSwitchClauseLast": "error",
 				"useGetterReturn": "error",
-				"useGuardForIn": "off",
+				"useGuardForIn": "warn",
 				"useIsArray": "error",
-				"noUselessEscapeInString":"error",
-				"noUnassignedVariables":"error",
-				"noTsIgnore":"error"
+				"noUselessEscapeInString": "error",
+				"noUnassignedVariables": "error",
+				"noTsIgnore": "error"
 			}
 		}
 	},

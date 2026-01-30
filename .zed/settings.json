@@ -6,7 +6,7 @@
 	"lsp": {
 		"biome": {
 			"settings": {
-				"config_path": "template/biome.json",
+				"config_path": "biome.json",
 				"require_config_file": true
 			}
 		}

@@ -103,7 +103,7 @@ function useMutative<
       const updaterFn =
         typeof updater === 'function'
           ? (updater as DraftFunction<InitialValue<S>> | (() => S))
-          : () => updater as S
+          : () => updater
 
       const result = create(latest, updaterFn, options)
 
