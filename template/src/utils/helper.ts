@@ -11,7 +11,7 @@ import type {
   GutterProps,
   RadiusProps,
   SafeAreaInsetType
-} from './types'
+} from '../types/stylesheet.type'
 
 export const clamp = (
   value: number,
@@ -31,7 +31,7 @@ export const snapPoint = (
   const point = value + 0.2 * velocity
   const deltas = points.map((p) => Math.abs(point - p))
   const minDelta = Math.min.apply(null, deltas)
-  return points.filter((p) => Math.abs(point - p) === minDelta)[0]
+  return points.find((p) => Math.abs(point - p) === minDelta) ?? points[0]
 }
 
 export function getColor(
@@ -264,7 +264,7 @@ export { when }
 
 export const isFunction = (
   value: unknown
-): value is (...args: any) => unknown => typeof value === 'function'
+): value is (...args: unknown[]) => unknown => typeof value === 'function'
 
 function typeGuards(x: unknown): x is string
 function typeGuards(x: unknown, type: 'string'): x is string
