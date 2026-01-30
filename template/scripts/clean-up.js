@@ -65,8 +65,8 @@ if (fs.existsSync(readmeFile) && fs.existsSync(packageJsonFile)) {
     if (projectName) {
       // Convert kebab-case or snake_case to PascalCase
       const pascalCaseName = projectName
-        .replaceAll(/(-\w)/g, (m) => m[1].toUpperCase()) // kebab-case to camelCase
-        .replaceAll(/(_\w)/g, (m) => m[1].toUpperCase()) // snake_case to camelCase
+        .replace(/(-\w)/g, (m) => m[1].toUpperCase()) // kebab-case to camelCase
+        .replace(/(_\w)/g, (m) => m[1].toUpperCase()) // snake_case to camelCase
         .replace(/^\w/, (c) => c.toUpperCase()) // First char to upper
 
       let content = fs.readFileSync(readmeFile, 'utf8')
@@ -80,7 +80,31 @@ if (fs.existsSync(readmeFile) && fs.existsSync(packageJsonFile)) {
         console.info('  ℹ️  {{APP_NAME}} placeholder not found in README.md')
       }
     }
+
+    // Remove the clean-up script from postinstall
+    if (packageJson.scripts && packageJson.scripts.postinstall) {
+       packageJson.scripts.postinstall = packageJson.scripts.postinstall
+        .replace('bun scripts/clean-up.js && ', '')
+        .replace('bun scripts/clean-up.js', '')
+        .trim();
+       
+       // If postinstall is empty or just "&&", remove it or clean it up? 
+       // The original had "patch-package && bun intl:build".
+       // We will prepend the cleanup.
+       // So removing it specifically from string is safer.
+       
+       fs.writeFileSync(packageJsonFile, JSON.stringify(packageJson, null, 2), 'utf8');
+       console.info('  ✅ Removed cleanup script from package.json postinstall')
+    }
+
+    // Delete the clean-up script file itself
+    try {
+      fs.unlinkSync(__filename)
+      console.info('  ✅ Removed clean-up.js script file')
+    } catch (error) {
+      console.error('  ❌ Failed to remove clean-up.js script file:', error)
+    }
   } catch (error) {
-    console.error('  ❌ Failed to update README.md:', error)
+    console.error('  ❌ Failed to update README.md or package.json:', error)
   }
 }
