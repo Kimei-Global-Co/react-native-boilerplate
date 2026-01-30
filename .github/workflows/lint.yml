@@ -16,4 +16,6 @@ jobs:
         uses: biomejs/setup-biome@v2
 
       - name: Run Biome lint
-        run: biome lint --fix
+        run: |
+          biome lint --fix
+          cd template && biome lint --fix .

@@ -15,13 +15,16 @@ import {
 import type { BlockProps } from './block.type'
 
 const createSizeStyle = (size: BlockProps['size']): ViewStyle => {
-  if (typeGuards(size, 'number')) return { height: size, width: size }
+  if (typeGuards(size, 'number')) {
+    return { height: size, width: size }
+  }
 
-  if (typeGuards(size, 'object'))
+  if (typeGuards(size, 'object')) {
     return {
       height: size.height ?? 0,
       width: size.width ?? 0
     }
+  }
 
   return {}
 }

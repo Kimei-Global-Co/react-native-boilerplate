@@ -1,5 +1,3 @@
-'use strict'
-
 module.exports = {
   writerOpts: {
     commitGroupsSort: null,
@@ -10,7 +8,9 @@ module.exports = {
       const dateGroups = {}
 
       commits.forEach((commit) => {
-        if (!commit.date) return
+        if (!commit.date) {
+          return
+        }
 
         if (!dateGroups[commit.date]) {
           dateGroups[commit.date] = {}
@@ -54,10 +54,12 @@ module.exports = {
     mainTemplate: '{{content}}',
     transform: (commit, context) => {
       // Skip if no type
-      if (!commit.type) return
+      if (!commit.type) {
+        return
+      }
 
       // Create a mutable copy of the commit
-      const newCommit = JSON.parse(JSON.stringify(commit))
+      const newCommit = structuredClone(commit)
 
       // Transform commit types
       switch (newCommit.type.toLowerCase()) {
@@ -125,7 +127,7 @@ module.exports = {
         if (url) {
           url = `${url}/issues/`
           // Issue URLs.
-          newCommit.subject = newCommit.subject.replace(
+          newCommit.subject = newCommit.subject.replaceAll(
             /#(\d+)/g,
             (_, issue) => {
               return `[#${issue}](${url}${issue})`
