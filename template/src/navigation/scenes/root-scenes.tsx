@@ -1,7 +1,8 @@
 import {
   commonScreens,
   devScreens,
-  notLoggedInScreens
+  notLoggedInScreens,
+  ROUTES
 } from '@navigation/config/routes'
 import { type RootStackRoutes, screenOptions } from '@navigation/config/type'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
@@ -17,7 +18,12 @@ export default function RootScenes(): React.JSX.Element {
   }
   return (
     <Navigator
-      initialRouteName='DevMenu'
+      /**
+       * DevMenu is not included in RootStackRoutes, so we need to ignore the type check here.
+       * This will be removed when the app is built for production.
+       */
+      //@ts-expect-error
+      initialRouteName={__DEV__ ? 'DevMenu' : ROUTES.Login}
       screenOptions={{ headerShown: false }}
     >
       <Group>

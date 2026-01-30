@@ -16,17 +16,18 @@ export default function MainNavigation(): React.JSX.Element {
 
   useEffect(() => {
     // a memory warning listener for free up FastImage Cache
+    async function clearFastImageMemory(): Promise<void> {
+      try {
+        await Image.clearMemoryCache()
+        console.warn('did receive memory warning and cleared')
+      } catch {
+        // ignore
+      }
+    }
+
     const memoryWarningSubscription = AppState.addEventListener(
       'memoryWarning',
       () => {
-        async function clearFastImageMemory(): Promise<void> {
-          try {
-            await Image.clearMemoryCache()
-            console.warn('did receive memory warning and cleared')
-          } catch {
-            // ignore
-          }
-        }
         clearFastImageMemory()
       }
     )
