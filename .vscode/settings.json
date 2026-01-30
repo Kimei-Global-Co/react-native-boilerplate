@@ -1,5 +1,5 @@
 {
-  "biome.configurationPath": "template/biome.json",
+  "biome.requireConfiguration": true,
   "sonarlint.connectedMode.project": {
     "connectionId": "kimei-global",
     "projectKey": "kimei-global_react-native-boilerplate"
