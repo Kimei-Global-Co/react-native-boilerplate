@@ -12,6 +12,7 @@ concurrency:
 
 jobs:
   check-stability:
+    if: github.actor != 'github-actions[bot]'
     name: Check Performance Stability
     runs-on: ubuntu-latest
     steps:
