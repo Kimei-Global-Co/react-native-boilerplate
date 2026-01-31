@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   regenerate:
-    if: ${{ github.actor != 'github-actions[bot]' }}
+    if: "!contains(github.event.head_commit.message, 'chore: update changelog')"
     runs-on: ubuntu-latest
 
     steps:
@@ -17,6 +17,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          token: ${{ secrets.BOT_TOKEN }}
 
       - name: Setup Bun dependencies
         uses: ./.github/actions/setup-deps
@@ -36,5 +37,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add CHANGELOG.md
-          git commit -m "chore: update changelog"
+          git commit -m "chore: update changelog [skip ci]"
           git push
