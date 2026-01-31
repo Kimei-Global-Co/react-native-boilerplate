@@ -2,8 +2,13 @@
 
 ## 2026-01-31
 
+### 🔨 Chores
+* update dependecies, remove patch files ([23e81c4](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/23e81c44b75278156135e6d073cc49e9e32af7c0))
+* skip ci when actor is github-actions[bot] ([361649d](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/361649db4752902312c73625b6c0dea448a0bde0))
+* update changelog ([9af49ad](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/9af49ad34579291b907fe49a15ac0ef8a543cf93))
+
 ### 🐛 Bug Fixes
-* require pull request on update changelog ([e14b8a2](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/e14b8a262c612b3a4b2b310df6c612c1d3b486ec))
+* require pull request on update changelog ([d305097](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/d305097f9d0e5f7424c4ade18e224956f1e75071))
 
 ### ✨ Features
 * add more skill agent ([c8aab60](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/c8aab60539dd2a6cb29c03f67caae741b3b5f764))
