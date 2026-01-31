@@ -61,7 +61,9 @@ export default function TextInput(
   const inputStyles = [styles.input, inputStyle]
 
   const renderRightIcon = () => {
-    if (rightIcon) return rightIcon
+    if (rightIcon) {
+      return rightIcon
+    }
     if (mode === 'password') {
       return (
         <Icon

@@ -41,7 +41,9 @@ export function getColor(
     | { active: keyof typeof Colors; inActive: string },
   disabledColor: string
 ): { active: string; inActive: string } {
-  if (disabled) return { active: disabledColor, inActive: disabledColor }
+  if (disabled) {
+    return { active: disabledColor, inActive: disabledColor }
+  }
 
   if (typeGuards(color, 'string')) {
     return {
@@ -132,7 +134,9 @@ const getInitPadding = (
   inset: SafeAreaInsetType,
   padding?: number | GutterProps
 ): number => {
-  if (!padding) return 0
+  if (!padding) {
+    return 0
+  }
 
   return typeGuards(padding, 'number')
     ? padding
@@ -256,8 +260,12 @@ function when<T, F>(
   fallback?: F
 ): T | F | undefined {
   'worklet'
-  if (condition) return value
-  if (fallback !== undefined) return fallback as T
+  if (condition) {
+    return value
+  }
+  if (fallback !== undefined) {
+    return fallback as T
+  }
   return undefined
 }
 export { when }
@@ -301,7 +309,7 @@ function isResponseError(error: unknown, type: 'server'): boolean
 function isResponseError(error: unknown, type: 'network' | 'server'): boolean {
   const str = String(error)
 
-  if (type === 'network')
+  if (type === 'network') {
     return (
       str.includes('Abort') ||
       str.includes('Network request failed') ||
@@ -309,12 +317,14 @@ function isResponseError(error: unknown, type: 'network' | 'server'): boolean {
       str.includes('Network Error') ||
       str.includes('timeout exceeded')
     )
+  }
 
-  if (type === 'server')
+  if (type === 'server') {
     return (
       str.includes('Request failed with status code 502') ||
       str.includes('Request failed with status code 500')
     )
+  }
 
   return false
 }

@@ -28,7 +28,7 @@ export default function Spinner({
 
   const animatedStyle = useAnimatedStyle(() => {
     return {
-      transform: [{ rotateZ: transition.get() + 'deg' }]
+      transform: [{ rotateZ: `${transition.get()}deg` }]
     }
   }, [])
 

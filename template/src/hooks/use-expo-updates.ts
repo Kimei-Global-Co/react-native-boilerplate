@@ -14,11 +14,15 @@ export function useExpoUpdate(): void {
   const checkUpdate = useCallbackRef(async () => {
     try {
       const update = await Updates.checkForUpdateAsync()
-      if (!update.isAvailable) return
+      if (!update.isAvailable) {
+        return
+      }
 
       const result = await Updates.fetchUpdateAsync()
 
-      if (!result.isNew) return
+      if (!result.isNew) {
+        return
+      }
 
       await Updates.reloadAsync()
     } catch (error) {
@@ -28,7 +32,9 @@ export function useExpoUpdate(): void {
 
   useEffect(() => {
     // dont run on web or dev mode
-    if (__DEV__ || Platform.OS === 'web') return
+    if (__DEV__ || Platform.OS === 'web') {
+      return
+    }
 
     // this fires when the app is backgrounded or in inactive state (app switcher)
     // will be skipped on first run

@@ -44,5 +44,6 @@
     "prestart": "cd template && bun start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "packageManager": "bun@1.2.13",
   "version": "0.0.1"
 }

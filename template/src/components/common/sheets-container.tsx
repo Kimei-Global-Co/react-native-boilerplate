@@ -20,13 +20,17 @@ export default function SheetsContainer(): React.JSX.Element {
   const onClose: () => void = closeSheet
 
   const onBottomSheetChange = (snapPoint: number): void => {
-    if (snapPoint === -1) closeSheet()
+    if (snapPoint === -1) {
+      closeSheet()
+    }
   }
 
   useEffect(() => {
     //checking is active modal
     if (isSheetActive) {
-      if (Keyboard.isVisible()) Keyboard.dismiss()
+      if (Keyboard.isVisible()) {
+        Keyboard.dismiss()
+      }
       bottomSheetRef.current?.snapToIndex(0)
       return
     }

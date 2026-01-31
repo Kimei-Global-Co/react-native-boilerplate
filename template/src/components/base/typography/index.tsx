@@ -41,7 +41,9 @@ const createTypoStyles = (props: CommonTextProps): TextStyle => {
 export default function Typography(props: Readonly<CommonTextProps>) {
   const typoStyles = createTypoStyles(props)
 
-  if (props.children === undefined || props.children === null) return null
+  if (props.children === undefined || props.children === null){
+     return null
+  }
 
   return (
     <NativeText allowFontScaling={false} {...props} style={typoStyles}>

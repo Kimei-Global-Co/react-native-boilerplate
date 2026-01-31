@@ -44,7 +44,9 @@ export const useSheetStore = create<SheetStore>()(
 
     openSheet: (sheet) => {
       const last = get().activeSheets.at(-1)
-      if (last?.name === sheet.name) return
+      if (last?.name === sheet.name) {
+        return
+      }
       set((state) => {
         state.activeSheets.push(sheet)
       })

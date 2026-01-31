@@ -12,13 +12,16 @@ export function navigate<T extends RouteNames>(
   name: T,
   params?: NavigationParams<T>
 ): void {
-  if (navigationRef.isReady())
+  if (navigationRef.isReady()) {
     navigationRef.current?.dispatch(CommonActions.navigate(name, params))
+  }
 }
 
 export function goBack(): void {
-  if (navigationRef.current?.canGoBack()) navigationRef.current?.goBack()
-  else navigateAndReset([{ name: 'Login' }], 0)
+  if (navigationRef.current?.canGoBack()) {
+    navigationRef.current?.goBack()
+  }
+  navigateAndReset([{ name: 'Login' }], 0)
 }
 
 export function navigateAndReset<T extends RouteNames>(

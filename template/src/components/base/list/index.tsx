@@ -16,7 +16,9 @@ function FlashListComponent<T>({
   }
 
   const renderItem = (props: ListRenderItemInfo<T>) => {
-    if (!propRenderItem) return null
+    if (!propRenderItem) {
+      return null
+    }
 
     return propRenderItem(props)
   }
@@ -33,7 +35,6 @@ function FlashListComponent<T>({
           onLoad={onLoadListener}
           ref={ref}
           renderItem={renderItem}
-          role='list'
           showsHorizontalScrollIndicator={false}
           showsVerticalScrollIndicator={false}
         />
@@ -48,7 +49,6 @@ function FlashListComponent<T>({
         onLoad={onLoadListener}
         ref={ref}
         renderItem={renderItem}
-        role='list'
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
       />

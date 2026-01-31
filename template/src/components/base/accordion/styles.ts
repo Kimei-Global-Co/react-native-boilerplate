@@ -34,7 +34,9 @@ export const createSplitItemStyles = (
   isFirst: boolean,
   isLast: boolean
 ): Record<string, string | number | { width: number; height: number }> => {
-  if (variant !== 'split') return {}
+  if (variant !== 'split') {
+    return {}
+  }
 
   const baseStyles: Record<string, string | number> = {
     marginBottom: isLast ? 0 : -1

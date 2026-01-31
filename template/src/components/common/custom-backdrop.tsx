@@ -39,7 +39,9 @@ export function createCustomBackdrop(
         accessibilityHint=''
         accessibilityLabel='close'
         onAccessibilityEscape={() => {
-          if (onClose !== undefined) onClose()
+          if (onClose !== undefined) {
+            return onClose()
+          }
         }}
         onPress={onClose}
       >

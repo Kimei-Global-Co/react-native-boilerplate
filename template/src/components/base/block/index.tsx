@@ -29,10 +29,6 @@ const createSizeStyle = (size: BlockProps['size']): ViewStyle => {
   return {}
 }
 
-const getShadowStyle = {
-  boxShadow: '0 2px 4px rgba(0, 0, 0, 0.15)'
-}
-
 const createPositionStyles = (
   top: BlockProps['top'],
   bottom: BlockProps['bottom'],
@@ -85,7 +81,7 @@ const createBlockStyles = (
     typeGuards(gap, 'string')
       ? { gap: Spacing[gap] }
       : typeGuards(gap, 'number') && { gap },
-    shadow && getShadowStyle,
+    shadow && { boxShadow: '0 2px 4px rgba(0, 0, 0, 0.15)' },
     linearGradient && { experimental_backgroundImage: linearGradient },
     handleInset(props, safeArea, padding),
     backgroundColor && {

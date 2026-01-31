@@ -13,9 +13,13 @@ export default function LazyComponent(
   const [hasRendered, setHasRendered] = useState(false)
 
   useEffect(() => {
-    if (!hasRendered && currentKey === componentKey) setHasRendered(true)
+    if (!hasRendered && currentKey === componentKey) {
+      setHasRendered(true)
+    }
   }, [currentKey, componentKey, hasRendered])
 
-  if (hasRendered) return component
+  if (hasRendered) {
+    return component
+  }
   return placeholder ?? <></>
 }
