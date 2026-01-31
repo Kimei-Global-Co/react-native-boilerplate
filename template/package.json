@@ -130,7 +130,7 @@
     "ios": "expo run:ios",
     "lint": "bunx biome check --error-on-warnings --no-errors-on-unmatched --staged ./**/*.{js,jsx,ts,tsx}",
     "perf-test": "reassure",
-    "postinstall": "bun scripts/clean-up.js && patch-package && bun intl:build",
+    "postinstall": "grep -s -q '^1$' ../.skip-template-cleanup || (bun scripts/clean-up.js && patch-package && bun intl:build)",
     "prebuild": "expo prebuild",
     "prepare": "husky",
     "start": "EXPO_USE_FAST_RESOLVER=1 expo start --dev-client"
