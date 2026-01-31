@@ -1,5 +1,41 @@
 # Changelog
 
+## 2026-01-31
+
+### 🐛 Bug Fixes
+* require pull request on update changelog ([e14b8a2](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/e14b8a262c612b3a4b2b310df6c612c1d3b486ec))
+
+### ✨ Features
+* add more skill agent ([c8aab60](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/c8aab60539dd2a6cb29c03f67caae741b3b5f764))
+
+## 2026-01-30
+
+### 🔨 Chores
+* add configuration files for environment, gitignore, husky, and VSCode settings ([073b775](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/073b775276d9a9a9fe5041b0afe6044f236f6e01))
+* move **_`@utils/types.ts`_** to individual type files in **_`types`_** folder ([979e34c](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/979e34c4bcb6b06fd9d006c55a283a1f37ade420))
+* add agent skills ([b3a1ab0](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/b3a1ab0265e7dc98c3c986fceb38fbe243816072))
+
+### ♻️ Code Refactoring
+* remove clean-up script and update package.json accordingly ([5bd1bfe](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/5bd1bfeddfffd9359a8eb4630ec03d0fd8c09a96))
+
+### 🐛 Bug Fixes
+* update import statements to use 'import type' syntax for better clarity ([317246f](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/317246fca43b35671a32176a596fb197b80c5d66))
+* nested configuration biome ([3c6dfe6](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/3c6dfe6d8fbf6d1dd5a4f07bfcacb1dbda0cc8a1))
+* config path of biome lsp not found ([bb5764c](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/bb5764c6085fb8e426034c48fddcb9a2d01bfac8))
+
+### ✨ Features
+* enhance cleanup script and README, add automated PR workflow ([06e93c7](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/06e93c7635c02b201bcb451b4e5f4f9253992e1f))
+
+## 2025-08-11
+
+### ✨ Features
+* add new plugins for MMKV and network activity tracking ([9cc44a6](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/9cc44a68b39e9c7a2ba8d231e11e92842e90aca2))
+
+## 2025-08-08
+
+### ✨ Features
+* integrate Rozenite metro plugin and update dependencies ([791bfec](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/791bfec046a8ec253f221233d8ba54d08292623e))
+
 ## 2025-08-06
 
 ### ♻️ Code Refactoring
