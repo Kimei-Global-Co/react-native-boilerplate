@@ -11,10 +11,10 @@ To ensure these files are correctly included in your new project, we:
 2. Use the `scripts/clean-up.js` script (which runs automatically on project initialization) to move and rename them to the root of your new project.
 
 ## List of handled files:
-- `gitignore` -> `.gitignore`
-- `biomeignore` -> `.biomeignore`
-- `env.example` -> `.env.example`
-- `vscode/` -> `.vscode/`
-- `husky/` -> `.husky/`
-- `agents/` -> `.agents/`
-- `codex/` -> `.codex/`
+- `git-ignore` -> `.gitignore`
+- `biome-ignore` -> `.biomeignore`
+- `env-example` -> `.env.example`
+- `vs-code/` -> `.vscode/`
+- `husky-setup/` -> `.husky/`
+- `agents-setup/` -> `.agents/`
+- `codex-setup/` -> `.codex/`

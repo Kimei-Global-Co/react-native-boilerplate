@@ -22,6 +22,9 @@ if (currentDir !== 'template') {
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀
       𐙚
      -♡´-˙✧˖°📷 ༘ ⋆｡˚˙✧˖°📷 ༘ ⋆｡˚˚˖𓍢ִ໋🌷͙֒✧˚.🎀༘⋆˚‧｡⋆🌻⋆｡‧˚⛷🧚‍♀️🛖`)
-  execSync('cd template && bun i --frozen-lockfile', { stdio: 'inherit' })
+  execSync('cd template && bun i --frozen-lockfile', {
+    env: { ...process.env, SKIP_TEMPLATE_CLEANUP: '1' },
+    stdio: 'inherit'
+  })
   console.info('🍀 Good luck and happy coding! 🍀')
 }

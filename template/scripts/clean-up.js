@@ -1,6 +1,12 @@
 import fs from 'node:fs'
 import path from 'node:path'
 
+// Skip cleanup when working on the boilerplate itself (set by root postinstall)
+if (process.env.SKIP_TEMPLATE_CLEANUP === '1') {
+  console.info('🚧 SKIP_TEMPLATE_CLEANUP=1 detected, skipping clean-up.js')
+  process.exit(0)
+}
+
 const devDir = path.join(process.cwd(), 'src', 'features', '__DEV__')
 const routesFile = path.join(
   process.cwd(),
@@ -28,7 +34,7 @@ const renameList = [
   { from: 'vs-code', to: '.vscode' },
   { from: 'husky-setup', to: '.husky' },
   { from: 'agents-setup', to: '.agents' },
-  { from: 'codex-setup', to: '.codex' },
+  { from: 'codex-setup', to: '.codex' }
 ]
 
 if (fs.existsSync(dotfilesDir)) {
@@ -39,7 +45,7 @@ if (fs.existsSync(dotfilesDir)) {
     if (fs.existsSync(fromPath)) {
       try {
         if (fs.existsSync(toPath)) {
-          fs.rmSync(toPath, { recursive: true, force: true })
+          fs.rmSync(toPath, { force: true, recursive: true })
         }
         fs.renameSync(fromPath, toPath)
         console.info(`  ✅ Created ${to}`)
@@ -52,7 +58,7 @@ if (fs.existsSync(dotfilesDir)) {
   }
   // Clean up the dotfiles directory
   try {
-    fs.rmSync(dotfilesDir, { recursive: true, force: true })
+    fs.rmSync(dotfilesDir, { force: true, recursive: true })
     console.info('🧹 Cleaned up template dotfiles directory')
   } catch (error) {
     console.error('  ❌ Failed to remove dotfiles directory:', error)
@@ -123,18 +129,22 @@ if (fs.existsSync(readmeFile) && fs.existsSync(packageJsonFile)) {
 
     // Remove the clean-up script from postinstall
     if (packageJson.scripts?.postinstall) {
-       packageJson.scripts.postinstall = packageJson.scripts.postinstall
+      packageJson.scripts.postinstall = packageJson.scripts.postinstall
         .replace('bun scripts/clean-up.js && ', '')
         .replace('bun scripts/clean-up.js', '')
-        .trim();
-       
-       // If postinstall is empty or just "&&", remove it or clean it up? 
-       // The original had "patch-package && bun intl:build".
-       // We will prepend the cleanup.
-       // So removing it specifically from string is safer.
-       
-       fs.writeFileSync(packageJsonFile, JSON.stringify(packageJson, null, 2), 'utf8');
-       console.info('  ✅ Removed cleanup script from package.json postinstall')
+        .trim()
+
+      // If postinstall is empty or just "&&", remove it or clean it up?
+      // The original had "patch-package && bun intl:build".
+      // We will prepend the cleanup.
+      // So removing it specifically from string is safer.
+
+      fs.writeFileSync(
+        packageJsonFile,
+        JSON.stringify(packageJson, null, 2),
+        'utf8'
+      )
+      console.info('  ✅ Removed cleanup script from package.json postinstall')
     }
 
     // Delete the clean-up script file itself

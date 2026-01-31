@@ -1,4 +1,19 @@
 {
 	"$schema": "https://biomejs.dev/schemas/2.2.0/schema.json",
-	"extends": ["./template/biome.json"]
+	"extends": ["./template/biome.json"],
+	"overrides": [
+		{
+			"includes": [
+				"plopfile.js",
+				"template.config.js"
+			],
+			"linter": {
+				"rules": {
+					"style": {
+						"noCommonJs": "off"
+					}
+				}
+			}
+		}
+	]
 }

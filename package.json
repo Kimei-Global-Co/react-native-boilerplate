@@ -38,7 +38,7 @@
     "url": "git+https://github.com/Kimei-Global-Co/react-native-boilerplate.git"
   },
   "scripts": {
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 -n ./generators/template-changelog.js",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 -n ./generators/template-changelog.mjs",
     "generate:modules": "plop",
     "postinstall": "bun scripts/postinstall.js",
     "prestart": "cd template && bun start",
