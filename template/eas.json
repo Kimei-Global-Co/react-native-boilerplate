@@ -4,13 +4,68 @@
     "appVersionSource": "remote"
   },
   "build": {
-    "development": {
-      "developmentClient": true,
-      "distribution": "internal"
+    "base": {
+      "node": "20.18.1"
     },
-    "preview": {},
+    "development": {
+      "extends": "base",
+      "developmentClient": true,
+      "distribution": "internal",
+      "ios": {
+        "image": "latest"
+      },
+      "android": {
+        "buildType": "apk",
+        "image": "latest"
+      },
+      "environment": "development",
+      "env": {
+        "STAGE": "development",
+        "NODE_ENV": "development",
+        "EX_UPDATES_ANDROID_DELAY_LOAD_APP": "false"
+      },
+      "prebuildCommand": "prebuild --skip-dependency-update react",
+      "channel": "development"
+    },
+    "preview": {
+       "extends": "base",
+      "ios": {
+        "image": "latest",
+        "autoIncrement": true
+      },
+      "android": {
+        "buildType": "apk",
+        "image": "latest",
+        "autoIncrement": true
+      },
+      "environment": "preview",
+      "env": {
+        "STAGE": "preview",
+        "EX_UPDATES_ANDROID_DELAY_LOAD_APP": "false",
+        "ORG_GRADLE_PROJECT_reactNativeArchitectures": "arm64-v8a"
+      },
+      "prebuildCommand": "prebuild --skip-dependency-update react",
+      "channel": "staging"
+    },
     "production": {
-      "autoIncrement": true
+      "extends": "base",
+      "ios": {
+        "image": "latest",
+        "autoIncrement": true
+      },
+      "android": {
+        "buildType": "app-bundle",
+        "image": "latest",
+        "autoIncrement": true
+      },
+      "environment": "production",
+      "env": {
+        "STAGE": "production",
+        "EX_UPDATES_ANDROID_DELAY_LOAD_APP": "false",
+        "ORG_GRADLE_PROJECT_reactNativeArchitectures": "arm64-v8a"
+      },
+      "channel": "production",
+      "prebuildCommand": "prebuild --skip-dependency-update react"
     }
   },
   "submit": {

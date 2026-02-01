@@ -6,7 +6,6 @@ const { transformer, resolver } = defaultConfig
 
 defaultConfig.transformer.getTransformOptions = async () => ({
   transform: {
-    experimentalImportSupport: true,
     inlineRequires: true,
     nonInlinedRequires: [
       'React',
