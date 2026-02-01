@@ -1,4 +1,4 @@
-import type { Sheet } from 'types/sheet.type'
+import type { Sheet } from 'shared/types/sheet.type'
 import { create } from 'zustand'
 import { mutative } from 'zustand-mutative'
 

@@ -5,7 +5,7 @@ import type { Spacing } from '@theme/layout'
 import type {
   DefaultStyleProps,
   SafeAreaInsetType
-} from 'types/stylesheet.type'
+} from 'shared/types/stylesheet.type'
 
 export interface BlockProps extends DefaultStyleProps, ViewProps {
   /**

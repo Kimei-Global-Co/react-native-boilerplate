@@ -1,9 +1,9 @@
 import type { ViewStyle } from 'react-native'
 
 import Colors from '@theme/colors'
-import { typeGuards } from '@utils/helper'
 import { Shimmer, ShimmerProvider } from 'react-native-fast-shimmer'
 import Animated, { FadeOut } from 'react-native-reanimated'
+import { typeGuards } from 'shared/utils/helper'
 import type Block from '../block'
 
 export type SkeletonProps = React.ComponentProps<typeof Shimmer> &

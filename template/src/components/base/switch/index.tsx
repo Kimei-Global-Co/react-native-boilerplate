@@ -4,15 +4,15 @@ import { useEffect } from 'react'
 import { StyleSheet } from 'react-native'
 
 import { Spacing } from '@theme/layout'
-import { clamp, getColor, snapPoint } from '@utils/helper'
 import Animated, {
   interpolate,
   interpolateColor,
-  runOnJS,
   useAnimatedStyle,
   useSharedValue,
   withSpring
 } from 'react-native-reanimated'
+import { scheduleOnRN } from 'react-native-worklets'
+import { clamp, getColor, snapPoint } from 'shared/utils/helper'
 import type { SwitchProps } from './switch.type'
 
 const DEFAULT_TRACK_WIDTH = 50
@@ -102,13 +102,13 @@ export default function Switch(
           overshootClamping: true
         })
       )
-      runOnJS(onValueChange)(selectedSnapPoint !== 0)
+      scheduleOnRN(onValueChange, selectedSnapPoint !== 0)
     })
 
   const tapGesture = Gesture.Tap()
     .enabled(!disabled)
     .onStart(() => {
-      runOnJS(onValueChange)(!value)
+      scheduleOnRN(onValueChange, !value)
     })
 
   const composedGesture = Gesture.Exclusive(panGesture, tapGesture)

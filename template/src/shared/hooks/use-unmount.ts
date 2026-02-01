@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-import { isFunction } from '@utils/helper'
+import { isFunction } from 'shared/utils/helper'
 import useLatest from './use-lastest'
 
 export default function useUnmount(fn: () => void) {

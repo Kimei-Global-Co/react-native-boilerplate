@@ -3,7 +3,11 @@ import { StyleSheet, type TextStyle } from 'react-native'
 import Colors from '@theme/colors'
 import fonts from '@theme/fonts'
 import { NativeText } from 'react-native/Libraries/Text/TextNativeComponent'
-import { createDefaultStyle, handleGutter, typeGuards } from 'utils/helper'
+import {
+  createDefaultStyle,
+  handleGutter,
+  typeGuards
+} from 'shared/utils/helper'
 import type { CommonTextProps } from './typo.type'
 
 const createTypoStyles = (props: CommonTextProps): TextStyle => {
@@ -41,8 +45,8 @@ const createTypoStyles = (props: CommonTextProps): TextStyle => {
 export default function Typography(props: Readonly<CommonTextProps>) {
   const typoStyles = createTypoStyles(props)
 
-  if (props.children === undefined || props.children === null){
-     return null
+  if (props.children === undefined || props.children === null) {
+    return null
   }
 
   return (

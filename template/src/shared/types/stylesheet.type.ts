@@ -2,7 +2,6 @@ import type { FlexStyle, ViewStyle } from 'react-native'
 
 import type Colors from '@theme/colors'
 
-
 export interface DefaultStyleProps {
   /**
    * Define how your items are going to **“fill”** over the available space along your main axis ([flex](https://reactnative.dev/docs/layout-props#flex))
@@ -126,4 +125,3 @@ export type BorderType = {
 }
 
 export type SafeAreaInsetType = 'top' | 'bottom' | 'right' | 'left'
-

@@ -1,9 +1,9 @@
-import { useMutative } from '@hooks/use-mutative'
 import Animated, { FadeIn } from 'react-native-reanimated'
+import { useMutative } from 'shared/hooks/use-mutative'
 import Block from '../block'
 import Image from '../image'
 import Skeleton from '../skeleton'
-import type { TAvatarProps } from './type'
+import type { TAvatarProps } from './avatar.type'
 
 export default function Avatar(props: TAvatarProps): React.JSX.Element {
   const { size, borderRadius = 999, enableSkeleton, ...rest } = props

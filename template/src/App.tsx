@@ -1,6 +1,5 @@
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
-import { useExpoUpdate } from '@hooks/use-expo-updates'
 import MainNavigation from '@navigation/scenes'
 import { useMMKVDevTools } from '@rozenite/mmkv-plugin'
 import { useNetworkActivityDevTools } from '@rozenite/network-activity-plugin'
@@ -13,6 +12,7 @@ import {
   initialWindowMetrics,
   SafeAreaProvider
 } from 'react-native-safe-area-context'
+import { useExpoUpdate } from 'shared/hooks/use-expo-updates'
 
 const queryClient = new QueryClient({
   defaultOptions: {

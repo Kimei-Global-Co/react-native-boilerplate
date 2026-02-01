@@ -11,7 +11,7 @@ import {
   handleGutter,
   handleInset,
   typeGuards
-} from 'utils/helper'
+} from 'shared/utils/helper'
 import type { BlockProps } from './block.type'
 
 const createSizeStyle = (size: BlockProps['size']): ViewStyle => {

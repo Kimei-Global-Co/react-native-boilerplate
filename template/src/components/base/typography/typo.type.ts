@@ -2,7 +2,7 @@ import type { FlexStyle, TextProps } from 'react-native'
 
 import type Colors from '@theme/colors'
 import type { ThemeFontWeight } from '@theme/fonts'
-import type { DefaultStyleProps } from 'types/stylesheet.type'
+import type { DefaultStyleProps } from 'shared/types/stylesheet.type'
 
 export interface CommonTextProps extends DefaultStyleProps, TextProps {
   /**

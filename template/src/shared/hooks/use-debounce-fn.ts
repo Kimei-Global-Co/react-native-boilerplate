@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 
-import { isFunction } from '@utils/helper'
 import debounce from 'lodash.debounce'
+import { isFunction } from 'shared/utils/helper'
 import useLatest from './use-lastest'
 import useUnmount from './use-unmount'
 

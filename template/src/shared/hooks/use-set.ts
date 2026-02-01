@@ -39,4 +39,3 @@ export default function useSet<K>(initialValue?: Iterable<K>) {
     }
   ] as const
 }
-

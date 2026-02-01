@@ -20,15 +20,51 @@ export interface ButtonProps
   /**
    * State for control button
    */
-  state?: 'idle' | 'pending' | 'success' | 'error'
+  state?: ButtonState
 
-  variant?: {
-    color: 'primary' | 'secondary' | 'shadow' | 'bordered'
-    radius: 'sm' | 'md' | 'lg'
-    size: 'sm' | 'md' | 'lg'
-  }
+  variant?: ButtonVariant
 
   targetScale?: number
 
   style?: StyleProp<ViewStyle>
 }
+
+export type ButtonState = 'idle' | 'pending' | 'success' | 'error'
+
+export type ColorVariant =
+  | 'default'
+  | 'primary'
+  | 'secondary'
+  | 'shadow'
+  | 'bordered'
+
+export type RadiusVariant = 'none' | 'sm' | 'md' | 'lg'
+
+export type SizeVariant = 'sm' | 'md' | 'lg'
+
+export type ButtonVariant = {
+  color?: ColorVariant
+  radius?: RadiusVariant
+  size?: SizeVariant
+}
+
+export type ButtonRootProps = ButtonProps & {
+  children?: React.ReactNode
+}
+
+export type ButtonContextValue = {
+  state: ButtonState
+  title?: string
+  variant: Required<ButtonVariant>
+  disabled: boolean
+}
+
+export type ButtonLabelProps = {
+  children?: React.ReactNode
+}
+
+export type ButtonIconProps = {
+  children?: React.ReactNode
+}
+
+export type ContainerStyle = ViewStyle & { boxShadow?: string }

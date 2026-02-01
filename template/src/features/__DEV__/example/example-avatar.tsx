@@ -3,8 +3,8 @@ import Block from '@components/base/block'
 import Header from '@components/base/header'
 import Row from '@components/base/row'
 import Typography from '@components/base/typography'
-import { useMutative } from '@hooks/use-mutative'
-import { useTimeout } from '@hooks/use-timeout'
+import { useMutative } from 'shared/hooks/use-mutative'
+import { useTimeout } from 'shared/hooks/use-timeout'
 import { createContainer } from '../create-container'
 
 const AvatarComponent = (): React.JSX.Element => {

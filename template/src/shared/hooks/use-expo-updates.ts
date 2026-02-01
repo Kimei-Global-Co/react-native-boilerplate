@@ -44,12 +44,11 @@ export function useExpoUpdate(): void {
     }
 
     // check if its the first time running, so its cold start
-    if (!lastUpdateCheck.current) {
-      checkUpdate()
-    } else if (
-      // check if its been 30 minutes since the last check and the app was backgrounded
-      appBackgrounded.current &&
-      dayjs(new Date()).diff(appBackgrounded.current, 'minute') > 15
+    // or if its been 30 minutes since the last check and the app was backgrounded
+    if (
+      !lastUpdateCheck.current ||
+      (appBackgrounded.current &&
+        dayjs(new Date()).diff(appBackgrounded.current, 'minute') > 15)
     ) {
       checkUpdate()
     }

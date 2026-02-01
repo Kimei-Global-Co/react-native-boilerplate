@@ -12,12 +12,12 @@ import Animated, {
 import Block from '../block'
 import Icon from '../icon'
 import Typography from '../typography'
-import { createSplitItemStyles, createVariantStyles } from './styles'
 import type {
   AccordionContextType,
   AccordionItemProps,
   AccordionProps
-} from './type'
+} from './accordion.type'
+import { createSplitItemStyles, createVariantStyles } from './styles'
 
 const AccordionContext = createContext<AccordionContextType | undefined>(
   undefined
