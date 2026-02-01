@@ -1,8 +1,15 @@
 # Changelog
 
+## 2026-02-01
+
+### ✨ Features
+* re-write component @button, replace api runOnJS from  react-native-reanimated deprecated on @switch ([58d1abd](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/58d1abd713f959bdd0d005e64232630bda51c9cc))
+* add VS Code settings for biome formatter and update eas.json for build profiles ([75e00e8](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/75e00e8415953632d8f9268522a1f15b48380523))
+
 ## 2026-01-31
 
 ### 🔨 Chores
+* update changelog [skip ci] ([f3d27d5](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/f3d27d5bb7d981aac11035d02d2ca0d0f2f358e7))
 * update dependecies, remove patch files ([23e81c4](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/23e81c44b75278156135e6d073cc49e9e32af7c0))
 * skip ci when actor is github-actions[bot] ([361649d](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/361649db4752902312c73625b6c0dea448a0bde0))
 * update changelog ([9af49ad](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/9af49ad34579291b907fe49a15ac0ef8a543cf93))
