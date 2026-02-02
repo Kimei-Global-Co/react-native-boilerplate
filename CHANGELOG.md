@@ -1,6 +1,14 @@
 # Changelog
 
+## 2026-02-02
+
+### ✨ Features
+* add new UI components including Row, Skeleton, Spacer, Spinner, Switch, Tag, and Typography ([9229ea6](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/9229ea6a123edbef0765f83deede0282a55adfeb))
+
 ## 2026-02-01
+
+### 🔨 Chores
+* update changelog [skip ci] ([bf62fad](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/bf62fad742a6a2b78a285fdcca2dc2d90e4ee55d))
 
 ### ✨ Features
 * re-write component @button, replace api runOnJS from  react-native-reanimated deprecated on @switch ([58d1abd](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/58d1abd713f959bdd0d005e64232630bda51c9cc))
