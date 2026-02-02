@@ -1,4 +1,4 @@
-import Block from '@components/base/block'
+import Block from '@components/ui/primitives/block/block.index'
 
 export const MENU_ITEMS = {
   Accordion: 'Accordion',

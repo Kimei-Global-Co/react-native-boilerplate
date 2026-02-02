@@ -1,6 +1,6 @@
-import Block from '@components/base/block'
-import Header from '@components/base/header'
-import Tag from '@components/base/tag'
+import Block from '@components/ui/primitives/block/block.index'
+import Header from '@components/ui/primitives/header/header.index'
+import Tag from '@components/ui/primitives/tag/tag.index'
 import { createContainer } from '../create-container'
 
 const TagComponent = (): React.JSX.Element => {

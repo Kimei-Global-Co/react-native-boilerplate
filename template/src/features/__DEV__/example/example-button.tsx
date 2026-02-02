@@ -1,8 +1,9 @@
 import { ScrollView, View } from 'react-native'
 
-import Button from '@components/base/button/button.index'
-import Header from '@components/base/header'
-import Typography from '@components/base/typography'
+import Block from '@components/ui/primitives/block/block.index'
+import Button from '@components/ui/primitives/button/button.index'
+import Header from '@components/ui/primitives/header/header.index'
+import Typography from '@components/ui/primitives/typography/typo.index'
 
 /**
  * Usage notes:
@@ -12,7 +13,7 @@ import Typography from '@components/base/typography'
  */
 export default function ExampleButton(): React.JSX.Element {
   return (
-    <>
+    <Block collapsable={false} flex inset='top'>
       <Header isBack title='Button component' />
       <ScrollView
         contentContainerStyle={{ gap: 12, padding: 16 }}
@@ -26,6 +27,7 @@ export default function ExampleButton(): React.JSX.Element {
         <Button.Secondary title='Secondary' />
         <Button.Shadow title='Shadow' />
         <Button.Bordered title='Bordered' />
+        <Button.Ghost title='Ghost' />
 
         <Typography center>States</Typography>
         <Button.Primary state='pending' title='Pending' />
@@ -53,6 +55,6 @@ export default function ExampleButton(): React.JSX.Element {
         <Typography center>Disabled</Typography>
         <Button.Secondary disabled title='Disabled' />
       </ScrollView>
-    </>
+    </Block>
   )
 }

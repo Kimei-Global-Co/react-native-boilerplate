@@ -159,8 +159,7 @@
 			"nursery": {
 				"useExhaustiveSwitchCases": "error",
 				"noImportCycles": "error",
-				"noShadow": "error",
-				"useReactFunctionComponents": "error"
+				"noShadow": "error"
 			},
 			"performance": {
 				"recommended": true,

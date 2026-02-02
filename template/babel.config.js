@@ -14,7 +14,8 @@ module.exports = (api) => {
         'babel-preset-expo',
         {
           lazyImports: true,
-          disableImportExportTransform: true // can not writing test when it is true
+          disableImportExportTransform: true, // can not writing test when it is true
+          disableDeepImportWarnings: true // take a look at this discussions https://github.com/react-native-community/discussions-and-proposals/discussions/893#top
         }
       ]
     ],

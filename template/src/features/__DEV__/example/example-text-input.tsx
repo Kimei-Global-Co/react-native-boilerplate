@@ -1,4 +1,4 @@
-import TextInput from '@components/base/text-input'
+import TextInput from '@components/ui/primitives/input/input.index'
 import { createContainer } from '../create-container'
 
 const TextInputComponent = (): React.JSX.Element => {

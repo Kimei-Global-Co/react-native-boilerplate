@@ -1,22 +1,23 @@
 import { TouchableOpacity } from 'react-native'
 
-import Block from '@components/base/block'
-import Header from '@components/base/header'
-import Typography from '@components/base/typography'
-import { useSheetStore } from 'store/sheet'
+import OptionsSheet from '@components/ui/patterns/options-sheet'
+import Block from '@components/ui/primitives/block/block.index'
+import Header from '@components/ui/primitives/header/header.index'
+import Typography from '@components/ui/primitives/typography/typo.index'
+import { TrueSheet } from '@lodev09/react-native-true-sheet'
 import { createContainer } from '../create-container'
 
 const SheetComponent = (): React.JSX.Element => {
-  const { openSheet } = useSheetStore()
   return (
     <Block flex>
       <Header isBack title='Sheet Component' />
       <TouchableOpacity
-        onPress={() => openSheet({ name: 'options' })}
+        onPress={() => TrueSheet.present('options')}
         style={{ margin: 10 }}
       >
         <Typography>Example Sheet</Typography>
       </TouchableOpacity>
+      <OptionsSheet />
     </Block>
   )
 }

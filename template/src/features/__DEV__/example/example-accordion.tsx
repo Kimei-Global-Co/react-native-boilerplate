@@ -1,7 +1,7 @@
-import Accordion from '@components/base/accordion'
-import Block from '@components/base/block'
-import Header from '@components/base/header'
-import Typography from '@components/base/typography'
+import Accordion from '@components/ui/primitives/accordion/accordion.index'
+import Block from '@components/ui/primitives/block/block.index'
+import Header from '@components/ui/primitives/header/header.index'
+import Typography from '@components/ui/primitives/typography/typo.index'
 import { createContainer } from '../create-container'
 
 const defaultContent =

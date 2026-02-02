@@ -4,6 +4,7 @@ import {
   DrawerActions,
   StackActions
 } from '@react-navigation/native'
+import { ROUTES } from './routes'
 import type { NavigationParams, RootStackRoutes, RouteNames } from './type'
 
 export const navigationRef = createNavigationContainerRef<RootStackRoutes>()
@@ -20,8 +21,9 @@ export function navigate<T extends RouteNames>(
 export function goBack(): void {
   if (navigationRef.current?.canGoBack()) {
     navigationRef.current?.goBack()
+  } else {
+    navigateAndReset([{ name: ROUTES.Login }], 0)
   }
-  navigateAndReset([{ name: 'Login' }], 0)
 }
 
 export function navigateAndReset<T extends RouteNames>(

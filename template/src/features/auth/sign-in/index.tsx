@@ -1,5 +1,5 @@
-import Block from '@components/base/block'
-import Typography from '@components/base/typography'
+import Block from '@components/ui/primitives/block/block.index'
+import Typography from '@components/ui/primitives/typography/typo.index'
 
 export default function Signin(): React.JSX.Element {
   return (

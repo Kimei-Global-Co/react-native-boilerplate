@@ -1,9 +1,9 @@
 import { ScrollView, StyleSheet } from 'react-native'
 
-import Block from '@components/base/block'
-import Header from '@components/base/header'
-import Row from '@components/base/row'
-import Typography from '@components/base/typography'
+import Block from '@components/ui/primitives/block/block.index'
+import Header from '@components/ui/primitives/header/header.index'
+import Row from '@components/ui/primitives/row/row.index'
+import Typography from '@components/ui/primitives/typography/typo.index'
 import type Colors from '@theme/colors'
 import { createContainer } from '../create-container'
 

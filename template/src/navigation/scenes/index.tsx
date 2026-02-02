@@ -2,7 +2,6 @@ import { useEffect, useRef } from 'react'
 import { AppState } from 'react-native'
 
 import { Image } from 'expo-image'
-import SheetsContainer from '@components/common/sheets-container'
 import { linking } from '@navigation/config/linking'
 import { navigationRef } from '@navigation/config/navigation-services'
 import { NavigationContainer } from '@react-navigation/native'
@@ -45,7 +44,6 @@ export default function MainNavigation(): React.JSX.Element {
       ref={navigationRef}
     >
       <RootScenes />
-      <SheetsContainer />
     </NavigationContainer>
   )
 }

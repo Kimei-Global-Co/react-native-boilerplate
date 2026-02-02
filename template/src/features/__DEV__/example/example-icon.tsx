@@ -1,6 +1,6 @@
-import Block from '@components/base/block'
-import Header from '@components/base/header'
-import Icon from '@components/base/icon'
+import Block from '@components/ui/primitives/block/block.index'
+import Header from '@components/ui/primitives/header/header.index'
+import Icon from '@components/ui/primitives/icon/icon.index'
 import { createContainer } from '../create-container'
 
 const IconComponent = (): React.JSX.Element => {

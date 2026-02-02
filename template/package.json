@@ -13,7 +13,6 @@
     "!src/features/__DEV__"
   ],
   "dependencies": {
-    "@discord/bottom-sheet": "discord/react-native-bottom-sheet#discord-fork-5.1.6",
     "@expo-google-fonts/nunito": "^0.4.2",
     "@formatjs/intl-locale": "^4.2.11",
     "@formatjs/intl-pluralrules": "^5.4.4",

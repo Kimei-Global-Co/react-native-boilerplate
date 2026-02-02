@@ -1,10 +1,9 @@
 import { useState } from 'react'
 import { StyleSheet, Text } from 'react-native'
 
-import Block from '@components/base/block'
-import Header from '@components/base/header'
-import Switch from '@components/base/switch'
-
+import Block from '@components/ui/primitives/block/block.index'
+import Header from '@components/ui/primitives/header/header.index'
+import Switch from '@components/ui/primitives/switch/switch.index'
 import { createContainer } from '../create-container'
 
 const styles = StyleSheet.create({
