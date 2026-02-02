@@ -23,7 +23,7 @@ export default function RootScenes(): React.JSX.Element {
        * This will be removed when the app is built for production.
        */
       //@ts-expect-error
-      initialRouteName={__DEV__ ? 'DevMenu' : ROUTES.Login}
+      initialRouteName={__DEV__ ? 'DevMenu' : ROUTES.Signin}
       screenOptions={{ headerShown: false }}
     >
       <Group>

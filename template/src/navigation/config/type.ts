@@ -10,7 +10,7 @@ export type BottomTabParamList = object
 
 export type RootStackRoutes = {
   //Auth Rotues
-  Login: undefined
+  Signin: undefined
 }
 
 export type DevStackRoutes = {

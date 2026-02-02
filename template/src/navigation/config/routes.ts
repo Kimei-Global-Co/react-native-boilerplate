@@ -27,7 +27,7 @@ import { createEnum } from './type'
  * Routes for screens
  */
 export const ROUTES = createEnum({
-  Login: 'Login'
+  Signin: 'Signin'
 })
 
 /**

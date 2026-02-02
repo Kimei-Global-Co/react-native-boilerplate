@@ -22,7 +22,7 @@ export function goBack(): void {
   if (navigationRef.current?.canGoBack()) {
     navigationRef.current?.goBack()
   } else {
-    navigateAndReset([{ name: ROUTES.Login }], 0)
+    navigateAndReset([{ name: ROUTES.Signin }], 0)
   }
 }
 

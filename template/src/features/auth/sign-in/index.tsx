@@ -3,8 +3,8 @@ import Typography from '@components/ui/primitives/typography/typo.index'
 
 export default function Signin(): React.JSX.Element {
   return (
-    <Block>
-      <Typography>Signup</Typography>
+    <Block flex inset='top'>
+      <Typography>Signin</Typography>
     </Block>
   )
 }
