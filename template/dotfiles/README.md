@@ -16,5 +16,6 @@ To ensure these files are correctly included in your new project, we:
 - `env-example` -> `.env.example`
 - `vs-code/` -> `.vscode/`
 - `husky-setup/` -> `.husky/`
-- `agents-setup/` -> `.agents/`
+- `agents-setup/` -> `.agents/` (agents is symlink)
+- `agent-setup/` -> `.agent/` (agent is from antigravity)
 - `codex-setup/` -> `.codex/`

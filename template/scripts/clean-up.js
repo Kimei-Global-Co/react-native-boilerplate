@@ -34,6 +34,7 @@ const renameList = [
   { from: 'vs-code', to: '.vscode' },
   { from: 'husky-setup', to: '.husky' },
   { from: 'agents-setup', to: '.agents' },
+  { from: 'agent-setup', to: '.agent' },
   { from: 'codex-setup', to: '.codex' }
 ]
 
