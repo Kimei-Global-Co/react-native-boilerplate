@@ -1,5 +1,5 @@
 import Block from '@components/ui/layouts/block/block.index'
-import EmptyView from '@components/ui/patterns/empty-view'
+import { EmptyState } from '@components/ui/patterns/empty-state'
 import { FlashList, type ListRenderItemInfo } from '@shopify/flash-list'
 import type { InfiniteScrollListProps } from './list.type'
 
@@ -23,7 +23,13 @@ function FlashListComponent<T>({
     return propRenderItem(props)
   }
 
-  const ListEmpty = ListEmptyComponent ?? <EmptyView />
+  const ListEmpty = ListEmptyComponent ?? (
+    <EmptyState
+      description='No data'
+      icon={{ name: 'inbox', size: 40, type: 'feather' }}
+      title='Empty List'
+    />
+  )
 
   if (style) {
     return (

@@ -14,7 +14,14 @@ import Typography from '@components/ui/primitives/typography/typo.index'
 export default function ExampleButton(): React.JSX.Element {
   return (
     <Block collapsable={false} flex inset='top'>
-      <Header isBack title='Button component' />
+      <Header>
+        <Header.Left>
+          <Header.BackButton />
+        </Header.Left>
+        <Header.Content>
+          <Header.Title>Button component</Header.Title>
+        </Header.Content>
+      </Header>
       <ScrollView
         contentContainerStyle={{ gap: 12, padding: 16 }}
         showsVerticalScrollIndicator={false}

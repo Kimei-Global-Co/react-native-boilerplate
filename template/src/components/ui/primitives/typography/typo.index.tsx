@@ -28,7 +28,7 @@ const createTypoStyles = (props: CommonTextProps): TextStyle => {
   return StyleSheet.flatten([
     createDefaultStyle(props as { [key: string]: unknown }),
     backgroundColor && {
-      backgroundColor: Colors[backgroundColor] || backgroundColor
+      backgroundColor: Colors[backgroundColor]
     },
     { ...fonts[fontType] },
     { color: Colors[color] ?? color },

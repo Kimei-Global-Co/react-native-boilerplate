@@ -10,7 +10,14 @@ import { createContainer } from '../create-container'
 const SheetComponent = (): React.JSX.Element => {
   return (
     <Block flex>
-      <Header isBack title='Sheet Component' />
+      <Header>
+        <Header.Left>
+          <Header.BackButton />
+        </Header.Left>
+        <Header.Content>
+          <Header.Title>Sheet Component</Header.Title>
+        </Header.Content>
+      </Header>
       <TouchableOpacity
         onPress={() => TrueSheet.present('options')}
         style={{ margin: 10 }}

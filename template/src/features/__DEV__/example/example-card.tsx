@@ -10,7 +10,14 @@ import { createContainer } from '../create-container'
 const CardComponent = (): React.JSX.Element => {
   return (
     <Block flex>
-      <Header isBack title='Card component' />
+      <Header>
+        <Header.Left>
+          <Header.BackButton />
+        </Header.Left>
+        <Header.Content>
+          <Header.Title>Card component</Header.Title>
+        </Header.Content>
+      </Header>
       <ScrollView showsVerticalScrollIndicator={false}>
         {/* Default Card */}
         <Card>
@@ -26,7 +33,7 @@ const CardComponent = (): React.JSX.Element => {
         </Card>
 
         {/* Card with Divider */}
-        <Card variant='bodered'>
+        <Card variant='bordered'>
           <Card.Header>
             <Typography>Card with Divider</Typography>
           </Card.Header>

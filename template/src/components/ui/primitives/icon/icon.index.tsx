@@ -19,7 +19,16 @@ const BUTTON_COMPONENTS = {
     default: TouchableOpacity
   })
 } as const
-
+/**
+ * Example:
+ * ```
+ * <Icon
+ *   name={'right'}
+ *   size={22}
+ *   type='antDesign'
+ * />
+ * ```
+ */
 export default function Icon(props: IconComponentProps): React.JSX.Element {
   const {
     type,

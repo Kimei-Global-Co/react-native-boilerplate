@@ -14,7 +14,14 @@ const BoxDemo = (): React.JSX.Element => (
 const SpacerComponent = (): React.JSX.Element => {
   return (
     <Block flex={1}>
-      <Header isBack title='Spacer Component' />
+      <Header>
+        <Header.Left>
+          <Header.BackButton />
+        </Header.Left>
+        <Header.Content>
+          <Header.Title>Spacer Component</Header.Title>
+        </Header.Content>
+      </Header>
       <ScrollView showsVerticalScrollIndicator={false}>
         <Block padding={16}>
           {/* Vertical Spacing Demo */}

@@ -1,131 +1,164 @@
-import {
-  type ImageStyle,
-  Pressable,
-  StyleSheet,
-  type ViewStyle
-} from 'react-native'
+import type { Ref } from 'react'
+import { Pressable, StyleSheet, type View } from 'react-native'
 
 import type { ImageSource } from 'expo-image'
 import Block from '@components/ui/layouts/block/block.index'
+import type { BlockProps } from '@components/ui/layouts/block/block.type'
 import Image from '@components/ui/primitives/image/image.index'
+import type { TImageProps } from '@components/ui/primitives/image/image.type'
+import Colors from '@theme/colors'
+import { Spacing } from '@theme/layout'
 
-interface CardProps {
-  variant?: 'default' | 'bodered' | 'shadow'
-  children: React.ReactNode
-  style?: ViewStyle
+interface CardProps extends BlockProps {
+  variant?: 'default' | 'bordered' | 'shadow'
   onPress?: () => void
+  ref?: Ref<View>
 }
 
-const Card = ({
+const CardRoot = ({
   children,
   variant = 'default',
   style,
-  onPress
+  onPress,
+  ref,
+  ...props
 }: CardProps): React.JSX.Element => {
   const cardStyles = [
     styles.default,
-    variant === 'bodered' && styles.bodered,
+    variant === 'bordered' && styles.bordered,
     variant === 'shadow' && styles.shadow,
     style
   ]
 
   if (onPress) {
     return (
-      <Pressable onPress={onPress} style={cardStyles}>
+      <Pressable
+        accessibilityRole='button'
+        onPress={onPress}
+        ref={ref}
+        style={({ pressed }) => [cardStyles, pressed && { opacity: 0.8 }]}
+        {...props}
+      >
         {children}
       </Pressable>
     )
   }
 
-  return <Block style={cardStyles}>{children}</Block>
+  return (
+    <Block style={cardStyles} {...props}>
+      {children}
+    </Block>
+  )
 }
 
 const CardHeader = ({
   children,
-  style
-}: {
-  children: React.ReactNode
-  style?: ViewStyle
-}): React.JSX.Element => {
-  return <Block style={[styles.header, style]}>{children}</Block>
+  style,
+  ...props
+}: BlockProps): React.JSX.Element => {
+  return (
+    <Block style={[styles.header, style]} {...props}>
+      {children}
+    </Block>
+  )
 }
+CardHeader.displayName = 'Card.Header'
 
 const CardContent = ({
   children,
-  style
-}: {
-  children: React.ReactNode
-  style?: ViewStyle
-}): React.JSX.Element => {
-  return <Block style={[styles.content, style]}>{children}</Block>
+  style,
+  ...props
+}: BlockProps): React.JSX.Element => {
+  return (
+    <Block style={[styles.content, style]} {...props}>
+      {children}
+    </Block>
+  )
 }
+CardContent.displayName = 'Card.Content'
 
 const CardFooter = ({
   children,
-  style
-}: {
-  children: React.ReactNode
-  style?: ViewStyle
-}): React.JSX.Element => {
-  return <Block style={[styles.footer, style]}>{children}</Block>
+  style,
+  ...props
+}: BlockProps): React.JSX.Element => {
+  return (
+    <Block style={[styles.footer, style]} {...props}>
+      {children}
+    </Block>
+  )
+}
+CardFooter.displayName = 'Card.Footer'
+
+interface CardImageProps extends TImageProps {
+  source: ImageSource
 }
 
 const CardImage = ({
   source,
-  style
-}: {
-  source: ImageSource
-  style?: ImageStyle
-}): React.JSX.Element => {
+  style,
+  ...props
+}: CardImageProps): React.JSX.Element => {
   return (
-    <Image contentFit='contain' source={source} style={[styles.image, style]} />
+    <Image
+      contentFit='contain'
+      source={source}
+      style={[styles.image, style]}
+      {...props}
+    />
   )
 }
+CardImage.displayName = 'Card.Image'
 
-const CardDivider = ({ style }: { style?: ImageStyle }): React.JSX.Element => {
-  return <Block style={[styles.divder, style]} />
+const CardDivider = ({ style, ...props }: BlockProps): React.JSX.Element => {
+  return <Block style={[styles.divider, style]} {...props} />
 }
+CardDivider.displayName = 'Card.Divider'
 
 const styles = StyleSheet.create({
-  bodered: {
-    backgroundColor: 'white',
+  bordered: {
+    backgroundColor: Colors.white,
+    borderColor: Colors.neutral_200,
     borderRadius: 16,
-    margin: 8
+    borderWidth: 1,
+    margin: Spacing.s
   },
   content: {
-    padding: 16
+    padding: Spacing.m
   },
   default: {
-    backgroundColor: 'white',
-    margin: 8
+    backgroundColor: Colors.white,
+    margin: Spacing.s
   },
-  divder: {
-    backgroundColor: '#E5E5E5',
-    height: 1,
-    marginVertical: 8
+  divider: {
+    backgroundColor: Colors.neutral_200,
+    height: StyleSheet.hairlineWidth,
+    marginVertical: Spacing.s
   },
   footer: {
-    padding: 16
+    padding: Spacing.m
   },
   header: {
-    padding: 16
+    padding: Spacing.m
   },
   image: {
     height: 200,
     width: '100%'
   },
   shadow: {
-    backgroundColor: 'white',
+    backgroundColor: Colors.white,
     borderRadius: 8,
-    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.15);',
-    margin: 8
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.15)',
+    margin: Spacing.s
   }
 })
 
-Card.Header = CardHeader
-Card.Content = CardContent
-Card.Footer = CardFooter
-Card.Image = CardImage
-Card.Divider = CardDivider
+const Card = Object.assign(CardRoot, {
+  Content: CardContent,
+  Divider: CardDivider,
+  Footer: CardFooter,
+  Header: CardHeader,
+  Image: CardImage
+})
 
 export default Card

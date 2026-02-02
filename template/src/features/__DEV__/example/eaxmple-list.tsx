@@ -38,7 +38,14 @@ const ListComponent = (): React.JSX.Element => {
 
   return (
     <Block flex={1}>
-      <Header isBack title='Image Component' />
+      <Header>
+        <Header.Left>
+          <Header.BackButton />
+        </Header.Left>
+        <Header.Content>
+          <Header.Title>Image Component</Header.Title>
+        </Header.Content>
+      </Header>
       <InfiniteScrollList<ListItem>
         contentContainerStyle={styles.listContainer}
         data={SAMPLE_DATA}

@@ -14,7 +14,14 @@ const BoxItem = ({ bg }: { bg: keyof typeof Colors }): React.JSX.Element => (
 const RowComponent = (): React.JSX.Element => {
   return (
     <Block flex={1}>
-      <Header isBack title='Row Component' />
+      <Header>
+        <Header.Left>
+          <Header.BackButton />
+        </Header.Left>
+        <Header.Content>
+          <Header.Title>Row Component</Header.Title>
+        </Header.Content>
+      </Header>
       <ScrollView showsVerticalScrollIndicator={false}>
         <Block gap={24} padding={16}>
           {/* Basic Row */}

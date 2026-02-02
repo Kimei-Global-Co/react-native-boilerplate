@@ -5,7 +5,9 @@ import ExampleAvatar from '@features/__DEV__/example/example-avatar'
 import ExampleButton from '@features/__DEV__/example/example-button'
 import ExampleCamera from '@features/__DEV__/example/example-camera'
 import ExampleCard from '@features/__DEV__/example/example-card'
-import ExampleEmptyView from '@features/__DEV__/example/example-empty-view'
+import ExampleDivider from '@features/__DEV__/example/example-divider'
+import ExampleEmptyState from '@features/__DEV__/example/example-empty-state'
+import ExampleErrorState from '@features/__DEV__/example/example-error-state'
 import ExampleHeader from '@features/__DEV__/example/example-header'
 import ExampleIcon from '@features/__DEV__/example/example-icon'
 import ExampleImage from '@features/__DEV__/example/example-image'
@@ -75,7 +77,9 @@ export const devScreens = {
   Camera: ExampleCamera,
   Card: ExampleCard,
   DevMenu: DevMenu,
-  EmptyView: ExampleEmptyView,
+  Divider: ExampleDivider,
+  EmptyState: ExampleEmptyState,
+  ErrorState: ExampleErrorState,
   Header: ExampleHeader,
   Icon: ExampleIcon,
   Image: ExampleImage,

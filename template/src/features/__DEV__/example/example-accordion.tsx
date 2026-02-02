@@ -9,7 +9,14 @@ const defaultContent =
 const AccordionComponent = (): React.JSX.Element => {
   return (
     <Block flex>
-      <Header isBack title='Accordion component' />
+      <Header>
+        <Header.Left>
+          <Header.BackButton />
+        </Header.Left>
+        <Header.Content>
+          <Header.Title>Accordion component</Header.Title>
+        </Header.Content>
+      </Header>
       <Block gap={8} padding={16}>
         <Accordion variant='default'>
           <Accordion.Item itemKey='1' title='Accordion 1'>

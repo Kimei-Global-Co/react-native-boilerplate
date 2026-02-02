@@ -6,7 +6,14 @@ import { createContainer } from '../create-container'
 const IconComponent = (): React.JSX.Element => {
   return (
     <Block>
-      <Header isBack title='Icons' />
+      <Header>
+        <Header.Left>
+          <Header.BackButton />
+        </Header.Left>
+        <Header.Content>
+          <Header.Title>Icons</Header.Title>
+        </Header.Content>
+      </Header>
       <Block align='center' gap={20} justify='center' margin={10}>
         <Block row>
           <Icon name={'ice-cream-outline'} size={22} type='ionicons' />

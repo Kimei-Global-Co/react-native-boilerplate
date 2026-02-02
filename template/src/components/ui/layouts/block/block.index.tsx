@@ -1,5 +1,6 @@
 import { StyleSheet, type ViewStyle } from 'react-native'
 
+import Colors from '@theme/colors'
 import { Spacing } from '@theme/layout'
 import NativeView from 'react-native/Libraries/Components/View/ViewNativeComponent'
 import {
@@ -85,7 +86,7 @@ const createBlockStyles = (
     linearGradient && { experimental_backgroundImage: linearGradient },
     handleInset(props, safeArea, padding),
     backgroundColor && {
-      backgroundColor: backgroundColor
+      backgroundColor: Colors[backgroundColor]
     },
     style
   ]) as ViewStyle

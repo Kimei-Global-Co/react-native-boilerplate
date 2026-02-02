@@ -23,7 +23,14 @@ const SwitchComponent = (): React.JSX.Element => {
 
   return (
     <>
-      <Header isBack title='Switch Examples' />
+      <Header>
+        <Header.Left>
+          <Header.BackButton />
+        </Header.Left>
+        <Header.Content>
+          <Header.Title>Switch Examples</Header.Title>
+        </Header.Content>
+      </Header>
       <Block align='center' gap={20} justify='center' padding={20}>
         <Text style={styles.description}>Default Switch (Enabled)</Text>
         <Switch onValueChange={setIsToggle1} value={isToggle1} />

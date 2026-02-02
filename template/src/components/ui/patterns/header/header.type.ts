@@ -1,44 +1,51 @@
-import type { ImageSourcePropType, ViewStyle } from 'react-native'
+import type {
+  ImageSourcePropType,
+  ImageStyle,
+  TextStyle,
+  ViewStyle
+} from 'react-native'
 
 import type { IconName, Icons } from '@assets/icons'
 
-export interface HeaderAction {
-  /** Unique identifier for the action */
-  id: string
-  /** Icon name from Icons enum */
-  name: IconName<keyof typeof Icons>
-  /** Icon type/family */
-  type: keyof typeof Icons
-  /** Action handler */
-  onPress?: () => void
-  /** Disable the action button */
-  disabled?: boolean
-}
-
-export interface HeaderProps {
-  /** Show back button */
-  isBack?: boolean
-  /** Title text - Required */
-  title?: string
-  /** Subtitle text */
-  subtitle?: string
-  /** Avatar image source */
-  avatar?: ImageSourcePropType
-  /** Right action buttons */
-  rightActions?: HeaderAction[]
-  /** Container style */
+// Base props for container components
+export interface BaseHeaderProps {
+  children?: React.ReactNode
   style?: ViewStyle
 }
 
-export const DEFAULT_ACTIONS: HeaderAction[] = [
-  {
-    id: 'icNoti',
-    name: 'bell-outline',
-    type: 'materialCommunityIcons'
-  },
-  {
-    id: 'icAction',
-    name: 'dots-vertical',
-    type: 'materialCommunityIcons'
-  }
-]
+// Root component props
+export interface HeaderRootProps extends BaseHeaderProps {}
+
+// Action button props
+export interface HeaderActionProps {
+  icon: IconName<keyof typeof Icons>
+  type?: keyof typeof Icons
+  onPress?: () => void
+  disabled?: boolean
+  style?: ViewStyle
+  color?: string
+  size?: number
+}
+
+// Avatar props
+export interface HeaderAvatarProps {
+  source: ImageSourcePropType
+  size?: number
+  style?: ImageStyle
+}
+
+// Back button props
+export interface HeaderBackButtonProps {
+  onPress?: () => void
+  style?: ViewStyle
+  color?: string
+}
+
+// Title/Subtitle props
+export interface HeaderTextProps {
+  children: string | React.ReactNode
+  style?: TextStyle
+  color?: string
+  numberOfLines?: number
+  center?: boolean
+}

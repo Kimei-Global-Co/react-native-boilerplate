@@ -13,7 +13,14 @@ const BLURHASH = 'L6PZfSi_.AyE_3t7t7R**0o#DgR4'
 const ImageComponent = (): React.JSX.Element => {
   return (
     <Block flex={1}>
-      <Header isBack title='Image Component' />
+      <Header>
+        <Header.Left>
+          <Header.BackButton />
+        </Header.Left>
+        <Header.Content>
+          <Header.Title>Image Component</Header.Title>
+        </Header.Content>
+      </Header>
       <ScrollView showsVerticalScrollIndicator={false}>
         <Block gap={16} padding={16}>
           {/* Basic Usage */}

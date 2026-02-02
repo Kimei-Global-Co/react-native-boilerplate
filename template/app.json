@@ -48,6 +48,7 @@
       "reactCompiler": true
     },
     "plugins": [
+      "./plugins/withGradleJVMHeapSizeIncrease.js",
       "./plugins/withAndroidManifestPlugin.js",
       [
         "expo-build-properties",

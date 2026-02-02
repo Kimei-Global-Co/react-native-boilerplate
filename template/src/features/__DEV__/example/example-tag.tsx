@@ -6,7 +6,15 @@ import { createContainer } from '../create-container'
 const TagComponent = (): React.JSX.Element => {
   return (
     <Block>
-      <Header isBack title='Tag component' />
+      <Header>
+        <Header.Left>
+          <Header.BackButton />
+        </Header.Left>
+        <Header.Content>
+          <Header.Title>Tag component</Header.Title>
+          <Header.Subtitle>Tag component</Header.Subtitle>
+        </Header.Content>
+      </Header>
       <Block gap={16} padding={16}>
         {/* Basic Tag */}
         <Tag>

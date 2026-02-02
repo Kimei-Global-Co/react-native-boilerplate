@@ -10,7 +10,14 @@ import { createContainer } from '../create-container'
 const SpinnerComponent = (): React.JSX.Element => {
   return (
     <Block flex={1}>
-      <Header isBack title='Spinner Component' />
+      <Header>
+        <Header.Left>
+          <Header.BackButton />
+        </Header.Left>
+        <Header.Content>
+          <Header.Title>Spinner Component</Header.Title>
+        </Header.Content>
+      </Header>
       <ScrollView showsVerticalScrollIndicator={false}>
         <Block gap={16} padding={16}>
           {/* Different Sizes */}
