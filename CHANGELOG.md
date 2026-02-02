@@ -3,7 +3,11 @@
 ## 2026-02-02
 
 ### ✨ Features
+* update dotfiles VS Code settings to use biome as the default formatter for jsonc files ([66d19ce](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/66d19cefd261fc2eaa4e93bb7964eb02a4530431))
 * add new UI components including Row, Skeleton, Spacer, Spinner, Switch, Tag, and Typography ([9229ea6](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/9229ea6a123edbef0765f83deede0282a55adfeb))
+
+### 🔨 Chores
+* update changelog [skip ci] ([768d0bc](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/768d0bc34dc50ab9dd3af5d294045c15ba2119fb))
 
 ## 2026-02-01
 
