@@ -1,13 +1,13 @@
 import { StyleSheet } from 'react-native'
 
 import { localImage } from '@assets/images'
+import Block from '@components/ui/layouts/block/block.index'
+import Row from '@components/ui/layouts/row/row.index'
+import Button from '@components/ui/primitives/button/button.index'
+import Icon from '@components/ui/primitives/icon/icon.index'
+import Image from '@components/ui/primitives/image/image.index'
+import Typography from '@components/ui/primitives/typography/typo.index'
 import { goBack } from '@navigation/config/navigation-services'
-import Block from '../block/block.index'
-import Button from '../button/button.index'
-import Icon from '../icon/icon.index'
-import Image from '../image/image.index'
-import Row from '../row/row.index'
-import Typography from '../typography/typo.index'
 import { DEFAULT_ACTIONS, type HeaderProps } from './header.type'
 
 const DEFAULT_AVATAR = localImage().icAvatar

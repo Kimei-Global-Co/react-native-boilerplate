@@ -1,4 +1,4 @@
-import Block from '@components/ui/primitives/block/block.index'
+import Block from '@components/ui/layouts/block/block.index'
 
 export const MENU_ITEMS = {
   Accordion: 'Accordion',
@@ -12,6 +12,7 @@ export const MENU_ITEMS = {
   Image: 'Image',
   Lingui: 'Lingui',
   List: 'List',
+  Mutative: 'Mutative',
   Row: 'Row',
   Sheet: 'Sheet',
   Spacer: 'Spacer',

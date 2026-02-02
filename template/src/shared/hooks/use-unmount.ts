@@ -1,9 +1,9 @@
 import { useEffect } from 'react'
 
 import { isFunction } from 'shared/utils/helper'
-import useLatest from './use-lastest'
+import { useLatest } from './use-latest'
 
-export default function useUnmount(fn: () => void) {
+export function useUnmount(fn: () => void) {
   if (__DEV__) {
     if (!isFunction(fn)) {
       console.error(

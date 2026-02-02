@@ -1,6 +1,9 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import { Pressable, StyleSheet } from 'react-native'
 
+import Block from '@components/ui/layouts/block/block.index'
+import Icon from '@components/ui/primitives/icon/icon.index'
+import Typography from '@components/ui/primitives/typography/typo.index'
 import Animated, {
   measure,
   useAnimatedRef,
@@ -9,9 +12,6 @@ import Animated, {
   withTiming
 } from 'react-native-reanimated'
 import { scheduleOnUI } from 'react-native-worklets'
-import Block from '../block/block.index'
-import Icon from '../icon/icon.index'
-import Typography from '../typography/typo.index'
 import type {
   AccordionContextType,
   AccordionItemProps,

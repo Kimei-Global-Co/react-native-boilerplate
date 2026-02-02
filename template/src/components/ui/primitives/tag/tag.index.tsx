@@ -1,8 +1,8 @@
 import { createContext, useContext } from 'react'
 import { StyleSheet, TouchableOpacity } from 'react-native'
 
-import Block from '../block/block.index'
-import Typography from '../typography/typo.index'
+import Block from '@components/ui/layouts/block/block.index'
+import Typography from '@components/ui/primitives/typography/typo.index'
 import {
   type CloseTriggerProps,
   type LabelProps,

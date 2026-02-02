@@ -1,9 +1,9 @@
 import { StyleSheet, TouchableOpacity } from 'react-native'
 
-import Block from '@components/ui/primitives/block/block.index'
+import Block from '@components/ui/layouts/block/block.index'
+import Row from '@components/ui/layouts/row/row.index'
 import Icon from '@components/ui/primitives/icon/icon.index'
 import InfiniteScrollList from '@components/ui/primitives/list/list.index'
-import Row from '@components/ui/primitives/row/row.index'
 import Typography from '@components/ui/primitives/typography/typo.index'
 import { navigate } from '@navigation/config/navigation-services'
 import Colors from '@theme/colors'

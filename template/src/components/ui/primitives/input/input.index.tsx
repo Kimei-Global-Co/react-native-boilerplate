@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { TextInput as RNTextInput, StyleSheet } from 'react-native'
 
+import Block from '@components/ui/layouts/block/block.index'
+import Row from '@components/ui/layouts/row/row.index'
+import Icon from '@components/ui/primitives/icon/icon.index'
+import Typography from '@components/ui/primitives/typography/typo.index'
 import Colors from '@theme/colors'
-import Block from '../block/block.index'
-import Icon from '../icon/icon.index'
-import Row from '../row/row.index'
-import Typography from '../typography/typo.index'
 import type { TextInputBaseProps } from './input.type'
 export default function TextInput(
   props: TextInputBaseProps & { ref?: React.Ref<RNTextInput> }

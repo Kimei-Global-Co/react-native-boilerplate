@@ -6,8 +6,8 @@ import {
 } from 'react-native'
 
 import { getIconComponent } from '@assets/icons'
+import Block from '@components/ui/layouts/block/block.index'
 import Colors from '@theme/colors'
-import Block from '../block/block.index'
 import type { IconComponentProps } from './icon.type'
 
 const BUTTON_COMPONENTS = {

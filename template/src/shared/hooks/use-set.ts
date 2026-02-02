@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export default function useSet<K>(initialValue?: Iterable<K>) {
+export function useSet<K>(initialValue?: Iterable<K>) {
   const getInitValue = () => new Set(initialValue)
   const [set, setSet] = useState<Set<K>>(getInitValue)
 

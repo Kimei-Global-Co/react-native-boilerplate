@@ -1,10 +1,10 @@
 import type { ViewStyle } from 'react-native'
 
+import type Block from '@components/ui/layouts/block/block.index'
 import Colors from '@theme/colors'
 import { Shimmer, ShimmerProvider } from 'react-native-fast-shimmer'
 import Animated, { FadeOut } from 'react-native-reanimated'
 import { typeGuards } from 'shared/utils/helper'
-import type Block from '../block/block.index'
 
 export type SkeletonProps = React.ComponentProps<typeof Shimmer> &
   Pick<

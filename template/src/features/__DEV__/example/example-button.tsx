@@ -1,8 +1,8 @@
 import { ScrollView, View } from 'react-native'
 
-import Block from '@components/ui/primitives/block/block.index'
+import Block from '@components/ui/layouts/block/block.index'
+import Header from '@components/ui/patterns/header/header.index'
 import Button from '@components/ui/primitives/button/button.index'
-import Header from '@components/ui/primitives/header/header.index'
 import Typography from '@components/ui/primitives/typography/typo.index'
 
 /**

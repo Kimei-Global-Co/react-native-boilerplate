@@ -1,8 +1,8 @@
+import Block from '@components/ui/layouts/block/block.index'
+import Image from '@components/ui/primitives/image/image.index'
+import Skeleton from '@components/ui/primitives/skeleton/skeleton.index'
 import Animated, { FadeIn } from 'react-native-reanimated'
 import { useMutative } from 'shared/hooks/use-mutative'
-import Block from '../block/block.index'
-import Image from '../image/image.index'
-import Skeleton from '../skeleton/skeleton.index'
 import type { TAvatarProps } from './avatar.type'
 
 export default function Avatar(props: TAvatarProps): React.JSX.Element {

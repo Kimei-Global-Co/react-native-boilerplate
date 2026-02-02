@@ -1,5 +1,5 @@
-import Block from '@components/ui/primitives/block/block.index'
-import Header from '@components/ui/primitives/header/header.index'
+import Block from '@components/ui/layouts/block/block.index'
+import Header from '@components/ui/patterns/header/header.index'
 import { createContainer } from '../create-container'
 
 const HeaderComponent = (): React.JSX.Element => {

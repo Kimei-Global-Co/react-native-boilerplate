@@ -1,6 +1,6 @@
 import { Dimensions, Platform } from 'react-native'
 
-import type { BlockProps } from '@components/ui/primitives/block/block.type'
+import type { BlockProps } from '@components/ui/layouts/block/block.type'
 import type { IconComponentProps } from '@components/ui/primitives/icon/icon.type'
 import Colors from '@theme/colors'
 import get from 'lodash.get'

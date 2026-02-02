@@ -1,6 +1,6 @@
 //base on https://github.com/mutativejs/use-mutative
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import {
   create,
@@ -72,85 +72,78 @@ function useMutative<
    */
   options?: Options<O, F>
 ) {
-  const patchesRef = useRef<{
-    patches: Patches
-    inversePatches: Patches
-  }>({
-    inversePatches: [],
-    patches: []
+  //#region support state and patches in a single bundle for purity
+  const [bundle, setBundle] = useState<{
+    state: InitialValue<S>
+    patches: Patches<O>
+    inversePatches: Patches<O>
+  }>(() => {
+    const initial =
+      typeof initialValue === 'function'
+        ? (initialValue as () => InitialValue<S>)()
+        : (initialValue as InitialValue<S>)
+    return {
+      inversePatches: [],
+      patches: [],
+      state: initial
+    }
   })
-  //#region support strict mode and concurrent features
-  const count = useRef(0)
-  const renderCount = useRef(0)
-  let currentCount = count.current
-  useEffect(() => {
-    count.current = currentCount
-    renderCount.current = currentCount
-  })
-  currentCount += 1
-  renderCount.current += 1
   //#endregion
-  const [state, setState] = useState<InitialValue<S>>(() =>
-    typeof initialValue === 'function'
-      ? (initialValue as () => InitialValue<S>)()
-      : (initialValue as InitialValue<S>)
-  )
 
   const updateState = useCallbackRef((...args: unknown[]) => {
     const updater = args[0] as S | (() => S) | DraftFunction<InitialValue<S>>
 
-    setState((latest: InitialValue<S>) => {
+    setBundle((prevBundle) => {
       const updaterFn =
         typeof updater === 'function'
           ? (updater as DraftFunction<InitialValue<S>> | (() => S))
           : () => updater
 
-      const result = create(latest, updaterFn, options)
+      const result = create(prevBundle.state, updaterFn, options)
 
       if (options?.enablePatches) {
-        // check render count, support strict mode and concurrent features
-        if (
-          renderCount.current === count.current ||
-          renderCount.current === count.current + 1
-        ) {
-          // Type assertion needed due to mutative's complex return types
-          const [newState, patches, inversePatches] = result as [
-            InitialValue<S>,
-            Patches<O>,
-            Patches<O>
-          ]
+        // When patches are enabled, create returns [newState, patches, inversePatches]
+        const [newState, patches, inversePatches] = result as [
+          InitialValue<S>,
+          Patches<O>,
+          Patches<O>
+        ]
 
-          Array.prototype.push.apply(patchesRef.current.patches, patches)
-          // `inversePatches` should be in reverse order when multiple setState() executions
-          Array.prototype.unshift.apply(
-            patchesRef.current.inversePatches,
-            inversePatches
-          )
-
-          return newState
+        return {
+          inversePatches: inversePatches.concat(prevBundle.inversePatches),
+          // Append patches if multiple updates occur in a batch
+          patches: prevBundle.patches.concat(patches),
+          state: newState
         }
-        return (result as [InitialValue<S>, Patches<O>, Patches<O>])[0]
       }
-      return result as InitialValue<S>
+
+      return {
+        inversePatches: [],
+        patches: [],
+        state: result as InitialValue<S>
+      }
     })
   })
 
   useEffect(() => {
-    if (options?.enablePatches) {
-      // Reset `patchesRef` when the component is rendered each time
-      patchesRef.current.patches = []
-      patchesRef.current.inversePatches = []
+    if (
+      options?.enablePatches &&
+      (bundle.patches.length > 0 || bundle.inversePatches.length > 0)
+    ) {
+      // Clear patches after render to match the original transient behavior.
+      // This is safe because it only happens after a render that included patches.
+      setBundle((prev) => ({
+        ...prev,
+        inversePatches: [],
+        patches: []
+      }))
     }
-  })
+  }, [bundle.patches, bundle.inversePatches, options?.enablePatches])
+
   return (
     options?.enablePatches
-      ? [
-          state,
-          updateState,
-          patchesRef.current.patches,
-          patchesRef.current.inversePatches
-        ]
-      : [state, updateState]
+      ? [bundle.state, updateState, bundle.patches, bundle.inversePatches]
+      : [bundle.state, updateState]
   ) as Result<InitialValue<S>, O, F>
 }
 

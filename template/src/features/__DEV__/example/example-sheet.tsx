@@ -1,8 +1,8 @@
 import { TouchableOpacity } from 'react-native'
 
+import Block from '@components/ui/layouts/block/block.index'
+import Header from '@components/ui/patterns/header/header.index'
 import OptionsSheet from '@components/ui/patterns/options-sheet'
-import Block from '@components/ui/primitives/block/block.index'
-import Header from '@components/ui/primitives/header/header.index'
 import Typography from '@components/ui/primitives/typography/typo.index'
 import { TrueSheet } from '@lodev09/react-native-true-sheet'
 import { createContainer } from '../create-container'

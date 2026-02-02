@@ -1,9 +1,9 @@
 import { ScrollView } from 'react-native'
 
 import { localImage } from '@assets/images'
+import Block from '@components/ui/layouts/block/block.index'
 import Card from '@components/ui/patterns/card'
-import Block from '@components/ui/primitives/block/block.index'
-import Header from '@components/ui/primitives/header/header.index'
+import Header from '@components/ui/patterns/header/header.index'
 import Typography from '@components/ui/primitives/typography/typo.index'
 import { createContainer } from '../create-container'
 

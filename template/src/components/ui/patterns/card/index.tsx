@@ -1,41 +1,43 @@
-import { createContext } from 'react'
-import { type ImageStyle, StyleSheet, type ViewStyle } from 'react-native'
+import {
+  type ImageStyle,
+  Pressable,
+  StyleSheet,
+  type ViewStyle
+} from 'react-native'
 
 import type { ImageSource } from 'expo-image'
-import Block from '../../primitives/block/block.index'
-import Image from '../../primitives/image/image.index'
-
-type CardContextType = {
-  variant?: 'default' | 'bodered' | 'shadow'
-}
-
-const CardContext = createContext<CardContextType>({})
+import Block from '@components/ui/layouts/block/block.index'
+import Image from '@components/ui/primitives/image/image.index'
 
 interface CardProps {
-  variant?: CardContextType['variant']
+  variant?: 'default' | 'bodered' | 'shadow'
   children: React.ReactNode
   style?: ViewStyle
+  onPress?: () => void
 }
 
 const Card = ({
   children,
   variant = 'default',
-  style
+  style,
+  onPress
 }: CardProps): React.JSX.Element => {
-  return (
-    <CardContext.Provider value={{ variant }}>
-      <Block
-        style={[
-          styles.default,
-          variant === 'bodered' && styles.bodered,
-          variant === 'shadow' && styles.shadow,
-          style
-        ]}
-      >
+  const cardStyles = [
+    styles.default,
+    variant === 'bodered' && styles.bodered,
+    variant === 'shadow' && styles.shadow,
+    style
+  ]
+
+  if (onPress) {
+    return (
+      <Pressable onPress={onPress} style={cardStyles}>
         {children}
-      </Block>
-    </CardContext.Provider>
-  )
+      </Pressable>
+    )
+  }
+
+  return <Block style={cardStyles}>{children}</Block>
 }
 
 const CardHeader = ({

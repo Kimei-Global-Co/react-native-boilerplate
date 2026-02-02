@@ -7,6 +7,8 @@ import {
 } from 'react-native'
 
 import AntDesign from '@expo/vector-icons/AntDesign'
+import Block from '@components/ui/layouts/block/block.index'
+import Typography from '@components/ui/primitives/typography/typo.index'
 import Animated, {
   cancelAnimation,
   FadeInDown,
@@ -21,8 +23,6 @@ import Animated, {
   withTiming
 } from 'react-native-reanimated'
 import { when } from 'shared/utils/helper'
-import Block from '../block/block.index'
-import Typography from '../typography/typo.index'
 import {
   ButtonContext,
   normalizeVariant,

@@ -10,6 +10,7 @@ import ExampleHeader from '@features/__DEV__/example/example-header'
 import ExampleIcon from '@features/__DEV__/example/example-icon'
 import ExampleImage from '@features/__DEV__/example/example-image'
 import ExampleLingui from '@features/__DEV__/example/example-lingui'
+import ExampleMutative from '@features/__DEV__/example/example-mutative'
 import ExampleRow from '@features/__DEV__/example/example-row'
 import ExampleSheet from '@features/__DEV__/example/example-sheet'
 import ExampleSpacer from '@features/__DEV__/example/example-spacer'
@@ -80,6 +81,7 @@ export const devScreens = {
   Image: ExampleImage,
   Lingui: ExampleLingui,
   List: ExampleList,
+  Mutative: ExampleMutative,
   Row: ExampleRow,
   Sheet: ExampleSheet,
   Spacer: ExampleSpacer,

@@ -1,6 +1,6 @@
-import Accordion from '@components/ui/primitives/accordion/accordion.index'
-import Block from '@components/ui/primitives/block/block.index'
-import Header from '@components/ui/primitives/header/header.index'
+import Block from '@components/ui/layouts/block/block.index'
+import Accordion from '@components/ui/patterns/accordion/accordion.index'
+import Header from '@components/ui/patterns/header/header.index'
 import Typography from '@components/ui/primitives/typography/typo.index'
 import { createContainer } from '../create-container'
 

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export default function useMap<K, T>(initialValue?: Iterable<readonly [K, T]>) {
+export function useMap<K, T>(initialValue?: Iterable<readonly [K, T]>) {
   const getInitValue = () => new Map(initialValue)
   const [map, setMap] = useState<Map<K, T>>(getInitValue)
 
