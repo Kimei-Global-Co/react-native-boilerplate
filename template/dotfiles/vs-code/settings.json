@@ -1,4 +1,6 @@
 {
+  "biome.requireConfiguration": true,
+  "biome.configurationPath": "biome.json",
   "[css]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
@@ -12,7 +14,7 @@
     "editor.defaultFormatter": "biomejs.biome"
   },
   "[jsonc]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
+    "editor.defaultFormatter": "biomejs.biome"
   },
   "[typescript]": {
     "editor.defaultFormatter": "biomejs.biome"
