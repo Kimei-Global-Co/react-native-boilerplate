@@ -1,7 +1,7 @@
-import Block from '@components/ui/layouts/block/block.index'
+import { Block } from '@components/ui/layouts/block/block.index'
 import Accordion from '@components/ui/patterns/accordion/accordion.index'
-import Header from '@components/ui/patterns/header/header.index'
-import Typography from '@components/ui/primitives/typography/typo.index'
+import { Header } from '@components/ui/patterns/header/header.index'
+import { Typography } from '@components/ui/primitives/typography/typo.index'
 import { createContainer } from '../create-container'
 
 const defaultContent =
@@ -10,12 +10,12 @@ const AccordionComponent = (): React.JSX.Element => {
   return (
     <Block flex>
       <Header>
-        <Header.Left>
+        <Header.Section position='left'>
           <Header.BackButton />
-        </Header.Left>
-        <Header.Content>
+        </Header.Section>
+        <Header.Section position='content'>
           <Header.Title>Accordion component</Header.Title>
-        </Header.Content>
+        </Header.Section>
       </Header>
       <Block gap={8} padding={16}>
         <Accordion variant='default'>

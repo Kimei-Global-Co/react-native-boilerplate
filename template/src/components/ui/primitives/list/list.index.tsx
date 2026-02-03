@@ -1,4 +1,4 @@
-import Block from '@components/ui/layouts/block/block.index'
+import { Block } from '@components/ui/layouts/block/block.index'
 import { EmptyState } from '@components/ui/patterns/empty-state'
 import { FlashList, type ListRenderItemInfo } from '@shopify/flash-list'
 import type { InfiniteScrollListProps } from './list.type'
@@ -15,15 +15,10 @@ function FlashListComponent<T>({
     console.info('init load', elapsedTimeInMs)
   }
 
-  const renderItem = (props: ListRenderItemInfo<T>) => {
-    if (!propRenderItem) {
-      return null
-    }
+  const renderItem = (info: ListRenderItemInfo<T>) =>
+    propRenderItem?.(info) ?? null
 
-    return propRenderItem(props)
-  }
-
-  const ListEmpty = ListEmptyComponent ?? (
+  const listEmptyComponent = ListEmptyComponent ?? (
     <EmptyState
       description='No data'
       icon={{ name: 'inbox', size: 40, type: 'feather' }}
@@ -36,7 +31,7 @@ function FlashListComponent<T>({
       <Block size={{ height: '100%' }} style={style}>
         <FlashList
           {...rest}
-          ListEmptyComponent={ListEmpty}
+          ListEmptyComponent={listEmptyComponent}
           numColumns={numColumns}
           onLoad={onLoadListener}
           ref={ref}
@@ -50,7 +45,7 @@ function FlashListComponent<T>({
     return (
       <FlashList
         {...rest}
-        ListEmptyComponent={ListEmpty}
+        ListEmptyComponent={listEmptyComponent}
         numColumns={numColumns}
         onLoad={onLoadListener}
         ref={ref}
@@ -62,7 +57,7 @@ function FlashListComponent<T>({
   }
 }
 
-export default function InfiniteScrollList<T>(
+export function InfiniteScrollList<T>(
   props: InfiniteScrollListProps<T>
 ): React.ReactElement {
   return <FlashListComponent {...props} />

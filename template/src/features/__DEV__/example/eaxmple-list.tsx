@@ -1,9 +1,9 @@
 import { StyleSheet } from 'react-native'
 
-import Block from '@components/ui/layouts/block/block.index'
-import Header from '@components/ui/patterns/header/header.index'
-import InfiniteScrollList from '@components/ui/primitives/list/list.index'
-import Typography from '@components/ui/primitives/typography/typo.index'
+import { Block } from '@components/ui/layouts/block/block.index'
+import { Header } from '@components/ui/patterns/header/header.index'
+import { InfiniteScrollList } from '@components/ui/primitives/list/list.index'
+import { Typography } from '@components/ui/primitives/typography/typo.index'
 import { createContainer } from '../create-container'
 
 interface ListItem {
@@ -39,12 +39,12 @@ const ListComponent = (): React.JSX.Element => {
   return (
     <Block flex={1}>
       <Header>
-        <Header.Left>
+        <Header.Section position='left'>
           <Header.BackButton />
-        </Header.Left>
-        <Header.Content>
+        </Header.Section>
+        <Header.Section position='content'>
           <Header.Title>Image Component</Header.Title>
-        </Header.Content>
+        </Header.Section>
       </Header>
       <InfiniteScrollList<ListItem>
         contentContainerStyle={styles.listContainer}

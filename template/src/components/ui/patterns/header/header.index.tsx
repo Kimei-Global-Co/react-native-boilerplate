@@ -1,30 +1,29 @@
-import { StyleSheet } from 'react-native'
-
-import { localImage } from '@assets/images'
-import Block from '@components/ui/layouts/block/block.index'
-import Row from '@components/ui/layouts/row/row.index'
-import Button from '@components/ui/primitives/button/button.index'
-import Icon from '@components/ui/primitives/icon/icon.index'
-import Image from '@components/ui/primitives/image/image.index'
-import Typography from '@components/ui/primitives/typography/typo.index'
+import type { IconType } from '@assets/icons'
+import { Block } from '@components/ui/layouts/block/block.index'
+import { Row } from '@components/ui/layouts/row/row.index'
+import { Button } from '@components/ui/primitives/button/button.index'
+import { Image } from '@components/ui/primitives/image/image.index'
+import { Typography } from '@components/ui/primitives/typography/typo.index'
 import { goBack } from '@navigation/config/navigation-services'
 import type {
-  BaseHeaderProps,
   HeaderActionProps,
   HeaderAvatarProps,
   HeaderBackButtonProps,
   HeaderRootProps,
+  HeaderSectionProps,
   HeaderTextProps
 } from './header.type'
-
-const DEFAULT_AVATAR = localImage().icAvatar
 
 function HeaderRoot({
   children,
   style
 }: Readonly<HeaderRootProps>): React.JSX.Element {
   return (
-    <Block style={[styles.container, style]}>
+    <Block
+      backgroundColor='transparent'
+      padding={{ horizontal: 16, vertical: 12 }}
+      style={style}
+    >
       <Row between center gap={8}>
         {children}
       </Row>
@@ -32,27 +31,28 @@ function HeaderRoot({
   )
 }
 
-function HeaderLeft({ children, style }: Readonly<BaseHeaderProps>) {
+function HeaderSection({
+  children,
+  position,
+  style
+}: Readonly<HeaderSectionProps>) {
+  if (position === 'content') {
+    return (
+      <Block flex={1} justify='center' style={style}>
+        {children}
+      </Block>
+    )
+  }
+
   return (
-    <Row center gap={8} style={style}>
+    <Row
+      center={position !== 'right'}
+      end={position === 'right'}
+      gap={8}
+      style={style}
+    >
       {children}
     </Row>
-  )
-}
-
-function HeaderRight({ children, style }: Readonly<BaseHeaderProps>) {
-  return (
-    <Row center gap={8} style={style}>
-      {children}
-    </Row>
-  )
-}
-
-function HeaderContent({ children, style }: Readonly<BaseHeaderProps>) {
-  return (
-    <Block flex={1} style={[{ justifyContent: 'center' }, style]}>
-      {children}
-    </Block>
   )
 }
 
@@ -99,19 +99,14 @@ function HeaderSubtitle({
   )
 }
 
-function HeaderAction({
-  icon,
-  type = 'materialCommunityIcons',
-  onPress,
-  style,
-  size = 22
-}: Readonly<HeaderActionProps>) {
+function HeaderAction<T extends IconType>(
+  props: Readonly<HeaderActionProps<T>>
+) {
+  const { onPress, style, size = 22, ...iconProps } = props
   return (
     <Button.Ghost onPress={onPress} style={[{ width: 30 }, style]}>
       <Button.Content>
-        <Button.Icon>
-          <Icon name={icon} size={size} type={type} />
-        </Button.Icon>
+        <Button.Icon {...iconProps} size={size} />
       </Button.Content>
     </Button.Ghost>
   )
@@ -124,39 +119,25 @@ function HeaderBackButton({
   return (
     <Button.Ghost onPress={onPress} style={[{ width: 30 }, style]}>
       <Button.Content>
-        <Button.Icon>
-          <Icon name='left' size={22} type='antDesign' />
-        </Button.Icon>
+        <Button.Icon name='left' size={22} type='antDesign' />
       </Button.Content>
     </Button.Ghost>
   )
 }
 
 function HeaderAvatar({
-  source = DEFAULT_AVATAR,
+  source = 'ic-avatar',
   size = 40,
   style
 }: Readonly<HeaderAvatarProps>) {
   return <Image size={size} source={source} style={style} />
 }
 
-const Header = Object.assign(HeaderRoot, {
+export const Header = Object.assign(HeaderRoot, {
   Action: HeaderAction,
   Avatar: HeaderAvatar,
   BackButton: HeaderBackButton,
-  Content: HeaderContent,
-  Left: HeaderLeft,
-  Right: HeaderRight,
+  Section: HeaderSection,
   Subtitle: HeaderSubtitle,
   Title: HeaderTitle
 })
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: 'transparent',
-    paddingHorizontal: 16,
-    paddingVertical: 12
-  }
-})
-
-export default Header

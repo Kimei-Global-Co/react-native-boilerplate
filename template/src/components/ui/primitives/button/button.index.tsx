@@ -7,8 +7,10 @@ import {
 } from 'react-native'
 
 import AntDesign from '@expo/vector-icons/AntDesign'
-import Block from '@components/ui/layouts/block/block.index'
-import Typography from '@components/ui/primitives/typography/typo.index'
+import type { IconType } from '@assets/icons'
+import { Block } from '@components/ui/layouts/block/block.index'
+import { Icon } from '@components/ui/primitives/icon/icon.index'
+import { Typography } from '@components/ui/primitives/typography/typo.index'
 import Animated, {
   cancelAnimation,
   FadeInDown,
@@ -224,10 +226,16 @@ function ButtonLabel({
   )
 }
 
-function ButtonIcon({
-  children
-}: Readonly<ButtonIconProps>): React.JSX.Element {
-  return <>{children}</>
+function ButtonIcon<T extends IconType>(
+  props: Readonly<ButtonIconProps<T>>
+): React.JSX.Element {
+  if ('children' in props) {
+    return <>{props.children}</>
+  }
+
+  const { type, name, size, color, ...rest } = props
+
+  return <Icon {...rest} color={color} name={name} size={size} type={type} />
 }
 
 function withColorVariant(color: ColorVariant) {
@@ -244,7 +252,7 @@ const ButtonShadow = withColorVariant('shadow')
 const ButtonBordered = withColorVariant('bordered')
 const ButtonGhost = withColorVariant('ghost')
 
-const Button = Object.assign(ButtonRoot, {
+export const Button = Object.assign(ButtonRoot, {
   Bordered: ButtonBordered,
   Content: ButtonContent,
   Error: ButtonError,
@@ -257,8 +265,6 @@ const Button = Object.assign(ButtonRoot, {
   Shadow: ButtonShadow,
   Success: ButtonSuccess
 })
-
-export default Button
 
 const styles = StyleSheet.create({
   containerBase: {

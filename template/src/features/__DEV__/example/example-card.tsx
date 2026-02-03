@@ -1,22 +1,21 @@
 import { ScrollView } from 'react-native'
 
-import { localImage } from '@assets/images'
-import Block from '@components/ui/layouts/block/block.index'
-import Card from '@components/ui/patterns/card'
-import Header from '@components/ui/patterns/header/header.index'
-import Typography from '@components/ui/primitives/typography/typo.index'
+import { Block } from '@components/ui/layouts/block/block.index'
+import { Card } from '@components/ui/patterns/card'
+import { Header } from '@components/ui/patterns/header/header.index'
+import { Typography } from '@components/ui/primitives/typography/typo.index'
 import { createContainer } from '../create-container'
 
 const CardComponent = (): React.JSX.Element => {
   return (
     <Block flex>
       <Header>
-        <Header.Left>
+        <Header.Section position='left'>
           <Header.BackButton />
-        </Header.Left>
-        <Header.Content>
+        </Header.Section>
+        <Header.Section position='content'>
           <Header.Title>Card component</Header.Title>
-        </Header.Content>
+        </Header.Section>
       </Header>
       <ScrollView showsVerticalScrollIndicator={false}>
         {/* Default Card */}
@@ -49,7 +48,7 @@ const CardComponent = (): React.JSX.Element => {
 
         {/* Card with Cover Image */}
         <Card variant='shadow'>
-          <Card.Image source={localImage().icEmpty} />
+          <Card.Image source='ic-empty' />
           <Card.Content>
             <Typography>Card with cover image</Typography>
           </Card.Content>
@@ -60,7 +59,7 @@ const CardComponent = (): React.JSX.Element => {
           <Card.Header>
             <Typography>Card with Center Image</Typography>
           </Card.Header>
-          <Card.Image source={localImage().icEmpty} />
+          <Card.Image source='ic-empty' />
           <Card.Content>
             <Typography>Content below centered image</Typography>
           </Card.Content>

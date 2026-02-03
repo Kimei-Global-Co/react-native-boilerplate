@@ -24,7 +24,9 @@
           "en",
           "vi"
         ],
-        "CADisableMinimumFrameDurationOnPhones": true
+        "CADisableMinimumFrameDurationOnPhones": true,
+        "NSCameraUsageDescription": "$(PRODUCT_NAME) needs access to your Camera.",
+        "NSMicrophoneUsageDescription": "$(PRODUCT_NAME) needs access to your Microphone."
       },
       "entitlements": {
         "com.apple.developer.kernel.increased-memory-limit": true,
@@ -41,6 +43,10 @@
       "package": "com.boilerplate.mobile",
       "scheme": [
         "com.boilerplate.mobile"
+      ],
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO"
       ]
     },
     "experiments": {
@@ -55,11 +61,22 @@
         {
           "android": {
             "enableProguardInReleaseBuilds": true,
-            "enableShrinkResourcesInReleaseBuilds": true
+            "enableShrinkResourcesInReleaseBuilds": true,
+            "enableMinifyInReleaseBuilds": true
           },
           "ios": {
             "ccacheEnabled": true
           }
+        }
+      ],
+      [
+        "expo-asset",
+        {
+          "assets": [
+            "./src/assets/images/ic-avatar.png",
+            "./src/assets/images/ic-empty.png",
+            "./src/assets/images/ic-ribbon.png"
+          ]
         }
       ],
       [

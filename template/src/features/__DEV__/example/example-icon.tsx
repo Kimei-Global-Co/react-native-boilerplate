@@ -1,62 +1,62 @@
-import Block from '@components/ui/layouts/block/block.index'
-import Header from '@components/ui/patterns/header/header.index'
-import Icon from '@components/ui/primitives/icon/icon.index'
+import { Block } from '@components/ui/layouts/block/block.index'
+import { Header } from '@components/ui/patterns/header/header.index'
+import { Icon } from '@components/ui/primitives/icon/icon.index'
 import { createContainer } from '../create-container'
 
 const IconComponent = (): React.JSX.Element => {
   return (
     <Block>
       <Header>
-        <Header.Left>
+        <Header.Section position='left'>
           <Header.BackButton />
-        </Header.Left>
-        <Header.Content>
+        </Header.Section>
+        <Header.Section position='content'>
           <Header.Title>Icons</Header.Title>
-        </Header.Content>
+        </Header.Section>
       </Header>
       <Block align='center' gap={20} justify='center' margin={10}>
         <Block row>
-          <Icon name={'ice-cream-outline'} size={22} type='ionicons' />
-          <Icon name={'ice-cream-outline'} size={22} type='ionicons' />
-          <Icon name={'ice-cream-outline'} size={22} type='ionicons' />
-          <Icon name={'ice-cream-outline'} size={22} type='ionicons' />
-          <Icon name={'ice-cream-outline'} size={22} type='ionicons' />
-          <Icon name={'ice-cream-outline'} size={22} type='ionicons' />
-          <Icon name={'ice-cream-outline'} size={22} type='ionicons' />
-          <Icon name={'ice-cream-outline'} size={22} type='ionicons' />
-          <Icon name={'ice-cream-outline'} size={22} type='ionicons' />
-          <Icon name={'ice-cream-outline'} size={22} type='ionicons' />
-          <Icon name={'ice-cream-outline'} size={22} type='ionicons' />
-          <Icon name={'ice-cream-outline'} size={22} type='ionicons' />
+          <Icon name='ice-cream-outline' size={22} type='ionicons' />
+          <Icon name='ice-cream-outline' size={22} type='ionicons' />
+          <Icon name='ice-cream-outline' size={22} type='ionicons' />
+          <Icon name='ice-cream-outline' size={22} type='ionicons' />
+          <Icon name='ice-cream-outline' size={22} type='ionicons' />
+          <Icon name='ice-cream-outline' size={22} type='ionicons' />
+          <Icon name='ice-cream-outline' size={22} type='ionicons' />
+          <Icon name='ice-cream-outline' size={22} type='ionicons' />
+          <Icon name='ice-cream-outline' size={22} type='ionicons' />
+          <Icon name='ice-cream-outline' size={22} type='ionicons' />
+          <Icon name='ice-cream-outline' size={22} type='ionicons' />
+          <Icon name='ice-cream-outline' size={22} type='ionicons' />
         </Block>
         <Block row>
-          <Icon name={'cloudy-night-outline'} size={22} type='ionicons' />
-          <Icon name={'cloudy-night-outline'} size={22} type='ionicons' />
-          <Icon name={'cloudy-night-outline'} size={22} type='ionicons' />
-          <Icon name={'cloudy-night-outline'} size={22} type='ionicons' />
-          <Icon name={'cloudy-night-outline'} size={22} type='ionicons' />
-          <Icon name={'cloudy-night-outline'} size={22} type='ionicons' />
-          <Icon name={'cloudy-night-outline'} size={22} type='ionicons' />
-          <Icon name={'cloudy-night-outline'} size={22} type='ionicons' />
-          <Icon name={'cloudy-night-outline'} size={22} type='ionicons' />
-          <Icon name={'cloudy-night-outline'} size={22} type='ionicons' />
-          <Icon name={'cloudy-night-outline'} size={22} type='ionicons' />
-          <Icon name={'cloudy-night-outline'} size={22} type='ionicons' />
+          <Icon name='cloudy-night-outline' size={22} type='ionicons' />
+          <Icon name='cloudy-night-outline' size={22} type='ionicons' />
+          <Icon name='cloudy-night-outline' size={22} type='ionicons' />
+          <Icon name='cloudy-night-outline' size={22} type='ionicons' />
+          <Icon name='cloudy-night-outline' size={22} type='ionicons' />
+          <Icon name='cloudy-night-outline' size={22} type='ionicons' />
+          <Icon name='cloudy-night-outline' size={22} type='ionicons' />
+          <Icon name='cloudy-night-outline' size={22} type='ionicons' />
+          <Icon name='cloudy-night-outline' size={22} type='ionicons' />
+          <Icon name='cloudy-night-outline' size={22} type='ionicons' />
+          <Icon name='cloudy-night-outline' size={22} type='ionicons' />
+          <Icon name='cloudy-night-outline' size={22} type='ionicons' />
         </Block>
 
         <Block row>
-          <Icon name={'sunny-outline'} size={22} type='ionicons' />
-          <Icon name={'sunny-outline'} size={22} type='ionicons' />
-          <Icon name={'sunny-outline'} size={22} type='ionicons' />
-          <Icon name={'sunny-outline'} size={22} type='ionicons' />
-          <Icon name={'sunny-outline'} size={22} type='ionicons' />
-          <Icon name={'sunny-outline'} size={22} type='ionicons' />
-          <Icon name={'sunny-outline'} size={22} type='ionicons' />
-          <Icon name={'sunny-outline'} size={22} type='ionicons' />
-          <Icon name={'sunny-outline'} size={22} type='ionicons' />
-          <Icon name={'sunny-outline'} size={22} type='ionicons' />
-          <Icon name={'sunny-outline'} size={22} type='ionicons' />
-          <Icon name={'sunny-outline'} size={22} type='ionicons' />
+          <Icon name='sunny-outline' size={22} type='ionicons' />
+          <Icon name='sunny-outline' size={22} type='ionicons' />
+          <Icon name='sunny-outline' size={22} type='ionicons' />
+          <Icon name='sunny-outline' size={22} type='ionicons' />
+          <Icon name='sunny-outline' size={22} type='ionicons' />
+          <Icon name='sunny-outline' size={22} type='ionicons' />
+          <Icon name='sunny-outline' size={22} type='ionicons' />
+          <Icon name='sunny-outline' size={22} type='ionicons' />
+          <Icon name='sunny-outline' size={22} type='ionicons' />
+          <Icon name='sunny-outline' size={22} type='ionicons' />
+          <Icon name='sunny-outline' size={22} type='ionicons' />
+          <Icon name='sunny-outline' size={22} type='ionicons' />
         </Block>
       </Block>
     </Block>

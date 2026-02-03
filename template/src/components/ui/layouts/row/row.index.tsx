@@ -1,4 +1,4 @@
-import Block from '@components/ui/layouts/block/block.index'
+import { Block } from '@components/ui/layouts/block/block.index'
 
 type TRowProps = {
   start?: boolean
@@ -7,7 +7,7 @@ type TRowProps = {
   between?: boolean
 } & React.ComponentPropsWithoutRef<typeof Block>
 
-export default function Row(props: TRowProps): React.JSX.Element {
+export function Row(props: TRowProps): React.JSX.Element {
   const { start, center, end, between, children, ...rest } = props
 
   return (

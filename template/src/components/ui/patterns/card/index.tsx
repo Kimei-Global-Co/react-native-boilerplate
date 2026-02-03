@@ -1,10 +1,9 @@
 import type { Ref } from 'react'
 import { Pressable, StyleSheet, type View } from 'react-native'
 
-import type { ImageSource } from 'expo-image'
-import Block from '@components/ui/layouts/block/block.index'
+import { Block } from '@components/ui/layouts/block/block.index'
 import type { BlockProps } from '@components/ui/layouts/block/block.type'
-import Image from '@components/ui/primitives/image/image.index'
+import { Image } from '@components/ui/primitives/image/image.index'
 import type { TImageProps } from '@components/ui/primitives/image/image.type'
 import Colors from '@theme/colors'
 import { Spacing } from '@theme/layout'
@@ -90,9 +89,7 @@ const CardFooter = ({
 }
 CardFooter.displayName = 'Card.Footer'
 
-interface CardImageProps extends TImageProps {
-  source: ImageSource
-}
+interface CardImageProps extends TImageProps {}
 
 const CardImage = ({
   source,
@@ -153,12 +150,10 @@ const styles = StyleSheet.create({
   }
 })
 
-const Card = Object.assign(CardRoot, {
+export const Card = Object.assign(CardRoot, {
   Content: CardContent,
   Divider: CardDivider,
   Footer: CardFooter,
   Header: CardHeader,
   Image: CardImage
 })
-
-export default Card

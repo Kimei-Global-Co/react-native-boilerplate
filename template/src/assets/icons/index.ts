@@ -35,12 +35,26 @@ export function cacheFonts(fonts: string[]) {
   return fonts.map((font) => Font.loadAsync(font))
 }
 
-export type IconName<T extends IconType> = React.ComponentProps<
-  (typeof Icons)[T]
->['name']
+type IconNameMap = {
+  antDesign: React.ComponentProps<typeof AntDesign>['name']
+  entypo: React.ComponentProps<typeof Entypo>['name']
+  evilIcons: React.ComponentProps<typeof EvilIcons>['name']
+  feather: React.ComponentProps<typeof Feather>['name']
+  fontAwesome: React.ComponentProps<typeof FontAwesome>['name']
+  fontAwesome5: string
+  fontAwesome6: string
+  fontisto: React.ComponentProps<typeof Fontisto>['name']
+  ionicons: React.ComponentProps<typeof Ionicons>['name']
+  materialCommunityIcons: React.ComponentProps<typeof MaterialCommunityIcons>['name']
+  materialIcons: React.ComponentProps<typeof MaterialIcons>['name']
+  octicons: React.ComponentProps<typeof Octicons>['name']
+  simpleLineIcons: React.ComponentProps<typeof SimpleLineIcons>['name']
+}
 
-export const getIconComponent = Icons as {
-  [K in IconType]: React.ComponentType<{
+export type IconName<T extends IconType> = IconNameMap[T]
+
+export function getIconComponent<K extends IconType>(type: K) {
+  return Icons[type] as React.ComponentType<{
     name: IconName<K>
     size?: number
     color?: string

@@ -1,9 +1,8 @@
-import type React from 'react'
 import type { ViewStyle } from 'react-native'
 
-import Block from '@components/ui/layouts/block/block.index'
-import Button from '@components/ui/primitives/button/button.index'
-import Typography from '@components/ui/primitives/typography/typo.index'
+import { Block } from '@components/ui/layouts/block/block.index'
+import { Button } from '@components/ui/primitives/button/button.index'
+import { Typography } from '@components/ui/primitives/typography/typo.index'
 
 interface IErrorStateProps {
   title: string

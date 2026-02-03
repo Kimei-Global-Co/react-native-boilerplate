@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 
-import Block from '@components/ui/layouts/block/block.index'
-import Row from '@components/ui/layouts/row/row.index'
-import Spacer from '@components/ui/layouts/spacer/spacer.index'
-import Button from '@components/ui/primitives/button/button.index'
-import Icon from '@components/ui/primitives/icon/icon.index'
-import Typography from '@components/ui/primitives/typography/typo.index'
+import { Block } from '@components/ui/layouts/block/block.index'
+import { Row } from '@components/ui/layouts/row/row.index'
+import { Spacer } from '@components/ui/layouts/spacer/spacer.index'
+import { Button } from '@components/ui/primitives/button/button.index'
+import { Icon } from '@components/ui/primitives/icon/icon.index'
+import { Typography } from '@components/ui/primitives/typography/typo.index'
 import { type Updater, useMutative } from 'shared/hooks/use-mutative'
 import { createContainer } from '../create-container'
 

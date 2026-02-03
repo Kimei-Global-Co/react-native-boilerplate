@@ -1,5 +1,5 @@
-import Block from '@components/ui/layouts/block/block.index'
-import Header from '@components/ui/patterns/header/header.index'
+import { Block } from '@components/ui/layouts/block/block.index'
+import { Header } from '@components/ui/patterns/header/header.index'
 import Tag from '@components/ui/primitives/tag/tag.index'
 import { createContainer } from '../create-container'
 
@@ -7,13 +7,13 @@ const TagComponent = (): React.JSX.Element => {
   return (
     <Block>
       <Header>
-        <Header.Left>
+        <Header.Section position='left'>
           <Header.BackButton />
-        </Header.Left>
-        <Header.Content>
+        </Header.Section>
+        <Header.Section position='content'>
           <Header.Title>Tag component</Header.Title>
           <Header.Subtitle>Tag component</Header.Subtitle>
-        </Header.Content>
+        </Header.Section>
       </Header>
       <Block gap={16} padding={16}>
         {/* Basic Tag */}

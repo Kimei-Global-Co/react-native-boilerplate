@@ -1,17 +1,15 @@
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, useContext, useEffect } from 'react'
 import { Pressable, StyleSheet } from 'react-native'
 
-import Block from '@components/ui/layouts/block/block.index'
-import Icon from '@components/ui/primitives/icon/icon.index'
-import Typography from '@components/ui/primitives/typography/typo.index'
+import { Block } from '@components/ui/layouts/block/block.index'
+import { Icon } from '@components/ui/primitives/icon/icon.index'
+import { Typography } from '@components/ui/primitives/typography/typo.index'
 import Animated, {
-  measure,
-  useAnimatedRef,
   useAnimatedStyle,
   useSharedValue,
   withTiming
 } from 'react-native-reanimated'
-import { scheduleOnUI } from 'react-native-worklets'
+import { useMutative } from 'shared/hooks/use-mutative'
 import type {
   AccordionContextType,
   AccordionItemProps,
@@ -37,7 +35,7 @@ const Accordion = ({
   defaultExpandedKey = '',
   style
 }: AccordionProps): React.JSX.Element => {
-  const [expandedKey, setExpandedKey] = useState<string | null>(
+  const [expandedKey, setExpandedKey] = useMutative<string | null>(
     defaultExpandedKey || null
   )
 
@@ -68,8 +66,8 @@ const AccordionItem = ({
 }: AccordionItemProps): React.JSX.Element => {
   const { expandedKey, toggleItem, variant } = useAccordion()
   const isExpanded = expandedKey === itemKey
-  const contentRef = useAnimatedRef<Animated.View>()
   const height = useSharedValue(0)
+  const contentHeight = useSharedValue(0)
 
   const animatedStyle = useAnimatedStyle(() => ({
     height: height.get(),
@@ -77,18 +75,10 @@ const AccordionItem = ({
   }))
 
   useEffect(() => {
-    if (isExpanded) {
-      scheduleOnUI(() => {
-        'worklet'
-        const measured = measure(contentRef)
-        if (measured) {
-          height.set(withTiming(measured.height, { duration: 300 }))
-        }
-      })
-    } else {
-      height.set(withTiming(0, { duration: 300 }))
-    }
-  }, [contentRef, height, isExpanded])
+    height.set(
+      withTiming(isExpanded ? contentHeight.get() : 0, { duration: 300 })
+    )
+  }, [contentHeight, height, isExpanded])
 
   const variantStyle = createVariantStyles(variant)
   const splitItemStyle = createSplitItemStyles(variant, isFirst, isLast)
@@ -113,7 +103,18 @@ const AccordionItem = ({
         </Block>
       </Pressable>
       <Animated.View style={[styles.contentWrapper, animatedStyle]}>
-        <Animated.View ref={contentRef} style={styles.content}>
+        <Animated.View
+          onLayout={(event) => {
+            const nextHeight = event.nativeEvent.layout.height
+            if (nextHeight !== contentHeight.get()) {
+              contentHeight.set(nextHeight)
+              if (isExpanded) {
+                height.set(withTiming(nextHeight, { duration: 300 }))
+              }
+            }
+          }}
+          style={styles.content}
+        >
           {children}
         </Animated.View>
       </Animated.View>

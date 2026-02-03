@@ -92,7 +92,7 @@ const createBlockStyles = (
   ]) as ViewStyle
 }
 
-export default function Block(props: Readonly<BlockProps>) {
+export function Block(props: Readonly<BlockProps>) {
   const safeArea = useSafeAreaInsets()
   const { children, ...rest } = props
   const blockStyles = createBlockStyles(props, safeArea)

@@ -42,7 +42,7 @@ const createTypoStyles = (props: CommonTextProps): TextStyle => {
     style
   ]) as TextStyle
 }
-export default function Typography(props: Readonly<CommonTextProps>) {
+export function Typography(props: Readonly<CommonTextProps>) {
   const typoStyles = createTypoStyles(props)
 
   if (props.children === undefined || props.children === null) {

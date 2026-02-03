@@ -1,22 +1,22 @@
 import { ScrollView } from 'react-native'
 
-import Block from '@components/ui/layouts/block/block.index'
-import Row from '@components/ui/layouts/row/row.index'
-import Header from '@components/ui/patterns/header/header.index'
-import Divider from '@components/ui/primitives/divider/divider.index'
-import Typography from '@components/ui/primitives/typography/typo.index'
+import { Block } from '@components/ui/layouts/block/block.index'
+import { Row } from '@components/ui/layouts/row/row.index'
+import { Header } from '@components/ui/patterns/header/header.index'
+import { Divider } from '@components/ui/primitives/divider/divider.index'
+import { Typography } from '@components/ui/primitives/typography/typo.index'
 import { createContainer } from '../create-container'
 
 const DividerComponent = (): React.JSX.Element => {
   return (
     <Block collapsable={false} flex inset='bottom'>
       <Header>
-        <Header.Left>
+        <Header.Section position='left'>
           <Header.BackButton />
-        </Header.Left>
-        <Header.Content>
+        </Header.Section>
+        <Header.Section position='content'>
           <Header.Title>Divider component</Header.Title>
-        </Header.Content>
+        </Header.Section>
       </Header>
       <ScrollView showsVerticalScrollIndicator={false}>
         <Block gap={24} padding={16}>

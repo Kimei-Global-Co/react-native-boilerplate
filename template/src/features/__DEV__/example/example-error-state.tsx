@@ -1,19 +1,19 @@
-import Block from '@components/ui/layouts/block/block.index'
+import { Block } from '@components/ui/layouts/block/block.index'
 import { ErrorState } from '@components/ui/patterns/error-state/index'
-import Header from '@components/ui/patterns/header/header.index'
-import Typography from '@components/ui/primitives/typography/typo.index'
+import { Header } from '@components/ui/patterns/header/header.index'
+import { Typography } from '@components/ui/primitives/typography/typo.index'
 import { createContainer } from '../create-container'
 
 const ErrorStateComponent = (): React.JSX.Element => {
   return (
     <Block>
       <Header>
-        <Header.Left>
+        <Header.Section position='left'>
           <Header.BackButton />
-        </Header.Left>
-        <Header.Content>
+        </Header.Section>
+        <Header.Section position='content'>
           <Header.Title>Error State</Header.Title>
-        </Header.Content>
+        </Header.Section>
       </Header>
       <Block gap={32} margin={{ horizontal: 16 }}>
         <Block>

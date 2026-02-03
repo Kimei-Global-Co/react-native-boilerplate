@@ -1,10 +1,10 @@
 import { ScrollView, StyleSheet } from 'react-native'
 
-import Block from '@components/ui/layouts/block/block.index'
-import Row from '@components/ui/layouts/row/row.index'
-import Spacer from '@components/ui/layouts/spacer/spacer.index'
-import Header from '@components/ui/patterns/header/header.index'
-import Typography from '@components/ui/primitives/typography/typo.index'
+import { Block } from '@components/ui/layouts/block/block.index'
+import { Row } from '@components/ui/layouts/row/row.index'
+import { Spacer } from '@components/ui/layouts/spacer/spacer.index'
+import { Header } from '@components/ui/patterns/header/header.index'
+import { Typography } from '@components/ui/primitives/typography/typo.index'
 import { createContainer } from '../create-container'
 
 const BoxDemo = (): React.JSX.Element => (
@@ -15,12 +15,12 @@ const SpacerComponent = (): React.JSX.Element => {
   return (
     <Block flex={1}>
       <Header>
-        <Header.Left>
+        <Header.Section position='left'>
           <Header.BackButton />
-        </Header.Left>
-        <Header.Content>
+        </Header.Section>
+        <Header.Section position='content'>
           <Header.Title>Spacer Component</Header.Title>
-        </Header.Content>
+        </Header.Section>
       </Header>
       <ScrollView showsVerticalScrollIndicator={false}>
         <Block padding={16}>

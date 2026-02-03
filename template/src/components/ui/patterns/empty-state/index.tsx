@@ -1,17 +1,18 @@
-import Block from '@components/ui/layouts/block/block.index'
-import Typography from '@components/ui/primitives/typography/typo.index'
-import Icon from '../../primitives/icon/icon.index'
-import type { IconComponentProps } from '../../primitives/icon/icon.type'
+import type { IconType } from '@assets/icons'
+import { Block } from '@components/ui/layouts/block/block.index'
+import { Typography } from '@components/ui/primitives/typography/typo.index'
+import { Icon } from '../../primitives/icon/icon.index'
+import type { IconProps } from '../../primitives/icon/icon.type'
 
-interface IEmptyStateProps {
+interface IEmptyStateProps<T extends IconType = IconType> {
   title?: string
   description?: string
-  icon: IconComponentProps
+  icon: IconProps<T>
   action?: React.ReactNode
 }
 
-export function EmptyState(
-  props: Readonly<IEmptyStateProps>
+export function EmptyState<T extends IconType>(
+  props: Readonly<IEmptyStateProps<T>>
 ): React.JSX.Element {
   const { title, description, icon, action } = props
   return (

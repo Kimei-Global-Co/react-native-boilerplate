@@ -1,21 +1,14 @@
 import type { PressableProps, StyleProp, ViewStyle } from 'react-native'
 
+import type { IconType } from '@assets/icons'
+import type { IconProps } from '@components/ui/primitives/icon/icon.type'
+
 export interface ButtonProps
   extends Exclude<PressableProps, 'onPressIn' | 'onPressOut' | 'style'> {
   /**
    * Label of button
    */
   title?: string
-
-  /**
-   * Left icon
-   */
-  leftIcon?: React.ReactNode
-
-  /**
-   * Right icon
-   */
-  rightIcon?: React.ReactNode
 
   /**
    * State for control button
@@ -64,8 +57,8 @@ export type ButtonLabelProps = {
   children?: React.ReactNode
 }
 
-export type ButtonIconProps = {
-  children?: React.ReactNode
-}
+export type ButtonIconProps<T extends IconType = IconType> =
+  | { children: React.ReactNode }
+  | IconProps<T>
 
 export type ContainerStyle = ViewStyle & { boxShadow?: string }

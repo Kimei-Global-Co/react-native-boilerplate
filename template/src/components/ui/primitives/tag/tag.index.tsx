@@ -1,8 +1,9 @@
 import { createContext, useContext } from 'react'
-import { StyleSheet, TouchableOpacity } from 'react-native'
+import { Pressable, StyleSheet } from 'react-native'
 
-import Block from '@components/ui/layouts/block/block.index'
-import Typography from '@components/ui/primitives/typography/typo.index'
+import { Block } from '@components/ui/layouts/block/block.index'
+import { Typography } from '@components/ui/primitives/typography/typo.index'
+import { HIT_SLOP } from 'shared/utils/helper'
 import {
   type CloseTriggerProps,
   type LabelProps,
@@ -80,13 +81,17 @@ function CloseTrigger({ onClose }: Readonly<CloseTriggerProps>) {
   const sizeStyle = SIZE_STYLES[size]
 
   return (
-    <TouchableOpacity
+    <Pressable
       accessibilityLabel='Close tag'
       accessibilityRole='button'
+      android_ripple={{ borderless: true, color: 'rgba(0,0,0,0.1)' }}
       disabled={!onClose}
-      hitSlop={{ bottom: 8, left: 8, right: 8, top: 8 }}
+      hitSlop={HIT_SLOP['8']}
       onPress={onClose}
-      style={{ justifyContent: 'center', marginLeft: 4 }}
+      style={({ pressed }) => [
+        styles.closeTrigger,
+        pressed && styles.closeTriggerPressed
+      ]}
     >
       <Typography
         style={{
@@ -98,11 +103,18 @@ function CloseTrigger({ onClose }: Readonly<CloseTriggerProps>) {
       >
         ×
       </Typography>
-    </TouchableOpacity>
+    </Pressable>
   )
 }
 
 const styles = StyleSheet.create({
+  closeTrigger: {
+    justifyContent: 'center',
+    marginLeft: 4
+  },
+  closeTriggerPressed: {
+    opacity: 0.6
+  },
   endElement: {
     alignItems: 'center',
     justifyContent: 'center',

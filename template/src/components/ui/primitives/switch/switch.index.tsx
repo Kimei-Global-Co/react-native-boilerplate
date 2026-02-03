@@ -18,9 +18,7 @@ import type { SwitchProps } from './switch.type'
 const DEFAULT_TRACK_WIDTH = 50
 const DEFAULT_THUMB_WIDTH = 24
 
-export default function Switch(
-  props: Readonly<SwitchProps>
-): React.JSX.Element {
+export function Switch(props: Readonly<SwitchProps>): React.JSX.Element {
   const {
     trackColor = { active: 'black', inActive: 'whiteEC' },
     thumbColor = 'white',
@@ -72,12 +70,16 @@ export default function Switch(
         [0, trackThumbWidth],
         [circleColor.inActive, circleColor.active]
       ),
-      transform: [{ translateX: translateX.get() }],
-      width: interpolate(
-        translateX.get(),
-        [0, trackThumbWidth / 3, trackThumbWidth],
-        [thumbWidth, (thumbWidth / 2) * 2.5, thumbWidth]
-      )
+      transform: [
+        { translateX: translateX.get() },
+        {
+          scaleX: interpolate(
+            translateX.get(),
+            [0, trackThumbWidth / 3, trackThumbWidth],
+            [1, 1.25, 1]
+          )
+        }
+      ]
     }
   })
 

@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { StyleSheet, Text } from 'react-native'
 
-import Block from '@components/ui/layouts/block/block.index'
-import Header from '@components/ui/patterns/header/header.index'
-import Switch from '@components/ui/primitives/switch/switch.index'
+import { Block } from '@components/ui/layouts/block/block.index'
+import { Header } from '@components/ui/patterns/header/header.index'
+import { Switch } from '@components/ui/primitives/switch/switch.index'
 import { createContainer } from '../create-container'
 
 const styles = StyleSheet.create({
@@ -24,12 +24,12 @@ const SwitchComponent = (): React.JSX.Element => {
   return (
     <>
       <Header>
-        <Header.Left>
+        <Header.Section position='left'>
           <Header.BackButton />
-        </Header.Left>
-        <Header.Content>
+        </Header.Section>
+        <Header.Section position='content'>
           <Header.Title>Switch Examples</Header.Title>
-        </Header.Content>
+        </Header.Section>
       </Header>
       <Block align='center' gap={20} justify='center' padding={20}>
         <Text style={styles.description}>Default Switch (Enabled)</Text>

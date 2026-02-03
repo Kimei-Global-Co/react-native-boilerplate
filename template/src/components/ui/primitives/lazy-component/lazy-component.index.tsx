@@ -6,7 +6,7 @@ type LazyComponentProps = {
   component: React.ReactNode
   placeholder?: React.ReactNode
 }
-export default function LazyComponent(
+export function LazyComponent(
   props: LazyComponentProps
 ): React.ReactNode | null {
   const { componentKey, currentKey, component, placeholder } = props

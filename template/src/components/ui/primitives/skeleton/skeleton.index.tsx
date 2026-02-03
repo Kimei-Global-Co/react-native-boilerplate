@@ -1,6 +1,6 @@
 import type { ViewStyle } from 'react-native'
 
-import type Block from '@components/ui/layouts/block/block.index'
+import type { Block } from '@components/ui/layouts/block/block.index'
 import Colors from '@theme/colors'
 import { Shimmer, ShimmerProvider } from 'react-native-fast-shimmer'
 import Animated, { FadeOut } from 'react-native-reanimated'
@@ -12,7 +12,7 @@ export type SkeletonProps = React.ComponentProps<typeof Shimmer> &
     'size' | 'radius' | 'backgroundColor'
   >
 
-export default function Skeleton(props: SkeletonProps): React.JSX.Element {
+export function Skeleton(props: SkeletonProps): React.JSX.Element {
   const { speed = 0.7, size, radius, backgroundColor, style, ...rest } = props
 
   const skeletonStyles = {

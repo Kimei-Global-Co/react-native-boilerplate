@@ -1,13 +1,14 @@
 import { useState } from 'react'
 import { TextInput as RNTextInput, StyleSheet } from 'react-native'
 
-import Block from '@components/ui/layouts/block/block.index'
-import Row from '@components/ui/layouts/row/row.index'
-import Icon from '@components/ui/primitives/icon/icon.index'
-import Typography from '@components/ui/primitives/typography/typo.index'
+import { Block } from '@components/ui/layouts/block/block.index'
+import { Row } from '@components/ui/layouts/row/row.index'
+import { Icon } from '@components/ui/primitives/icon/icon.index'
+import { Typography } from '@components/ui/primitives/typography/typo.index'
 import Colors from '@theme/colors'
 import type { TextInputBaseProps } from './input.type'
-export default function TextInput(
+
+export function Input(
   props: TextInputBaseProps & { ref?: React.Ref<RNTextInput> }
 ): React.JSX.Element {
   const {

@@ -1,9 +1,9 @@
-import Block from '@components/ui/layouts/block/block.index'
-import Row from '@components/ui/layouts/row/row.index'
-import Typography from '@components/ui/primitives/typography/typo.index'
+import { Block } from '@components/ui/layouts/block/block.index'
+import { Row } from '@components/ui/layouts/row/row.index'
+import { Typography } from '@components/ui/primitives/typography/typo.index'
 import type { TDividerProps } from './divider.type'
 
-export default function Divider(props: TDividerProps): React.JSX.Element {
+export function Divider(props: Readonly<TDividerProps>): React.JSX.Element {
   const {
     orientation = 'horizontal',
     label,

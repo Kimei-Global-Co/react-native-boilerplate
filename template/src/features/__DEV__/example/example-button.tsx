@@ -1,9 +1,9 @@
 import { ScrollView, View } from 'react-native'
 
-import Block from '@components/ui/layouts/block/block.index'
-import Header from '@components/ui/patterns/header/header.index'
-import Button from '@components/ui/primitives/button/button.index'
-import Typography from '@components/ui/primitives/typography/typo.index'
+import { Block } from '@components/ui/layouts/block/block.index'
+import { Header } from '@components/ui/patterns/header/header.index'
+import { Button } from '@components/ui/primitives/button/button.index'
+import { Typography } from '@components/ui/primitives/typography/typo.index'
 
 /**
  * Usage notes:
@@ -15,12 +15,12 @@ export default function ExampleButton(): React.JSX.Element {
   return (
     <Block collapsable={false} flex inset='top'>
       <Header>
-        <Header.Left>
+        <Header.Section position='left'>
           <Header.BackButton />
-        </Header.Left>
-        <Header.Content>
+        </Header.Section>
+        <Header.Section position='content'>
           <Header.Title>Button component</Header.Title>
-        </Header.Content>
+        </Header.Section>
       </Header>
       <ScrollView
         contentContainerStyle={{ gap: 12, padding: 16 }}
@@ -42,6 +42,19 @@ export default function ExampleButton(): React.JSX.Element {
         <Button.Primary state='error' title='Error' />
 
         <Typography center>Composed Content</Typography>
+        <Button.Primary>
+          <Button.Content>
+            <Button.Icon
+              color='amber_400'
+              name='close'
+              size={20}
+              type='antDesign'
+            />
+            <Button.Label>With Button Icon</Button.Label>
+            <Button.Pending />
+          </Button.Content>
+        </Button.Primary>
+
         <Button.Primary>
           <Button.Content>
             <Button.Icon>

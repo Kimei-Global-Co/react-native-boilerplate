@@ -1,10 +1,10 @@
 import { ScrollView } from 'react-native'
 
-import Block from '@components/ui/layouts/block/block.index'
-import Row from '@components/ui/layouts/row/row.index'
-import Header from '@components/ui/patterns/header/header.index'
-import Image from '@components/ui/primitives/image/image.index'
-import Typography from '@components/ui/primitives/typography/typo.index'
+import { Block } from '@components/ui/layouts/block/block.index'
+import { Row } from '@components/ui/layouts/row/row.index'
+import { Header } from '@components/ui/patterns/header/header.index'
+import { Image } from '@components/ui/primitives/image/image.index'
+import { Typography } from '@components/ui/primitives/typography/typo.index'
 import { createContainer } from '../create-container'
 
 const SAMPLE_IMAGE = 'https://picsum.photos/seed/picsum/200/300'
@@ -14,12 +14,12 @@ const ImageComponent = (): React.JSX.Element => {
   return (
     <Block flex={1}>
       <Header>
-        <Header.Left>
+        <Header.Section position='left'>
           <Header.BackButton />
-        </Header.Left>
-        <Header.Content>
+        </Header.Section>
+        <Header.Section position='content'>
           <Header.Title>Image Component</Header.Title>
-        </Header.Content>
+        </Header.Section>
       </Header>
       <ScrollView showsVerticalScrollIndicator={false}>
         <Block gap={16} padding={16}>

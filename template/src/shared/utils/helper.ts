@@ -238,6 +238,12 @@ export const STALE = {
 }
 
 export const HIT_SLOP = {
+  8: {
+    bottom: 8,
+    left: 8,
+    right: 8,
+    top: 8
+  },
   10: {
     bottom: 10,
     left: 10,

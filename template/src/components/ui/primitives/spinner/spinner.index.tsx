@@ -9,7 +9,7 @@ import Animated, {
 } from 'react-native-reanimated'
 import { getSpinnerSize, type SpinnerProps, SpinnerView } from './spinner-view'
 
-export default function Spinner({
+export function Spinner({
   size,
   duration = 1000,
   ...rest

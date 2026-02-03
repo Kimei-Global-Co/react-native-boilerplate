@@ -1,14 +1,11 @@
-import type {
-  ImageSourcePropType,
-  ImageStyle,
-  TextStyle,
-  ViewStyle
-} from 'react-native'
+import type { TextStyle, ViewStyle } from 'react-native'
 
-import type { IconName, Icons } from '@assets/icons'
+import type { IconType } from '@assets/icons'
+import type { IconProps } from '@components/ui/primitives/icon/icon.type'
+import type { TImageProps } from '@components/ui/primitives/image/image.type'
 
 // Base props for container components
-export interface BaseHeaderProps {
+interface BaseHeaderProps {
   children?: React.ReactNode
   style?: ViewStyle
 }
@@ -16,23 +13,25 @@ export interface BaseHeaderProps {
 // Root component props
 export interface HeaderRootProps extends BaseHeaderProps {}
 
+type HeaderSectionPosition = 'left' | 'right' | 'content'
+
+export interface HeaderSectionProps extends BaseHeaderProps {
+  position: HeaderSectionPosition
+}
+
 // Action button props
-export interface HeaderActionProps {
-  icon: IconName<keyof typeof Icons>
-  type?: keyof typeof Icons
+type HeaderActionBaseProps = {
   onPress?: () => void
   disabled?: boolean
   style?: ViewStyle
-  color?: string
   size?: number
 }
 
+export type HeaderActionProps<T extends IconType = IconType> =
+  HeaderActionBaseProps & Omit<IconProps<T>, 'children'>
+
 // Avatar props
-export interface HeaderAvatarProps {
-  source: ImageSourcePropType
-  size?: number
-  style?: ImageStyle
-}
+export interface HeaderAvatarProps extends TImageProps {}
 
 // Back button props
 export interface HeaderBackButtonProps {

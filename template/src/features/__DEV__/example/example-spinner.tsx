@@ -1,22 +1,22 @@
 import { ScrollView } from 'react-native'
 
-import Block from '@components/ui/layouts/block/block.index'
-import Row from '@components/ui/layouts/row/row.index'
-import Header from '@components/ui/patterns/header/header.index'
-import Spinner from '@components/ui/primitives/spinner/spinner.index'
-import Typography from '@components/ui/primitives/typography/typo.index'
+import { Block } from '@components/ui/layouts/block/block.index'
+import { Row } from '@components/ui/layouts/row/row.index'
+import { Header } from '@components/ui/patterns/header/header.index'
+import { Spinner } from '@components/ui/primitives/spinner/spinner.index'
+import { Typography } from '@components/ui/primitives/typography/typo.index'
 import { createContainer } from '../create-container'
 
 const SpinnerComponent = (): React.JSX.Element => {
   return (
     <Block flex={1}>
       <Header>
-        <Header.Left>
+        <Header.Section position='left'>
           <Header.BackButton />
-        </Header.Left>
-        <Header.Content>
+        </Header.Section>
+        <Header.Section position='content'>
           <Header.Title>Spinner Component</Header.Title>
-        </Header.Content>
+        </Header.Section>
       </Header>
       <ScrollView showsVerticalScrollIndicator={false}>
         <Block gap={16} padding={16}>

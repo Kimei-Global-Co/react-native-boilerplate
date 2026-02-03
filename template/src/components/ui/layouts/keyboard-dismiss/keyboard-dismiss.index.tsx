@@ -3,17 +3,17 @@ import {
   KeyboardAvoidingView,
   type KeyboardAvoidingViewProps,
   Platform,
-  TouchableWithoutFeedback
+  Pressable
 } from 'react-native'
 
 const DEFAULT_BEHAVIOR = Platform.OS === 'ios' ? 'padding' : 'height'
 
-export default function KeyboardDismiss(
+export function KeyboardDismiss(
   props: Readonly<KeyboardAvoidingViewProps>
 ): React.JSX.Element {
   const { children, style = { flex: 1 }, behavior = DEFAULT_BEHAVIOR } = props
   return (
-    <TouchableWithoutFeedback accessible={false} onPress={Keyboard.dismiss}>
+    <Pressable accessible={false} onPress={Keyboard.dismiss}>
       <KeyboardAvoidingView
         behavior={behavior}
         keyboardVerticalOffset={-150}
@@ -21,6 +21,6 @@ export default function KeyboardDismiss(
       >
         {children}
       </KeyboardAvoidingView>
-    </TouchableWithoutFeedback>
+    </Pressable>
   )
 }

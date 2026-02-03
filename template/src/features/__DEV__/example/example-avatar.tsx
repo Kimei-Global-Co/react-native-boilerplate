@@ -1,10 +1,10 @@
 import { ScrollView } from 'react-native'
 
-import Block from '@components/ui/layouts/block/block.index'
-import Row from '@components/ui/layouts/row/row.index'
-import Header from '@components/ui/patterns/header/header.index'
+import { Block } from '@components/ui/layouts/block/block.index'
+import { Row } from '@components/ui/layouts/row/row.index'
+import { Header } from '@components/ui/patterns/header/header.index'
 import Avatar from '@components/ui/primitives/avatar/avatar.index'
-import Typography from '@components/ui/primitives/typography/typo.index'
+import { Typography } from '@components/ui/primitives/typography/typo.index'
 import { useMutative } from 'shared/hooks/use-mutative'
 import { useTimeout } from 'shared/hooks/use-timeout'
 import { createContainer } from '../create-container'
@@ -22,12 +22,12 @@ const AvatarComponent = (): React.JSX.Element => {
   return (
     <Block collapsable={false} flex inset='bottom'>
       <Header>
-        <Header.Left>
+        <Header.Section position='left'>
           <Header.BackButton />
-        </Header.Left>
-        <Header.Content>
+        </Header.Section>
+        <Header.Section position='content'>
           <Header.Title>Avatar component</Header.Title>
-        </Header.Content>
+        </Header.Section>
       </Header>
       <ScrollView showsVerticalScrollIndicator={false}>
         <Block gap={16} padding={16}>

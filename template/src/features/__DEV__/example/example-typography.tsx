@@ -1,6 +1,6 @@
 import { Platform } from 'react-native'
 
-import Typography from '@components/ui/primitives/typography/typo.index'
+import { Typography } from '@components/ui/primitives/typography/typo.index'
 import { useLingui } from '@lingui/react/macro'
 import { createContainer } from '../create-container'
 
