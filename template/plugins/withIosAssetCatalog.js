@@ -53,7 +53,7 @@ module.exports = function withIosAssetCatalog(appConfig) {
         return decoratedAppConfig
       }
 
-      const nextScript = String.raw`${EXTRA_PACKAGER_ARGS}\n${script}`
+      const nextScript = `${EXTRA_PACKAGER_ARGS}\n${script}`
       setShellScript(bundlePhase, nextScript)
     } catch (e) {
       console.error('withIosAssetCatalog failed', e)
