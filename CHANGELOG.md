@@ -2,6 +2,12 @@
 
 ## 2026-02-03
 
+### 🐛 Bug Fixes
+* Remove String.raw from script template literal to correctly interpret newlines. ([dbc7313](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/dbc731314bd3cb7b3930e93c0b8a1e9ca29d05fa))
+
+### 🔨 Chores
+* update changelog [skip ci] ([b3fa060](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/b3fa060dc3b003fb69ed3aca53e163a21e3b444a))
+
 ### ✨ Features
 * Introduce iOS asset catalog plugin and standardize image asset naming and variants. ([6676482](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/6676482d885e5b27edaa078a09814e65e6e04ef5))
 
