@@ -126,7 +126,7 @@ function HeaderBackButton({
 }
 
 function HeaderAvatar({
-  source = 'ic-avatar',
+  source = 'ic_avatar',
   size = 40,
   style
 }: Readonly<HeaderAvatarProps>) {

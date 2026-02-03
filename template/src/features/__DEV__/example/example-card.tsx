@@ -48,7 +48,7 @@ const CardComponent = (): React.JSX.Element => {
 
         {/* Card with Cover Image */}
         <Card variant='shadow'>
-          <Card.Image source='ic-empty' />
+          <Card.Image source='ic_empty' />
           <Card.Content>
             <Typography>Card with cover image</Typography>
           </Card.Content>
@@ -59,7 +59,7 @@ const CardComponent = (): React.JSX.Element => {
           <Card.Header>
             <Typography>Card with Center Image</Typography>
           </Card.Header>
-          <Card.Image source='ic-empty' />
+          <Card.Image source='ic_empty' />
           <Card.Content>
             <Typography>Content below centered image</Typography>
           </Card.Content>

@@ -255,7 +255,8 @@
 				"metro.config.js",
 				"plugins/withAndroidGradleCachePlugin.js",
 				"plugins/withAndroidManifestPlugin.js",
-				"plugins/withGradleJVMHeapSizeIncrease.js"
+				"plugins/withGradleJVMHeapSizeIncrease.js",
+        "plugins/withIosAssetCatalog.js"
 			],
 			"linter": {
 				"rules": {
