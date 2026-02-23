@@ -1,4 +1,3 @@
-/** biome-ignore-all assist/source/useSortedKeys: Some things need their place.*/
 module.exports = (api) => {
   api.cache(true)
 

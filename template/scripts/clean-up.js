@@ -24,6 +24,7 @@ const rootScenesFile = path.join(
 )
 const readmeFile = path.join(process.cwd(), 'README.md')
 const packageJsonFile = path.join(process.cwd(), 'package.json')
+const biomeJsonFile = path.join(process.cwd(), 'biome.json')
 
 // Logic to move template files from dotfiles directory to root
 const dotfilesDir = path.join(process.cwd(), 'dotfiles')
@@ -117,14 +118,14 @@ if (fs.existsSync(readmeFile) && fs.existsSync(packageJsonFile)) {
         .replace(/^\w/, (c) => c.toUpperCase()) // First char to upper
 
       let content = fs.readFileSync(readmeFile, 'utf8')
-      if (content.includes('{{APP_NAME}}')) {
-        content = content.replaceAll('{{APP_NAME}}', pascalCaseName)
+      if (content.includes('APP_NAME')) {
+        content = content.replaceAll('APP_NAME', pascalCaseName)
         fs.writeFileSync(readmeFile, content, 'utf8')
         console.info(
           `  ✅ Updated README.md with project name: ${pascalCaseName}`
         )
       } else {
-        console.info('  ℹ️  {{APP_NAME}} placeholder not found in README.md')
+        console.info('  ℹ️  APP_NAME placeholder not found in README.md')
       }
     }
 
@@ -146,6 +147,28 @@ if (fs.existsSync(readmeFile) && fs.existsSync(packageJsonFile)) {
         'utf8'
       )
       console.info('  ✅ Removed cleanup script from package.json postinstall')
+    }
+
+    if (fs.existsSync(biomeJsonFile)) {
+      try {
+        const biomeJson = JSON.parse(fs.readFileSync(biomeJsonFile, 'utf8'))
+
+        if ('root' in biomeJson) {
+          delete biomeJson.root
+          fs.writeFileSync(
+            biomeJsonFile,
+            `${JSON.stringify(biomeJson, null, 2)}\n`,
+            'utf8'
+          )
+          console.info('  ✅ Removed root from biome.json')
+        } else {
+          console.info('  ℹ️  root not found in biome.json')
+        }
+      } catch (error) {
+        console.error('  ❌ Failed to update biome.json:', error)
+      }
+    } else {
+      console.info('  ⚠️  biome.json not found')
     }
 
     // Delete the clean-up script file itself

@@ -1,4 +1,4 @@
-# 🚀 {{APP_NAME}} Mobile Application
+# 🚀 APP_NAME Mobile Application
 
 ## 📖 Overview
 
