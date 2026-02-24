@@ -2,6 +2,10 @@
 
 ## 2026-02-24
 
+### 🔨 Chores
+* remove Yarn caching and verification steps from lockfile workflow ([b13cafc](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/b13cafc98a8ab40fac86b7cf68d64d9231b5a023))
+* update changelog [skip ci] ([4319ecf](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/4319ecf15e96b077e5dc2ce03285345a8bca02f0))
+
 ### ♻️ Code Refactoring
 * update typography components to use font tokens and improve consistency ([a8fe18f](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/a8fe18f5036e4ae693dcc8a57fb79d2c753aa189))
 
