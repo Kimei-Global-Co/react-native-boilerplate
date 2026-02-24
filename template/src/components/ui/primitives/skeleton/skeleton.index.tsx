@@ -6,7 +6,7 @@ import { Shimmer, ShimmerProvider } from 'react-native-fast-shimmer'
 import Animated, { FadeOut } from 'react-native-reanimated'
 import { typeGuards } from 'shared/utils/helper'
 
-export type SkeletonProps = React.ComponentProps<typeof Shimmer> &
+type SkeletonProps = React.ComponentProps<typeof Shimmer> &
   Pick<
     React.ComponentProps<typeof Block>,
     'size' | 'radius' | 'backgroundColor'

@@ -1,5 +1,5 @@
 import { Block } from '@components/ui/layouts/block/block.index'
 
-export default function GirdView() {
+export function GridView() {
   return <Block></Block>
 }

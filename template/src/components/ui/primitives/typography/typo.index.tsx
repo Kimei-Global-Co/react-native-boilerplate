@@ -1,7 +1,7 @@
 import { StyleSheet, type TextStyle } from 'react-native'
 
 import Colors from '@theme/colors'
-import fonts from '@theme/fonts'
+import { getEmbeddedFontFamily, getFontTokenStyle } from '@theme/fonts'
 import { NativeText } from 'react-native/Libraries/Text/TextNativeComponent'
 import {
   createDefaultStyle,
@@ -13,9 +13,9 @@ import type { CommonTextProps } from './typo.type'
 const createTypoStyles = (props: CommonTextProps): TextStyle => {
   const {
     style,
-    fontType = 'regular',
+    fontToken,
+    fontFamily,
     color = 'black',
-    size = 14,
     lineHeight,
     backgroundColor,
     padding,
@@ -25,22 +25,24 @@ const createTypoStyles = (props: CommonTextProps): TextStyle => {
     right
   } = props
 
-  return StyleSheet.flatten([
-    createDefaultStyle(props as { [key: string]: unknown }),
+  const baseFontStyle = getFontTokenStyle(fontToken ?? 'font.body')
+
+  return StyleSheet.flatten<TextStyle>([
+    createDefaultStyle(props),
     backgroundColor && {
       backgroundColor: Colors[backgroundColor]
     },
-    { ...fonts[fontType] },
+    { ...baseFontStyle },
+    fontFamily && { fontFamily: getEmbeddedFontFamily(fontFamily) },
     { color: Colors[color] ?? color },
-    size && { fontSize: size },
     typeGuards(lineHeight, 'number') && { lineHeight },
     center && { textAlign: 'center' },
     right && { textAlign: 'right' },
     justify && { textAlign: 'justify' },
-    padding && handleGutter('padding', padding),
-    margin && handleGutter('margin', margin),
+    padding !== undefined && handleGutter('padding', padding),
+    margin !== undefined && handleGutter('margin', margin),
     style
-  ]) as TextStyle
+  ])
 }
 export function Typography(props: Readonly<CommonTextProps>) {
   const typoStyles = createTypoStyles(props)

@@ -1,7 +1,7 @@
 import type { TextStyle, ViewStyle } from 'react-native'
 
 import Colors from '@theme/colors'
-import Fonts from '@theme/fonts'
+import { getFontTokenStyle } from '@theme/fonts'
 import type {
   ColorVariant,
   ContainerStyle,
@@ -56,7 +56,7 @@ export const textColorVariants: Record<ColorVariant, TextStyle> = {
 }
 
 export const textSizeVariants: Record<SizeVariant, TextStyle> = {
-  lg: { ...Fonts.bold },
-  md: { ...Fonts.medium },
-  sm: { ...Fonts.regular }
+  lg: { ...getFontTokenStyle('font.heading.small') },
+  md: { ...getFontTokenStyle('font.heading.xsmall') },
+  sm: { ...getFontTokenStyle('font.body.small') }
 }

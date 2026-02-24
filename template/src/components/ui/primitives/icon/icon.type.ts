@@ -1,8 +1,4 @@
-import type {
-  PressableProps,
-  StyleProp,
-  ViewStyle
-} from 'react-native'
+import type { PressableProps, StyleProp, ViewStyle } from 'react-native'
 
 import type { IconName, IconType } from '@assets/icons'
 import type Colors from '@theme/colors'
@@ -19,7 +15,3 @@ export type IconProps<T extends IconType> = {
   type: T
   name: IconName<T>
 } & CommonIconProps
-
-export type IconComponentProps = {
-  [K in IconType]: IconProps<K>
-}[IconType]

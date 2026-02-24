@@ -5,7 +5,6 @@ import { useMMKVDevTools } from '@rozenite/mmkv-plugin'
 import { useNetworkActivityDevTools } from '@rozenite/network-activity-plugin'
 import { useTanStackQueryDevTools } from '@rozenite/tanstack-query-plugin'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { Layout } from '@theme/layout'
 import I18nProvider from 'locale/i18n-provider'
 import { KeyboardProvider } from 'react-native-keyboard-controller'
 import {
@@ -39,7 +38,7 @@ export default function App(): React.JSX.Element {
       <I18nProvider>
         <KeyboardProvider>
           <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-            <GestureHandlerRootView style={Layout.flex_1}>
+            <GestureHandlerRootView>
               <MainNavigation />
             </GestureHandlerRootView>
           </SafeAreaProvider>

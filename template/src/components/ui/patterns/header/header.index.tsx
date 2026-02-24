@@ -66,12 +66,7 @@ function HeaderTitle({
     return null
   }
   return (
-    <Typography
-      center={center}
-      numberOfLines={numberOfLines}
-      size={16}
-      style={style}
-    >
+    <Typography center={center} numberOfLines={numberOfLines} style={style}>
       {children}
     </Typography>
   )
@@ -91,7 +86,6 @@ function HeaderSubtitle({
       center={center}
       color='gray_500'
       numberOfLines={numberOfLines}
-      size={12}
       style={style}
     >
       {children}

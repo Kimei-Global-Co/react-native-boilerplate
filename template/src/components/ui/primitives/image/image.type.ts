@@ -3,8 +3,6 @@ import type {
   ImageProps as ExpoImageProps
 } from 'expo-image'
 
-export type ContentFit = 'cover' | 'contain' | 'fill' | 'none' | 'scale-down'
-
 export type ResizeMode = ExpoImageProps['contentFit']
 
 export type ImgProps = ExpoImageProps & {

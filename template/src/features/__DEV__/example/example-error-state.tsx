@@ -17,7 +17,7 @@ const ErrorStateComponent = (): React.JSX.Element => {
       </Header>
       <Block gap={32} margin={{ horizontal: 16 }}>
         <Block>
-          <Typography fontType='bold' margin={{ bottom: 16 }}>
+          <Typography fontToken='font.heading.xsmall' margin={{ bottom: 16 }}>
             Default Error
           </Typography>
           <ErrorState
@@ -28,7 +28,7 @@ const ErrorStateComponent = (): React.JSX.Element => {
         </Block>
 
         <Block>
-          <Typography fontType='bold' margin={{ bottom: 16 }}>
+          <Typography fontToken='font.heading.xsmall' margin={{ bottom: 16 }}>
             Custom Retry Text
           </Typography>
           <ErrorState
@@ -40,7 +40,7 @@ const ErrorStateComponent = (): React.JSX.Element => {
         </Block>
 
         <Block>
-          <Typography fontType='bold' margin={{ bottom: 16 }}>
+          <Typography fontToken='font.heading.xsmall' margin={{ bottom: 16 }}>
             No Retry Action
           </Typography>
           <ErrorState

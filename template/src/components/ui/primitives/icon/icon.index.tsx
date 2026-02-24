@@ -1,8 +1,5 @@
-import {
-  Platform,
-  Pressable,
-  StyleSheet,
-} from 'react-native'
+import { createElement } from 'react'
+import { Platform, Pressable, StyleSheet } from 'react-native'
 
 import type { IconType } from '@assets/icons'
 import { getIconComponent } from '@assets/icons'
@@ -38,8 +35,6 @@ export function Icon<T extends IconType>(
     ...rest
   } = props
 
-  const IconComponent = getIconComponent<T>(type)
-
   const initContainerStyle = StyleSheet.flatten([disabledStyle ?? {}, style])
 
   const containerStyle =
@@ -47,15 +42,17 @@ export function Icon<T extends IconType>(
 
   const innerStyle = Platform.OS === 'android' ? initContainerStyle : {}
 
+  const iconElement = createElement(getIconComponent<T>(type), {
+    color: Colors[color as keyof typeof Colors] ?? color,
+    name,
+    size: size ?? 0
+  })
+
   if (!onPress) {
     return (
       <Block {...rest} overflow='hidden' style={containerStyle}>
         <Block collapsable={false} overflow='hidden' style={innerStyle}>
-          <IconComponent
-            color={Colors[color as keyof typeof Colors] ?? color}
-            name={name}
-            size={size ?? 0}
-          />
+          {iconElement}
         </Block>
       </Block>
     )
@@ -74,16 +71,8 @@ export function Icon<T extends IconType>(
         disabled && { opacity: 0.5 }
       ]}
     >
-      <Block
-        collapsable={false}
-        overflow='hidden'
-        style={innerStyle}
-      >
-        <IconComponent
-          color={Colors[color as keyof typeof Colors] ?? color}
-          name={name}
-          size={size ?? 0}
-        />
+      <Block collapsable={false} overflow='hidden' style={innerStyle}>
+        {iconElement}
       </Block>
     </Pressable>
   )

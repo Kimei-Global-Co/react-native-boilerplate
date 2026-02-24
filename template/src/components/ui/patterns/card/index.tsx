@@ -118,25 +118,25 @@ const styles = StyleSheet.create({
     borderColor: Colors.neutral_200,
     borderRadius: 16,
     borderWidth: 1,
-    margin: Spacing.s
+    margin: Spacing['space.100']
   },
   content: {
-    padding: Spacing.m
+    padding: Spacing['space.200']
   },
   default: {
     backgroundColor: Colors.white,
-    margin: Spacing.s
+    margin: Spacing['space.100']
   },
   divider: {
     backgroundColor: Colors.neutral_200,
     height: StyleSheet.hairlineWidth,
-    marginVertical: Spacing.s
+    marginVertical: Spacing['space.100']
   },
   footer: {
-    padding: Spacing.m
+    padding: Spacing['space.200']
   },
   header: {
-    padding: Spacing.m
+    padding: Spacing['space.200']
   },
   image: {
     height: 200,
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
     borderRadius: 8,
     boxShadow: '0 2px 4px rgba(0, 0, 0, 0.15)',
-    margin: Spacing.s
+    margin: Spacing['space.100']
   }
 })
 

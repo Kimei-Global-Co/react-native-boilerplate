@@ -1,19 +1,33 @@
 {
-	"$schema": "https://biomejs.dev/schemas/2.2.0/schema.json",
-	"extends": ["./template/biome.json"],
-	"overrides": [
-		{
-			"includes": [
-				"plopfile.js",
-				"template.config.js"
-			],
-			"linter": {
-				"rules": {
-					"style": {
-						"noCommonJs": "off"
-					}
-				}
-			}
-		}
-	]
+  "$schema": "https://biomejs.dev/schemas/2.2.0/schema.json",
+  "extends": ["./template/biome.json"],
+  "overrides": [
+    {
+      "assist": {
+        "enabled": false
+      },
+      "formatter": {
+        "enabled": false
+      },
+      "includes": [
+        "plopfile.js",
+        "template.config.js",
+        "**/babel.config.js",
+        "**/lingui.config.js",
+        "**/jest.config.js",
+        "**/metro.config.js",
+        "**/plugins/withAndroidGradleCachePlugin.js",
+        "**/plugins/withAndroidManifestPlugin.js",
+        "**/plugins/withGradleJVMHeapSizeIncrease.js",
+        "**/plugins/withIosAssetCatalog.js"
+      ],
+      "linter": {
+        "rules": {
+          "style": {
+            "noCommonJs": "off"
+          }
+        }
+      }
+    }
+  ]
 }

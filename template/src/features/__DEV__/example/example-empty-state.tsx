@@ -18,7 +18,7 @@ const EmptyStateComponent = (): React.JSX.Element => {
       </Header>
       <Block gap={32} margin={{ horizontal: 16 }}>
         <Block>
-          <Typography fontType='bold' margin={{ bottom: 16 }}>
+          <Typography fontToken='font.heading.xsmall' margin={{ bottom: 16 }}>
             Default with Required Icon
           </Typography>
           <EmptyState
@@ -29,7 +29,7 @@ const EmptyStateComponent = (): React.JSX.Element => {
         </Block>
 
         <Block>
-          <Typography fontType='bold' margin={{ bottom: 16 }}>
+          <Typography fontToken='font.heading.xsmall' margin={{ bottom: 16 }}>
             With Action
           </Typography>
           <EmptyState

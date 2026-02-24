@@ -101,7 +101,6 @@ export function Input(
   const helperComponent = (error || helper) && (
     <Typography
       color={error ? 'rose_400' : 'gray_400'}
-      size={12}
       style={[styles.helper, errorStyle]}
     >
       {error ?? helper}

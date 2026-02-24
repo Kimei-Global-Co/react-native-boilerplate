@@ -47,9 +47,7 @@ export function Divider(props: Readonly<TDividerProps>): React.JSX.Element {
     return (
       <Row align='center' gap={12} style={[{ marginVertical: spacing }, style]}>
         {HorizontalLine}
-        <Typography color={labelColor} size={12}>
-          {label}
-        </Typography>
+        <Typography color={labelColor}>{label}</Typography>
         {HorizontalLine}
       </Row>
     )
@@ -63,9 +61,7 @@ export function Divider(props: Readonly<TDividerProps>): React.JSX.Element {
       style={[{ marginHorizontal: spacing }, style]}
     >
       {VerticalLine}
-      <Typography color={labelColor} size={12}>
-        {label}
-      </Typography>
+      <Typography color={labelColor}>{label}</Typography>
       {VerticalLine}
     </Block>
   )

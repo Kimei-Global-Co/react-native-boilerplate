@@ -18,7 +18,7 @@ export default function DevMenu(): React.JSX.Element {
       style={styles.itemContainer}
     >
       <Row between padding={15}>
-        <Typography size={16}>{item}</Typography>
+        <Typography>{item}</Typography>
         <Button.Icon name='right' size={22} type='antDesign' />
       </Row>
     </Button>

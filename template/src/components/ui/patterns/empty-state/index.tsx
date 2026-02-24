@@ -16,11 +16,9 @@ export function EmptyState<T extends IconType>(
 ): React.JSX.Element {
   const { title, description, icon, action } = props
   return (
-    <Block align='center' gap='_6' justify='center'>
+    <Block align='center' gap='space.075' justify='center'>
       <Icon {...icon} />
-      <Typography fontType='extraBold' size={24}>
-        {title}
-      </Typography>
+      <Typography fontToken='font.heading.large'>{title}</Typography>
       <Typography center margin={{ horizontal: 40 }}>
         {description}
       </Typography>

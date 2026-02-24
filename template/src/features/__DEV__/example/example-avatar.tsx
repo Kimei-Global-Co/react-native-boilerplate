@@ -33,7 +33,9 @@ const AvatarComponent = (): React.JSX.Element => {
         <Block gap={16} padding={16}>
           {/* Different Sizes */}
           <Block gap={8}>
-            <Typography fontType='semiBold'>Avatar Sizes</Typography>
+            <Typography fontToken='font.heading.xsmall'>
+              Avatar Sizes
+            </Typography>
             <Row gap={8}>
               <Avatar
                 enableSkeleton={enableSkeleton}
@@ -60,7 +62,9 @@ const AvatarComponent = (): React.JSX.Element => {
 
           {/* Different Border Radius */}
           <Block gap={8}>
-            <Typography fontType='semiBold'>Border Radius Variants</Typography>
+            <Typography fontToken='font.heading.xsmall'>
+              Border Radius Variants
+            </Typography>
             <Row gap={8}>
               <Avatar
                 borderRadius={8}
@@ -90,8 +94,10 @@ const AvatarComponent = (): React.JSX.Element => {
 
           {/* With Loading Skeleton */}
           <Block gap={8}>
-            <Typography fontType='semiBold'>With Loading Skeleton</Typography>
-            <Typography color='gray_500' size={12}>
+            <Typography fontToken='font.heading.xsmall'>
+              With Loading Skeleton
+            </Typography>
+            <Typography color='gray_500'>
               Skeleton shown for 3 seconds on mount
             </Typography>
             <Avatar
@@ -103,10 +109,10 @@ const AvatarComponent = (): React.JSX.Element => {
 
           {/* Fallback Text - No URL */}
           <Block gap={8}>
-            <Typography fontType='semiBold'>
+            <Typography fontToken='font.heading.xsmall'>
               Fallback Text (No URL provided)
             </Typography>
-            <Typography color='gray_500' size={12}>
+            <Typography color='gray_500'>
               Shows initials when no image URL is provided
             </Typography>
             <Row gap={8}>
@@ -119,10 +125,10 @@ const AvatarComponent = (): React.JSX.Element => {
 
           {/* Fallback Text - With Valid URL */}
           <Block gap={8}>
-            <Typography fontType='semiBold'>
+            <Typography fontToken='font.heading.xsmall'>
               Fallback with Valid URL (Image shown)
             </Typography>
-            <Typography color='gray_500' size={12}>
+            <Typography color='gray_500'>
               When URL is valid, image is displayed instead of fallback
             </Typography>
             <Row gap={8}>
@@ -133,10 +139,10 @@ const AvatarComponent = (): React.JSX.Element => {
 
           {/* Fallback Text - Invalid URL (Error Case) */}
           <Block gap={8}>
-            <Typography fontType='semiBold'>
+            <Typography fontToken='font.heading.xsmall'>
               Fallback on Image Error (Invalid URL)
             </Typography>
-            <Typography color='gray_500' size={12}>
+            <Typography color='gray_500'>
               Shows fallback when image fails to load
             </Typography>
             <Row gap={8}>
@@ -147,7 +153,7 @@ const AvatarComponent = (): React.JSX.Element => {
 
           {/* Fallback with Different Border Radius */}
           <Block gap={8}>
-            <Typography fontType='semiBold'>
+            <Typography fontToken='font.heading.xsmall'>
               Fallback with Border Radius Variants
             </Typography>
             <Row gap={8}>
@@ -160,8 +166,10 @@ const AvatarComponent = (): React.JSX.Element => {
 
           {/* Custom Fallback Styling */}
           <Block gap={8}>
-            <Typography fontType='semiBold'>Custom Fallback Styling</Typography>
-            <Typography color='gray_500' size={12}>
+            <Typography fontToken='font.heading.xsmall'>
+              Custom Fallback Styling
+            </Typography>
+            <Typography color='gray_500'>
               Custom text color via fallbackStyle prop
             </Typography>
             <Row gap={8}>
@@ -185,10 +193,10 @@ const AvatarComponent = (): React.JSX.Element => {
 
           {/* Fallback with Skeleton Loading */}
           <Block gap={8}>
-            <Typography fontType='semiBold'>
+            <Typography fontToken='font.heading.xsmall'>
               Fallback + Skeleton (No URL)
             </Typography>
-            <Typography color='gray_500' size={12}>
+            <Typography color='gray_500'>
               Shows fallback immediately when no URL provided
             </Typography>
             <Avatar enableSkeleton fallback='SK' size={48} />
@@ -196,8 +204,8 @@ const AvatarComponent = (): React.JSX.Element => {
 
           {/* Edge Cases */}
           <Block gap={8}>
-            <Typography fontType='semiBold'>Edge Cases</Typography>
-            <Typography color='gray_500' size={12}>
+            <Typography fontToken='font.heading.xsmall'>Edge Cases</Typography>
+            <Typography color='gray_500'>
               Single char, long text, empty string
             </Typography>
             <Row gap={8}>
@@ -214,8 +222,10 @@ const AvatarComponent = (): React.JSX.Element => {
 
           {/* Combined Features */}
           <Block gap={8}>
-            <Typography fontType='semiBold'>Combined Features</Typography>
-            <Typography color='gray_500' size={12}>
+            <Typography fontToken='font.heading.xsmall'>
+              Combined Features
+            </Typography>
+            <Typography color='gray_500'>
               Fallback + skeleton + custom border radius
             </Typography>
             <Row gap={8}>

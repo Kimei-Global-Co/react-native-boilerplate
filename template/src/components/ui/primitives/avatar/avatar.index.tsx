@@ -39,13 +39,7 @@ export default function Avatar(props: TAvatarProps): React.JSX.Element {
       radius={borderRadius}
       size={size}
     >
-      <Typography
-        center
-        color='white'
-        fontType='semiBold'
-        size={size * 0.4}
-        style={fallbackStyle}
-      >
+      <Typography center fontToken='font.heading.xsmall' style={fallbackStyle}>
         {fallback}
       </Typography>
     </Block>

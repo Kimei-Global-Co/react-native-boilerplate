@@ -140,7 +140,6 @@ export function Switch(props: Readonly<SwitchProps>): React.JSX.Element {
 const styles = StyleSheet.create({
   switchContainer: {
     borderRadius: 36.5,
-    paddingHorizontal: Spacing.xs,
-    paddingVertical: Spacing.xs
+    padding: Spacing['space.025']
   }
 })

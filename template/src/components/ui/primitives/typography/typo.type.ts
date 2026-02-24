@@ -1,26 +1,24 @@
 import type { FlexStyle, TextProps } from 'react-native'
 
 import type Colors from '@theme/colors'
-import type { ThemeFontWeight } from '@theme/fonts'
+import type { EmbeddedFontKey, FontTokenKey } from '@theme/fonts'
 import type { DefaultStyleProps } from 'shared/types/stylesheet.type'
 
 export interface CommonTextProps extends DefaultStyleProps, TextProps {
   /**
-   * Specifies font weight.
+   * Typography token preset (Atlassian-style), ex: `"font.body"` or `"font.heading.small"`.
    *
-   * Default is **"regular"**
-   *
-   * **xl** : fontSize: 22, lineHeight: 24, fontWeight: bold
-   *
-   * **lg** : fontSize: 16, lineHeight: 22, fontWeight: bold
-   *
-   * **p** : fontSize: 14, lineHeight: 20
-   *
-   * **s** : fontSize: 12, lineHeight: 18
-   *
-   * **xs** : fontSize: 10, lineHeight: 14
+   * If provided, it defines `fontFamily`, `fontSize`, and `lineHeight` defaults.
+   * You can still override with `fontFamily`, `size`, and `lineHeight`.
    */
-  fontType?: keyof ThemeFontWeight
+  fontToken?: FontTokenKey
+  /**
+   * Custom embedded font family override.
+   *
+   * Use the embedded font keys (ex: **Nunito_400Regular**, **Nunito_900Black**).
+   * The component will select the correct family name per platform.
+   */
+  fontFamily?: EmbeddedFontKey
   /**
    * Color of text - key of **Colors (theme/colors.ts)** or **Color keywords**
    *
@@ -42,13 +40,6 @@ export interface CommonTextProps extends DefaultStyleProps, TextProps {
    * Specifies text alignment. textAlign: 'justify'
    */
   justify?: boolean
-
-  /**
-   * Size of text
-   *
-   * Default is **14**
-   */
-  size?: number
 
   /**
    * Line height of text

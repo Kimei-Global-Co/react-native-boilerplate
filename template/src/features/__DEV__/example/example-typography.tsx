@@ -1,5 +1,5 @@
-import { Platform } from 'react-native'
-
+import { Block } from '@components/ui/layouts/block/block.index'
+import { Header } from '@components/ui/patterns/header/header.index'
 import { Typography } from '@components/ui/primitives/typography/typo.index'
 import { useLingui } from '@lingui/react/macro'
 import { createContainer } from '../create-container'
@@ -7,16 +7,17 @@ import { createContainer } from '../create-container'
 const TypographyComponent = (): React.JSX.Element => {
   const { t } = useLingui()
   return (
-    <Typography
-      style={{
-        fontFamily: Platform.select({
-          android: 'Nunito_400Regular',
-          ios: 'Nunito-Regular'
-        })
-      }}
-    >
-      {t`Hello world!`}
-    </Typography>
+    <Block>
+      <Header>
+        <Header.Section position='left'>
+          <Header.BackButton />
+        </Header.Section>
+        <Header.Section position='content'>
+          <Header.Title>Typography Component</Header.Title>
+        </Header.Section>
+      </Header>
+      <Typography>{t`Hello world!`}</Typography>
+    </Block>
   )
 }
 

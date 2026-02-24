@@ -1,13 +1,14 @@
-import { Dimensions, Platform } from 'react-native'
+import type { ViewStyle } from 'react-native'
+import { Dimensions, Platform, StyleSheet } from 'react-native'
 
 import type { BlockProps } from '@components/ui/layouts/block/block.type'
-import type { IconComponentProps } from '@components/ui/primitives/icon/icon.type'
 import Colors from '@theme/colors'
 import get from 'lodash.get'
 import type { EdgeInsets } from 'react-native-safe-area-context'
 import type {
   BorderProps,
   BorderType,
+  DefaultStyleProps,
   GutterProps,
   RadiusProps,
   SafeAreaInsetType
@@ -60,13 +61,13 @@ export function getColor(
 export const handleGutter = (
   type: 'padding' | 'margin',
   gutter: number | GutterProps
-): { [key: string]: number } => {
+): ViewStyle => {
   if (typeGuards(gutter, 'number')) {
     return {
       [type]: gutter
     }
   }
-  const padding: { [key: string]: number } = {}
+  const padding: Record<string, number> = {}
   const gutterKeys = Object.keys(gutter) as Array<keyof GutterProps>
   gutterKeys.forEach((key) => {
     const capFirstLetter = key.charAt(0).toUpperCase() + key.slice(1)
@@ -77,17 +78,13 @@ export const handleGutter = (
   return padding
 }
 
-export const handleRadius = (
-  radius: number | RadiusProps
-): {
-  [key: string]: number
-} => {
+export const handleRadius = (radius: number | RadiusProps): ViewStyle => {
   if (typeGuards(radius, 'number')) {
     return {
       borderRadius: radius
     }
   }
-  const borderRadius: { [key: string]: number } = {}
+  const borderRadius: Record<string, number> = {}
   const gutterKeys = Object.keys(radius) as Array<keyof RadiusProps>
   gutterKeys.forEach((key) => {
     const capFirstLetter = key.charAt(0).toUpperCase() + key.slice(1)
@@ -147,11 +144,7 @@ export const handleInset = (
   props: BlockProps,
   safe: EdgeInsets,
   padding?: number | GutterProps
-):
-  | {
-      [x: string]: number
-    }
-  | undefined => {
+): ViewStyle | undefined => {
   if (!props.inset) {
     return
   }
@@ -165,7 +158,7 @@ export const handleInset = (
     }
   }
 
-  const paddingStyles: { [key: string]: number } = {}
+  const paddingStyles: Record<string, number> = {}
   for (const element of props.inset) {
     const capitalize = element.charAt(0).toUpperCase() + element.slice(1)
     const initPadding = getInitPadding(element, padding)
@@ -174,17 +167,13 @@ export const handleInset = (
   return paddingStyles
 }
 
-export const handleBorder = (
-  border: BorderProps | BorderType
-): {
-  [key: string]: string | number | undefined
-} => {
+export const handleBorder = (border: BorderProps | BorderType): ViewStyle => {
   if ('width' in border) {
     return { borderColor: Colors[border.color], borderWidth: border.width }
   }
 
   const borderKeys = Object.keys(border) as Array<keyof BorderType>
-  const borderBox: { [key: string]: number | string | undefined } = {}
+  const borderBox: Record<string, string | number | undefined> = {}
   borderKeys.forEach((key) => {
     const capFirstLetter = key.charAt(0).toUpperCase() + key.slice(1)
     if (border[key] !== undefined) {
@@ -195,25 +184,32 @@ export const handleBorder = (
   return borderBox
 }
 
-export const createDefaultStyle = (props: {
-  [key: string]: unknown
-}): unknown[] => [
-  props.flex && { flex: typeGuards(props.flex, 'number') ? props.flex : 1 },
-  props.flexGrow && {
-    flexGrow: typeGuards(props.flexGrow, 'number') ? props.flexGrow : 1
-  },
-  props.flexShrink && {
-    flexShrink: typeGuards(props.flexShrink, 'number') ? props.flexShrink : 1
-  },
-  typeGuards(props.square, 'number') && handleSquare(props.square),
-  typeGuards(props.round, 'number') && handleRound(props.round),
-  props.radius && handleRadius(props.radius),
-  props.borderStyle && { borderStyle: props.borderStyle },
-  props.border && handleBorder(props.border),
-  props.wrap && { flexWrap: 'wrap' },
-  props.alignSelf && { alignSelf: props.alignSelf },
-  typeGuards(props.opacity, 'number') && { opacity: props.opacity }
-]
+export const createDefaultStyle = (props: DefaultStyleProps): ViewStyle => {
+  return StyleSheet.flatten<ViewStyle>([
+    props.flex !== undefined &&
+      props.flex !== false && {
+        flex: typeGuards(props.flex, 'number') ? props.flex : 1
+      },
+    props.flexGrow !== undefined &&
+      props.flexGrow !== false && {
+        flexGrow: typeGuards(props.flexGrow, 'number') ? props.flexGrow : 1
+      },
+    props.flexShrink !== undefined &&
+      props.flexShrink !== false && {
+        flexShrink: typeGuards(props.flexShrink, 'number')
+          ? props.flexShrink
+          : 1
+      },
+    props.wrap && { flexWrap: 'wrap' },
+    props.alignSelf && { alignSelf: props.alignSelf },
+    props.radius !== undefined && handleRadius(props.radius),
+    props.borderStyle !== undefined && { borderStyle: props.borderStyle },
+    props.border && handleBorder(props.border),
+    props.square !== undefined && handleSquare(props.square),
+    props.round !== undefined && handleRound(props.round),
+    props.opacity !== undefined && { opacity: props.opacity }
+  ])
+}
 
 export const { width: screenWidth, height: screenHeight } =
   Dimensions.get('screen')
@@ -276,10 +272,6 @@ function when<T, F>(
 }
 export { when }
 
-export const isFunction = (
-  value: unknown
-): value is (...args: unknown[]) => unknown => typeof value === 'function'
-
 function typeGuards(x: unknown): x is string
 function typeGuards(x: unknown, type: 'string'): x is string
 function typeGuards(x: unknown, type: 'number'): x is number
@@ -288,7 +280,18 @@ function typeGuards(x: unknown, type: 'object'): x is object
 function typeGuards(x: unknown, type: 'null'): x is null
 function typeGuards(
   x: unknown,
-  type?: 'string' | 'number' | 'undefined' | 'object' | 'null' | 'function'
+  type: 'function'
+): x is (...args: unknown[]) => unknown
+function typeGuards(
+  x: unknown,
+  type:
+    | 'string'
+    | 'number'
+    | 'undefined'
+    | 'object'
+    | 'null'
+    | 'function'
+    | 'array' = 'string'
 ): boolean {
   switch (type) {
     case 'string':
@@ -298,7 +301,9 @@ function typeGuards(
     case 'undefined':
       return x === undefined
     case 'object':
-      return typeof x === 'object'
+      return x !== null && typeof x === 'object' && !Array.isArray(x)
+    case 'array':
+      return Array.isArray(x)
     case 'null':
       return x === null
     case 'function':
@@ -326,10 +331,7 @@ function isResponseError(error: unknown, type: 'network' | 'server'): boolean {
   }
 
   if (type === 'server') {
-    return (
-      str.includes('Request failed with status code 502') ||
-      str.includes('Request failed with status code 500')
-    )
+    return str.includes('status code 502') || str.includes('status code 500')
   }
 
   return false
@@ -349,11 +351,6 @@ export const Helper = {
     return Platform.OS === 'android'
   },
 
-  isIcon(
-    icon: IconComponentProps | React.ReactNode
-  ): icon is IconComponentProps {
-    return (icon as IconComponentProps)?.name !== undefined
-  },
   isIOS: (): boolean => {
     return Platform.OS === 'ios'
   }

@@ -27,9 +27,7 @@ const ListComponent = (): React.JSX.Element => {
       padding={16}
       radius={8}
     >
-      <Typography fontType='bold' size={16}>
-        {item.title}
-      </Typography>
+      <Typography fontToken='font.heading.small'>{item.title}</Typography>
       <Typography color='gray_400' margin={{ top: 4 }}>
         {item.description}
       </Typography>

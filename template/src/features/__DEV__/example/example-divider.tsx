@@ -22,46 +22,44 @@ const DividerComponent = (): React.JSX.Element => {
         <Block gap={24} padding={16}>
           {/* Basic Horizontal Divider */}
           <Block gap={8}>
-            <Typography fontType='semiBold'>
+            <Typography fontToken='font.heading.xsmall'>
               Basic Horizontal Divider
             </Typography>
             <Block backgroundColor='white' padding={16} radius={8}>
-              <Typography size={12}>Content above</Typography>
+              <Typography>Content above</Typography>
               <Divider spacing={12} />
-              <Typography size={12}>Content below</Typography>
+              <Typography>Content below</Typography>
             </Block>
           </Block>
 
           {/* Divider with Label */}
           <Block gap={8}>
-            <Typography fontType='semiBold'>Divider with Label</Typography>
+            <Typography fontToken='font.heading.xsmall'>
+              Divider with Label
+            </Typography>
             <Block backgroundColor='white' padding={16} radius={8}>
-              <Typography size={12}>Content above</Typography>
+              <Typography>Content above</Typography>
               <Divider label='OR' spacing={12} />
-              <Typography size={12}>Content below</Typography>
+              <Typography>Content below</Typography>
             </Block>
           </Block>
 
           {/* Different Thicknesses */}
           <Block gap={8}>
-            <Typography fontType='semiBold'>Different Thicknesses</Typography>
+            <Typography fontToken='font.heading.xsmall'>
+              Different Thicknesses
+            </Typography>
             <Block backgroundColor='white' gap={16} padding={16} radius={8}>
               <Block gap={4}>
-                <Typography color='gray_500' size={10}>
-                  thickness: 1 (default)
-                </Typography>
+                <Typography color='gray_500'>thickness: 1 (default)</Typography>
                 <Divider />
               </Block>
               <Block gap={4}>
-                <Typography color='gray_500' size={10}>
-                  thickness: 2
-                </Typography>
+                <Typography color='gray_500'>thickness: 2</Typography>
                 <Divider thickness={2} />
               </Block>
               <Block gap={4}>
-                <Typography color='gray_500' size={10}>
-                  thickness: 4
-                </Typography>
+                <Typography color='gray_500'>thickness: 4</Typography>
                 <Divider thickness={4} />
               </Block>
             </Block>
@@ -69,30 +67,24 @@ const DividerComponent = (): React.JSX.Element => {
 
           {/* Different Colors */}
           <Block gap={8}>
-            <Typography fontType='semiBold'>Different Colors</Typography>
+            <Typography fontToken='font.heading.xsmall'>
+              Different Colors
+            </Typography>
             <Block backgroundColor='white' gap={16} padding={16} radius={8}>
               <Block gap={4}>
-                <Typography color='gray_500' size={10}>
-                  gray_200 (default)
-                </Typography>
+                <Typography color='gray_500'>gray_200 (default)</Typography>
                 <Divider thickness={2} />
               </Block>
               <Block gap={4}>
-                <Typography color='gray_500' size={10}>
-                  blue_500
-                </Typography>
+                <Typography color='gray_500'>blue_500</Typography>
                 <Divider color='blue_500' thickness={2} />
               </Block>
               <Block gap={4}>
-                <Typography color='gray_500' size={10}>
-                  red_500
-                </Typography>
+                <Typography color='gray_500'>red_500</Typography>
                 <Divider color='red_500' thickness={2} />
               </Block>
               <Block gap={4}>
-                <Typography color='gray_500' size={10}>
-                  green_500
-                </Typography>
+                <Typography color='gray_500'>green_500</Typography>
                 <Divider color='green_500' thickness={2} />
               </Block>
             </Block>
@@ -100,7 +92,7 @@ const DividerComponent = (): React.JSX.Element => {
 
           {/* Labels with Custom Colors */}
           <Block gap={8}>
-            <Typography fontType='semiBold'>
+            <Typography fontToken='font.heading.xsmall'>
               Labels with Custom Colors
             </Typography>
             <Block backgroundColor='white' gap={16} padding={16} radius={8}>
@@ -112,19 +104,21 @@ const DividerComponent = (): React.JSX.Element => {
 
           {/* Vertical Divider */}
           <Block gap={8}>
-            <Typography fontType='semiBold'>Vertical Divider</Typography>
+            <Typography fontToken='font.heading.xsmall'>
+              Vertical Divider
+            </Typography>
             <Block backgroundColor='white' padding={16} radius={8}>
               <Row align='center' gap={0} style={{ height: 40 }}>
                 <Block align='center' flex justify='center'>
-                  <Typography size={12}>Left</Typography>
+                  <Typography>Left</Typography>
                 </Block>
                 <Divider orientation='vertical' />
                 <Block align='center' flex justify='center'>
-                  <Typography size={12}>Center</Typography>
+                  <Typography>Center</Typography>
                 </Block>
                 <Divider orientation='vertical' />
                 <Block align='center' flex justify='center'>
-                  <Typography size={12}>Right</Typography>
+                  <Typography>Right</Typography>
                 </Block>
               </Row>
             </Block>
@@ -132,17 +126,17 @@ const DividerComponent = (): React.JSX.Element => {
 
           {/* Vertical Divider with Different Styles */}
           <Block gap={8}>
-            <Typography fontType='semiBold'>
+            <Typography fontToken='font.heading.xsmall'>
               Vertical Divider Variants
             </Typography>
             <Block backgroundColor='white' padding={16} radius={8}>
               <Row align='center' gap={0} style={{ height: 60 }}>
                 <Block align='center' flex justify='center'>
-                  <Typography size={10}>Thin</Typography>
+                  <Typography>Thin</Typography>
                 </Block>
                 <Divider orientation='vertical' thickness={1} />
                 <Block align='center' flex justify='center'>
-                  <Typography size={10}>Medium</Typography>
+                  <Typography>Medium</Typography>
                 </Block>
                 <Divider
                   color='blue_500'
@@ -150,11 +144,11 @@ const DividerComponent = (): React.JSX.Element => {
                   thickness={2}
                 />
                 <Block align='center' flex justify='center'>
-                  <Typography size={10}>Thick</Typography>
+                  <Typography>Thick</Typography>
                 </Block>
                 <Divider color='red_500' orientation='vertical' thickness={4} />
                 <Block align='center' flex justify='center'>
-                  <Typography size={10}>Extra</Typography>
+                  <Typography>Extra</Typography>
                 </Block>
               </Row>
             </Block>
@@ -162,7 +156,9 @@ const DividerComponent = (): React.JSX.Element => {
 
           {/* Use Case: Login Form */}
           <Block gap={8}>
-            <Typography fontType='semiBold'>Use Case: Login Form</Typography>
+            <Typography fontToken='font.heading.xsmall'>
+              Use Case: Login Form
+            </Typography>
             <Block backgroundColor='white' gap={16} padding={16} radius={8}>
               <Block
                 backgroundColor='gray_100'
@@ -170,9 +166,7 @@ const DividerComponent = (): React.JSX.Element => {
                 radius={8}
                 style={{ height: 44 }}
               >
-                <Typography color='gray_400' size={14}>
-                  Email
-                </Typography>
+                <Typography color='gray_400'>Email</Typography>
               </Block>
               <Block
                 backgroundColor='gray_100'
@@ -180,9 +174,7 @@ const DividerComponent = (): React.JSX.Element => {
                 radius={8}
                 style={{ height: 44 }}
               >
-                <Typography color='gray_400' size={14}>
-                  Password
-                </Typography>
+                <Typography color='gray_400'>Password</Typography>
               </Block>
               <Block
                 align='center'
@@ -191,7 +183,7 @@ const DividerComponent = (): React.JSX.Element => {
                 padding={12}
                 radius={8}
               >
-                <Typography color='white' fontType='semiBold'>
+                <Typography color='white' fontToken='font.heading.xsmall'>
                   Sign In
                 </Typography>
               </Block>
@@ -203,7 +195,7 @@ const DividerComponent = (): React.JSX.Element => {
                 padding={12}
                 radius={8}
               >
-                <Typography fontType='semiBold'>
+                <Typography fontToken='font.heading.xsmall'>
                   Continue with Google
                 </Typography>
               </Block>

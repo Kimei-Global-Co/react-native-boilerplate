@@ -30,12 +30,8 @@ const OptimizedChild = ({
     <Block backgroundColor='white' padding={16} radius={12} shadow>
       <Row between>
         <Block>
-          <Typography fontType='bold' size={16}>
-            {name}
-          </Typography>
-          <Typography color='gray_400' size={14}>
-            Memoized Component
-          </Typography>
+          <Typography fontToken='font.heading.small'>{name}</Typography>
+          <Typography color='gray_400'>Memoized Component</Typography>
         </Block>
         <Block
           align='center'
@@ -43,7 +39,7 @@ const OptimizedChild = ({
           padding={{ horizontal: 12, vertical: 4 }}
           radius={20}
         >
-          <Typography color='black' fontType='bold' size={12}>
+          <Typography color='black' fontToken='font.label'>
             Renders: {renderCount}
           </Typography>
         </Block>
@@ -97,12 +93,11 @@ const MutativeExample = () => {
       console.info('[Mutative] Inverse Patches:', inversePatches)
     }
   }, [patches, inversePatches])
+
   return (
     <Block flex padding={16}>
-      <Typography fontType='bold' size={24}>
-        Mutative Benchmark
-      </Typography>
-      <Typography color='gray_400' size={14}>
+      <Typography fontToken='font.heading.large'>Mutative Benchmark</Typography>
+      <Typography color='gray_400'>
         This test proves that the update function is strictly stable.
       </Typography>
 
@@ -112,11 +107,9 @@ const MutativeExample = () => {
         <Row align='center'>
           <Icon color='primary' name='dashboard' type='antDesign' />
           <Spacer x={8} />
-          <Typography size={18}>Parent Hook State</Typography>
+          <Typography>Parent Hook State</Typography>
         </Row>
-        <Typography fontType='bold' size={32}>
-          {state.count}
-        </Typography>
+        <Typography fontToken='font.metric.large'>{state.count}</Typography>
       </Block>
 
       <Spacer y={24} />
@@ -126,10 +119,11 @@ const MutativeExample = () => {
       <Spacer y={24} />
 
       <Block backgroundColor='rose_50' padding={16} radius={12}>
-        <Typography color='rose_800' size={14}>
-          <Typography fontType='bold'>Analysis:</Typography> Even when you
-          update the count, the "Renders" badge above should stay at 1. This
-          means child components don't waste work when the parent state changes.
+        <Typography fontToken='font.heading.xsmall'>Analysis:</Typography>
+        <Typography color='rose_800'>
+          Even when you update the count, the "Renders" badge above should stay
+          at 1. This means child components don't waste work when the parent
+          state changes.
         </Typography>
       </Block>
     </Block>

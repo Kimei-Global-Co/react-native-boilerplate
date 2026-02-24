@@ -11,9 +11,7 @@ export default function OptionsSheet() {
       }}
       detents={[0.2, 0.5, 1]}
       grabber
-      name={'options'}
-    >
-      <></>
-    </TrueSheet>
+      name='options'
+    />
   )
 }

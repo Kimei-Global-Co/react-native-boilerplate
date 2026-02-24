@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 type LazyComponentProps = {
   componentKey: string
@@ -10,16 +10,18 @@ export function LazyComponent(
   props: LazyComponentProps
 ): React.ReactNode | null {
   const { componentKey, currentKey, component, placeholder } = props
-  const [hasRendered, setHasRendered] = useState(false)
+  const [hasRendered, setHasRendered] = useState(currentKey === componentKey)
+  const [prevCurrentKey, setPrevCurrentKey] = useState(currentKey)
 
-  useEffect(() => {
+  if (currentKey !== prevCurrentKey) {
+    setPrevCurrentKey(currentKey)
     if (!hasRendered && currentKey === componentKey) {
       setHasRendered(true)
     }
-  }, [currentKey, componentKey, hasRendered])
+  }
 
   if (hasRendered) {
     return component
   }
-  return placeholder ?? <></>
+  return placeholder ?? null
 }

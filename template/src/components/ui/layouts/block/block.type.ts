@@ -1,4 +1,9 @@
-import type { FlexStyle, ViewProps, ViewStyle } from 'react-native'
+import type {
+  DimensionValue,
+  FlexStyle,
+  ViewProps,
+  ViewStyle
+} from 'react-native'
 
 import type Colors from '@theme/colors'
 import type { Spacing } from '@theme/layout'
@@ -6,6 +11,8 @@ import type {
   DefaultStyleProps,
   SafeAreaInsetType
 } from 'shared/types/stylesheet.type'
+
+type OffsetValue = DimensionValue | keyof typeof Spacing
 
 export interface BlockProps extends DefaultStyleProps, ViewProps {
   /**
@@ -51,31 +58,35 @@ export interface BlockProps extends DefaultStyleProps, ViewProps {
   position?: FlexStyle['position']
 
   /**
-   * **top** is the number of logical pixels to offset the top edge of this component.
+   * **top** is the number of logical pixels to offset the top edge of this component,
+   * or a key of `Spacing` (ex: `"space.200"`, `"space.300"`, `"12%"`).
    */
-  top?: number | string
+  top?: OffsetValue
 
   /**
-   * **bottom** is the number of logical pixels to offset the top edge of this component.
+   * **bottom** is the number of logical pixels to offset the top edge of this component,
+   * or a key of `Spacing` (ex: `"space.200"`, `"space.300"`, `"12%"`).
    */
-  bottom?: number | string
+  bottom?: OffsetValue
 
   /**
-   * **left** is the number of logical pixels to offset the top edge of this component.
+   * **left** is the number of logical pixels to offset the top edge of this component,
+   * or a key of `Spacing` (ex: `"space.200"`, `"space.300"`, `"12%"`).
    */
-  left?: number | string
+  left?: OffsetValue
 
   /**
-   * **right** is the number of logical pixels to offset the top edge of this component.
+   * **right** is the number of logical pixels to offset the top edge of this component,
+   * or a key of `Spacing` (ex: `"space.200"`, `"space.300"`, `"12%"`).
    */
-  right?: number | string
+  right?: OffsetValue
 
   /**
    * Render content within the safe area boundaries of a device
    * Example:
    * ```
    * <Block
-   *   gap="x"
+   *   gap="space.050"
    * />
    * ```
    * or

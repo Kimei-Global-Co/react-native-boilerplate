@@ -1,64 +1,103 @@
 import { Platform, type TextStyle } from 'react-native'
 
-type FontWeight = 'regular' | 'medium' | 'semiBold' | 'bold' | 'extraBold'
+const embeddedFonts = {
+  Nunito_400Regular: { android: 'Nunito_400Regular', ios: 'Nunito-Regular' },
+  Nunito_600SemiBold: { android: 'Nunito_600SemiBold', ios: 'Nunito-SemiBold' },
+  Nunito_700Bold: { android: 'Nunito_700Bold', ios: 'Nunito-Bold' },
+  Nunito_900Black: { android: 'Nunito_900Black', ios: 'Nunito-Black' }
+} as const
 
-const fontMap: Record<FontWeight, { ios: string; android: string }> = {
-  bold: {
-    android: '',
-    ios: ''
-  },
-  extraBold: {
-    android: '',
-    ios: ''
-  },
-  medium: {
-    android: '',
-    ios: ''
-  },
-  regular: { android: 'Nunito_400Regular', ios: 'Nunito-Regular' },
-  semiBold: { android: 'Nunito_900Black', ios: 'Nunito-Black' }
+export type EmbeddedFontKey = keyof typeof embeddedFonts
+
+export const getEmbeddedFontFamily = (font: EmbeddedFontKey): string => {
+  const { ios, android } = embeddedFonts[font]
+  return Platform.select({ android, default: android, ios }) ?? android
 }
 
-export const getFontFamily = (weight: FontWeight): string => {
-  const platform = Platform.OS === 'ios' ? 'ios' : 'android'
-  return fontMap[weight][platform]
-}
+type FontTokenStyle = Pick<
+  TextStyle,
+  'fontFamily' | 'fontSize' | 'lineHeight' | 'fontWeight'
+>
 
-export interface ThemeFontWeight {
-  regular: FontBase
-  medium: FontBase
-  bold: FontBase
-  semiBold: FontBase
-  extraBold: FontBase
-}
-
-export type FontBase = {
-  fontSize?: TextStyle['fontSize']
-  fontFamily: TextStyle['fontFamily']
-  fontWeight: TextStyle['fontWeight']
-}
-
-const baseFontSize = 14
-
-export default {
-  bold: {
-    fontFamily: getFontFamily('bold'),
-    fontSize: baseFontSize + 4
+/**
+ * Atlassian-style typography tokens.
+ * See: https://atlassian.design/foundations/typography/
+ */
+export const fontTokens = {
+  'font.body': {
+    fontFamily: getEmbeddedFontFamily('Nunito_400Regular'),
+    fontSize: 14
+    // lineHeight: 20
   },
-  extraBold: {
-    fontFamily: getFontFamily('extraBold'),
-    fontSize: baseFontSize
+  'font.body.large': {
+    fontFamily: getEmbeddedFontFamily('Nunito_400Regular'),
+    fontSize: 16
+    // lineHeight: 24
   },
-  medium: {
-    fontFamily: getFontFamily('medium'),
-    fontSize: baseFontSize + 2
+  'font.body.small': {
+    fontFamily: getEmbeddedFontFamily('Nunito_400Regular'),
+    fontSize: 12
+    // lineHeight: 16
   },
-  regular: {
-    fontFamily: getFontFamily('regular'),
-    fontSize: baseFontSize
+  'font.heading.large': {
+    fontFamily: getEmbeddedFontFamily('Nunito_700Bold'),
+    fontSize: 24
+    // lineHeight: 28
   },
-  semiBold: {
-    fontFamily: getFontFamily('semiBold'),
-    fontSize: baseFontSize
+  'font.heading.medium': {
+    fontFamily: getEmbeddedFontFamily('Nunito_700Bold'),
+    fontSize: 20
+    // lineHeight: 24
+  },
+  'font.heading.small': {
+    fontFamily: getEmbeddedFontFamily('Nunito_700Bold'),
+    fontSize: 16
+    // lineHeight: 20
+  },
+  'font.heading.xlarge': {
+    fontFamily: getEmbeddedFontFamily('Nunito_700Bold'),
+    fontSize: 28
+    // lineHeight: 32
+  },
+  'font.heading.xsmall': {
+    fontFamily: getEmbeddedFontFamily('Nunito_700Bold'),
+    fontSize: 14
+    // lineHeight: 20
+  },
+  'font.heading.xxlarge': {
+    fontFamily: getEmbeddedFontFamily('Nunito_700Bold'),
+    fontSize: 32
+    // lineHeight: 36
+  },
+  'font.heading.xxsmall': {
+    fontFamily: getEmbeddedFontFamily('Nunito_700Bold'),
+    fontSize: 12
+    // lineHeight: 16
+  },
+  'font.label': {
+    fontFamily: getEmbeddedFontFamily('Nunito_600SemiBold'),
+    fontSize: 12
+    // lineHeight: 16
+  },
+  'font.metric.large': {
+    fontFamily: getEmbeddedFontFamily('Nunito_900Black'),
+    fontSize: 28
+    // lineHeight: 32
+  },
+  'font.metric.medium': {
+    fontFamily: getEmbeddedFontFamily('Nunito_900Black'),
+    fontSize: 24
+    // lineHeight: 28
+  },
+  'font.metric.small': {
+    fontFamily: getEmbeddedFontFamily('Nunito_900Black'),
+    fontSize: 16
+    // lineHeight: 20
   }
-} as ThemeFontWeight
+} as const satisfies Record<string, FontTokenStyle>
+
+export type FontTokenKey = keyof typeof fontTokens
+
+export const getFontTokenStyle = (token: FontTokenKey): FontTokenStyle => {
+  return fontTokens[token]
+}

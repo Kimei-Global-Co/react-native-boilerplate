@@ -25,9 +25,7 @@ export function ErrorState(
 
   return (
     <Block align='center' justify='center' style={style}>
-      <Typography fontType='extraBold' size={24}>
-        {title}
-      </Typography>
+      <Typography fontToken='font.heading.large'>{title}</Typography>
       <Typography center color='gray_400' margin={{ bottom: 24, top: 8 }}>
         {message}
       </Typography>

@@ -45,7 +45,9 @@ type IconNameMap = {
   fontAwesome6: string
   fontisto: React.ComponentProps<typeof Fontisto>['name']
   ionicons: React.ComponentProps<typeof Ionicons>['name']
-  materialCommunityIcons: React.ComponentProps<typeof MaterialCommunityIcons>['name']
+  materialCommunityIcons: React.ComponentProps<
+    typeof MaterialCommunityIcons
+  >['name']
   materialIcons: React.ComponentProps<typeof MaterialIcons>['name']
   octicons: React.ComponentProps<typeof Octicons>['name']
   simpleLineIcons: React.ComponentProps<typeof SimpleLineIcons>['name']
