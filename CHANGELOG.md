@@ -1,6 +1,14 @@
 # Changelog
 
+## 2026-02-24
+
+### ♻️ Code Refactoring
+* update typography components to use font tokens and improve consistency ([a8fe18f](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/a8fe18f5036e4ae693dcc8a57fb79d2c753aa189))
+
 ## 2026-02-23
+
+### 🔨 Chores
+* update changelog [skip ci] ([b2a80d6](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/b2a80d6ac736dbc9bb42f4006e944e029927b9c0))
 
 ### ✨ Features
 * Update README and clean-up script to replace APP_NAME placeholder and remove root from biome.json ([36ae361](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/36ae3611c00a969bba15b4c19d4123e7d28d3dfa))
