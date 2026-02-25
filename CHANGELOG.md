@@ -1,8 +1,14 @@
 # Changelog
 
+## 2026-02-25
+
+### 🔨 Chores
+* update dependencies and refactor components ([151495b](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/151495b3bb9c8afa11b673876b434003ae36a658))
+
 ## 2026-02-24
 
 ### 🔨 Chores
+* update changelog [skip ci] ([bc2d5d2](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/bc2d5d27eb53042c418b61a485b3331560833f41))
 * remove Yarn caching and verification steps from lockfile workflow ([b13cafc](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/b13cafc98a8ab40fac86b7cf68d64d9231b5a023))
 * update changelog [skip ci] ([4319ecf](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/4319ecf15e96b077e5dc2ce03285345a8bca02f0))
 
