@@ -6,7 +6,7 @@ import Animated, { FadeIn } from 'react-native-reanimated'
 import { useMutative } from 'shared/hooks/use-mutative'
 import type { TAvatarProps } from './avatar.type'
 
-export default function Avatar(props: TAvatarProps): React.JSX.Element {
+export function Avatar(props: TAvatarProps): React.JSX.Element {
   const {
     size = 40,
     borderRadius = 999,
@@ -15,6 +15,9 @@ export default function Avatar(props: TAvatarProps): React.JSX.Element {
     fallbackStyle,
     ...rest
   } = props
+
+  const { color: fallbackColor, ...fallbackTextStyle } = fallbackStyle ?? {}
+
   const [isLoading, setIsLoading] = useMutative(enableSkeleton, {
     enableAutoFreeze: true
   })
@@ -23,7 +26,6 @@ export default function Avatar(props: TAvatarProps): React.JSX.Element {
   })
 
   const shouldShowFallback = fallback && (!props.url || hasError)
-
   const skeletonCallbacks = enableSkeleton
     ? {
         onLoad: () => setIsLoading(false),
@@ -39,7 +41,13 @@ export default function Avatar(props: TAvatarProps): React.JSX.Element {
       radius={borderRadius}
       size={size}
     >
-      <Typography center fontToken='font.heading.xsmall' style={fallbackStyle}>
+      <Typography
+        color={fallbackColor}
+        ellipsizeMode='tail'
+        fontToken='font.heading.xsmall'
+        numberOfLines={1}
+        style={fallbackTextStyle}
+      >
         {fallback}
       </Typography>
     </Block>
@@ -54,16 +62,14 @@ export default function Avatar(props: TAvatarProps): React.JSX.Element {
           <Image
             alt='Avatar'
             borderRadius={borderRadius}
+            onError={() => setHasError(true)}
             recyclingKey={props.url}
             size={size}
             source={props.url}
-            style={{ height: size, width: size }}
             {...skeletonCallbacks}
-            onError={() => setHasError(true)}
             {...rest}
           />
         )}
-        {props.children}
       </Block>
     </Animated.View>
   )

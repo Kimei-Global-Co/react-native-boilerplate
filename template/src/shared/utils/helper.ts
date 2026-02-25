@@ -211,6 +211,21 @@ export const createDefaultStyle = (props: DefaultStyleProps): ViewStyle => {
   ])
 }
 
+export const createSizeStyle = (size: BlockProps['size']) => {
+  if (typeGuards(size, 'number')) {
+    return { height: size, width: size }
+  }
+
+  if (typeGuards(size, 'object')) {
+    return {
+      height: size.height ?? 0,
+      width: size.width ?? 0
+    }
+  }
+
+  return {}
+}
+
 export const { width: screenWidth, height: screenHeight } =
   Dimensions.get('screen')
 

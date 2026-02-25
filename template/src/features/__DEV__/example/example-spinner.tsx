@@ -9,7 +9,7 @@ import { createContainer } from '../create-container'
 
 const SpinnerComponent = (): React.JSX.Element => {
   return (
-    <Block flex={1}>
+    <Block flex>
       <Header>
         <Header.Section position='left'>
           <Header.BackButton />

@@ -13,7 +13,7 @@ const BoxItem = ({ bg }: { bg: keyof typeof Colors }): React.JSX.Element => (
 
 const RowComponent = (): React.JSX.Element => {
   return (
-    <Block flex={1}>
+    <Block flex>
       <Header>
         <Header.Section position='left'>
           <Header.BackButton />

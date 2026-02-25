@@ -1,4 +1,11 @@
-import { Image as ExpoImage, type ImageSource } from 'expo-image'
+import { StyleSheet } from 'react-native'
+
+import {
+  Image as ExpoImage,
+  type ImageSource,
+  type ImageStyle
+} from 'expo-image'
+import { createSizeStyle, handleRadius, typeGuards } from 'shared/utils/helper'
 import type { TImageProps } from './image.type'
 
 export function Image(props: TImageProps) {
@@ -24,8 +31,13 @@ export function Image(props: TImageProps) {
         }
       : source
 
-  const imageSize =
-    typeof size === 'number' ? { height: size, width: size } : size
+  const imageSize = createSizeStyle(size)
+
+  const imageStyle = StyleSheet.flatten([
+    imageSize,
+    borderRadius !== undefined && handleRadius(borderRadius),
+    style
+  ]) as ImageStyle
 
   if (typeof source === 'object' && !(source as ImageSource)?.uri) {
     console.warn('Image source is not a valid uri', source)
@@ -38,19 +50,16 @@ export function Image(props: TImageProps) {
       contentFit={contentFit ?? resizeMode}
       placeholder={{
         blurhash,
-        height: imageSize?.height,
-        width: imageSize?.width
+        height: typeGuards(imageSize.height, 'number')
+          ? imageSize.height
+          : undefined,
+        width: typeGuards(imageSize.width, 'number')
+          ? imageSize.width
+          : undefined
       }}
       ref={ref}
       source={imageSource}
-      style={[
-        {
-          borderRadius,
-          height: imageSize?.height,
-          width: imageSize?.width
-        },
-        style
-      ]}
+      style={imageStyle}
       {...rest}
     />
   )

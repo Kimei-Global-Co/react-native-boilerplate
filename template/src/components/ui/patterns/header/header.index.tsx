@@ -38,7 +38,7 @@ function HeaderSection({
 }: Readonly<HeaderSectionProps>) {
   if (position === 'content') {
     return (
-      <Block flex={1} justify='center' style={style}>
+      <Block flex justify='center' style={style}>
         {children}
       </Block>
     )

@@ -37,8 +37,7 @@ export function Icon<T extends IconType>(
 
   const initContainerStyle = StyleSheet.flatten([disabledStyle ?? {}, style])
 
-  const containerStyle =
-    Platform.OS === 'android' ? {} : (initContainerStyle as object)
+  const containerStyle = Platform.OS === 'android' ? {} : initContainerStyle
 
   const innerStyle = Platform.OS === 'android' ? initContainerStyle : {}
 

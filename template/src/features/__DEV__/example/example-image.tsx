@@ -12,7 +12,7 @@ const BLURHASH = 'L6PZfSi_.AyE_3t7t7R**0o#DgR4'
 
 const ImageComponent = (): React.JSX.Element => {
   return (
-    <Block flex={1}>
+    <Block flex>
       <Header>
         <Header.Section position='left'>
           <Header.BackButton />
@@ -24,46 +24,36 @@ const ImageComponent = (): React.JSX.Element => {
       <ScrollView showsVerticalScrollIndicator={false}>
         <Block gap={16} padding={16}>
           {/* Basic Usage */}
-          <Block gap={8}>
-            <Typography>Basic Image</Typography>
-            <Image size={200} source={SAMPLE_IMAGE} />
-          </Block>
+          <Typography>Basic Image</Typography>
+          <Image size={200} source={SAMPLE_IMAGE} />
 
           {/* Square Images with Different Sizes */}
-          <Block gap={8}>
-            <Typography>Square Images (size prop)</Typography>
-            <Row gap={8}>
-              <Image size={50} source={SAMPLE_IMAGE} />
-              <Image size={80} source={SAMPLE_IMAGE} />
-              <Image size={100} source={SAMPLE_IMAGE} />
-            </Row>
-          </Block>
+          <Typography>Square Images (size prop)</Typography>
+          <Row gap={8}>
+            <Image size={50} source={SAMPLE_IMAGE} />
+            <Image size={80} source={SAMPLE_IMAGE} />
+            <Image size={100} source={SAMPLE_IMAGE} />
+          </Row>
 
           {/* Different Border Radius */}
-          <Block gap={8}>
-            <Typography>Border Radius Variants</Typography>
-            <Row gap={8}>
-              <Image borderRadius={8} size={80} source={SAMPLE_IMAGE} />
-              <Image borderRadius={16} size={80} source={SAMPLE_IMAGE} />
-              <Image borderRadius={40} size={80} source={SAMPLE_IMAGE} />
-            </Row>
-          </Block>
+          <Typography>Border Radius Variants</Typography>
+          <Row gap={8}>
+            <Image borderRadius={8} size={80} source={SAMPLE_IMAGE} />
+            <Image borderRadius={16} size={80} source={SAMPLE_IMAGE} />
+            <Image borderRadius={40} size={80} source={SAMPLE_IMAGE} />
+          </Row>
 
           {/* Content Fit Examples */}
-          <Block gap={8}>
-            <Typography>Content Fit Variants</Typography>
-            <Row gap={8}>
-              <Image contentFit='cover' size={100} source={SAMPLE_IMAGE} />
-              <Image contentFit='contain' size={100} source={SAMPLE_IMAGE} />
-              <Image contentFit='fill' size={100} source={SAMPLE_IMAGE} />
-            </Row>
-          </Block>
+          <Typography>Content Fit Variants</Typography>
+          <Row gap={8}>
+            <Image contentFit='cover' size={100} source={SAMPLE_IMAGE} />
+            <Image contentFit='contain' size={100} source={SAMPLE_IMAGE} />
+            <Image contentFit='fill' size={100} source={SAMPLE_IMAGE} />
+          </Row>
 
           {/* With Blurhash */}
-          <Block gap={8}>
-            <Typography>With Blurhash Loading</Typography>
-            <Image blurhash={BLURHASH} size={200} source={SAMPLE_IMAGE} />
-          </Block>
+          <Typography>With Blurhash Loading</Typography>
+          <Image blurhash={BLURHASH} size={200} source={SAMPLE_IMAGE} />
         </Block>
       </ScrollView>
     </Block>

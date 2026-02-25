@@ -34,7 +34,7 @@ const createTypoStyles = (props: CommonTextProps): TextStyle => {
     },
     { ...baseFontStyle },
     fontFamily && { fontFamily: getEmbeddedFontFamily(fontFamily) },
-    { color: Colors[color] ?? color },
+    { color: Colors[color] },
     typeGuards(lineHeight, 'number') && { lineHeight },
     center && { textAlign: 'center' },
     right && { textAlign: 'right' },

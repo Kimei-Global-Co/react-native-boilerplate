@@ -3,7 +3,8 @@ import { ScrollView } from 'react-native'
 import { Block } from '@components/ui/layouts/block/block.index'
 import { Row } from '@components/ui/layouts/row/row.index'
 import { Header } from '@components/ui/patterns/header/header.index'
-import Avatar from '@components/ui/primitives/avatar/avatar.index'
+import { Avatar } from '@components/ui/primitives/avatar/avatar.index'
+import { Icon } from '@components/ui/primitives/icon/icon.index'
 import { Typography } from '@components/ui/primitives/typography/typo.index'
 import { useMutative } from 'shared/hooks/use-mutative'
 import { useTimeout } from 'shared/hooks/use-timeout'
@@ -175,17 +176,17 @@ const AvatarComponent = (): React.JSX.Element => {
             <Row gap={8}>
               <Avatar
                 fallback='YW'
-                fallbackStyle={{ color: 'yellow' }}
+                fallbackStyle={{ color: 'yellow_500' }}
                 size={48}
               />
               <Avatar
                 fallback='CY'
-                fallbackStyle={{ color: 'cyan' }}
+                fallbackStyle={{ color: 'cyan_500' }}
                 size={48}
               />
               <Avatar
                 fallback='PK'
-                fallbackStyle={{ color: 'pink' }}
+                fallbackStyle={{ color: 'pink_500' }}
                 size={48}
               />
             </Row>
@@ -213,8 +214,17 @@ const AvatarComponent = (): React.JSX.Element => {
               <Avatar fallback='A' size={48} />
               {/* Long text (gets truncated/scaled) */}
               <Avatar fallback='ABCDE' size={48} />
-              {/* Empty fallback - should still show container */}
-              <Avatar fallback='' size={48} url={invalidImageUrl} />
+              {/* Empty fallback – show broken-link icon instead of nothing */}
+              <Avatar fallback='' size={48} url={invalidImageUrl}>
+                <Block align='center' flex justify='center'>
+                  <Icon
+                    color='gray_500'
+                    name='link-slash'
+                    size={20}
+                    type='fontAwesome6'
+                  />
+                </Block>
+              </Avatar>
               {/* Numbers */}
               <Avatar fallback='42' size={48} />
             </Row>
