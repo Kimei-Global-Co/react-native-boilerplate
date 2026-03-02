@@ -1,7 +1,7 @@
 import { Block } from '@components/ui/layouts/block/block.index'
 import { Header } from '@components/ui/patterns/header/header.index'
 import { Typography } from '@components/ui/primitives/typography/typo.index'
-import { useLingui } from '@lingui/react/macro'
+import { Plural, useLingui } from '@lingui/react/macro'
 import { createContainer } from '../create-container'
 
 const LinguiComponent = (): React.JSX.Element => {
@@ -17,6 +17,15 @@ const LinguiComponent = (): React.JSX.Element => {
         </Header.Section>
       </Header>
       <Typography>{t`Hello world!`}</Typography>
+      <Typography>
+        <Plural
+          _0='You have no unread messages'
+          few="There're # messages in your inbox"
+          one="There's # message in your inbox"
+          other="There're # messages in your inbox"
+          value={2}
+        />
+      </Typography>
     </Block>
   )
 }

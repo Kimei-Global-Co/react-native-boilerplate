@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
 
 import '@formatjs/intl-locale/polyfill-force'
-import '@formatjs/intl-pluralrules/locale-data/vi'
 import '@formatjs/intl-pluralrules/polyfill-force'
+import '@formatjs/intl-pluralrules/locale-data/vi'
 
 import { i18n } from '@lingui/core'
 import { messages as messagesEn } from './locales/en/messages.po'
