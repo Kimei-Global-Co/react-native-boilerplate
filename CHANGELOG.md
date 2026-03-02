@@ -1,8 +1,17 @@
 # Changelog
 
+## 2026-03-02
+
+### 🔨 Chores
+* add EX_UPDATES_COPY_EMBEDDED_ASSETS environment variable and update build commands to use bunx testflight ([d880d0b](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/d880d0beb49ebf15ed795647dabb0e9ad45ccc59))
+
+### 🐛 Bug Fixes
+* plural fn is undefined ([801921a](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/801921af54bb20263be401b252dbac2af2eb2bac))
+
 ## 2026-02-25
 
 ### 🔨 Chores
+* update changelog [skip ci] ([61959ca](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/61959ca33783436368ba89c1b599b7405b7b5a08))
 * update dependencies and refactor components ([151495b](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/151495b3bb9c8afa11b673876b434003ae36a658))
 
 ## 2026-02-24
