@@ -1,8 +1,14 @@
 # Changelog
 
+## 2026-03-09
+
+### ✨ Features
+* Introduce new UI components, dev examples, utilities, and update core boilerplate configurations. ([eda79bb](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/eda79bb9d149041f311c2f20f5bc3e4575233c36))
+
 ## 2026-03-02
 
 ### 🔨 Chores
+* update changelog [skip ci] ([cf828f6](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/cf828f688374b60dd59af21939c4b6f81c2405ff))
 * add EX_UPDATES_COPY_EMBEDDED_ASSETS environment variable and update build commands to use bunx testflight ([d880d0b](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/d880d0beb49ebf15ed795647dabb0e9ad45ccc59))
 
 ### 🐛 Bug Fixes
