@@ -29,11 +29,10 @@ export function Divider(props: Readonly<TDividerProps>): React.JSX.Element {
     return (
       <Block
         align='center'
-        row={isHorizontal}
         style={[
           isHorizontal
-            ? { marginVertical: spacing }
-            : { marginHorizontal: spacing },
+            ? { flexDirection: 'row', marginVertical: spacing }
+            : { flexDirection: 'column', marginHorizontal: spacing },
           style
         ]}
       >
