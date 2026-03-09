@@ -70,14 +70,3 @@ export function closeDrawer(): void {
 export function openDrawer(): void {
   navigationRef.current?.dispatch(DrawerActions.openDrawer())
 }
-
-export default {
-  closeDrawer,
-  navigate,
-  navigationRef,
-  openDrawer,
-  pop,
-  popToTop,
-  push,
-  replace
-}

@@ -1,8 +1,8 @@
 import type { ViewStyle } from 'react-native'
 import { Dimensions, Platform, StyleSheet } from 'react-native'
 
-import type { BlockProps } from '@components/ui/layouts/block/block.type'
-import Colors from '@theme/colors'
+import type { BlockProps } from '@components/ui/primitives/block/block.type'
+import { Colors } from '@theme/colors'
 import get from 'lodash.get'
 import type { EdgeInsets } from 'react-native-safe-area-context'
 import type {
@@ -14,6 +14,42 @@ import type {
   SafeAreaInsetType
 } from '../types/stylesheet.type'
 
+const { width, height } = Dimensions.get('screen')
+
+const DESIGN_WIDTH = 375
+const DESIGN_HEIGHT = 812
+
+const WIDTH = Math.min(width, height)
+const HEIGHT = Math.max(width, height)
+
+const scale = (size: number) => {
+  return (WIDTH / DESIGN_WIDTH) * size
+}
+
+const verticalScale = (size: number) => {
+  return (HEIGHT / DESIGN_HEIGHT) * size
+}
+
+const DEFAULT_SCALE_FACTOR = 0.5
+
+const moderateScale = (size: number, factor: number = DEFAULT_SCALE_FACTOR) => {
+  return size + (scale(size) - size) * factor
+}
+
+/**
+ *
+ * getSize.m(10) Responsive for padding - margin - fontSize.
+ *
+ * getSize.s(10) Responsive by width screen. (Image Size)
+ *
+ * getSize.v(10) Responsive by height screen.
+ **/
+export const getSize = {
+  m: moderateScale,
+  s: scale,
+  v: verticalScale
+}
+
 export const clamp = (
   value: number,
   lowerBound: number,
@@ -23,13 +59,15 @@ export const clamp = (
   return Math.min(Math.max(lowerBound, value), upperBound)
 }
 
+const SNAP_VELOCITY_FACTOR = 0.2
+
 export const snapPoint = (
   value: number,
   velocity: number,
   points: ReadonlyArray<number>
 ): number => {
   'worklet'
-  const point = value + 0.2 * velocity
+  const point = value + SNAP_VELOCITY_FACTOR * velocity
   const deltas = points.map((p) => Math.abs(point - p))
   const minDelta = Math.min.apply(null, deltas)
   return points.find((p) => Math.abs(point - p) === minDelta) ?? points[0]
@@ -69,12 +107,12 @@ export const handleGutter = (
   }
   const padding: Record<string, number> = {}
   const gutterKeys = Object.keys(gutter) as Array<keyof GutterProps>
-  gutterKeys.forEach((key) => {
+  for (const key of gutterKeys) {
     const capFirstLetter = key.charAt(0).toUpperCase() + key.slice(1)
     if (gutter[key] !== undefined) {
       padding[`${type}${capFirstLetter}`] = gutter[key]
     }
-  })
+  }
   return padding
 }
 
@@ -86,12 +124,12 @@ export const handleRadius = (radius: number | RadiusProps): ViewStyle => {
   }
   const borderRadius: Record<string, number> = {}
   const gutterKeys = Object.keys(radius) as Array<keyof RadiusProps>
-  gutterKeys.forEach((key) => {
+  for (const key of gutterKeys) {
     const capFirstLetter = key.charAt(0).toUpperCase() + key.slice(1)
     if (radius[key] !== undefined) {
       borderRadius[`border${capFirstLetter}Radius`] = radius[key]
     }
-  })
+  }
   return borderRadius
 }
 
@@ -174,13 +212,13 @@ export const handleBorder = (border: BorderProps | BorderType): ViewStyle => {
 
   const borderKeys = Object.keys(border) as Array<keyof BorderType>
   const borderBox: Record<string, string | number | undefined> = {}
-  borderKeys.forEach((key) => {
+  for (const key of borderKeys) {
     const capFirstLetter = key.charAt(0).toUpperCase() + key.slice(1)
     if (border[key] !== undefined) {
       borderBox[`border${capFirstLetter}Width`] = border[key]?.width
       borderBox[`border${capFirstLetter}Color`] = border[key]?.color
     }
-  })
+  }
   return borderBox
 }
 
@@ -202,11 +240,17 @@ export const createDefaultStyle = (props: DefaultStyleProps): ViewStyle => {
       },
     props.wrap && { flexWrap: 'wrap' },
     props.alignSelf && { alignSelf: props.alignSelf },
-    props.radius !== undefined && handleRadius(props.radius),
+    props.radius !== undefined && {
+      ...handleRadius(props.radius),
+      borderCurve: 'continuous'
+    },
     props.borderStyle !== undefined && { borderStyle: props.borderStyle },
     props.border && handleBorder(props.border),
     props.square !== undefined && handleSquare(props.square),
-    props.round !== undefined && handleRound(props.round),
+    props.round !== undefined && {
+      ...handleRound(props.round),
+      borderCurve: 'continuous'
+    },
     props.opacity !== undefined && { opacity: props.opacity }
   ])
 }
@@ -226,25 +270,30 @@ export const createSizeStyle = (size: BlockProps['size']) => {
   return {}
 }
 
-export const { width: screenWidth, height: screenHeight } =
-  Dimensions.get('screen')
+const ONE_SECOND_MS = 1e3
+const ONE_MINUTE_MS = ONE_SECOND_MS * 60
+const ONE_HOUR_MS = ONE_MINUTE_MS * 60
+const FIVE_MULTIPLIER = 5
+const TEN_MULTIPLIER = 10
+const FIFTEEN_MULTIPLIER = 15
+const THIRTY_MULTIPLIER = 30
 
 export const STALE = {
   HOURS: {
-    FIVE: 1e3 * 60 * 60 * 5,
-    ONE: 1e3 * 60 * 60
+    FIVE: ONE_HOUR_MS * FIVE_MULTIPLIER,
+    ONE: ONE_HOUR_MS
   },
   INFINITY: Infinity,
   MINUTES: {
-    FIFTEEN: 1e3 * 60 * 15,
-    FIVE: 1e3 * 60 * 5,
-    ONE: 1e3 * 60,
-    TEN: 1e3 * 60 * 10,
-    THIRTY: 1e3 * 60 * 30
+    FIFTEEN: ONE_MINUTE_MS * FIFTEEN_MULTIPLIER,
+    FIVE: ONE_MINUTE_MS * FIVE_MULTIPLIER,
+    ONE: ONE_MINUTE_MS,
+    TEN: ONE_MINUTE_MS * TEN_MULTIPLIER,
+    THIRTY: ONE_MINUTE_MS * THIRTY_MULTIPLIER
   },
   SECONDS: {
-    FIFTEEN: 1e3 * 15,
-    THIRTY: 1e3 * 30
+    FIFTEEN: ONE_SECOND_MS * FIFTEEN_MULTIPLIER,
+    THIRTY: ONE_SECOND_MS * THIRTY_MULTIPLIER
   }
 }
 

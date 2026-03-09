@@ -1,13 +1,31 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.2.0/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.4.5/schema.json",
   "extends": ["./template/biome.json"],
   "overrides": [
     {
       "assist": {
-        "enabled": false
+        "actions": {
+          "source": {
+            "organizeImports": {
+              "level": "on",
+              "options": {
+                "groups": [
+                  "react-native-gesture-handler",
+                  ":BLANK_LINE:",
+                  "react",
+                  "react-native",
+                  ":BLANK_LINE:",
+                  ["@/**", "expo-*", "@expo/**", "use-*/**"]
+                ]
+              }
+            },
+            "useSortedAttributes": "on",
+            "useSortedKeys": "off"
+          }
+        }
       },
       "formatter": {
-        "enabled": false
+        "enabled": true
       },
       "includes": [
         "plopfile.js",
@@ -19,12 +37,16 @@
         "**/plugins/withAndroidGradleCachePlugin.js",
         "**/plugins/withAndroidManifestPlugin.js",
         "**/plugins/withGradleJVMHeapSizeIncrease.js",
-        "**/plugins/withIosAssetCatalog.js"
+        "**/plugins/withIosAssetCatalog.js",
+        "**/app.config.ts"
       ],
       "linter": {
         "rules": {
           "style": {
             "noCommonJs": "off"
+          },
+          "suspicious": {
+            "noConsole": "off"
           }
         }
       }

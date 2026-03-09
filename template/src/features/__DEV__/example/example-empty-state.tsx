@@ -1,6 +1,6 @@
-import { Block } from '@components/ui/layouts/block/block.index'
 import { EmptyState } from '@components/ui/patterns/empty-state'
 import { Header } from '@components/ui/patterns/header/header.index'
+import { Block } from '@components/ui/primitives/block/block.index'
 import { Button } from '@components/ui/primitives/button/button.index'
 import { Typography } from '@components/ui/primitives/typography/typo.index'
 import { createContainer } from '../create-container'
@@ -57,6 +57,6 @@ const EmptyStateComponent = (): React.JSX.Element => {
 
 const Root = createContainer(EmptyStateComponent, 'EmptyState')
 
-export default function ExampleEmptyState(): React.JSX.Element {
+export function ExampleEmptyState(): React.JSX.Element {
   return <Root />
 }

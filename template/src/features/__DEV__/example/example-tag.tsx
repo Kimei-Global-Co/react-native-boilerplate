@@ -1,6 +1,6 @@
-import { Block } from '@components/ui/layouts/block/block.index'
 import { Header } from '@components/ui/patterns/header/header.index'
-import Tag from '@components/ui/primitives/tag/tag.index'
+import { Block } from '@components/ui/primitives/block/block.index'
+import { Tag } from '@components/ui/primitives/tag/tag.index'
 import { createContainer } from '../create-container'
 
 const TagComponent = (): React.JSX.Element => {
@@ -51,6 +51,6 @@ const TagComponent = (): React.JSX.Element => {
 
 const Root = createContainer(TagComponent, 'Tag')
 
-export default function ExampleTag(): React.JSX.Element {
+export function ExampleTag(): React.JSX.Element {
   return <Root />
 }

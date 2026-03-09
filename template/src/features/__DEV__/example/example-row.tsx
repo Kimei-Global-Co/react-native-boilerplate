@@ -1,10 +1,10 @@
 import { ScrollView, StyleSheet } from 'react-native'
 
-import { Block } from '@components/ui/layouts/block/block.index'
-import { Row } from '@components/ui/layouts/row/row.index'
 import { Header } from '@components/ui/patterns/header/header.index'
+import { Block } from '@components/ui/primitives/block/block.index'
+import { Row } from '@components/ui/primitives/row/row.index'
 import { Typography } from '@components/ui/primitives/typography/typo.index'
-import type Colors from '@theme/colors'
+import type { Colors } from '@theme/colors'
 import { createContainer } from '../create-container'
 
 const BoxItem = ({ bg }: { bg: keyof typeof Colors }): React.JSX.Element => (
@@ -13,7 +13,7 @@ const BoxItem = ({ bg }: { bg: keyof typeof Colors }): React.JSX.Element => (
 
 const RowComponent = (): React.JSX.Element => {
   return (
-    <Block flex>
+    <Block flex={true}>
       <Header>
         <Header.Section position='left'>
           <Header.BackButton />
@@ -37,7 +37,7 @@ const RowComponent = (): React.JSX.Element => {
           {/*  Start */}
           <Block gap={8}>
             <Typography> Start</Typography>
-            <Row gap={8} start>
+            <Row gap={8} start={true}>
               <BoxItem bg='rose_500' />
               <BoxItem bg='blue_500' />
               <BoxItem bg='green_500' />
@@ -47,7 +47,7 @@ const RowComponent = (): React.JSX.Element => {
           {/*  Center */}
           <Block gap={8}>
             <Typography> Center</Typography>
-            <Row center gap={8}>
+            <Row center={true} gap={8}>
               <BoxItem bg='rose_500' />
               <BoxItem bg='blue_500' />
               <BoxItem bg='green_500' />
@@ -57,7 +57,7 @@ const RowComponent = (): React.JSX.Element => {
           {/*  End */}
           <Block gap={8}>
             <Typography> End</Typography>
-            <Row end gap={8}>
+            <Row end={true} gap={8}>
               <BoxItem bg='rose_500' />
               <BoxItem bg='blue_500' />
               <BoxItem bg='green_500' />
@@ -67,7 +67,7 @@ const RowComponent = (): React.JSX.Element => {
           {/* Space Between */}
           <Block gap={8}>
             <Typography>Space Between</Typography>
-            <Row between>
+            <Row between={true}>
               <BoxItem bg='rose_500' />
               <BoxItem bg='blue_500' />
               <BoxItem bg='green_500' />
@@ -77,7 +77,7 @@ const RowComponent = (): React.JSX.Element => {
           {/* Combined Props */}
           <Block gap={8}>
             <Typography>Combined Props (Center + Gap + Padding)</Typography>
-            <Row center gap={16} padding={16}>
+            <Row center={true} gap={16} padding={16}>
               <BoxItem bg='rose_500' />
               <BoxItem bg='blue_500' />
               <BoxItem bg='green_500' />
@@ -91,7 +91,7 @@ const RowComponent = (): React.JSX.Element => {
 
 const Root = createContainer(RowComponent, 'Row')
 
-export default function ExampleRow(): React.JSX.Element {
+export function ExampleRow(): React.JSX.Element {
   return <Root />
 }
 

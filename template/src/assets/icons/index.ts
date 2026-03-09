@@ -29,7 +29,7 @@ export const Icons = {
   simpleLineIcons: SimpleLineIcons
 } as const
 
-export type IconType = keyof typeof Icons
+export type TIcon = keyof typeof Icons
 
 export function cacheFonts(fonts: string[]) {
   return fonts.map((font) => Font.loadAsync(font))
@@ -53,9 +53,9 @@ type IconNameMap = {
   simpleLineIcons: React.ComponentProps<typeof SimpleLineIcons>['name']
 }
 
-export type IconName<T extends IconType> = IconNameMap[T]
+export type IconName<T extends TIcon> = IconNameMap[T]
 
-export function getIconComponent<K extends IconType>(type: K) {
+export function getIconComponent<K extends TIcon>(type: K) {
   return Icons[type] as React.ComponentType<{
     name: IconName<K>
     size?: number

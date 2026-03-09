@@ -1,6 +1,6 @@
 import type { ViewStyle } from 'react-native'
 
-import { Block } from '@components/ui/layouts/block/block.index'
+import { Block } from '@components/ui/primitives/block/block.index'
 import { Button } from '@components/ui/primitives/button/button.index'
 import { Typography } from '@components/ui/primitives/typography/typo.index'
 
@@ -26,7 +26,7 @@ export function ErrorState(
   return (
     <Block align='center' justify='center' style={style}>
       <Typography fontToken='font.heading.large'>{title}</Typography>
-      <Typography center color='gray_400' margin={{ bottom: 24, top: 8 }}>
+      <Typography center={true} color='gray_400' margin={{ bottom: 24, top: 8 }}>
         {message}
       </Typography>
       {onRetry && (

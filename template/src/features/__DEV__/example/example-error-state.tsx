@@ -1,6 +1,6 @@
-import { Block } from '@components/ui/layouts/block/block.index'
 import { ErrorState } from '@components/ui/patterns/error-state/index'
 import { Header } from '@components/ui/patterns/header/header.index'
+import { Block } from '@components/ui/primitives/block/block.index'
 import { Typography } from '@components/ui/primitives/typography/typo.index'
 import { createContainer } from '../create-container'
 
@@ -55,6 +55,6 @@ const ErrorStateComponent = (): React.JSX.Element => {
 
 const Root = createContainer(ErrorStateComponent, 'ErrorState')
 
-export default function ExampleErrorState(): React.JSX.Element {
+export function ExampleErrorState(): React.JSX.Element {
   return <Root />
 }

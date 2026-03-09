@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 
-import { Block } from '@components/ui/layouts/block/block.index'
-import { Row } from '@components/ui/layouts/row/row.index'
-import { Spacer } from '@components/ui/layouts/spacer/spacer.index'
+import { Block } from '@components/ui/primitives/block/block.index'
 import { Button } from '@components/ui/primitives/button/button.index'
 import { Icon } from '@components/ui/primitives/icon/icon.index'
+import { Row } from '@components/ui/primitives/row/row.index'
+import { Spacer } from '@components/ui/primitives/spacer/spacer.index'
 import { Typography } from '@components/ui/primitives/typography/typo.index'
 import { type Updater, useMutative } from 'shared/hooks/use-mutative'
 import { createContainer } from '../create-container'
@@ -27,8 +27,8 @@ const OptimizedChild = ({
   }, [name])
 
   return (
-    <Block backgroundColor='white' padding={16} radius={12} shadow>
-      <Row between>
+    <Block backgroundColor='white' padding={16} radius={12} shadow={true}>
+      <Row between={true}>
         <Block>
           <Typography fontToken='font.heading.small'>{name}</Typography>
           <Typography color='gray_400'>Memoized Component</Typography>
@@ -39,7 +39,7 @@ const OptimizedChild = ({
           padding={{ horizontal: 12, vertical: 4 }}
           radius={20}
         >
-          <Typography color='black' fontToken='font.label'>
+          <Typography color='black' fontToken='font.body'>
             Renders: {renderCount}
           </Typography>
         </Block>
@@ -95,7 +95,7 @@ const MutativeExample = () => {
   }, [patches, inversePatches])
 
   return (
-    <Block flex padding={16}>
+    <Block flex={true} padding={16}>
       <Typography fontToken='font.heading.large'>Mutative Benchmark</Typography>
       <Typography color='gray_400'>
         This test proves that the update function is strictly stable.
@@ -129,5 +129,8 @@ const MutativeExample = () => {
     </Block>
   )
 }
+const Root = createContainer(MutativeExample, 'Mutative')
 
-export default createContainer(MutativeExample, 'Mutative')
+export function ExampleMutative() {
+  return <Root />
+}

@@ -1,6 +1,6 @@
 import type { TextStyle, ViewStyle } from 'react-native'
 
-import type { IconType } from '@assets/icons'
+import type { TIcon } from '@assets/icons'
 import type { IconProps } from '@components/ui/primitives/icon/icon.type'
 import type { TImageProps } from '@components/ui/primitives/image/image.type'
 
@@ -11,7 +11,7 @@ interface BaseHeaderProps {
 }
 
 // Root component props
-export interface HeaderRootProps extends BaseHeaderProps {}
+export interface HeaderRootProps extends BaseHeaderProps { }
 
 type HeaderSectionPosition = 'left' | 'right' | 'content'
 
@@ -27,11 +27,11 @@ type HeaderActionBaseProps = {
   size?: number
 }
 
-export type HeaderActionProps<T extends IconType = IconType> =
+export type HeaderActionProps<T extends TIcon = TIcon> =
   HeaderActionBaseProps & Omit<IconProps<T>, 'children'>
 
 // Avatar props
-export interface HeaderAvatarProps extends TImageProps {}
+export interface HeaderAvatarProps extends TImageProps { }
 
 // Back button props
 export interface HeaderBackButtonProps {

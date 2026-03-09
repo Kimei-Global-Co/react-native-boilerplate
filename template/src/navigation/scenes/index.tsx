@@ -6,9 +6,9 @@ import { linking } from '@navigation/config/linking'
 import { navigationRef } from '@navigation/config/navigation-services'
 import { NavigationContainer } from '@react-navigation/native'
 import { useInitial } from 'shared/hooks/use-initial'
-import RootScenes from './root-scenes'
+import { RootScenes } from './root-scenes'
 
-export default function MainNavigation(): React.JSX.Element {
+export function MainNavigation(): React.JSX.Element {
   const trackedLinking = useRef(linking)
 
   const linkingConfig = useInitial(trackedLinking)

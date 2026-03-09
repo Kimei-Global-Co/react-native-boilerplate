@@ -1,6 +1,6 @@
 import { TrueSheet } from '@lodev09/react-native-true-sheet'
 
-export default function OptionsSheet() {
+export function OptionsSheet() {
   return (
     <TrueSheet
       backgroundBlur='light'
@@ -10,7 +10,7 @@ export default function OptionsSheet() {
         interaction: false
       }}
       detents={[0.2, 0.5, 1]}
-      grabber
+      grabber={true}
       name='options'
     />
   )

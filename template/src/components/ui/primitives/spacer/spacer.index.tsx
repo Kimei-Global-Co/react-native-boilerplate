@@ -1,4 +1,4 @@
-import { Block } from '@components/ui/layouts/block/block.index'
+import { Block } from '@components/ui/primitives/block/block.index'
 
 type SpacerProps = {
   readonly x?: number

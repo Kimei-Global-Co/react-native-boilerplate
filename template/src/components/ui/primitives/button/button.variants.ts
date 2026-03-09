@@ -1,6 +1,6 @@
 import type { TextStyle, ViewStyle } from 'react-native'
 
-import Colors from '@theme/colors'
+import { Colors } from '@theme/colors'
 import { getFontTokenStyle } from '@theme/fonts'
 import type {
   ColorVariant,

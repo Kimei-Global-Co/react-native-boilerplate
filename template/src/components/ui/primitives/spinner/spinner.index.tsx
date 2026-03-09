@@ -9,6 +9,8 @@ import Animated, {
 } from 'react-native-reanimated'
 import { getSpinnerSize, type SpinnerProps, SpinnerView } from './spinner-view'
 
+const ROTATE_DEGREE = 360
+
 export function Spinner({
   size,
   duration = 1000,
@@ -19,7 +21,7 @@ export function Spinner({
   useEffect(() => {
     transition.set(
       withRepeat(
-        withTiming(360, { duration, easing: Easing.linear }),
+        withTiming(ROTATE_DEGREE, { duration, easing: Easing.linear }),
         -1,
         false
       )

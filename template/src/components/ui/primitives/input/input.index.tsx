@@ -1,143 +1,238 @@
-import { useState } from 'react'
-import { TextInput as RNTextInput, StyleSheet } from 'react-native'
+import {
+  createContext,
+  use,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState
+} from 'react'
+import {
+  TextInput as RNTextInput,
+  StyleSheet,
+  type ViewStyle
+} from 'react-native'
 
-import { Block } from '@components/ui/layouts/block/block.index'
-import { Row } from '@components/ui/layouts/row/row.index'
+import type { IconName } from '@assets/icons'
+import { Block } from '@components/ui/primitives/block/block.index'
 import { Icon } from '@components/ui/primitives/icon/icon.index'
-import { Typography } from '@components/ui/primitives/typography/typo.index'
-import Colors from '@theme/colors'
-import type { TextInputBaseProps } from './input.type'
+import { Row } from '@components/ui/primitives/row/row.index'
+import { Colors } from '@theme/colors'
+import type { InputFieldProps, InputIconProps, InputProps } from './input.type'
 
-export function Input(
-  props: TextInputBaseProps & { ref?: React.Ref<RNTextInput> }
-): React.JSX.Element {
+interface InputContextValue {
+  isFocused: boolean
+  setIsFocused: (focused: boolean) => void
+  secureEntry: boolean
+  setSecureEntry: (secure: boolean | ((prev: boolean) => boolean)) => void
+  internalValue: string
+  setInternalValue: (text: string) => void
+  inputRef: React.RefObject<RNTextInput | null>
+}
+
+const InputContext = createContext<InputContextValue | undefined>(undefined)
+
+export function useInputContext(componentName: string) {
+  const context = use(InputContext)
+  if (!context) {
+    throw new Error(
+      `${componentName} must be used within an <Input /> component.`
+    )
+  }
+  return context
+}
+
+function Input({ ref, children, ...props }: Readonly<InputProps>) {
   const {
-    containerStyle,
     inputStyle,
-    labelStyle,
-    errorStyle,
-    mode = 'default',
-    label,
     error,
     leftIcon,
     rightIcon,
     clearable = false,
     focusColor = 'blue_400',
-    helper,
-    required = false,
     value: externalValue,
+    defaultValue: externalDefaultValue,
     onChangeText: externalOnChangeText,
-    ref,
+    onFocus,
+    onBlur,
+    style,
+    secureTextEntry: isInitialSecure,
     ...rest
   } = props
 
+  const inputRef = useRef<RNTextInput>(null)
   const [isFocused, setIsFocused] = useState(false)
-  const [secureEntry, setSecureEntry] = useState(mode === 'password')
-  const [internalValue, setInternalValue] = useState('')
+  const [secureEntry, setSecureEntry] = useState(isInitialSecure ?? false)
+  const [internalValue, setInternalValue] = useState(
+    externalValue ?? externalDefaultValue ?? ''
+  )
 
-  const isControlled = externalValue !== undefined
-  const value = isControlled ? externalValue : internalValue
+  useImperativeHandle(ref, () => inputRef.current as RNTextInput)
 
-  const handleChangeText = (text: string) => {
-    if (!isControlled) {
-      setInternalValue(text)
+  useEffect(() => {
+    if (externalValue !== undefined && externalValue !== internalValue) {
+      setInternalValue(externalValue)
+      inputRef.current?.setNativeProps({ text: externalValue })
     }
+  }, [externalValue, internalValue])
+
+  const onValueChange = (text: string) => {
+    setInternalValue(text)
     externalOnChangeText?.(text)
   }
 
-  const handleFocus = (): void => setIsFocused(true)
-  const handleBlur = (): void => setIsFocused(false)
-
-  const handleClear = (): void => handleChangeText('')
-
-  const toggleSecureEntry = (): void => setSecureEntry((prev) => !prev)
-
-  const containerStyles = [
-    styles.container,
-    isFocused && { borderColor: focusColor },
-    error && styles.error,
-    containerStyle
-  ]
-
-  const inputStyles = [styles.input, inputStyle]
-
-  const renderRightIcon = () => {
-    if (rightIcon) {
-      return rightIcon
-    }
-    if (mode === 'password') {
-      return (
-        <Icon
-          name={secureEntry ? 'eye-off' : 'eye'}
-          onPress={toggleSecureEntry}
-          size={18}
-          type={'feather'}
-        />
-      )
-    }
-    if (clearable && value) {
-      return (
-        <Icon
-          name='clear'
-          onPress={handleClear}
-          size={18}
-          type='materialIcons'
-        />
-      )
-    }
-    return null
+  const contextValue = {
+    inputRef,
+    internalValue,
+    isFocused,
+    secureEntry,
+    setInternalValue: onValueChange,
+    setIsFocused,
+    setSecureEntry
   }
 
-  const labelComponent = label && (
-    <Typography
-      color={error ? 'rose_400' : 'black'}
-      style={[styles.label, labelStyle]}
-    >
-      {label}
-      {required && <Typography color='rose_400'> *</Typography>}
-    </Typography>
-  )
+  const containerStyles = StyleSheet.flatten<ViewStyle>([
+    styles.container,
+    isFocused && {
+      borderColor: Colors[focusColor as keyof typeof Colors] ?? focusColor
+    },
+    error && styles.error,
+    style
+  ])
 
-  const helperComponent = (error || helper) && (
-    <Typography
-      color={error ? 'rose_400' : 'gray_400'}
-      style={[styles.helper, errorStyle]}
-    >
-      {error ?? helper}
-    </Typography>
+  const defaultContent = (
+    <Row style={containerStyles}>
+      <InputIcon position='left'>{leftIcon}</InputIcon>
+
+      <InputField
+        {...rest}
+        defaultValue={externalDefaultValue ?? externalValue}
+        onBlur={(e) => {
+          setIsFocused(false)
+          onBlur?.(e)
+        }}
+        onFocus={(e) => {
+          setIsFocused(true)
+          onFocus?.(e)
+        }}
+        secureTextEntry={secureEntry}
+        style={[styles.input, inputStyle]}
+      />
+
+      {rightIcon ? (
+        <InputIcon position='right'>{rightIcon}</InputIcon>
+      ) : (
+        <>
+          {isInitialSecure && <InputVisibilityToggle />}
+          {clearable && !isInitialSecure && <InputClearButton />}
+        </>
+      )}
+    </Row>
   )
 
   return (
-    <Block>
-      {labelComponent}
-      <Row style={containerStyles}>
-        {leftIcon && <Block margin={{ left: 12 }}>{leftIcon}</Block>}
+    <InputContext.Provider value={contextValue}>
+      {children ?? defaultContent}
+    </InputContext.Provider>
+  )
+}
 
-        <RNTextInput
-          ref={ref}
-          {...rest}
-          accessibilityHint={helper}
-          accessibilityLabel={`${label}${required ? ' required' : ''}`}
-          accessibilityRole='none'
-          accessibilityState={{
-            disabled: rest.editable === false
-          }}
-          onBlur={handleBlur}
-          onChangeText={handleChangeText}
-          onFocus={handleFocus}
-          // placeholderTextColor={theme.colors.gray_400}
-          secureTextEntry={secureEntry}
-          style={inputStyles}
-          value={value}
-        />
-        {renderRightIcon && (
-          <Block margin={{ right: 12 }}>{renderRightIcon()}</Block>
-        )}
-      </Row>
-      {helperComponent}
+function InputField({ style, ...props }: Readonly<InputFieldProps>) {
+  const {
+    inputRef,
+    secureEntry,
+    setIsFocused,
+    setInternalValue,
+    internalValue
+  } = useInputContext('Input.Field')
+
+  const finalDefaultValue =
+    props.defaultValue ?? (props.value ? undefined : internalValue)
+
+  return (
+    <RNTextInput
+      defaultValue={finalDefaultValue}
+      onBlur={(e) => {
+        setIsFocused(false)
+        props.onBlur?.(e)
+      }}
+      onChangeText={(text) => {
+        setInternalValue(text)
+        props.onChangeText?.(text)
+      }}
+      onFocus={(e) => {
+        setIsFocused(true)
+        props.onFocus?.(e)
+      }}
+      ref={inputRef}
+      secureTextEntry={props.secureTextEntry ?? secureEntry}
+      style={[styles.input, style]}
+      {...props}
+    />
+  )
+}
+
+function InputIcon({ children, position, style }: Readonly<InputIconProps>) {
+  if (!children) {
+    return null
+  }
+
+  const content =
+    typeof children === 'string' ? (
+      <Icon name={children as IconName<'feather'>} size={18} type='feather' />
+    ) : (
+      children
+    )
+
+  return (
+    <Block
+      margin={position === 'left' ? { left: 12 } : { right: 12 }}
+      style={style}
+    >
+      {content}
     </Block>
   )
 }
+
+function InputVisibilityToggle() {
+  const { secureEntry, setSecureEntry } = useInputContext(
+    'Input.VisibilityToggle'
+  )
+  return (
+    <InputIcon position='right'>
+      <Icon
+        name={secureEntry ? 'eye-off' : 'eye'}
+        onPress={() => setSecureEntry(!secureEntry)}
+        size={18}
+        type='feather'
+      />
+    </InputIcon>
+  )
+}
+
+function InputClearButton() {
+  const { internalValue, setInternalValue, inputRef } =
+    useInputContext('Input.ClearButton')
+
+  if (!internalValue) {
+    return null
+  }
+
+  return (
+    <InputIcon position='right'>
+      <Icon
+        name='clear'
+        onPress={() => {
+          inputRef.current?.clear()
+          setInternalValue('')
+        }}
+        size={18}
+        type='materialIcons'
+      />
+    </InputIcon>
+  )
+}
+
+export { Input, InputField, InputIcon, InputClearButton, InputVisibilityToggle }
 
 const styles = StyleSheet.create({
   container: {
@@ -149,10 +244,7 @@ const styles = StyleSheet.create({
     height: 48
   },
   error: {
-    borderColor: Colors.rose_400
-  },
-  helper: {
-    marginTop: 4
+    borderColor: Colors.red_600
   },
   input: {
     color: Colors.black,
@@ -160,8 +252,5 @@ const styles = StyleSheet.create({
     fontSize: 16,
     height: '100%',
     paddingHorizontal: 12
-  },
-  label: {
-    marginBottom: 4
   }
 })

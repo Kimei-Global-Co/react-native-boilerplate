@@ -1,6 +1,6 @@
 import type { ViewStyle } from 'react-native'
 
-import type Colors from '@theme/colors'
+import type { Colors } from '@theme/colors'
 
 export type TDividerProps = {
   /**

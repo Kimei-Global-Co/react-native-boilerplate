@@ -1,7 +1,7 @@
 import { ScrollView, View } from 'react-native'
 
-import { Block } from '@components/ui/layouts/block/block.index'
 import { Header } from '@components/ui/patterns/header/header.index'
+import { Block } from '@components/ui/primitives/block/block.index'
 import { Button } from '@components/ui/primitives/button/button.index'
 import { Typography } from '@components/ui/primitives/typography/typo.index'
 
@@ -11,9 +11,9 @@ import { Typography } from '@components/ui/primitives/typography/typo.index'
  * - Compose subparts when you need custom layouts: Button.Content, Pending, Success, Error, Label, Icon
  * - State drives visuals: `state="pending" | "success" | "error" | "idle"`; pending also disables taps
  */
-export default function ExampleButton(): React.JSX.Element {
+export function ExampleButton(): React.JSX.Element {
   return (
-    <Block collapsable={false} flex inset='top'>
+    <Block collapsable={false} flex={true} inset='top'>
       <Header>
         <Header.Section position='left'>
           <Header.BackButton />
@@ -26,22 +26,22 @@ export default function ExampleButton(): React.JSX.Element {
         contentContainerStyle={{ gap: 12, padding: 16 }}
         showsVerticalScrollIndicator={false}
       >
-        <Typography center>Base Button</Typography>
+        <Typography center={true}>Base Button</Typography>
         <Button title='Default' />
 
-        <Typography center>Preset Variants</Typography>
+        <Typography center={true}>Preset Variants</Typography>
         <Button.Primary title='Primary' />
         <Button.Secondary title='Secondary' />
         <Button.Shadow title='Shadow' />
         <Button.Bordered title='Bordered' />
         <Button.Ghost title='Ghost' />
 
-        <Typography center>States</Typography>
+        <Typography center={true}>States</Typography>
         <Button.Primary state='pending' title='Pending' />
         <Button.Primary state='success' title='Success' />
         <Button.Primary state='error' title='Error' />
 
-        <Typography center>Composed Content</Typography>
+        <Typography center={true}>Composed Content</Typography>
         <Button.Primary>
           <Button.Content>
             <Button.Icon
@@ -72,8 +72,8 @@ export default function ExampleButton(): React.JSX.Element {
           </Button.Content>
         </Button.Primary>
 
-        <Typography center>Disabled</Typography>
-        <Button.Secondary disabled title='Disabled' />
+        <Typography center={true}>Disabled</Typography>
+        <Button.Secondary disabled={true} title='Disabled' />
       </ScrollView>
     </Block>
   )

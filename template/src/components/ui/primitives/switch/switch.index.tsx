@@ -17,6 +17,9 @@ import type { SwitchProps } from './switch.type'
 
 const DEFAULT_TRACK_WIDTH = 50
 const DEFAULT_THUMB_WIDTH = 24
+const TRACK_PADDING_OFFSET = 4
+const ANIMATION_SCALE_X_FACTOR = 1.25
+const ANIMATION_SCALE_X_DIVISOR = 3
 
 export function Switch(props: Readonly<SwitchProps>): React.JSX.Element {
   const {
@@ -29,7 +32,7 @@ export function Switch(props: Readonly<SwitchProps>): React.JSX.Element {
     disabled
   } = props
 
-  const trackThumbWidth = trackWidth - thumbWidth - 4
+  const trackThumbWidth = trackWidth - thumbWidth - TRACK_PADDING_OFFSET
 
   const translateX = useSharedValue(0)
 
@@ -75,8 +78,8 @@ export function Switch(props: Readonly<SwitchProps>): React.JSX.Element {
         {
           scaleX: interpolate(
             translateX.get(),
-            [0, trackThumbWidth / 3, trackThumbWidth],
-            [1, 1.25, 1]
+            [0, trackThumbWidth / ANIMATION_SCALE_X_DIVISOR, trackThumbWidth],
+            [1, ANIMATION_SCALE_X_FACTOR, 1]
           )
         }
       ]

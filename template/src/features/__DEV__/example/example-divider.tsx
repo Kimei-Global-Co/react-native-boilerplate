@@ -1,15 +1,15 @@
 import { ScrollView } from 'react-native'
 
-import { Block } from '@components/ui/layouts/block/block.index'
-import { Row } from '@components/ui/layouts/row/row.index'
 import { Header } from '@components/ui/patterns/header/header.index'
+import { Block } from '@components/ui/primitives/block/block.index'
 import { Divider } from '@components/ui/primitives/divider/divider.index'
+import { Row } from '@components/ui/primitives/row/row.index'
 import { Typography } from '@components/ui/primitives/typography/typo.index'
 import { createContainer } from '../create-container'
 
 const DividerComponent = (): React.JSX.Element => {
   return (
-    <Block collapsable={false} flex inset='bottom'>
+    <Block collapsable={false} flex={true} inset='bottom'>
       <Header>
         <Header.Section position='left'>
           <Header.BackButton />
@@ -109,15 +109,15 @@ const DividerComponent = (): React.JSX.Element => {
             </Typography>
             <Block backgroundColor='white' padding={16} radius={8}>
               <Row align='center' gap={0} style={{ height: 40 }}>
-                <Block align='center' flex justify='center'>
+                <Block align='center' flex={true} justify='center'>
                   <Typography>Left</Typography>
                 </Block>
                 <Divider orientation='vertical' />
-                <Block align='center' flex justify='center'>
+                <Block align='center' flex={true} justify='center'>
                   <Typography>Center</Typography>
                 </Block>
                 <Divider orientation='vertical' />
-                <Block align='center' flex justify='center'>
+                <Block align='center' flex={true} justify='center'>
                   <Typography>Right</Typography>
                 </Block>
               </Row>
@@ -131,11 +131,11 @@ const DividerComponent = (): React.JSX.Element => {
             </Typography>
             <Block backgroundColor='white' padding={16} radius={8}>
               <Row align='center' gap={0} style={{ height: 60 }}>
-                <Block align='center' flex justify='center'>
+                <Block align='center' flex={true} justify='center'>
                   <Typography>Thin</Typography>
                 </Block>
                 <Divider orientation='vertical' thickness={1} />
-                <Block align='center' flex justify='center'>
+                <Block align='center' flex={true} justify='center'>
                   <Typography>Medium</Typography>
                 </Block>
                 <Divider
@@ -143,11 +143,11 @@ const DividerComponent = (): React.JSX.Element => {
                   orientation='vertical'
                   thickness={2}
                 />
-                <Block align='center' flex justify='center'>
+                <Block align='center' flex={true} justify='center'>
                   <Typography>Thick</Typography>
                 </Block>
                 <Divider color='red_500' orientation='vertical' thickness={4} />
-                <Block align='center' flex justify='center'>
+                <Block align='center' flex={true} justify='center'>
                   <Typography>Extra</Typography>
                 </Block>
               </Row>
@@ -209,6 +209,6 @@ const DividerComponent = (): React.JSX.Element => {
 
 const Root = createContainer(DividerComponent, 'Divider')
 
-export default function ExampleDivider(): React.JSX.Element {
+export function ExampleDivider(): React.JSX.Element {
   return <Root />
 }

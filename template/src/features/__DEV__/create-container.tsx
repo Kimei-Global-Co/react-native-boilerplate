@@ -1,4 +1,4 @@
-import { Block } from '@components/ui/layouts/block/block.index'
+import { Block } from '@components/ui/primitives/block/block.index'
 
 export const MENU_ITEMS = {
   Accordion: 'Accordion',
@@ -9,6 +9,7 @@ export const MENU_ITEMS = {
   Divider: 'Divider',
   EmptyState: 'EmptyState',
   ErrorState: 'ErrorState',
+  FormField: 'FormField',
   Header: 'Header',
   Icon: 'Icon',
   Image: 'Image',
@@ -33,7 +34,7 @@ export const createContainer = <Props extends object>(
 ): React.FC<Props> => {
   const MenuComponent: React.FC<Props> = (props: Props) => {
     return (
-      <Block backgroundColor='primary' flex inset='top'>
+      <Block backgroundColor='primary' flex={true} inset='top'>
         <Component {...props} />
       </Block>
     )

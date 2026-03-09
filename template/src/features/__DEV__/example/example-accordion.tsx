@@ -1,6 +1,6 @@
-import { Block } from '@components/ui/layouts/block/block.index'
-import Accordion from '@components/ui/patterns/accordion/accordion.index'
+import { Accordion } from '@components/ui/patterns/accordion/accordion.index'
 import { Header } from '@components/ui/patterns/header/header.index'
+import { Block } from '@components/ui/primitives/block/block.index'
 import { Typography } from '@components/ui/primitives/typography/typo.index'
 import { createContainer } from '../create-container'
 
@@ -8,7 +8,7 @@ const defaultContent =
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
 const AccordionComponent = (): React.JSX.Element => {
   return (
-    <Block flex>
+    <Block flex={true}>
       <Header>
         <Header.Section position='left'>
           <Header.BackButton />
@@ -58,6 +58,6 @@ const AccordionComponent = (): React.JSX.Element => {
 
 const Root = createContainer(AccordionComponent, 'Accordion')
 
-export default function ExampleAccordion(): React.JSX.Element {
+export function ExampleAccordion(): React.JSX.Element {
   return <Root />
 }

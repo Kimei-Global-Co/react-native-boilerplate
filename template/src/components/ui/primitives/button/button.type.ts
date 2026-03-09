@@ -1,6 +1,6 @@
 import type { PressableProps, StyleProp, ViewStyle } from 'react-native'
 
-import type { IconType } from '@assets/icons'
+import type { TIcon } from '@assets/icons'
 import type { IconProps } from '@components/ui/primitives/icon/icon.type'
 
 export interface ButtonProps
@@ -57,7 +57,7 @@ export type ButtonLabelProps = {
   children?: React.ReactNode
 }
 
-export type ButtonIconProps<T extends IconType = IconType> =
+export type ButtonIconProps<T extends TIcon = TIcon> =
   | { children: React.ReactNode }
   | IconProps<T>
 

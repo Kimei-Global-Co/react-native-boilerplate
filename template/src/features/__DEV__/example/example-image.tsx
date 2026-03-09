@@ -1,9 +1,9 @@
 import { ScrollView } from 'react-native'
 
-import { Block } from '@components/ui/layouts/block/block.index'
-import { Row } from '@components/ui/layouts/row/row.index'
 import { Header } from '@components/ui/patterns/header/header.index'
+import { Block } from '@components/ui/primitives/block/block.index'
 import { Image } from '@components/ui/primitives/image/image.index'
+import { Row } from '@components/ui/primitives/row/row.index'
 import { Typography } from '@components/ui/primitives/typography/typo.index'
 import { createContainer } from '../create-container'
 
@@ -12,7 +12,7 @@ const BLURHASH = 'L6PZfSi_.AyE_3t7t7R**0o#DgR4'
 
 const ImageComponent = (): React.JSX.Element => {
   return (
-    <Block flex>
+    <Block flex={true}>
       <Header>
         <Header.Section position='left'>
           <Header.BackButton />
@@ -62,6 +62,6 @@ const ImageComponent = (): React.JSX.Element => {
 
 const Root = createContainer(ImageComponent, 'Image')
 
-export default function ExampleImage(): React.JSX.Element {
+export function ExampleImage(): React.JSX.Element {
   return <Root />
 }

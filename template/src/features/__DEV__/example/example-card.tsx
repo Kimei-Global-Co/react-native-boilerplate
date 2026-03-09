@@ -1,14 +1,14 @@
 import { ScrollView } from 'react-native'
 
-import { Block } from '@components/ui/layouts/block/block.index'
 import { Card } from '@components/ui/patterns/card'
 import { Header } from '@components/ui/patterns/header/header.index'
+import { Block } from '@components/ui/primitives/block/block.index'
 import { Typography } from '@components/ui/primitives/typography/typo.index'
 import { createContainer } from '../create-container'
 
 const CardComponent = (): React.JSX.Element => {
   return (
-    <Block flex>
+    <Block flex={true}>
       <Header>
         <Header.Section position='left'>
           <Header.BackButton />
@@ -71,6 +71,6 @@ const CardComponent = (): React.JSX.Element => {
 
 const Root = createContainer(CardComponent, 'Card')
 
-export default function ExampleCard(): React.JSX.Element {
+export function ExampleCard(): React.JSX.Element {
   return <Root />
 }

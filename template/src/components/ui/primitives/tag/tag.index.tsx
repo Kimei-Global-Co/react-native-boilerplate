@@ -1,7 +1,7 @@
-import { createContext, useContext } from 'react'
+import { createContext, use } from 'react'
 import { Pressable, StyleSheet } from 'react-native'
 
-import { Block } from '@components/ui/layouts/block/block.index'
+import { Block } from '@components/ui/primitives/block/block.index'
 import { Typography } from '@components/ui/primitives/typography/typo.index'
 import { HIT_SLOP } from 'shared/utils/helper'
 import {
@@ -16,14 +16,14 @@ import {
 const TagContext = createContext<TagContextType | undefined>(undefined)
 
 const useTagContext = (): TagContextType => {
-  const context = useContext(TagContext)
+  const context = use(TagContext)
   if (!context) {
     throw new Error('Tag compound components must be used within Tag.Root')
   }
   return context
 }
-
-function Tag({
+//TODO: re-write this component
+export function Tag({
   variant = 'subtle',
   size = 'sm',
   children
@@ -130,5 +130,3 @@ const styles = StyleSheet.create({
 Tag.Label = Label
 Tag.EndElement = EndElement
 Tag.CloseTrigger = CloseTrigger
-
-export default Tag

@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
 
-import { Block } from '@components/ui/layouts/block/block.index'
+import { Block } from '@components/ui/primitives/block/block.index'
 import { Button } from '@components/ui/primitives/button/button.index'
 import { Divider } from '@components/ui/primitives/divider/divider.index'
 import { Spacing } from '@theme/layout'
@@ -23,24 +23,17 @@ const ListItemRoot = (props: ListItemRootProps): React.JSX.Element => {
   } = props
   const containerStyle = StyleSheet.flatten([styles.root, style])
 
-  const content = pressable ? (
-    <Button.Ghost
-      onPress={onPress}
-      style={[containerStyle, styles.buttonReset]}
-      variant={{ color: 'ghost', radius: 'none' }}
-      {...rest}
-    >
-      {children}
-    </Button.Ghost>
-  ) : (
-    <Block style={containerStyle} {...rest}>
-      {children}
-    </Block>
-  )
+  const Component = pressable ? Button.Ghost : Block
 
   return (
     <>
-      {content}
+      <Component
+        onPress={pressable ? onPress : undefined}
+        style={[containerStyle, pressable && styles.buttonReset]}
+        {...rest}
+      >
+        {children}
+      </Component>
       {divider && <Divider />}
     </>
   )
@@ -64,7 +57,7 @@ ListItemLeading.displayName = 'ListItem.Leading'
 const ListItemContent = (props: ListItemSectionProps): React.JSX.Element => {
   const { style, children, ...rest } = props
   return (
-    <Block flex gap='space.050' style={style} {...rest}>
+    <Block flex={true} gap='space.050' style={style} {...rest}>
       {children}
     </Block>
   )

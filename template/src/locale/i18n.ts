@@ -5,11 +5,10 @@ import '@formatjs/intl-pluralrules/polyfill-force'
 import '@formatjs/intl-pluralrules/locale-data/vi'
 
 import { i18n } from '@lingui/core'
+import * as persistedState from '../shared/utils/persisted-state'
 import { messages as messagesEn } from './locales/en/messages.po'
 import { messages as messagesJa } from './locales/ja/messages.po'
 import { messages as messagesVi } from './locales/vi/messages.po'
-
-// import * as persistedState from '../utils/persisted-state'
 
 export enum AppLanguage {
   en = 'en',
@@ -40,9 +39,10 @@ export async function dynamicActivateLocale(
 }
 
 export function useLocaleLanguage(): void {
-  const appLanguage = 'vi'
+  const appLanguage = (persistedState.getAppLanguage() ??
+    AppLanguage.en) as AppLanguage
 
   useEffect(() => {
-    dynamicActivateLocale(appLanguage as AppLanguage)
-  }, [])
+    dynamicActivateLocale(appLanguage)
+  }, [appLanguage])
 }

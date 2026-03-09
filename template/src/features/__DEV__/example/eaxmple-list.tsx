@@ -1,8 +1,8 @@
 import { StyleSheet } from 'react-native'
 
-import { Block } from '@components/ui/layouts/block/block.index'
 import { Header } from '@components/ui/patterns/header/header.index'
 import { ListItem } from '@components/ui/patterns/list-item/list-item.index'
+import { Block } from '@components/ui/primitives/block/block.index'
 import { Icon } from '@components/ui/primitives/icon/icon.index'
 import { InfiniteScrollList } from '@components/ui/primitives/list/list.index'
 import { Typography } from '@components/ui/primitives/typography/typo.index'
@@ -24,7 +24,7 @@ const SAMPLE_DATA: IListItem[] = Array.from({ length: 1000 }).map(
 
 const ListComponent = (): React.JSX.Element => {
   const renderItem = ({ item }: { item: IListItem }): React.JSX.Element => (
-    <ListItem divider pressable>
+    <ListItem divider={true} pressable={true}>
       <ListItem.Leading>
         <Block
           align='center'
@@ -49,7 +49,7 @@ const ListComponent = (): React.JSX.Element => {
   )
 
   return (
-    <Block flex>
+    <Block flex={true}>
       <Header>
         <Header.Section position='left'>
           <Header.BackButton />
@@ -70,7 +70,7 @@ const ListComponent = (): React.JSX.Element => {
 
 const Root = createContainer(ListComponent, 'List')
 
-export default function ExampleList(): React.JSX.Element {
+export function ExampleList(): React.JSX.Element {
   return <Root />
 }
 

@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native'
 
-import type { Block } from '@components/ui/layouts/block/block.index'
-import Colors from '@theme/colors'
+import type { Block } from '@components/ui/primitives/block/block.index'
+import { Colors } from '@theme/colors'
 import { Shimmer, ShimmerProvider } from 'react-native-fast-shimmer'
 import Animated, { FadeOut } from 'react-native-reanimated'
 import { createSizeStyle, handleRadius } from 'shared/utils/helper'

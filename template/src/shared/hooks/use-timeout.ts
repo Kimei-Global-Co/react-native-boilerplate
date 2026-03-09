@@ -1,11 +1,7 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useEffectEvent } from 'react'
 
 export function useTimeout(callback: () => void, delay: number | null): void {
-  const savedCallback = useRef(callback)
-
-  useEffect(() => {
-    savedCallback.current = callback
-  }, [callback])
+  const onTimeout = useEffectEvent(callback)
 
   useEffect(() => {
     if (!delay && delay !== 0) {
@@ -13,11 +9,9 @@ export function useTimeout(callback: () => void, delay: number | null): void {
     }
 
     const id = setTimeout(() => {
-      savedCallback.current()
+      onTimeout()
     }, delay)
 
-    return () => {
-      clearTimeout(id)
-    }
+    return () => clearTimeout(id)
   }, [delay])
 }

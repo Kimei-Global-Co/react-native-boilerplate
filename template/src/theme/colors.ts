@@ -1,5 +1,5 @@
 // biome-ignore assist/source/useSortedKeys: Some things need their place.
-const Colors = {
+export const Colors = {
   transparent: 'transparent',
   white: '#ffffff',
   whiteF0: '#f0f0f0',
@@ -261,4 +261,3 @@ const Colors = {
   gray_900: '#121212',
   gray_darkest: '#0a0a0f'
 }
-export default Colors

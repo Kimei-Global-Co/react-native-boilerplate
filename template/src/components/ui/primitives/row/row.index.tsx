@@ -1,4 +1,4 @@
-import { Block } from '@components/ui/layouts/block/block.index'
+import { Block } from '@components/ui/primitives/block/block.index'
 
 type TRowProps = {
   start?: boolean
@@ -12,7 +12,7 @@ export function Row(props: TRowProps): React.JSX.Element {
 
   return (
     <Block
-      row
+      row={true}
       {...(between && { justify: 'space-between' })}
       {...(start && { justify: 'flex-start' })}
       {...(center && { justify: 'center' })}

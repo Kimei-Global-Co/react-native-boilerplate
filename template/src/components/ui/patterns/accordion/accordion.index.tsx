@@ -1,7 +1,7 @@
-import { createContext, useContext, useEffect } from 'react'
+import { createContext, use, useEffect } from 'react'
 import { Pressable, StyleSheet } from 'react-native'
 
-import { Block } from '@components/ui/layouts/block/block.index'
+import { Block } from '@components/ui/primitives/block/block.index'
 import { Icon } from '@components/ui/primitives/icon/icon.index'
 import { Typography } from '@components/ui/primitives/typography/typo.index'
 import Animated, {
@@ -22,14 +22,14 @@ const AccordionContext = createContext<AccordionContextType | undefined>(
 )
 
 const useAccordion = (): AccordionContextType => {
-  const context = useContext(AccordionContext)
+  const context = use(AccordionContext)
   if (!context) {
     throw new Error('Accordion.Item must be used within Accordion')
   }
   return context
 }
 
-const Accordion = ({
+export const Accordion = ({
   children,
   variant = 'default',
   defaultExpandedKey = '',
@@ -122,6 +122,8 @@ const AccordionItem = ({
   )
 }
 
+Accordion.Item = AccordionItem
+
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'column',
@@ -149,7 +151,3 @@ const styles = StyleSheet.create({
     gap: 8
   }
 })
-
-Accordion.Item = AccordionItem
-
-export default Accordion

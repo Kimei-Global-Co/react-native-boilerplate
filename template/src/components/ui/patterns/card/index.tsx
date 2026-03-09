@@ -1,14 +1,13 @@
 import type { Ref } from 'react'
-import { Pressable, StyleSheet, type View } from 'react-native'
+import { StyleSheet, type View } from 'react-native'
 
-import { Block } from '@components/ui/layouts/block/block.index'
-import type { BlockProps } from '@components/ui/layouts/block/block.type'
+import { Block } from '@components/ui/primitives/block/block.index'
+import { Button } from '@components/ui/primitives/button/button.index'
 import { Image } from '@components/ui/primitives/image/image.index'
-import type { TImageProps } from '@components/ui/primitives/image/image.type'
-import Colors from '@theme/colors'
+import { Colors } from '@theme/colors'
 import { Spacing } from '@theme/layout'
 
-interface CardProps extends BlockProps {
+interface CardProps extends React.ComponentProps<typeof Block> {
   variant?: 'default' | 'bordered' | 'shadow'
   onPress?: () => void
   ref?: Ref<View>
@@ -20,33 +19,21 @@ const CardRoot = ({
   style,
   onPress,
   ref,
-  ...props
+  ...rest
 }: CardProps): React.JSX.Element => {
-  const cardStyles = [
+  const cardStyles = StyleSheet.flatten([
     styles.default,
     variant === 'bordered' && styles.bordered,
     variant === 'shadow' && styles.shadow,
     style
-  ]
+  ])
 
-  if (onPress) {
-    return (
-      <Pressable
-        accessibilityRole='button'
-        onPress={onPress}
-        ref={ref}
-        style={({ pressed }) => [cardStyles, pressed && { opacity: 0.8 }]}
-        {...props}
-      >
-        {children}
-      </Pressable>
-    )
-  }
+  const Component = onPress ? Button : Block
 
   return (
-    <Block style={cardStyles} {...props}>
+    <Component style={cardStyles} {...rest}>
       {children}
-    </Block>
+    </Component>
   )
 }
 
@@ -54,7 +41,7 @@ const CardHeader = ({
   children,
   style,
   ...props
-}: BlockProps): React.JSX.Element => {
+}: React.ComponentProps<typeof Block>): React.JSX.Element => {
   return (
     <Block style={[styles.header, style]} {...props}>
       {children}
@@ -67,7 +54,7 @@ const CardContent = ({
   children,
   style,
   ...props
-}: BlockProps): React.JSX.Element => {
+}: React.ComponentProps<typeof Block>): React.JSX.Element => {
   return (
     <Block style={[styles.content, style]} {...props}>
       {children}
@@ -80,7 +67,7 @@ const CardFooter = ({
   children,
   style,
   ...props
-}: BlockProps): React.JSX.Element => {
+}: React.ComponentProps<typeof Block>): React.JSX.Element => {
   return (
     <Block style={[styles.footer, style]} {...props}>
       {children}
@@ -89,7 +76,7 @@ const CardFooter = ({
 }
 CardFooter.displayName = 'Card.Footer'
 
-interface CardImageProps extends TImageProps {}
+interface CardImageProps extends React.ComponentProps<typeof Image> {}
 
 const CardImage = ({
   source,
@@ -107,7 +94,10 @@ const CardImage = ({
 }
 CardImage.displayName = 'Card.Image'
 
-const CardDivider = ({ style, ...props }: BlockProps): React.JSX.Element => {
+const CardDivider = ({
+  style,
+  ...props
+}: React.ComponentProps<typeof Block>): React.JSX.Element => {
   return <Block style={[styles.divider, style]} {...props} />
 }
 CardDivider.displayName = 'Card.Divider'

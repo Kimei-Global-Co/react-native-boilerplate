@@ -1,40 +1,68 @@
+import type { ReactNode, Ref } from 'react'
 import type {
+  TextInput as RNTextInput,
   StyleProp,
   TextInputProps,
   TextStyle,
   ViewStyle
 } from 'react-native'
 
-import type { IconType } from '@assets/icons'
-import type Colors from '@theme/colors'
+import type { IconName } from '@assets/icons'
+import type { Colors } from '@theme/colors'
 
-export type TextInputMode = 'default' | 'numeric' | 'password' | 'search'
+/**
+ * Main Props for the Input component.
+ * Focused purely on the input field and its immediate decorators.
+ */
+export interface InputProps extends Omit<TextInputProps, 'style'> {
+  /** Main root block style (the outer wrapper of the input row) */
+  style?: StyleProp<ViewStyle>
 
-export interface TextInputBaseProps extends Omit<TextInputProps, 'style'> {
-  /** Input container style */
-  containerStyle?: StyleProp<ViewStyle>
-  /** Input style */
+  /** Direct TextInput style override */
   inputStyle?: StyleProp<TextStyle>
-  /** Label style */
-  labelStyle?: StyleProp<TextStyle>
-  /** Error message style */
-  errorStyle?: StyleProp<TextStyle>
-  /** Input mode */
-  mode?: TextInputMode
-  /** Input label */
-  label?: string
-  /** Error message */
-  error?: string
-  /** Left icon */
-  leftIcon?: IconType
-  /** Right icon */
-  rightIcon?: IconType
-  /** Show clear icon */
+
+  /** Left-side icon or component. If a string is provided, it must be a valid Feather icon name. */
+  leftIcon?: ReactNode | IconName<'feather'>
+
+  /** Right-side icon or component. If a string is provided, it must be a valid Feather icon name. */
+  rightIcon?: ReactNode | IconName<'feather'>
+
+  /** Shows a clear button on the right when there's internal text content */
   clearable?: boolean
-  /** Focus color */
+
+  /** Color name from theme for focus border */
   focusColor?: keyof typeof Colors
-  /** Helper text */
-  helper?: string
-  /** Required field */
-  required?: boolean
+
+  /**
+   * React 19 forward-compatible ref.
+   * Direct access to the native TextInput methods.
+   */
+  ref?: Ref<RNTextInput>
+
+  /**
+   * Children for custom composition.
+   * If provided, the default internal layout (Icons + Field) is bypassed.
+   */
+  children?: ReactNode
+
+  /** Optional error state for border highlighting */
+  error?: boolean
 }
+
+/**
+ * Props for Input.Field sub-component
+ */
+export interface InputFieldProps extends TextInputProps {
+  style?: StyleProp<TextStyle>
+}
+
+/**
+ * Props for Input.Icon sub-component
+ */
+export interface InputIconProps {
+  children?: ReactNode | IconName<'feather'>
+  position?: 'left' | 'right'
+  style?: StyleProp<ViewStyle>
+}
+
+export type { RNTextInput }

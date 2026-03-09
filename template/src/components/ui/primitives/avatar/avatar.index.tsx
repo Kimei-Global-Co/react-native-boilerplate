@@ -1,4 +1,4 @@
-import { Block } from '@components/ui/layouts/block/block.index'
+import { Block } from '@components/ui/primitives/block/block.index'
 import { Image } from '@components/ui/primitives/image/image.index'
 import { Skeleton } from '@components/ui/primitives/skeleton/skeleton.index'
 import { Typography } from '@components/ui/primitives/typography/typo.index'

@@ -5,7 +5,7 @@ import type {
   ViewStyle
 } from 'react-native'
 
-import type Colors from '@theme/colors'
+import type { Colors } from '@theme/colors'
 import type { Spacing } from '@theme/layout'
 import type {
   DefaultStyleProps,
@@ -32,10 +32,6 @@ export interface BlockProps extends DefaultStyleProps, ViewProps {
    */
 
   size?: { width?: FlexStyle['width']; height?: FlexStyle['height'] } | number
-  /**
-   * The flexible items are displayed horizontally, as a row
-   */
-  row?: boolean
 
   /**
    * Background color of the component - (key of Colors (theme/colors.ts) or Color keywords)

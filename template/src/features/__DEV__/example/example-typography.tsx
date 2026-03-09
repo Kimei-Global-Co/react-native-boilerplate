@@ -1,5 +1,5 @@
-import { Block } from '@components/ui/layouts/block/block.index'
 import { Header } from '@components/ui/patterns/header/header.index'
+import { Block } from '@components/ui/primitives/block/block.index'
 import { Typography } from '@components/ui/primitives/typography/typo.index'
 import { useLingui } from '@lingui/react/macro'
 import { createContainer } from '../create-container'
@@ -23,6 +23,6 @@ const TypographyComponent = (): React.JSX.Element => {
 
 const Root = createContainer(TypographyComponent, 'Typography')
 
-export default function ExampleTypography(): React.JSX.Element {
+export function ExampleTypography(): React.JSX.Element {
   return <Root />
 }

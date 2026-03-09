@@ -1,10 +1,10 @@
 import { createElement } from 'react'
 import { Platform, Pressable, StyleSheet } from 'react-native'
 
-import type { IconType } from '@assets/icons'
+import type { TIcon } from '@assets/icons'
 import { getIconComponent } from '@assets/icons'
-import { Block } from '@components/ui/layouts/block/block.index'
-import Colors from '@theme/colors'
+import { Block } from '@components/ui/primitives/block/block.index'
+import { Colors } from '@theme/colors'
 import type { IconProps } from './icon.type'
 
 const DEFAULT_RIPPLE = { borderless: true, color: 'rgba(0,0,0,0.12)' } as const
@@ -18,9 +18,7 @@ const DEFAULT_RIPPLE = { borderless: true, color: 'rgba(0,0,0,0.12)' } as const
  * />
  * ```
  */
-export function Icon<T extends IconType>(
-  props: IconProps<T>
-): React.JSX.Element {
+export function Icon<T extends TIcon>(props: IconProps<T>): React.JSX.Element {
   const {
     type,
     name,

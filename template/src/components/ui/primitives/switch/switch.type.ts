@@ -1,4 +1,4 @@
-import type Colors from '@theme/colors'
+import type { Colors } from '@theme/colors'
 
 export interface SwitchProps {
   value: boolean

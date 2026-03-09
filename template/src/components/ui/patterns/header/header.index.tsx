@@ -1,8 +1,8 @@
-import type { IconType } from '@assets/icons'
-import { Block } from '@components/ui/layouts/block/block.index'
-import { Row } from '@components/ui/layouts/row/row.index'
+import type { TIcon } from '@assets/icons'
+import { Block } from '@components/ui/primitives/block/block.index'
 import { Button } from '@components/ui/primitives/button/button.index'
 import { Image } from '@components/ui/primitives/image/image.index'
+import { Row } from '@components/ui/primitives/row/row.index'
 import { Typography } from '@components/ui/primitives/typography/typo.index'
 import { goBack } from '@navigation/config/navigation-services'
 import type {
@@ -24,7 +24,7 @@ function HeaderRoot({
       padding={{ horizontal: 16, vertical: 12 }}
       style={style}
     >
-      <Row between center gap={8}>
+      <Row between={true} center={true} gap={8}>
         {children}
       </Row>
     </Block>
@@ -38,7 +38,7 @@ function HeaderSection({
 }: Readonly<HeaderSectionProps>) {
   if (position === 'content') {
     return (
-      <Block flex justify='center' style={style}>
+      <Block flex={true} justify='center' style={style}>
         {children}
       </Block>
     )
@@ -93,9 +93,7 @@ function HeaderSubtitle({
   )
 }
 
-function HeaderAction<T extends IconType>(
-  props: Readonly<HeaderActionProps<T>>
-) {
+function HeaderAction<T extends TIcon>(props: Readonly<HeaderActionProps<T>>) {
   const { onPress, style, size = 22, ...iconProps } = props
   return (
     <Button.Ghost onPress={onPress} style={[{ width: 30 }, style]}>

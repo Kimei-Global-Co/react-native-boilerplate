@@ -13,6 +13,11 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#. placeholder {0}: 2
+#: src/features/__DEV__/example/example-lingui.tsx:21
+msgid "{0, plural, =0 {You have no unread messages} few {There're # messages in your inbox} one {There's # message in your inbox} other {There're # messages in your inbox}}"
+msgstr ""
+
 #: src/features/__DEV__/example/example-lingui.tsx:19
 #: src/features/__DEV__/example/example-typography.tsx:19
 msgid "Hello world!"

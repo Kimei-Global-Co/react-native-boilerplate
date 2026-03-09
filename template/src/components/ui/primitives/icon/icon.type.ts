@@ -1,7 +1,7 @@
 import type { PressableProps, StyleProp, ViewStyle } from 'react-native'
 
-import type { IconName, IconType } from '@assets/icons'
-import type Colors from '@theme/colors'
+import type { IconName, TIcon } from '@assets/icons'
+import type { Colors } from '@theme/colors'
 
 interface CommonIconProps extends Omit<PressableProps, 'style'> {
   size?: number
@@ -11,7 +11,7 @@ interface CommonIconProps extends Omit<PressableProps, 'style'> {
   activeOpacity?: number
 }
 
-export type IconProps<T extends IconType> = {
+export type IconProps<T extends TIcon> = {
   type: T
   name: IconName<T>
 } & CommonIconProps

@@ -1,5 +1,5 @@
-import { Block } from '@components/ui/layouts/block/block.index'
 import { Header } from '@components/ui/patterns/header/header.index'
+import { Block } from '@components/ui/primitives/block/block.index'
 import { createContainer } from '../create-container'
 
 const HeaderComponent = (): React.JSX.Element => {
@@ -11,7 +11,7 @@ const HeaderComponent = (): React.JSX.Element => {
           <Header.BackButton />
         </Header.Section>
         <Header.Section position='content'>
-          <Header.Title center>Header Component</Header.Title>
+          <Header.Title center={true}>Header Component</Header.Title>
         </Header.Section>
         <Header.Section position='right'>
           {/* Empty right to balance layout if needed, or explicit action */}
@@ -71,7 +71,7 @@ const HeaderComponent = (): React.JSX.Element => {
           />
         </Header.Section>
         <Header.Section position='content'>
-          <Header.Title center>Modal Header</Header.Title>
+          <Header.Title center={true}>Modal Header</Header.Title>
         </Header.Section>
         <Header.Section position='right'>
           <Header.Action
@@ -89,6 +89,6 @@ const HeaderComponent = (): React.JSX.Element => {
 
 const Root = createContainer(HeaderComponent, 'Header')
 
-export default function ExampleHeader(): React.JSX.Element {
+export function ExampleHeader(): React.JSX.Element {
   return <Root />
 }

@@ -1,6 +1,6 @@
 import { StyleSheet, type TextStyle } from 'react-native'
 
-import Colors from '@theme/colors'
+import { Colors } from '@theme/colors'
 import { getEmbeddedFontFamily, getFontTokenStyle } from '@theme/fonts'
 import { NativeText } from 'react-native/Libraries/Text/TextNativeComponent'
 import {

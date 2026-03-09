@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { StyleSheet, Text } from 'react-native'
 
-import { Block } from '@components/ui/layouts/block/block.index'
 import { Header } from '@components/ui/patterns/header/header.index'
+import { Block } from '@components/ui/primitives/block/block.index'
 import { Switch } from '@components/ui/primitives/switch/switch.index'
 import { createContainer } from '../create-container'
 
@@ -36,7 +36,11 @@ const SwitchComponent = (): React.JSX.Element => {
         <Switch onValueChange={setIsToggle1} value={isToggle1} />
 
         <Text style={styles.description}>Disabled Switch</Text>
-        <Switch disabled onValueChange={setIsToggle1} value={isToggle1} />
+        <Switch
+          disabled={true}
+          onValueChange={setIsToggle1}
+          value={isToggle1}
+        />
 
         <Text style={styles.description}>Blue Thumb Color</Text>
         <Switch
@@ -71,6 +75,6 @@ const SwitchComponent = (): React.JSX.Element => {
 
 const Root = createContainer(SwitchComponent, 'Switch')
 
-export default function ExampleSwitch(): React.JSX.Element {
+export function ExampleSwitch(): React.JSX.Element {
   return <Root />
 }

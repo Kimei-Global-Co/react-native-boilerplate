@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.2.0/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.4.5/schema.json",
   "assist": {
     "actions": {
       "source": {
@@ -120,7 +120,9 @@
         "useIndexOf": "error",
         "useLiteralKeys": "warn",
         "useOptionalChain": "error",
-        "useWhile": "error"
+        "useWhile": "error",
+        "noForEach": "error",
+        "noFlatMapIdentity": "error"
       },
       "correctness": {
         "noChildrenProp": "error",
@@ -156,9 +158,11 @@
         "useYield": "error"
       },
       "nursery": {
-        "noImportCycles": "error",
+        "useArraySome": "error",
+        "noUselessReturn": "error",       
         "noShadow": "error",
-        "useExhaustiveSwitchCases": "error"
+        "useExhaustiveSwitchCases": "error",
+        "recommended": true
       },
       "performance": {
         "noAwaitInLoops": "error",
@@ -184,7 +188,16 @@
         "useConst": "error",
         "useDefaultSwitchClause": "error",
         "useObjectSpread": "error",
-        "useSingleVarDeclarator": "error"
+        "useSingleVarDeclarator": "error",
+        "noDefaultExport": "error",
+        "noImplicitBoolean": "error",
+        "noMagicNumbers": "error",
+        "noUselessElse": "error",
+        "useReactFunctionComponents": "error",
+        "noSubstr": "error",
+        "useTrimStartEnd": "error",
+        "useAtIndex": "error",
+        "useTemplate": "error"
       },
       "suspicious": {
         "noAlert": "error",
@@ -241,14 +254,35 @@
         "useDefaultSwitchClauseLast": "error",
         "useGetterReturn": "error",
         "useGuardForIn": "warn",
-        "useIsArray": "error"
+        "useIsArray": "error",
+        "noGlobalIsFinite": "error",
+        "noReactForwardRef": "error",
+        "noGlobalIsNan": "error"
       }
     }
   },
   "overrides": [
     {
-      "assist": {
-        "enabled": false
+       "assist": {
+        "actions": {
+          "source": {
+            "organizeImports": {
+              "level": "on",
+              "options": {
+                "groups": [
+                  "react-native-gesture-handler",
+                  ":BLANK_LINE:",
+                  "react",
+                  "react-native",
+                  ":BLANK_LINE:",
+                  ["@/**", "expo-*", "@expo/**", "use-*/**"]
+                ]
+              }
+            },
+            "useSortedAttributes": "on",
+            "useSortedKeys": "off"
+          }
+        }
       },
       "formatter": {
         "enabled": false
@@ -261,12 +295,18 @@
         "**/plugins/withAndroidGradleCachePlugin.js",
         "**/plugins/withAndroidManifestPlugin.js",
         "**/plugins/withGradleJVMHeapSizeIncrease.js",
-        "**/plugins/withIosAssetCatalog.js"
+        "**/plugins/withIosAssetCatalog.js",
+        "**/app.config.ts",
+        "**/App.tsx"
       ],
       "linter": {
         "rules": {
           "style": {
-            "noCommonJs": "off"
+            "noCommonJs": "off",
+            "noDefaultExport": "off"
+          },
+           "suspicious": {
+             "noConsole": "off"
           }
         }
       }

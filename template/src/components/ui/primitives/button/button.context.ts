@@ -1,11 +1,11 @@
-import { createContext, useContext } from 'react'
+import { createContext, use } from 'react'
 
 import type { ButtonContextValue, ButtonVariant } from './button.type'
 
 export const ButtonContext = createContext<ButtonContextValue | null>(null)
 
 export function useButtonContext(component: string): ButtonContextValue {
-  const value = useContext(ButtonContext)
+  const value = use(ButtonContext)
   if (!value) {
     throw new Error(`${component} must be used inside Button.Root`)
   }

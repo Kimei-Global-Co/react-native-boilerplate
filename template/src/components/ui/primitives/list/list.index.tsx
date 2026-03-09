@@ -1,5 +1,5 @@
-import { Block } from '@components/ui/layouts/block/block.index'
 import { EmptyState } from '@components/ui/patterns/empty-state'
+import { Block } from '@components/ui/primitives/block/block.index'
 import { FlashList, type ListRenderItemInfo } from '@shopify/flash-list'
 import type { InfiniteScrollListProps } from './list.type'
 
@@ -41,20 +41,20 @@ function FlashListComponent<T>({
         />
       </Block>
     )
-  } else {
-    return (
-      <FlashList
-        {...rest}
-        ListEmptyComponent={listEmptyComponent}
-        numColumns={numColumns}
-        onLoad={onLoadListener}
-        ref={ref}
-        renderItem={renderItem}
-        showsHorizontalScrollIndicator={false}
-        showsVerticalScrollIndicator={false}
-      />
-    )
   }
+
+  return (
+    <FlashList
+      {...rest}
+      ListEmptyComponent={listEmptyComponent}
+      numColumns={numColumns}
+      onLoad={onLoadListener}
+      ref={ref}
+      renderItem={renderItem}
+      showsHorizontalScrollIndicator={false}
+      showsVerticalScrollIndicator={false}
+    />
+  )
 }
 
 export function InfiniteScrollList<T>(

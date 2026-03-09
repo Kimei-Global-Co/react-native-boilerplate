@@ -1,10 +1,10 @@
 import { ScrollView } from 'react-native'
 
-import { Block } from '@components/ui/layouts/block/block.index'
-import { Row } from '@components/ui/layouts/row/row.index'
 import { Header } from '@components/ui/patterns/header/header.index'
 import { Avatar } from '@components/ui/primitives/avatar/avatar.index'
+import { Block } from '@components/ui/primitives/block/block.index'
 import { Icon } from '@components/ui/primitives/icon/icon.index'
+import { Row } from '@components/ui/primitives/row/row.index'
 import { Typography } from '@components/ui/primitives/typography/typo.index'
 import { useMutative } from 'shared/hooks/use-mutative'
 import { useTimeout } from 'shared/hooks/use-timeout'
@@ -12,16 +12,17 @@ import { createContainer } from '../create-container'
 
 const sampleImageUrl = 'https://i.pravatar.cc/300'
 const invalidImageUrl = 'https://invalid-url-that-will-fail.com/image.jpg'
+const TIMEOUT = 3000
 
 const AvatarComponent = (): React.JSX.Element => {
   const [enableSkeleton, setEnableSkeleton] = useMutative(true)
 
   useTimeout(() => {
     setEnableSkeleton(false)
-  }, 3000)
+  }, TIMEOUT)
 
   return (
-    <Block collapsable={false} flex inset='bottom'>
+    <Block collapsable={false} flex={true} inset='bottom'>
       <Header>
         <Header.Section position='left'>
           <Header.BackButton />
@@ -200,7 +201,7 @@ const AvatarComponent = (): React.JSX.Element => {
             <Typography color='gray_500'>
               Shows fallback immediately when no URL provided
             </Typography>
-            <Avatar enableSkeleton fallback='SK' size={48} />
+            <Avatar enableSkeleton={true} fallback='SK' size={48} />
           </Block>
 
           {/* Edge Cases */}
@@ -216,7 +217,7 @@ const AvatarComponent = (): React.JSX.Element => {
               <Avatar fallback='ABCDE' size={48} />
               {/* Empty fallback – show broken-link icon instead of nothing */}
               <Avatar fallback='' size={48} url={invalidImageUrl}>
-                <Block align='center' flex justify='center'>
+                <Block align='center' flex={true} justify='center'>
                   <Icon
                     color='gray_500'
                     name='link-slash'
@@ -241,12 +242,17 @@ const AvatarComponent = (): React.JSX.Element => {
             <Row gap={8}>
               <Avatar
                 borderRadius={12}
-                enableSkeleton
+                enableSkeleton={true}
                 fallback='C1'
                 size={56}
                 url={invalidImageUrl}
               />
-              <Avatar borderRadius={0} enableSkeleton fallback='SQ' size={56} />
+              <Avatar
+                borderRadius={0}
+                enableSkeleton={true}
+                fallback='SQ'
+                size={56}
+              />
             </Row>
           </Block>
         </Block>
@@ -257,6 +263,6 @@ const AvatarComponent = (): React.JSX.Element => {
 
 const Root = createContainer(AvatarComponent, 'Avatar')
 
-export default function ExampleAvatar(): React.JSX.Element {
+export function ExampleAvatar(): React.JSX.Element {
   return <Root />
 }

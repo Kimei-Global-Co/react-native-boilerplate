@@ -1,14 +1,9 @@
 import { useEffect } from 'react'
-import {
-  ActivityIndicator,
-  Platform,
-  Pressable,
-  StyleSheet
-} from 'react-native'
+import { ActivityIndicator, Pressable, StyleSheet } from 'react-native'
 
 import AntDesign from '@expo/vector-icons/AntDesign'
-import type { IconType } from '@assets/icons'
-import { Block } from '@components/ui/layouts/block/block.index'
+import type { TIcon } from '@assets/icons'
+import { Block } from '@components/ui/primitives/block/block.index'
 import { Icon } from '@components/ui/primitives/icon/icon.index'
 import { Typography } from '@components/ui/primitives/typography/typo.index'
 import Animated, {
@@ -44,11 +39,11 @@ import {
   textSizeVariants
 } from './button.variants'
 
-export const isNative = Platform.OS === 'ios' || Platform.OS === 'android'
-
-const DEFAULT_TARGET_SCALE = isNative ? 0.98 : 1
-const TIME = 80
-const OFFSET = 5
+const DEFAULT_TARGET_SCALE = 0.98
+const SHAKE_DURATION = 80
+const SHAKE_OFFSET = 5
+const SHAKE_REPEATS = 3
+const PRESS_ANIMATION_DURATION = 100
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable)
 const AnimatedAntDesign = Animated.createAnimatedComponent(AntDesign)
@@ -85,9 +80,13 @@ function ButtonRoot(props: Readonly<ButtonRootProps>): React.JSX.Element {
     if (state === 'error') {
       shakeOffset.set(
         withSequence(
-          withTiming(-OFFSET, { duration: TIME / 2 }),
-          withRepeat(withTiming(OFFSET, { duration: TIME }), 3, true),
-          withTiming(0, { duration: TIME / 2 })
+          withTiming(-SHAKE_OFFSET, { duration: SHAKE_DURATION / 2 }),
+          withRepeat(
+            withTiming(SHAKE_OFFSET, { duration: SHAKE_DURATION }),
+            SHAKE_REPEATS,
+            true
+          ),
+          withTiming(0, { duration: SHAKE_DURATION / 2 })
         )
       )
     }
@@ -135,13 +134,15 @@ function ButtonRoot(props: Readonly<ButtonRootProps>): React.JSX.Element {
           onPressIn?.(e)
           cancelAnimation(scale)
           scale.set(
-            withTiming(reducedMotion ? 1 : targetScale, { duration: 100 })
+            withTiming(reducedMotion ? 1 : targetScale, {
+              duration: PRESS_ANIMATION_DURATION
+            })
           )
         }}
         onPressOut={(e) => {
           onPressOut?.(e)
           cancelAnimation(scale)
-          scale.set(withTiming(1, { duration: 100 }))
+          scale.set(withTiming(1, { duration: PRESS_ANIMATION_DURATION }))
         }}
         style={containerStyle}
         {...rest}
@@ -158,7 +159,7 @@ function ButtonContent({
   children: React.ReactNode
 }>): React.JSX.Element {
   return (
-    <Block gap={5} justify='center' row style={styles.content}>
+    <Block gap={5} justify='center' row={true} style={styles.content}>
       {children}
     </Block>
   )
@@ -220,13 +221,13 @@ function ButtonLabel({
   ]
 
   return (
-    <Typography center style={textStyle}>
+    <Typography center={true} style={textStyle}>
       {content}
     </Typography>
   )
 }
 
-function ButtonIcon<T extends IconType>(
+function ButtonIcon<T extends TIcon>(
   props: Readonly<ButtonIconProps<T>>
 ): React.JSX.Element {
   if ('children' in props) {

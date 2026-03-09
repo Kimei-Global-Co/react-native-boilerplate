@@ -1,6 +1,7 @@
-import { Block } from '@components/ui/layouts/block/block.index'
 import { Header } from '@components/ui/patterns/header/header.index'
+import { Block } from '@components/ui/primitives/block/block.index'
 import { Icon } from '@components/ui/primitives/icon/icon.index'
+import { Row } from '@components/ui/primitives/row/row.index'
 import { createContainer } from '../create-container'
 
 const IconComponent = (): React.JSX.Element => {
@@ -15,7 +16,7 @@ const IconComponent = (): React.JSX.Element => {
         </Header.Section>
       </Header>
       <Block align='center' gap={20} justify='center' margin={10}>
-        <Block row>
+        <Row>
           <Icon name='ice-cream-outline' size={22} type='ionicons' />
           <Icon name='ice-cream-outline' size={22} type='ionicons' />
           <Icon name='ice-cream-outline' size={22} type='ionicons' />
@@ -28,8 +29,8 @@ const IconComponent = (): React.JSX.Element => {
           <Icon name='ice-cream-outline' size={22} type='ionicons' />
           <Icon name='ice-cream-outline' size={22} type='ionicons' />
           <Icon name='ice-cream-outline' size={22} type='ionicons' />
-        </Block>
-        <Block row>
+        </Row>
+        <Row>
           <Icon name='cloudy-night-outline' size={22} type='ionicons' />
           <Icon name='cloudy-night-outline' size={22} type='ionicons' />
           <Icon name='cloudy-night-outline' size={22} type='ionicons' />
@@ -42,9 +43,9 @@ const IconComponent = (): React.JSX.Element => {
           <Icon name='cloudy-night-outline' size={22} type='ionicons' />
           <Icon name='cloudy-night-outline' size={22} type='ionicons' />
           <Icon name='cloudy-night-outline' size={22} type='ionicons' />
-        </Block>
+        </Row>
 
-        <Block row>
+        <Row>
           <Icon name='sunny-outline' size={22} type='ionicons' />
           <Icon name='sunny-outline' size={22} type='ionicons' />
           <Icon name='sunny-outline' size={22} type='ionicons' />
@@ -57,7 +58,7 @@ const IconComponent = (): React.JSX.Element => {
           <Icon name='sunny-outline' size={22} type='ionicons' />
           <Icon name='sunny-outline' size={22} type='ionicons' />
           <Icon name='sunny-outline' size={22} type='ionicons' />
-        </Block>
+        </Row>
       </Block>
     </Block>
   )
@@ -65,6 +66,6 @@ const IconComponent = (): React.JSX.Element => {
 
 const Root = createContainer(IconComponent, 'Icon')
 
-export default function ExampleIcon(): React.JSX.Element {
+export function ExampleIcon(): React.JSX.Element {
   return <Root />
 }

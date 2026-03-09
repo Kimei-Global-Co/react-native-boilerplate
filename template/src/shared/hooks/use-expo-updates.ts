@@ -3,6 +3,7 @@ import { Platform } from 'react-native'
 
 import * as Updates from 'expo-updates'
 import dayjs from 'dayjs/esm/index'
+import { STALE } from 'shared/utils/helper'
 import { useCallbackRef } from './use-callback-ref'
 import { useIsForeground } from './use-is-foreground'
 
@@ -48,7 +49,8 @@ export function useExpoUpdate(): void {
     if (
       !lastUpdateCheck.current ||
       (appBackgrounded.current &&
-        dayjs(new Date()).diff(appBackgrounded.current, 'minute') > 15)
+        dayjs(new Date()).diff(appBackgrounded.current, 'minute') >
+          STALE.MINUTES.FIFTEEN)
     ) {
       checkUpdate()
     }

@@ -1,5 +1,5 @@
 import { Block } from '@components/ui/primitives/block/block.index'
 
-export function PermissionView(): React.JSX.Element {
+export function Modal() {
   return <Block />
 }

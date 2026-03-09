@@ -1,9 +1,9 @@
 import { ScrollView, StyleSheet } from 'react-native'
 
-import { Block } from '@components/ui/layouts/block/block.index'
-import { Row } from '@components/ui/layouts/row/row.index'
-import { Spacer } from '@components/ui/layouts/spacer/spacer.index'
 import { Header } from '@components/ui/patterns/header/header.index'
+import { Block } from '@components/ui/primitives/block/block.index'
+import { Row } from '@components/ui/primitives/row/row.index'
+import { Spacer } from '@components/ui/primitives/spacer/spacer.index'
 import { Typography } from '@components/ui/primitives/typography/typo.index'
 import { createContainer } from '../create-container'
 
@@ -13,7 +13,7 @@ const BoxDemo = (): React.JSX.Element => (
 
 const SpacerComponent = (): React.JSX.Element => {
   return (
-    <Block flex>
+    <Block flex={true}>
       <Header>
         <Header.Section position='left'>
           <Header.BackButton />
@@ -83,7 +83,7 @@ const SpacerComponent = (): React.JSX.Element => {
 
 const Root = createContainer(SpacerComponent, 'Spacer')
 
-export default function ExampleSpacer(): React.JSX.Element {
+export function ExampleSpacer(): React.JSX.Element {
   return <Root />
 }
 

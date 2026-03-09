@@ -1,5 +1,5 @@
-import { Block } from '@components/ui/layouts/block/block.index'
 import { Header } from '@components/ui/patterns/header/header.index'
+import { Block } from '@components/ui/primitives/block/block.index'
 import { Typography } from '@components/ui/primitives/typography/typo.index'
 import { Plural, useLingui } from '@lingui/react/macro'
 import { createContainer } from '../create-container'
@@ -32,6 +32,6 @@ const LinguiComponent = (): React.JSX.Element => {
 
 const Root = createContainer(LinguiComponent, 'Lingui')
 
-export default function ExampleLingui(): React.JSX.Element {
+export function ExampleLingui(): React.JSX.Element {
   return <Root />
 }

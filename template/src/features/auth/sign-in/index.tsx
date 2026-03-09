@@ -1,9 +1,9 @@
-import { Block } from '@components/ui/layouts/block/block.index'
+import { Block } from '@components/ui/primitives/block/block.index'
 import { Typography } from '@components/ui/primitives/typography/typo.index'
 
-export default function Signin(): React.JSX.Element {
+export function Signin(): React.JSX.Element {
   return (
-    <Block flex inset='top'>
+    <Block flex={true} inset='top'>
       <Typography>Signin</Typography>
     </Block>
   )

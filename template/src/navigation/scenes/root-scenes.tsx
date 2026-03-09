@@ -10,12 +10,13 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 const { Group, Navigator, Screen } =
   createNativeStackNavigator<RootStackRoutes>()
 
-export default function RootScenes(): React.JSX.Element {
-  const screens = {
-    ...(__DEV__ ? devScreens : null),
-    ...notLoggedInScreens,
-    ...commonScreens
-  }
+const screens = {
+  ...(__DEV__ ? devScreens : null),
+  ...notLoggedInScreens,
+  ...commonScreens
+}
+
+export function RootScenes(): React.JSX.Element {
   return (
     <Navigator
       /**

@@ -1,6 +1,6 @@
 import { type DimensionValue, StyleSheet, type ViewStyle } from 'react-native'
 
-import Colors from '@theme/colors'
+import { Colors } from '@theme/colors'
 import { Spacing } from '@theme/layout'
 import NativeView from 'react-native/Libraries/Components/View/ViewNativeComponent'
 import {
@@ -50,7 +50,6 @@ const createBlockStyles = (
     backgroundColor,
     align,
     justify,
-    row,
     position,
     top,
     bottom,
@@ -69,7 +68,6 @@ const createBlockStyles = (
     createSizeStyle(size),
     align && { alignItems: align },
     justify && { justifyContent: justify },
-    row && { flexDirection: 'row' },
     position && { position },
     createOffsetStyles(top, bottom, left, right),
     overflow && { overflow },
