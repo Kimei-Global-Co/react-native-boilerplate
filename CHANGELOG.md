@@ -3,7 +3,11 @@
 ## 2026-03-09
 
 ### ✨ Features
+* enhance Input component with new features and integrate Form component with Zod validation ([5838fa8](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/5838fa8fe0a8112bb0619ef99f10dd3321f1d2dd))
 * Introduce new UI components, dev examples, utilities, and update core boilerplate configurations. ([eda79bb](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/eda79bb9d149041f311c2f20f5bc3e4575233c36))
+
+### 🔨 Chores
+* update changelog [skip ci] ([e7fa17b](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/e7fa17bbb1385a9e3d8fd12885714c5e46053be3))
 
 ## 2026-03-02
 
