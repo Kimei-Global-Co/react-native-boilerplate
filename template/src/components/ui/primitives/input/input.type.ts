@@ -1,4 +1,3 @@
-import type { ReactNode, Ref } from 'react'
 import type {
   TextInput as RNTextInput,
   StyleProp,
@@ -22,10 +21,10 @@ export interface InputProps extends Omit<TextInputProps, 'style'> {
   inputStyle?: StyleProp<TextStyle>
 
   /** Left-side icon or component. If a string is provided, it must be a valid Feather icon name. */
-  leftIcon?: ReactNode | IconName<'feather'>
+  leftIcon?: React.ReactNode | IconName<'feather'>
 
   /** Right-side icon or component. If a string is provided, it must be a valid Feather icon name. */
-  rightIcon?: ReactNode | IconName<'feather'>
+  rightIcon?: React.ReactNode | IconName<'feather'>
 
   /** Shows a clear button on the right when there's internal text content */
   clearable?: boolean
@@ -33,20 +32,31 @@ export interface InputProps extends Omit<TextInputProps, 'style'> {
   /** Color name from theme for focus border */
   focusColor?: keyof typeof Colors
 
+  /** Disable TextInput */
+  editable?: boolean
+
   /**
    * React 19 forward-compatible ref.
    * Direct access to the native TextInput methods.
    */
-  ref?: Ref<RNTextInput>
+  ref?: React.Ref<RNTextInput>
 
   /**
    * Children for custom composition.
    * If provided, the default internal layout (Icons + Field) is bypassed.
    */
-  children?: ReactNode
+  children?: React.ReactNode
 
   /** Optional error state for border highlighting */
   error?: boolean
+
+  /**
+   * Worklet function for synchronous validation/formatting on the UI thread.
+   * Prevents flickering for use cases like masks or character filtering.
+   * @param text The current text input value
+   * @returns The formatted/validated text value
+   */
+  formatter?: (text: string) => string
 }
 
 /**
@@ -54,13 +64,17 @@ export interface InputProps extends Omit<TextInputProps, 'style'> {
  */
 export interface InputFieldProps extends TextInputProps {
   style?: StyleProp<TextStyle>
+  /**
+   * Worklet function for synchronous validation/formatting on the UI thread.
+   */
+  formatter?: (text: string) => string
 }
 
 /**
  * Props for Input.Icon sub-component
  */
 export interface InputIconProps {
-  children?: ReactNode | IconName<'feather'>
+  children?: React.ReactNode | IconName<'feather'>
   position?: 'left' | 'right'
   style?: StyleProp<ViewStyle>
 }

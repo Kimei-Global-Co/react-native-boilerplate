@@ -3,7 +3,6 @@ import { ActivityIndicator, Pressable, StyleSheet } from 'react-native'
 
 import AntDesign from '@expo/vector-icons/AntDesign'
 import type { TIcon } from '@assets/icons'
-import { Block } from '@components/ui/primitives/block/block.index'
 import { Icon } from '@components/ui/primitives/icon/icon.index'
 import { Typography } from '@components/ui/primitives/typography/typo.index'
 import Animated, {
@@ -20,6 +19,7 @@ import Animated, {
   withTiming
 } from 'react-native-reanimated'
 import { when } from 'shared/utils/helper'
+import { Row } from '../row/row.index'
 import {
   ButtonContext,
   normalizeVariant,
@@ -159,9 +159,9 @@ function ButtonContent({
   children: React.ReactNode
 }>): React.JSX.Element {
   return (
-    <Block gap={5} justify='center' row={true} style={styles.content}>
+    <Row gap={5} justify='center' style={styles.content}>
       {children}
-    </Block>
+    </Row>
   )
 }
 

@@ -3,17 +3,26 @@ import type { ViewProps } from 'react-native'
 
 import { Block } from '@components/ui/primitives/block/block.index'
 import { Typography } from '@components/ui/primitives/typography/typo.index'
-import type { CommonTextProps } from '@components/ui/primitives/typography/typo.type'
 import {
   Controller,
   type ControllerProps,
   type FieldPath,
   type FieldValues,
   FormProvider,
-  useFormContext
+  type FormProviderProps,
+  useFormContext,
+  useFormState
 } from 'react-hook-form'
 
-const Form = FormProvider
+const Form = <
+  TFieldValues extends FieldValues = FieldValues,
+  TContext = unknown,
+  TTransformedValues extends FieldValues | undefined = undefined
+>(
+  props: FormProviderProps<TFieldValues, TContext, TTransformedValues>
+) => {
+  return <FormProvider {...props} />
+}
 
 type FormFieldContextValue<
   TFieldValues extends FieldValues = FieldValues,
@@ -40,7 +49,7 @@ const FormField = <
 const useFormField = () => {
   const fieldContext = React.use(FormFieldContext)
   const itemContext = React.use(FormItemContext)
-  const { getFieldState, formState } = useFormContext()
+  const { getFieldState, control } = useFormContext()
 
   if (!fieldContext) {
     throw new Error('useFormField should be used within <FormField>')
@@ -50,8 +59,21 @@ const useFormField = () => {
     throw new Error('useFormField should be used within <FormItem>')
   }
 
-  const fieldState = getFieldState(fieldContext.name, formState)
   const { id } = itemContext
+
+  /**
+   * We use `useFormState` here to ensure that this hook (and the component
+   * using it) is correctly subscribed to changes in the field's state.
+   */
+  const { errors } = useFormState({
+    control,
+    name: fieldContext.name
+  })
+
+  // We can still use the proxy from useFormContext if needed,
+  // but useFormState is more reliable for separate field components.
+  const { formState } = useFormContext()
+  const fieldState = getFieldState(fieldContext.name, formState)
 
   return {
     formDescriptionId: `${id}-form-item-description`,
@@ -59,7 +81,9 @@ const useFormField = () => {
     formMessageId: `${id}-form-item-message`,
     id,
     name: fieldContext.name,
-    ...fieldState
+    ...fieldState,
+    // Ensure we use the latest error from the state subscription
+    error: fieldState.error || errors[fieldContext.name]
   }
 }
 
@@ -86,7 +110,7 @@ const FormItem = ({
 }
 FormItem.displayName = 'FormItem'
 
-type FormLabelProps = CommonTextProps & {
+type FormLabelProps = React.ComponentProps<typeof Typography> & {
   isRequired?: boolean
 }
 
@@ -123,7 +147,7 @@ const FormControl = ({
   }
 
   return React.cloneElement(children, {
-    id: formItemId
+    nativeID: formItemId
   })
 }
 FormControl.displayName = 'FormControl'
@@ -133,7 +157,7 @@ const FormDescription = ({
   color = 'gray_400',
   fontToken = 'font.body.small',
   ...props
-}: CommonTextProps) => {
+}: Omit<FormLabelProps, 'isRequired'>) => {
   const { formDescriptionId } = useFormField()
 
   if (!children) {
@@ -144,7 +168,7 @@ const FormDescription = ({
     <Typography
       color={color}
       fontToken={fontToken}
-      id={formDescriptionId}
+      nativeID={formDescriptionId}
       {...props}
     >
       {children}
@@ -158,16 +182,16 @@ const FormMessage = ({
   fontToken = 'font.body.small.medium',
   color = 'red_600',
   ...props
-}: CommonTextProps) => {
+}: Omit<FormLabelProps, 'isRequired'>) => {
   const { error, formMessageId } = useFormField()
-  const body = error ? String(error?.message ?? '') : children
+  const body = error ? String(error.message ?? 'Invalid field') : children
 
   if (!body) {
     return null
   }
 
   return (
-    <Typography color={color} id={formMessageId} {...props}>
+    <Typography color={color} nativeID={formMessageId} {...props}>
       {body}
     </Typography>
   )

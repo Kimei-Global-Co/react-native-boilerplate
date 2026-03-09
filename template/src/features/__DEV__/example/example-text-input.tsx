@@ -1,3 +1,7 @@
+import { useRef } from 'react'
+import type { TextInput } from 'react-native'
+
+import { Header } from '@components/ui/patterns/header/header.index'
 import { Block } from '@components/ui/primitives/block/block.index'
 import {
   Input,
@@ -6,17 +10,37 @@ import {
 } from '@components/ui/primitives/input/input.index'
 import { Row } from '@components/ui/primitives/row/row.index'
 import { Typography } from '@components/ui/primitives/typography/typo.index'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-controller'
 import { createContainer } from '../create-container'
 
 const TextInputComponent = (): React.JSX.Element => {
-  return (
-    <Block gap={20} padding={16}>
-      <Typography>Standalone Primitives</Typography>
+  const ref = useRef<TextInput>(null)
 
-      <Block gap={10}>
+  return (
+    <Block flex={true} inset={['bottom']}>
+      <Header>
+        <Header.Section position='left'>
+          <Header.BackButton />
+        </Header.Section>
+        <Header.Section position='content'>
+          <Header.Title>Textinput Component</Header.Title>
+        </Header.Section>
+      </Header>
+
+      <KeyboardAwareScrollView
+        bottomOffset={62}
+        contentContainerStyle={{ gap: 10, padding: 20 }}
+        showsVerticalScrollIndicator={false}
+      >
+        <Typography>Standalone Primitives</Typography>
         <Input placeholder='Simple standalone input...' />
         <Input clearable={true} placeholder='Clearable input...' />
-        <Input leftIcon='search' placeholder='Search...' />
+        <Input
+          clearable={true}
+          placeholder='SecureTextEntry input...'
+          secureTextEntry={true}
+        />
+        <Input clearable={true} leftIcon='search' placeholder='Search...' />
         <Input
           error={true}
           leftIcon='alert-circle'
@@ -27,31 +51,53 @@ const TextInputComponent = (): React.JSX.Element => {
           leftIcon='heart'
           placeholder='Custom focus color...'
         />
-      </Block>
 
-      <Typography margin={{ top: 20 }}>Advanced Composition</Typography>
+        <Typography>Advanced Composition</Typography>
 
-      <Input>
-        <Row backgroundColor='gray_100' padding={8} radius={8}>
-          <InputField placeholder='Custom composition...' />
-          <InputIcon position='right'>send</InputIcon>
-        </Row>
-      </Input>
+        <Input>
+          <Row backgroundColor='gray_100' padding={8} radius={8}>
+            <InputField placeholder='Custom composition...' />
+            <InputIcon position='right'>send</InputIcon>
+          </Row>
+        </Input>
 
-      <Typography margin={{ top: 20 }}>Compound API Components</Typography>
-      <Input>
-        <Block
-          border={{ color: 'blue_100', width: 2 }}
-          padding={{ horizontal: 12 }}
-          radius={12}
-          size={{ height: 80 }}
-        >
+        <Typography>Compound API Components</Typography>
+        <Input ref={ref}>
           <InputField
             placeholder='Directly using InputField...'
             style={{ fontSize: 18 }}
           />
-        </Block>
-      </Input>
+        </Input>
+
+        <Typography>Synchronous Validation (UI Thread)</Typography>
+        <Input
+          formatter={(text) => {
+            'worklet'
+            // Filter out everything except letters (flicker-free)
+            return text.replace(/[^a-zA-Z]+/g, '')
+          }}
+          placeholder='Letters only (using worklet)...'
+        />
+
+        <Input
+          formatter={(text) => {
+            'worklet'
+            // Uppercase everything on the fly
+            return text.toUpperCase()
+          }}
+          placeholder='Uppercase mask (UI thread)...'
+        />
+
+        <Input
+          formatter={(text) => {
+            'worklet'
+            // Only allow numbers
+            return text.replace(/[^0-9]+/g, '')
+          }}
+          keyboardType='numeric'
+          placeholder='Numbers only (UI thread)...'
+        />
+      </KeyboardAwareScrollView>
     </Block>
   )
 }

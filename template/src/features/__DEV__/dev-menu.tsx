@@ -27,7 +27,14 @@ export function DevMenu(): React.JSX.Element {
   const renderItemSeparator = () => <Spacer y={10} />
 
   return (
-    <Block backgroundColor='primary' flex={true} inset='top'>
+    <Block
+      flex={true}
+      inset='top'
+      style={{
+        experimental_backgroundImage:
+          'linear-gradient(to right, #ffffff, #ece9e6);'
+      }}
+    >
       <InfiniteScrollList
         contentContainerStyle={styles.listContainer}
         data={Object.keys(MENU_ITEMS)}

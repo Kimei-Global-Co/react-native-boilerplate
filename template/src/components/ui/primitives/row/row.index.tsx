@@ -8,11 +8,11 @@ type TRowProps = {
 } & React.ComponentPropsWithoutRef<typeof Block>
 
 export function Row(props: TRowProps): React.JSX.Element {
-  const { start, center, end, between, children, ...rest } = props
+  const { start, center, end, between, children, style, ...rest } = props
 
   return (
     <Block
-      row={true}
+      style={[{ flexDirection: 'row' }, style]}
       {...(between && { justify: 'space-between' })}
       {...(start && { justify: 'flex-start' })}
       {...(center && { justify: 'center' })}
