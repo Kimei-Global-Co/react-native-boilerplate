@@ -1,4 +1,4 @@
-//base on https://github.com/mutativejs/use-mutative
+//based on https://github.com/mutativejs/use-mutative
 
 import { useEffect, useState } from 'react'
 

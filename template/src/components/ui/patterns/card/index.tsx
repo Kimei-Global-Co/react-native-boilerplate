@@ -27,11 +27,16 @@ const CardRoot = ({
     variant === 'shadow' && styles.shadow,
     style
   ])
+  const canPressable = typeof onPress === 'function'
 
-  const Component = onPress ? Button : Block
+  const Component = canPressable ? Button : Block
 
   return (
-    <Component style={cardStyles} {...rest}>
+    <Component
+      onPress={canPressable ? onPress : undefined}
+      style={cardStyles}
+      {...rest}
+    >
       {children}
     </Component>
   )

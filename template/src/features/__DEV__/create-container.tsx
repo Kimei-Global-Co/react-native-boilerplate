@@ -6,6 +6,7 @@ export const MENU_ITEMS = {
   Button: 'Button',
   Camera: 'Camera',
   Card: 'Card',
+  DebounceThrottle: 'DebounceThrottle',
   Divider: 'Divider',
   EmptyState: 'EmptyState',
   ErrorState: 'ErrorState',

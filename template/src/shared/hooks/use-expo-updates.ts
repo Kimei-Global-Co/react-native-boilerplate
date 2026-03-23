@@ -1,10 +1,9 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useEffectEvent, useRef } from 'react'
 import { Platform } from 'react-native'
 
 import * as Updates from 'expo-updates'
 import dayjs from 'dayjs/esm/index'
-import { STALE } from 'shared/utils/helper'
-import { useCallbackRef } from './use-callback-ref'
+import { FIFTEEN_MULTIPLIER } from 'shared/utils/helper'
 import { useIsForeground } from './use-is-foreground'
 
 export function useExpoUpdate(): void {
@@ -12,7 +11,7 @@ export function useExpoUpdate(): void {
   const appBackgrounded = useRef<Date | null>(null)
   const lastUpdateCheck = useRef<Date | null>(null)
 
-  const checkUpdate = useCallbackRef(async () => {
+  const checkUpdate = useEffectEvent(async () => {
     try {
       const update = await Updates.checkForUpdateAsync()
       if (!update.isAvailable) {
@@ -45,16 +44,16 @@ export function useExpoUpdate(): void {
     }
 
     // check if its the first time running, so its cold start
-    // or if its been 30 minutes since the last check and the app was backgrounded
+    // or if its been 15 minutes since the last check and the app was backgrounded
     if (
       !lastUpdateCheck.current ||
       (appBackgrounded.current &&
         dayjs(new Date()).diff(appBackgrounded.current, 'minute') >
-          STALE.MINUTES.FIFTEEN)
+          FIFTEEN_MULTIPLIER)
     ) {
       checkUpdate()
     }
 
     lastUpdateCheck.current = new Date()
-  }, [checkUpdate, isForeground])
+  }, [isForeground])
 }

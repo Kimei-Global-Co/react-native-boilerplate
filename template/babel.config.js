@@ -1,5 +1,6 @@
 module.exports = (api) => {
   api.cache(true)
+  // const isTest = api.env('test')
 
   const plugins = [
     '@lingui/babel-plugin-lingui-macro',

@@ -270,12 +270,12 @@ export const createSizeStyle = (size: BlockProps['size']) => {
   return {}
 }
 
-const ONE_SECOND_MS = 1e3
+export const ONE_SECOND_MS = 1e3
 const ONE_MINUTE_MS = ONE_SECOND_MS * 60
 const ONE_HOUR_MS = ONE_MINUTE_MS * 60
 const FIVE_MULTIPLIER = 5
 const TEN_MULTIPLIER = 10
-const FIFTEEN_MULTIPLIER = 15
+export const FIFTEEN_MULTIPLIER = 15
 const THIRTY_MULTIPLIER = 30
 
 export const STALE = {
@@ -335,6 +335,10 @@ function when<T, F>(
   return undefined
 }
 export { when }
+
+export const isFunction = (
+  value: unknown
+): value is (...args: unknown[]) => unknown => typeof value === 'function'
 
 function typeGuards(x: unknown): x is string
 function typeGuards(x: unknown, type: 'string'): x is string

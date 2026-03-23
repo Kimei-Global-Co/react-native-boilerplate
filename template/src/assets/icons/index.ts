@@ -32,7 +32,7 @@ export const Icons = {
 export type TIcon = keyof typeof Icons
 
 export function cacheFonts(fonts: string[]) {
-  return fonts.map((font) => Font.loadAsync(font))
+  return Promise.all(fonts.map((font) => Font.loadAsync(font)))
 }
 
 type IconNameMap = {

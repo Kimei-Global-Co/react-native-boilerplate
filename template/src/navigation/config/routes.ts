@@ -5,6 +5,7 @@ import { ExampleAvatar } from '@features/__DEV__/example/example-avatar'
 import { ExampleButton } from '@features/__DEV__/example/example-button'
 import { ExampleCamera } from '@features/__DEV__/example/example-camera'
 import { ExampleCard } from '@features/__DEV__/example/example-card'
+import { ExampleDebounceThrottle } from '@features/__DEV__/example/example-debounce-throttle'
 import { ExampleDivider } from '@features/__DEV__/example/example-divider'
 import { ExampleEmptyState } from '@features/__DEV__/example/example-empty-state'
 import { ExampleErrorState } from '@features/__DEV__/example/example-error-state'
@@ -77,6 +78,7 @@ export const devScreens = {
   Button: ExampleButton,
   Camera: ExampleCamera,
   Card: ExampleCard,
+  DebounceThrottle: ExampleDebounceThrottle,
   DevMenu: DevMenu,
   Divider: ExampleDivider,
   EmptyState: ExampleEmptyState,

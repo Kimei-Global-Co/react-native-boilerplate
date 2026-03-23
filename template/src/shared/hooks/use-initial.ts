@@ -1,13 +1,12 @@
-import { useEffect } from 'react'
+import { useEffect, useEffectEvent } from 'react'
 
 import type { LinkingOptions } from '@react-navigation/native'
 import { cacheFonts, Icons } from 'assets/icons'
-import { useCallbackRef } from './use-callback-ref'
 
 export function useInitial(
   trackedLinking: React.RefObject<LinkingOptions<ReactNavigation.RootParamList>>
 ) {
-  const prepare = useCallbackRef(() => {
+  const prepare = useEffectEvent(() => {
     try {
       cacheFonts([
         Icons.fontAwesome6.font,
@@ -29,9 +28,7 @@ export function useInitial(
     }
   })
 
-  useEffect(() => {
-    prepare()
-  }, [prepare])
+  useEffect(() => prepare(), [])
 
   return {
     // isReady: fontsLoaded,

@@ -81,7 +81,7 @@
     "@types/lodash.debounce": "^4.0.9",
     "@types/lodash.get": "^4.4.9",
     "@types/react": "~19.2.10",
-    "@types/react-test-renderer": "19.0.0",
+    "@types/react-test-renderer": "~19.1.0",
     "babel-jest": "^29.7.0",
     "babel-plugin-macros": "^3.1.0",
     "babel-plugin-react-compiler": "1.0.0",
@@ -96,7 +96,7 @@
     "lint-staged": "^16.0.0",
     "patch-package": "github:evelant/patch-package#master",
     "postinstall-postinstall": "^2.1.0",
-    "react-test-renderer": "19.0.0",
+    "react-test-renderer": "19.2.0",
     "reassure": "^1.4.0",
     "svgo": "^4.0.0",
     "typescript": "~5.9.2"

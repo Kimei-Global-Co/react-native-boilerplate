@@ -1,9 +1,12 @@
-import { useEffect, useMemo, useRef } from 'react'
+import { useEffectEvent } from 'react'
 
 import debounce from 'lodash.debounce'
+import { isFunction, ONE_SECOND_MS } from 'shared/utils/helper'
+import { useLatest } from './use-latest'
 import { useUnmount } from './use-unmount'
 
-type DebounceOptions = {
+export type DebounceOptions = {
+  wait?: number
   leading?: boolean
   trailing?: boolean
   maxWait?: number
@@ -15,11 +18,6 @@ type ControlFunctions = {
   cancel: () => void
   /** Immediately invokes pending function invocations. */
   flush: () => void
-  /**
-   * Checks if there are any pending function invocations.
-   * @returns `true` if there are pending invocations, otherwise `false`.
-   */
-  isPending: () => boolean
 }
 
 export type DebouncedState<T extends (...args: unknown[]) => ReturnType<T>> = ((
@@ -27,66 +25,36 @@ export type DebouncedState<T extends (...args: unknown[]) => ReturnType<T>> = ((
 ) => ReturnType<T> | undefined) &
   ControlFunctions
 
-/**
- * Custom hook that creates a debounced version of a callback function.
- * @template T - Type of the original callback function.
- * @param {T} func - The callback function to be debounced.
- * @param {number} delay - The delay in milliseconds before the callback is invoked (default is `500` milliseconds).
- * @param {DebounceOptions} [options] - Options to control the behavior of the debounced function.
- * @returns {DebouncedState<T>} A debounced version of the original callback along with control functions.
- * @example
- * ```tsx
- * const debouncedCallback = useDebounceFn(
- *   (searchTerm) => {
- *     // Perform search after user stops typing for 500 milliseconds
- *     searchApi(searchTerm);
- *   },
- *   500
- * );
- *
- * // Later in the component
- * debouncedCallback('react hooks'); // Will invoke the callback after 500 milliseconds of inactivity.
- * ```
- */
-export function useDebounceFn<T extends (...args: unknown[]) => ReturnType<T>>(
-  func: T,
-  delay = 500,
+type noop = (...args: unknown[]) => unknown
+
+export function useDebounceFn<T extends noop>(
+  fn: T,
   options?: DebounceOptions
-): DebouncedState<T> {
-  const debouncedFunc = useRef<ReturnType<typeof debounce> | null>(null)
-
-  useUnmount(() => {
-    if (debouncedFunc.current) {
-      debouncedFunc.current.cancel()
+) {
+  if (__DEV__) {
+    if (!isFunction(fn)) {
+      console.error(
+        `useDebounceFn expected parameter is a function, got ${typeof fn}`
+      )
     }
-  })
+  }
 
-  const debounced = useMemo(() => {
-    const debouncedFuncInstance = debounce(func, delay, options)
+  const fnRef = useLatest(fn)
 
-    const wrappedFunc: DebouncedState<T> = (...args: Parameters<T>) => {
-      return debouncedFuncInstance(...args)
-    }
+  const wait = options?.wait ?? ONE_SECOND_MS
 
-    wrappedFunc.cancel = () => {
-      debouncedFuncInstance.cancel()
-    }
+  const stableCallback = useEffectEvent(
+    ((...args: Parameters<T>): ReturnType<T> =>
+      fnRef.current(...args) as ReturnType<T>) as T
+  )
 
-    wrappedFunc.isPending = () => {
-      return !!debouncedFunc.current
-    }
+  const debounced = debounce(stableCallback, wait, options)
 
-    wrappedFunc.flush = () => {
-      return debouncedFuncInstance.flush()
-    }
+  useUnmount(() => debounced.cancel())
 
-    return wrappedFunc
-  }, [func, delay, options])
-
-  // Update the debounced function ref whenever func, wait, or options change
-  useEffect(() => {
-    debouncedFunc.current = debounce(func, delay, options)
-  }, [func, delay, options])
-
-  return debounced
+  return {
+    cancel: debounced.cancel,
+    flush: debounced.flush,
+    run: debounced
+  }
 }

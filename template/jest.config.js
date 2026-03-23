@@ -1,7 +1,30 @@
+const srcRoot = '<rootDir>/src'
+const srcAliases = [
+  'assets',
+  'components',
+  'context',
+  'features',
+  'hooks',
+  'navigation',
+  'shared',
+  'store',
+  'theme',
+  'utils'
+]
+
+const moduleNameMapper = Object.fromEntries(
+  srcAliases.flatMap((alias) => [
+    [`^@${alias}$`, `${srcRoot}/${alias}`],
+    [`^@${alias}/(.*)$`, `${srcRoot}/${alias}/$1`],
+    [`^${alias}/(.*)$`, `${srcRoot}/${alias}/$1`]
+  ])
+)
+
 module.exports = {
   coveragePathIgnorePatterns: ['<rootDir>/node_modules/'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],
   modulePathIgnorePatterns: ['__tests__/.*/__mocks__', '__e2e__/.*'],
+  moduleNameMapper,
   preset: 'jest-expo',
   setupFilesAfterEnv: ['<rootDir>/jest-setup.js'],
   testPathIgnorePatterns: ['/node_modules/', '__tests__/__mocks__/'],
