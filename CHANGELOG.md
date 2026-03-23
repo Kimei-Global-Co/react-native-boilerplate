@@ -1,13 +1,19 @@
 # Changelog
 
+## 2026-03-23
+
+### ✨ Features
+* introduce `useDebounce`, `useThrottleFn`, and `useLockFn` hooks with an example, add a `CheckBox` component, and remove the `sheet.type` definition ([5ad2f71](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/5ad2f71c568ac1efa22930875ef8388358314a8d))
+
 ## 2026-03-09
+
+### 🔨 Chores
+* update changelog [skip ci] ([739bf6e](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/739bf6e7584d25596d325a73ce1b2f8bf2163dbe))
+* update changelog [skip ci] ([0b7f9fe](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/0b7f9fe3215758698378feb6edb3c65d0e60fe05))
+* update changelog [skip ci] ([e7fa17b](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/e7fa17bbb1385a9e3d8fd12885714c5e46053be3))
 
 ### 🐛 Bug Fixes
 * replace deprecated props row in divider component ([3878f1e](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/3878f1e0334a24339f0d543efb0280caa16ef7c2))
-
-### 🔨 Chores
-* update changelog [skip ci] ([0b7f9fe](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/0b7f9fe3215758698378feb6edb3c65d0e60fe05))
-* update changelog [skip ci] ([e7fa17b](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/e7fa17bbb1385a9e3d8fd12885714c5e46053be3))
 
 ### ✨ Features
 * enhance Input component with new features and integrate Form component with Zod validation ([5838fa8](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/5838fa8fe0a8112bb0619ef99f10dd3321f1d2dd))
