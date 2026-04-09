@@ -1,6 +1,14 @@
 # Changelog
 
+## 2026-04-09
+
+### 🐛 Bug Fixes
+* update eas update commands to include environment flags for development, staging, and production ([70b40b6](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/70b40b64cded2d71b18600d41d07ce0c99048fe1))
+
 ## 2026-03-23
+
+### 🔨 Chores
+* update changelog [skip ci] ([d1cdf3d](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/d1cdf3deec0fd1b88d56308828ffde7ff3eda275))
 
 ### ✨ Features
 * introduce `useDebounce`, `useThrottleFn`, and `useLockFn` hooks with an example, add a `CheckBox` component, and remove the `sheet.type` definition ([5ad2f71](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/5ad2f71c568ac1efa22930875ef8388358314a8d))
