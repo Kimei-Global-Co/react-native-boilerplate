@@ -1,22 +1,36 @@
 ---
 name: native-profiling
-description: "Native performance profiling and optimization for iOS and Android. Use for: TTI measurement, memory leaks, Turbo Modules, threading model, 16kb alignment."
+description: Native performance and profiling (TTI, memory). Use for: Turbo Modules, threading model, 16kb alignment.
 ---
 
 # Native Performance & Profiling
 
-Optimization guide for native code, startup time (TTI), and platform-specific performance.
+Optimization guide for native code, startup time (TTI), and platform profiling.
 
-## Quick Reference
+## Priority Guidelines (Native)
 
-| Problem | Start With |
-|---------|------------|
-| Slow startup (TTI) | `native-measure-tti.md` |
-| Native module slow | `native-turbo-modules.md` → `native-threading-model.md` |
-| Memory growing (Native) | `native-memory-leaks.md` |
-| Android alignment issue | `native-android-16kb-alignment.md` |
+| Priority | Category | Impact | Prefix |
+|----------|----------|--------|--------|
+| 1 | Native Alignment | CRITICAL | `native-android-16kb` |
+| 2 | Startup Time (TTI) | HIGH | `native-measure-tti` |
+| 3 | Turbo Modules | HIGH | `native-turbo-modules`|
+| 4 | Threading Model | HIGH | `native-threading` |
+| 5 | Native Profiling | MEDIUM | `native-profiling` |
 
-## References
+## Quick Reference: Native & Startup
+
+### Optimization Workflow
+- **Measure**: Use Xcode Instruments (Time Profiler) or Android Studio CPU Profiler.
+- **TTI**: Use `react-native-performance` markers; measure only cold starts.
+- **Views**: Check view flattening to reduce depth of native view hierarchy.
+
+### Common Native Fixes
+- **Async Modules**: Prefer async over sync Turbo Module methods to keep JS thread free.
+- **Threading**: Offload heavy computations to background threads or use JSI with C++.
+- **Navigation**: Use native navigation libraries (e.g., `react-native-screens`).
+- **Android**: Disable JS bundle compression to allow Hermes mmap for faster loading.
+
+## References (Native)
 
 | File | Impact | Description |
 |------|--------|-------------|
@@ -30,3 +44,15 @@ Optimization guide for native code, startup time (TTI), and platform-specific pe
 | [native-memory-patterns.md](./native-memory-patterns.md) | MEDIUM | C++/Swift/Kotlin memory |
 | [native-memory-leaks.md](./native-memory-leaks.md) | MEDIUM | Native memory leak hunting |
 | [native-android-16kb-alignment.md](./native-android-16kb-alignment.md) | CRITICAL | Third-party library alignment for Google Play |
+
+## Problem Mapping
+
+| Problem | Start With |
+|---------|------------|
+| Slow startup (TTI) | [native-measure-tti.md](./native-measure-tti.md) |
+| Native module slow | [native-turbo-modules.md](./native-turbo-modules.md) |
+| Memory growing (Native) | [native-memory-leaks.md](./native-memory-leaks.md) |
+| Android alignment issue | [native-android-16kb-alignment.md](./native-android-16kb-alignment.md) |
+
+---
+*Based on "The Ultimate Guide to React Native Optimization" by Callstack.*
