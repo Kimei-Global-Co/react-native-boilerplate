@@ -1,6 +1,14 @@
 # Changelog
 
+## 2026-04-11
+
+### ✨ Features
+* upgrade agent skills to latest version ([4f6dc48](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/4f6dc48bb2535414afbd220d2fd29943dfba12ca))
+
 ## 2026-04-09
+
+### 🔨 Chores
+* update changelog [skip ci] ([64a8297](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/64a829717a531f54adc401c2f50c91e4bbf66107))
 
 ### 🐛 Bug Fixes
 * update eas update commands to include environment flags for development, staging, and production ([70b40b6](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/70b40b64cded2d71b18600d41d07ce0c99048fe1))
