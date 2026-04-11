@@ -1,21 +1,36 @@
 ---
 name: bundle-size
-description: "React Native bundle and app size optimization. Use for: bundle analysis, tree shaking, barrel exports, R8/ProGuard, Hermes mmap."
+description: RN bundle and app size optimization. Use for: bundle analysis, tree shaking, barrel exports, R8.
 ---
 
 # Bundle & App Size
 
-Optimization guide for reducing the JavaScript bundle size and overall application binary size.
+Optimization guide for reducing JS bundle and binary application size.
 
-## Quick Reference
+## Priority Guidelines (Bundle)
 
-| Problem | Start With |
-|---------|------------|
-| Large JS bundle | `bundle-analyze-js.md` → `bundle-tree-shaking.md` |
-| Large app binary | `bundle-analyze-app.md` → `bundle-r8-android.md` |
-| Slow JS loading | `bundle-hermes-mmap.md` |
+| Priority | Category | Impact | Prefix |
+|----------|----------|--------|--------|
+| 1 | Barrel Exports | CRITICAL | `bundle-barrel` |
+| 2 | JS Bundle Analysis | CRITICAL | `bundle-analyze-js` |
+| 3 | Tree Shaking | HIGH | `bundle-tree-shaking`|
+| 4 | Native Shrinking (R8)| HIGH | `bundle-r8` |
+| 5 | Asset Management | HIGH | `bundle-native-assets` |
 
-## References
+## Quick Reference: Size Reduction
+
+### Analyze Methods
+- **JS Bundle**: Use `npx source-map-explorer` to visualize weight.
+- **App Size**: Use Android Studio (Build > Analyze APK) or Xcode (App Size Report).
+
+### Common Size Fixes
+- **Imports**: Avoid barrel imports (e.g., `import { X } from './components'`) to enable effective tree shaking.
+- **Android**: Always enable **R8/ProGuard** for release builds.
+- **Polyfills**: Remove unnecessary `Intl` polyfills if using Hermes (which includes many Intl APIs).
+- **Libraries**: Evaluate heavy dependencies using `bundle-visualizer`.
+- **Code Splitting**: Use **Re.Pack** for large apps that need remote chunks.
+
+## References (Bundle)
 
 | File | Impact | Description |
 |------|--------|-------------|
@@ -28,3 +43,14 @@ Optimization guide for reducing the JavaScript bundle size and overall applicati
 | [bundle-native-assets.md](./bundle-native-assets.md) | HIGH | Asset catalog setup |
 | [bundle-library-size.md](./bundle-library-size.md) | MEDIUM | Evaluate dependencies |
 | [bundle-code-splitting.md](./bundle-code-splitting.md) | MEDIUM | Re.Pack code splitting |
+
+## Problem Mapping
+
+| Problem | Start With |
+|---------|------------|
+| Large JS bundle | [bundle-analyze-js.md](./bundle-analyze-js.md) |
+| Large app binary | [bundle-analyze-app.md](./bundle-analyze-app.md) |
+| Slow JS loading | [bundle-hermes-mmap.md](./bundle-hermes-mmap.md) |
+
+---
+*Based on "The Ultimate Guide to React Native Optimization" by Callstack.*

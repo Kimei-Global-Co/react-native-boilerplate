@@ -2,6 +2,10 @@
 
 ## 2026-04-11
 
+### 🔨 Chores
+* upgrade bundle-size, native profiling, performance to latest based on guide optimization by calltack ([49c9fc8](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/49c9fc8a65c5e5e9edb9e5828a03ac43d106d52c))
+* update changelog [skip ci] ([a6ce4aa](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/a6ce4aa6c5cb16b053d53101c60355011873a2ee))
+
 ### ✨ Features
 * upgrade agent skills to latest version ([4f6dc48](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/4f6dc48bb2535414afbd220d2fd29943dfba12ca))
 
