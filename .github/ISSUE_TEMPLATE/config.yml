@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 🤝 Community Support
+    url: https://github.com/Kimei-Global-Co/react-native-boilerplate/discussions
+    about: Please ask questions and get help in our community discussions.
+  - name: 📱 KIMEI Global Website
+    url: https://kimei-global.com/
+    about: Visit our official website for more information.

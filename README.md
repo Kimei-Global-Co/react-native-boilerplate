@@ -1,23 +1,22 @@
 <!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 <a id="readme-top"></a>
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
-
-
 
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://kimei.vn/">
+  <a href="https://kimei-global.com/">
     <img src="images/logo.png" alt="Logo">
   </a>
 
-  <h3 align="center">This project was developed by KIMEI Global</h3>
+  <h3 align="center">KIMEI Global React Native Boilerplate</h3>
+
+  <p align="center">
+    A premium, production-ready React Native / Expo boilerplate optimized for performance and developer experience.
+    <br />
+    <a href="https://github.com/Kimei-Global-Co/react-native-boilerplate/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/Kimei-Global-Co/react-native-boilerplate/issues">Request Feature</a>
+  </p>
 
   [![Contributors][contributors-shield]][contributors-url]
   [![Issues][issues-shield]][issues-url]
@@ -28,212 +27,178 @@
   [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=kimei-global_react-native-boilerplate&metric=alert_status&token=c74190a55877630cbebcbbc5dc0b7842ef7a14c2)](https://sonarcloud.io/summary/new_code?id=kimei-global_react-native-boilerplate)
   [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=kimei-global_react-native-boilerplate&metric=ncloc&token=c74190a55877630cbebcbbc5dc0b7842ef7a14c2)](https://sonarcloud.io/summary/new_code?id=kimei-global_react-native-boilerplate)
   [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=kimei-global_react-native-boilerplate&metric=code_smells&token=c74190a55877630cbebcbbc5dc0b7842ef7a14c2)](https://sonarcloud.io/summary/new_code?id=kimei-global_react-native-boilerplate)
-  [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=kimei-global_react-native-boilerplate&metric=sqale_rating&token=c74190a55877630cbebcbbc5dc0b7842ef7a14c2)](https://sonarcloud.io/summary/new_code?id=kimei-global_react-native-boilerplate)
-  [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=kimei-global_react-native-boilerplate&metric=security_rating&token=c74190a55877630cbebcbbc5dc0b7842ef7a14c2)](https://sonarcloud.io/summary/new_code?id=kimei-global_react-native-boilerplate)
 </div>
 
-
-
 <!-- TABLE OF CONTENTS -->
-<details>
+<details open>
   <summary>Table of Contents</summary>
   <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
+    <li><a href="#about-the-project">About The Project</a>
       <ul>
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
+    <li><a href="#technical-excellence">Technical Excellence</a></li>
+    <li><a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
+    <li><a href="#usage">Usage</a>
+      <ul>
+        <li><a href="#folder-structure">Folder Structure</a></li>
+      </ul>
+    </li>
+    <li><a href="#scripts">Available Scripts</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
-    <li><a href="#contact-">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
-
-
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This React Native boilerplate is a comprehensive starter template designed to accelerate your mobile app development process. It comes pre-configured with essential tools and best practices that every modern React Native project needs.
+This React Native boilerplate is a comprehensive starter template designed to accelerate mobile app development using the **New Architecture**. It comes pre-configured with industry-standard tools and high-performance patterns.
 
-Key features include:
-* 🚀 Latest React Native version with TypeScript support
-* 📱 Expo integration for rapid development and easy deployment
-* 🎨 Pre-configured theming and styling system
-* 🔐 Authentication flow template
-* 📡 API integration setup with Ky
-* 🗄️ State management with Redux Toolkit
-* 📱 Navigation setup with React Navigation
-* 🧪 Testing environment with Jest
-* 💅 Code quality tools (ESLint, Prettier, Husky)
-* 📁 Scalable project structure
-* 🔄 CI/CD setup with GitHub Actions
-
-This boilerplate saves you days of initial setup and configuration, allowing you to focus on building your app's unique features right from the start.
+### Key Features
+* 🚀 **Expo SDK 55** & **React Native 0.83** with full TypeScript support.
+* 📦 **Bun** integration for lightning-fast package management.
+* 🧠 **Zustand** for lightweight and scalable state management.
+* 📡 **TanStack Query (v5)** for robust server state and caching.
+* 🗺️ **React Navigation (v7)** with typed navigation patterns.
+* 🌍 **Lingui JS** for type-safe internationalization (i18n).
+* 💅 **Theme-first Design** using design tokens and **Reanimated 4**.
+* ⚡ **Performance Optimized** with FlashList, Reassure (Perf Testing), and Expo Atlas.
+* 🛠️ **Modern Toolchain**: Biome (Linting & Formatting), Husky, Commitlint, and Danger JS.
+* 📁 **Feature-based Architecture** for clean and scalable codebases.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 ### Built With
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-
-[![React][React.js]][React-url]
-[![React Native][React Native]][React Native-url]
-[![Expo]][Expo-url]
-
+[![React Native][React-Native-badge]][React-Native-url]
+[![Expo][Expo-badge]][Expo-url]
+[![TypeScript][TypeScript-badge]][TypeScript-url]
+[![Bun][Bun-badge]][Bun-url]
+[![Zustand][Zustand-badge]][Zustand-url]
+[![TanStack Query][Query-badge]][Query-url]
+[![Biome][Biome-badge]][Biome-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+## Technical Excellence
 
+### ⚡ Performance & Quality
+- **FlashList**: Highly optimized list rendering.
+- **MMKV**: Super fast, synchronous key-value storage.
+- **Reassure**: Performance regression testing for React Native components.
+- **Expo Atlas**: Visualizer for bundle size and dependency analysis.
+- **React Compiler**: Leverages the latest React 19 compilation features.
+
+### 🛡️ Developer Experience (DX)
+- **Biome**: 100x faster linting and formatting than ESLint/Prettier.
+- **Plop Generators**: Scaffold components and stores with a single command.
+- **Vision Camera 4**: Next-gen camera implementation with worklets.
+- **Keyboard Controller**: Native performance keyboard handling.
+- **Danger JS**: Automated code review feedback on Pull Requests.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-These instructions will help you set up the project locally.
-
 ### Prerequisites
-
-Make sure you have the following installed:
-
-* Node.js (18 or newer)
-* Use `bun`
-* iOS development environment (for iOS):
-  - **Xcode (latest version)**
-  - **CocoaPods**
-* Android development environment (for Android):
-  - **Android Studio**
-  - **Android SDK**
+* **Node.js**: >= 20
+* **Bun**: `npm install -g bun`
+* **iOS**: Xcode & CocoaPods
+* **Android**: Android Studio & SDK
 
 ### Installation
 
-1. **Use `bun` <mark>[Recommended]</mark>**
-
-- Must installed **bun** before.
-
+1. **Use `bun` (Recommended)**
    ```sh
-   bun create expo **your-project-name** --template Kimei-Global-Co/react-native-boilerplate/tree/main/template
+   bun create expo my-app --template Kimei-Global-Co/react-native-boilerplate/tree/main/template
    ```
 
-2. **Use `npm`**
-
-   ```sh 
-   npx create-expo@latest **your-project-name** --template Kimei-Global-Co/react-native-boilerplate/tree/main/template
-   ```
-
-3. **Use `yarn`**
-   ```sh 
-   yarn create expo **your-project-name** --template Kimei-Global-Co/react-native-boilerplate/tree/main/template
+2. **Use `npx`**
+   ```sh
+   npx create-expo@latest my-app --template Kimei-Global-Co/react-native-boilerplate/tree/main/template
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
+<!-- USAGE EXAMPLES -->
 ## Usage
 
-After installation, you can:
-
-1. Start development server:
-```bash
-cd your-project-name
-bun start
+### Folder Structure
+```
+src/
+├── assets/       # Static assets (images, fonts, icons)
+├── components/   # Shared UI components (Atomic design)
+├── features/     # Feature-driven modules (Logic + UI)
+├── locale/       # Lingui i18n configuration & translations
+├── navigation/   # Navigation stacks and route definitions
+├── shared/       # Cross-feature hooks, utils, types, and services
+└── theme/        # Design system (colors, typography, layout)
 ```
 
-2. Run on specific platform:
+### Developing
 ```bash
-# iOS
+# Start the development server
+bun start
+
+# Run on iOS
 bun ios
 
-# Android
+# Run on Android
 bun android
 ```
 
-3. Follow our folder structure:
-```
-src/
-├── api/          # API services, endpoints
-├── assets/       # Images, fonts, etc.
-├── components/   # Reusable components
-├── navigation/   # Navigation configurations
-├── screens/      # Screen components
-├── store/        # Redux store, slices
-├── theme/        # Theme configurations
-└── utils/        # Helper functions
-```
-
-_For detailed documentation, please refer to our [Wiki](https://github.com/Kimei-Global-Co/react-native-boilerplate/wiki)_
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+## Scripts
 
+| Script | Description |
+| :--- | :--- |
+| `bun lint` | Run Biome linting checks |
+| `bun intl:build` | Extract and compile translations |
+| `bun perf-test` | Run Reassure performance tests |
+| `bun bundle:visualizer` | Open Expo Atlas to analyze bundle |
+| `bun plop` | Scaffold new components or modules |
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ROADMAP -->
 ## Roadmap
 
-- [x] Project structure setup
-- [x] TypeScript configuration
-- [x] Navigation system
-- [ ] State management
-- [x] API integration
-- [ ] Theming system
-- [ ] Authentication flow template
-- [ ] Offline storage
-- [ ] Push notifications
-- [ ] CI/CD pipeline
-- [ ] E2E testing
-- [ ] Performance optimization guides
-
-See the [open issues](https://github.com/Kimei-Global-Co/react-native-boilerplate/issues) for a full list of proposed features and known issues.
+- [x] Expo SDK 55 Integration
+- [x] New Architecture Support
+- [x] Zustand & TanStack Query Setup
+- [x] Lingui JS Internationalization
+- [x] Reassure Performance Testing
+- [x] Biome DX Tooling
+- [x] Auth Flow Template
+- [ ] Push Notifications (Coming Soon)
+- [ ] E2E Testing (Playwright/Maestro)
+- [ ] Offline Synchronization Patterns
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- CONTRIBUTING -->
 ## Contributing
 
-We welcome contributions to make this boilerplate even better! Here's how you can help:
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
 1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/amazing-feature`)
-3. Follow our coding standards
-4. Add proper documentation
-5. Add tests if needed
-6. Commit your Changes (`git commit -m 'feat: add amazing feature'`)
-7. Push to the Branch (`git push origin feature/amazing-feature`)
-8. Open a Pull Request with detailed description
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'feat: add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-### Using the Generator
-
-When contributing new components, use our Plop generator to maintain consistency:
-
-```bash
-bun plop # Generate project files
-```
-
-The generator enforces our conventions:
-- Component names in kebab-case (e.g., `my-component`)
-- Standard file structure:
-  ```
-  my-component/
-  ├── my-component.tsx
-  ├── my-component.styles.ts
-  └── my-component.types.ts
-  ```
-
-Please make sure to follow our [Code of Conduct](./CODE_OF_CONDUCT.md) and [Contributing Guidelines](./CONTRIBUTING.md).
+**Note**: Use `bun plop` to generate components and maintain consistent file structure.
 
 ### Top contributors:
 
@@ -243,8 +208,6 @@ Please make sure to follow our [Code of Conduct](./CODE_OF_CONDUCT.md) and [Cont
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- LICENSE -->
 ## License
 
@@ -252,54 +215,24 @@ Distributed under the Unlicense License. See [`LICENSE`](./LICENSE) for more inf
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- CONTACT -->
-## Contact 📱
-
-We'd love to hear from you! Here's how you can reach us:
+## Contact
 
 <div align="center">
-  <a href="https://kimei.vn/get-in-touch">
-    <img src="https://img.shields.io/badge/Website-kimei.vn-blue?style=for-the-badge&logo=html5" alt="Website Badge"/>
+  <a href="https://kimei-global.com/">
+    <img src="https://img.shields.io/badge/Website-kimei--global.com-5C2D91?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Website"/>
   </a>
-  <a href="mailto:info@kimei.vn">
-    <img src="https://img.shields.io/badge/Email-info@kimei.vn-red?style=for-the-badge&logo=gmail" alt="Email Badge"/>
+  <a href="mailto:ducnmanh@kimei.vn">
+    <img src="https://img.shields.io/badge/Email-ducnmanh@kimei.vn-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/>
   </a>
-  <a href="https://www.linkedin.com/company/kimei-global">
-    <img src="https://img.shields.io/badge/LinkedIn-KIMEI_Global-blue?style=for-the-badge&logo=linkedin" alt="LinkedIn Badge"/>
+  <a href="https://linkedin.com/in/mduc-engineer/">
+    <img src="https://img.shields.io/badge/LinkedIn-mduc--engineer-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
   </a>
 </div>
 
-<div align="center">
-  <br />
-  <strong>🌟 Have a project in mind? Let's build something amazing together! 🌟</strong>
-</div>
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
-
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
-* [Malven's Grid Cheatsheet](https://grid.malven.co/)
-* [Img Shields](https://shields.io)
-* [GitHub Pages](https://pages.github.com)
-* [Font Awesome](https://fontawesome.com)
-* [React Icons](https://react-icons.github.io/react-icons/search)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/Kimei-Global-Co/react-native-boilerplate.svg?style=for-the-badge
 [contributors-url]: https://github.com/Kimei-Global-Co/react-native-boilerplate/graphs/contributors
 [issues-shield]: https://img.shields.io/github/issues/Kimei-Global-Co/react-native-boilerplate.svg?style=for-the-badge
@@ -307,11 +240,19 @@ Use this space to list resources you find helpful and would like to give credit 
 [license-shield]: https://img.shields.io/github/license/Kimei-Global-Co/react-native-boilerplate.svg?style=for-the-badge
 [license-url]: https://github.com/Kimei-Global-Co/react-native-boilerplate/blob/master/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/mduc-dev
-[product-screenshot]: images/screenshot.png
-[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
-[React Native]: https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
-[React-url]: https://react.dev/
-[React Native-url]: https://reactnative.dev/
-[Expo]: https://img.shields.io/badge/Expo-20232A?style=for-the-badge&logo=expo
-[Expo-url]: https://docs.expo.dev/
+[linkedin-url]: https://linkedin.com/in/mduc-engineer/
+[React-Native-badge]: https://img.shields.io/badge/React_Native-0.83-20232A?style=for-the-badge&logo=react
+[React-Native-url]: https://reactnative.dev/
+[Expo-badge]: https://img.shields.io/badge/Expo-55-000020?style=for-the-badge&logo=expo
+[Expo-url]: https://expo.dev/
+[TypeScript-badge]: https://img.shields.io/badge/TypeScript-5.x-3178C6?style=for-the-badge&logo=typescript&logoColor=white
+[TypeScript-url]: https://www.typescriptlang.org/
+[Bun-badge]: https://img.shields.io/badge/Bun-1.x-f9f1e1?style=for-the-badge&logo=bun&logoColor=black
+[Bun-url]: https://bun.sh/
+[Zustand-badge]: https://img.shields.io/badge/Zustand-State-black?style=for-the-badge&logo=react
+[Zustand-url]: https://github.com/pmndrs/zustand
+[Query-badge]: https://img.shields.io/badge/TanStack_Query-5-FF4154?style=for-the-badge&logo=react-query&logoColor=white
+[Query-url]: https://tanstack.com/query/latest
+[Biome-badge]: https://img.shields.io/badge/Biome-DX-60A5FA?style=for-the-badge&logo=biome&logoColor=white
+[Biome-url]: https://biomejs.dev/
+
