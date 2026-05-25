@@ -1,4 +1,6 @@
-import { useState } from 'react'
+import { useEffect, useEffectEvent } from 'react'
+
+import { useMutative } from 'shared/hooks/use-mutative'
 
 type LazyComponentProps = {
   componentKey: string
@@ -10,15 +12,15 @@ export function LazyComponent(
   props: LazyComponentProps
 ): React.ReactNode | null {
   const { componentKey, currentKey, component, placeholder } = props
-  const [hasRendered, setHasRendered] = useState(currentKey === componentKey)
-  const [prevCurrentKey, setPrevCurrentKey] = useState(currentKey)
+  const [hasRendered, setHasRendered] = useMutative(false)
 
-  if (currentKey !== prevCurrentKey) {
-    setPrevCurrentKey(currentKey)
+  const callBackSetRendered = useEffectEvent(setHasRendered)
+
+  useEffect(() => {
     if (!hasRendered && currentKey === componentKey) {
-      setHasRendered(true)
+      callBackSetRendered(true)
     }
-  }
+  }, [currentKey, componentKey, hasRendered])
 
   if (hasRendered) {
     return component

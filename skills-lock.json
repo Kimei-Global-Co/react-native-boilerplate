@@ -1,6 +1,18 @@
 {
   "version": 1,
   "skills": {
+    "enhanced-message-context": {
+      "source": "lingui/skills",
+      "sourceType": "github",
+      "skillPath": "enhanced-message-context/SKILL.md",
+      "computedHash": "84d0a3d209e678781fe5aa7152e108cfb91ff7c6b7a1c39e15fccd5d8dcdf4c8"
+    },
+    "lingui-best-practices": {
+      "source": "lingui/skills",
+      "sourceType": "github",
+      "skillPath": "lingui-best-practices/SKILL.md",
+      "computedHash": "2ebeb243fa39ca3b233d7fe618cfaea89f618b619ceea6a33b708faeca7efc94"
+    },
     "react-native-best-practices": {
       "source": "software-mansion-labs/skills",
       "sourceType": "github",

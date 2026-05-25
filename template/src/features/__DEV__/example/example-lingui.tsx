@@ -16,10 +16,16 @@ const LinguiComponent = (): React.JSX.Element => {
           <Header.Title>Lingui Component</Header.Title>
         </Header.Section>
       </Header>
-      <Typography>{t`Hello world!`}</Typography>
+      <Typography>
+        {t({
+          comment: 'Greeting message on the dev test page',
+          message: 'Hello world!'
+        })}
+      </Typography>
       <Typography>
         <Plural
           _0='You have no unread messages'
+          comment='Inbox unread messages counter showing quantity-dependent string'
           few="There're # messages in your inbox"
           one="There's # message in your inbox"
           other="There're # messages in your inbox"

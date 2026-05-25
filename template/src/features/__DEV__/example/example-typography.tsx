@@ -16,7 +16,12 @@ const TypographyComponent = (): React.JSX.Element => {
           <Header.Title>Typography Component</Header.Title>
         </Header.Section>
       </Header>
-      <Typography>{t`Hello world!`}</Typography>
+      <Typography>
+        {t({
+          comment: 'Greeting message on the dev test page',
+          message: 'Hello world!'
+        })}
+      </Typography>
     </Block>
   )
 }
