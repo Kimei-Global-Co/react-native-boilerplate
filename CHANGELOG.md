@@ -3,7 +3,11 @@
 ## 2026-06-04
 
 ### ♻️ Code Refactoring
+* simplify spinner size calculation in SpinnerView and Spinner components ([41f8d55](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/41f8d553f6431880b8dafd70f821bf64d221495d))
 * components and improve context usage ([d3fdc13](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/d3fdc13ccc04753fd0151bfeba19a2d974881b2b))
+
+### 🔨 Chores
+* update changelog [skip ci] ([a5c6360](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/a5c6360529c7c2a6ab24d3998b94933f7c22b80a))
 
 ## 2026-05-25
 
