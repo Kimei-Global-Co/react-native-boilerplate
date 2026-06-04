@@ -7,7 +7,8 @@ import Animated, {
   withRepeat,
   withTiming
 } from 'react-native-reanimated'
-import { getSpinnerSize, type SpinnerProps, SpinnerView } from './spinner-view'
+import { getSpinnerSize } from './spinner.utils'
+import { type SpinnerProps, SpinnerView } from './spinner-view'
 
 const ROTATE_DEGREE = 360
 

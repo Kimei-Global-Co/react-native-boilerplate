@@ -1,7 +1,6 @@
-import { useEffectEvent } from 'react'
-
 import debounce from 'lodash.debounce'
 import { isFunction, ONE_SECOND_MS } from 'shared/utils/helper'
+import { useCallbackRef } from './use-callback-ref'
 import { useLatest } from './use-latest'
 import { useUnmount } from './use-unmount'
 
@@ -43,7 +42,7 @@ export function useDebounceFn<T extends noop>(
 
   const wait = options?.wait ?? ONE_SECOND_MS
 
-  const stableCallback = useEffectEvent(
+  const stableCallback = useCallbackRef(
     ((...args: Parameters<T>): ReturnType<T> =>
       fnRef.current(...args) as ReturnType<T>) as T
   )

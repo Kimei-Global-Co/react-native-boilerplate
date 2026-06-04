@@ -1,16 +1,8 @@
 import { useEffect } from 'react'
-import { ActivityIndicator, Pressable, StyleSheet } from 'react-native'
+import { Pressable, StyleSheet } from 'react-native'
 
-import AntDesign from '@expo/vector-icons/AntDesign'
-import type { TIcon } from '@assets/icons'
-import { Icon } from '@components/ui/primitives/icon/icon.index'
-import { Typography } from '@components/ui/primitives/typography/typo.index'
 import Animated, {
   cancelAnimation,
-  FadeInDown,
-  FadeInLeft,
-  FadeOutLeft,
-  FadeOutUp,
   useAnimatedStyle,
   useReducedMotion,
   useSharedValue,
@@ -19,25 +11,19 @@ import Animated, {
   withTiming
 } from 'react-native-reanimated'
 import { when } from 'shared/utils/helper'
-import { Row } from '../row/row.index'
-import {
-  ButtonContext,
-  normalizeVariant,
-  useButtonContext
-} from './button.context'
-import type {
-  ButtonIconProps,
-  ButtonLabelProps,
-  ButtonRootProps,
-  ColorVariant
-} from './button.type'
+import { ButtonContext, normalizeVariant } from './button.context'
+import type { ButtonRootProps, ColorVariant } from './button.type'
 import {
   containerColorVariants,
   containerRadiusVariants,
-  containerSizeVariants,
-  textColorVariants,
-  textSizeVariants
+  containerSizeVariants
 } from './button.variants'
+import { ButtonContent } from './button-content'
+import { ButtonError } from './button-error'
+import { ButtonIcon } from './button-icon'
+import { ButtonLabel } from './button-label'
+import { ButtonPending } from './button-pending'
+import { ButtonSuccess } from './button-success'
 
 const DEFAULT_TARGET_SCALE = 0.98
 const SHAKE_DURATION = 80
@@ -46,9 +32,8 @@ const SHAKE_REPEATS = 3
 const PRESS_ANIMATION_DURATION = 100
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable)
-const AnimatedAntDesign = Animated.createAnimatedComponent(AntDesign)
 
-function ButtonRoot(props: Readonly<ButtonRootProps>): React.JSX.Element {
+export function Button(props: Readonly<ButtonRootProps>): React.JSX.Element {
   const {
     targetScale = DEFAULT_TARGET_SCALE,
     title,
@@ -113,15 +98,15 @@ function ButtonRoot(props: Readonly<ButtonRootProps>): React.JSX.Element {
     style
   ]
 
+  const contextValue = {
+    disabled: !!disabledByState,
+    state,
+    title,
+    variant: computedVariant
+  }
+
   return (
-    <ButtonContext.Provider
-      value={{
-        disabled: !!disabledByState,
-        state,
-        title,
-        variant: computedVariant
-      }}
-    >
+    <ButtonContext.Provider value={contextValue}>
       <AnimatedPressable
         accessibilityLabel={accessibilityLabel ?? title}
         accessibilityRole='button'
@@ -153,97 +138,11 @@ function ButtonRoot(props: Readonly<ButtonRootProps>): React.JSX.Element {
   )
 }
 
-function ButtonContent({
-  children
-}: Readonly<{
-  children: React.ReactNode
-}>): React.JSX.Element {
-  return (
-    <Row gap={5} justify='center' style={styles.content}>
-      {children}
-    </Row>
-  )
-}
-
-function ButtonPending(): React.JSX.Element | null {
-  const { state } = useButtonContext('Button.Pending')
-  if (state !== 'pending') {
-    return null
-  }
-  return (
-    <Animated.View
-      entering={FadeInLeft}
-      exiting={FadeOutUp}
-      style={styles.pendingView}
-    >
-      <ActivityIndicator color='white' size='small' />
-    </Animated.View>
-  )
-}
-
-function ButtonSuccess(): React.JSX.Element | null {
-  const { state } = useButtonContext('Button.Success')
-  if (state !== 'success') {
-    return null
-  }
-  return (
-    <Animated.View entering={FadeInDown} exiting={FadeOutLeft}>
-      <AnimatedAntDesign color='green' name='check' size={24} />
-    </Animated.View>
-  )
-}
-
-function ButtonError(): React.JSX.Element | null {
-  const { state } = useButtonContext('Button.Error')
-  if (state !== 'error') {
-    return null
-  }
-  return (
-    <Animated.View entering={FadeInDown} exiting={FadeOutLeft}>
-      <AnimatedAntDesign color='red' name='close' size={24} />
-    </Animated.View>
-  )
-}
-
-function ButtonLabel({
-  children
-}: Readonly<ButtonLabelProps>): React.JSX.Element | null {
-  const { title, variant } = useButtonContext('Button.Label')
-  const content = children ?? title
-  if (!content) {
-    return null
-  }
-
-  const textStyle = [
-    styles.textBase,
-    textColorVariants[variant.color],
-    textSizeVariants[variant.size]
-  ]
-
-  return (
-    <Typography center={true} style={textStyle}>
-      {content}
-    </Typography>
-  )
-}
-
-function ButtonIcon<T extends TIcon>(
-  props: Readonly<ButtonIconProps<T>>
-): React.JSX.Element {
-  if ('children' in props) {
-    return <>{props.children}</>
-  }
-
-  const { type, name, size, color, ...rest } = props
-
-  return <Icon {...rest} color={color} name={name} size={size} type={type} />
-}
-
 function withColorVariant(color: ColorVariant) {
   return function ColorVariantButton(
     props: ButtonRootProps
   ): React.JSX.Element {
-    return <ButtonRoot {...props} variant={{ ...props.variant, color }} />
+    return <Button {...props} variant={{ ...props.variant, color }} />
   }
 }
 
@@ -253,19 +152,17 @@ const ButtonShadow = withColorVariant('shadow')
 const ButtonBordered = withColorVariant('bordered')
 const ButtonGhost = withColorVariant('ghost')
 
-export const Button = Object.assign(ButtonRoot, {
-  Bordered: ButtonBordered,
-  Content: ButtonContent,
-  Error: ButtonError,
-  Ghost: ButtonGhost,
-  Icon: ButtonIcon,
-  Label: ButtonLabel,
-  Pending: ButtonPending,
-  Primary: ButtonPrimary,
-  Secondary: ButtonSecondary,
-  Shadow: ButtonShadow,
-  Success: ButtonSuccess
-})
+Button.Bordered = ButtonBordered
+Button.Content = ButtonContent
+Button.Error = ButtonError
+Button.Ghost = ButtonGhost
+Button.Icon = ButtonIcon
+Button.Label = ButtonLabel
+Button.Pending = ButtonPending
+Button.Primary = ButtonPrimary
+Button.Secondary = ButtonSecondary
+Button.Shadow = ButtonShadow
+Button.Success = ButtonSuccess
 
 const styles = StyleSheet.create({
   containerBase: {
@@ -273,20 +170,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: '100%'
   },
-  content: {
-    alignItems: 'center',
-    flexDirection: 'row',
-    gap: 5,
-    justifyContent: 'center'
-  },
   disabled: {
     opacity: 0.6
-  },
-  pendingView: {
-    height: 24,
-    width: 24
-  },
-  textBase: {
-    textAlign: 'center'
   }
 })

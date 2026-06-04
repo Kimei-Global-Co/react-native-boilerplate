@@ -10,21 +10,22 @@ import { navigate } from '@navigation/config/navigation-services'
 import { Colors } from '@theme/colors'
 import { MENU_ITEMS } from './create-container'
 
-export function DevMenu(): React.JSX.Element {
-  const renderItem = ({ item }: { item: string }): React.JSX.Element => (
-    <Button
-      // @ts-expect-error: Dev menu routes are not part of main navigation types
-      onPress={() => navigate(item)}
-      style={styles.itemContainer}
-    >
-      <Row between={true} padding={15}>
-        <Typography>{item}</Typography>
-        <Button.Icon name='right' size={22} type='antDesign' />
-      </Row>
-    </Button>
-  )
+const renderItem = ({ item }: { item: string }): React.JSX.Element => (
+  <Button
+    // @ts-expect-error: Dev menu routes are not part of main navigation types
+    onPress={() => navigate(item)}
+    style={styles.itemContainer}
+  >
+    <Row between={true} padding={15}>
+      <Typography>{item}</Typography>
+      <Button.Icon name='right' size={22} type='antDesign' />
+    </Row>
+  </Button>
+)
 
-  const renderItemSeparator = () => <Spacer y={10} />
+const renderItemSeparator = () => <Spacer y={10} />
+
+export function DevMenu(): React.JSX.Element {
 
   return (
     <Block

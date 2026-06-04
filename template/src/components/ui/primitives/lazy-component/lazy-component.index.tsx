@@ -1,5 +1,3 @@
-import { useEffect, useEffectEvent } from 'react'
-
 import { useMutative } from 'shared/hooks/use-mutative'
 
 type LazyComponentProps = {
@@ -14,15 +12,11 @@ export function LazyComponent(
   const { componentKey, currentKey, component, placeholder } = props
   const [hasRendered, setHasRendered] = useMutative(false)
 
-  const callBackSetRendered = useEffectEvent(setHasRendered)
+  if (!hasRendered && currentKey === componentKey) {
+    setHasRendered(true)
+  }
 
-  useEffect(() => {
-    if (!hasRendered && currentKey === componentKey) {
-      callBackSetRendered(true)
-    }
-  }, [currentKey, componentKey, hasRendered])
-
-  if (hasRendered) {
+  if (hasRendered || currentKey === componentKey) {
     return component
   }
   return placeholder ?? null

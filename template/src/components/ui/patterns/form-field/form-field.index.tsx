@@ -39,8 +39,9 @@ const FormField = <
 >({
   ...props
 }: ControllerProps<TFieldValues, TName>) => {
+  const contextValue = { name: props.name }
   return (
-    <FormFieldContext.Provider value={{ name: props.name }}>
+    <FormFieldContext.Provider value={contextValue}>
       <Controller {...props} />
     </FormFieldContext.Provider>
   )
@@ -99,9 +100,10 @@ const FormItem = ({
   ...props
 }: React.ComponentPropsWithRef<typeof Block>) => {
   const id = React.useId()
+  const contextValue = { id }
 
   return (
-    <FormItemContext.Provider value={{ id }}>
+    <FormItemContext.Provider value={contextValue}>
       <Block gap={gap} {...props}>
         {children}
       </Block>

@@ -6,9 +6,9 @@ import { cacheFonts, Icons } from 'assets/icons'
 export function useInitial(
   trackedLinking: React.RefObject<LinkingOptions<ReactNavigation.RootParamList>>
 ) {
-  const prepare = useEffectEvent(() => {
+  const prepare = useEffectEvent(async () => {
     try {
-      cacheFonts([
+      await cacheFonts([
         Icons.fontAwesome6.font,
         Icons.fontAwesome5.font,
         Icons.antDesign.font,
@@ -28,7 +28,9 @@ export function useInitial(
     }
   })
 
-  useEffect(() => prepare(), [])
+  useEffect(() => {
+    prepare()
+  }, [])
 
   return {
     // isReady: fontsLoaded,

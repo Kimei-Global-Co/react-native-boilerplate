@@ -49,8 +49,10 @@ export const Accordion = ({
       ? [styles.container, styles.splitContainer, style]
       : [styles.container, variantStyle, style]
 
+  const contextValue = { expandedKey, toggleItem, variant }
+
   return (
-    <AccordionContext.Provider value={{ expandedKey, toggleItem, variant }}>
+    <AccordionContext.Provider value={contextValue}>
       <Block style={containerStyle}>{children}</Block>
     </AccordionContext.Provider>
   )

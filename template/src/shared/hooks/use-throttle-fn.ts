@@ -1,7 +1,6 @@
-import { useEffectEvent } from 'react'
-
 import throttle from 'lodash/throttle'
 import { isFunction, ONE_SECOND_MS } from 'shared/utils/helper'
+import { useCallbackRef } from './use-callback-ref'
 import { useLatest } from './use-latest'
 import { useUnmount } from './use-unmount'
 
@@ -27,8 +26,8 @@ export function useThrottleFn<P extends unknown[], R>(
 
   const wait = options?.wait ?? ONE_SECOND_MS
 
-  const stableCallback = useEffectEvent(
-    (...args: P): R => fnRef.current(...args) as R
+  const stableCallback = useCallbackRef(
+    (...args: unknown[]): R => fnRef.current(...(args as P))
   )
 
   const throttled = throttle(stableCallback, wait, options)

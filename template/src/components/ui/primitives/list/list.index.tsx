@@ -3,6 +3,10 @@ import { Block } from '@components/ui/primitives/block/block.index'
 import { FlashList, type ListRenderItemInfo } from '@shopify/flash-list'
 import type { InfiniteScrollListProps } from './list.type'
 
+const onLoadListener = ({ elapsedTimeInMs }: { elapsedTimeInMs: number }) => {
+  console.info('init load', elapsedTimeInMs)
+}
+
 function FlashListComponent<T>({
   style,
   renderItem: propRenderItem,
@@ -11,9 +15,6 @@ function FlashListComponent<T>({
   ref,
   ...rest
 }: InfiniteScrollListProps<T>) {
-  const onLoadListener = ({ elapsedTimeInMs }: { elapsedTimeInMs: number }) => {
-    console.info('init load', elapsedTimeInMs)
-  }
 
   const renderItem = (info: ListRenderItemInfo<T>) =>
     propRenderItem?.(info) ?? null

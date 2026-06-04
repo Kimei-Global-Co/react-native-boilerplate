@@ -21,10 +21,10 @@ export interface InputProps extends Omit<TextInputProps, 'style'> {
   inputStyle?: StyleProp<TextStyle>
 
   /** Left-side icon or component. If a string is provided, it must be a valid Feather icon name. */
-  leftIcon?: React.ReactNode | IconName<'feather'>
+  leftIcon?: IconName<'feather'> | React.ReactElement
 
   /** Right-side icon or component. If a string is provided, it must be a valid Feather icon name. */
-  rightIcon?: React.ReactNode | IconName<'feather'>
+  rightIcon?: IconName<'feather'> | React.ReactElement
 
   /** Shows a clear button on the right when there's internal text content */
   clearable?: boolean
@@ -74,7 +74,7 @@ export interface InputFieldProps extends TextInputProps {
  * Props for Input.Icon sub-component
  */
 export interface InputIconProps {
-  children?: React.ReactNode | IconName<'feather'>
+  children?: IconName<'feather'> | React.ReactElement
   position?: 'left' | 'right'
   style?: StyleProp<ViewStyle>
 }

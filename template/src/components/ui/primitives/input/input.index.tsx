@@ -12,7 +12,6 @@ import {
   type ViewStyle
 } from 'react-native'
 
-import type { IconName } from '@assets/icons'
 import { Block } from '@components/ui/primitives/block/block.index'
 import { Icon } from '@components/ui/primitives/icon/icon.index'
 import { Row } from '@components/ui/primitives/row/row.index'
@@ -232,7 +231,7 @@ function InputIcon({ children, position, style }: Readonly<InputIconProps>) {
 
   const content =
     typeof children === 'string' ? (
-      <Icon name={children as IconName<'feather'>} size={18} type='feather' />
+      <Icon name={children} size={18} type='feather' />
     ) : (
       children
     )
@@ -298,7 +297,7 @@ function InputClearButton() {
   )
 }
 
-export { Input, InputField, InputIcon, InputClearButton, InputVisibilityToggle }
+export { Input, InputClearButton, InputField, InputIcon, InputVisibilityToggle }
 
 const styles = StyleSheet.create({
   container: {

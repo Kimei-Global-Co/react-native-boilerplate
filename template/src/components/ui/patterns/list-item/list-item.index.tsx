@@ -4,6 +4,9 @@ import { Block } from '@components/ui/primitives/block/block.index'
 import { Button } from '@components/ui/primitives/button/button.index'
 import { Divider } from '@components/ui/primitives/divider/divider.index'
 import { Spacing } from '@theme/layout'
+import { ListItemContent } from './list-item-content'
+import { ListItemLeading } from './list-item-leading'
+import { ListItemTrailing } from './list-item-trailing'
 
 interface ListItemRootProps
   extends React.ComponentProps<typeof Block>,
@@ -12,7 +15,9 @@ interface ListItemRootProps
   divider?: boolean
 }
 
-const ListItemRoot = (props: ListItemRootProps): React.JSX.Element => {
+export function ListItem(
+  props: Readonly<ListItemRootProps>
+): React.JSX.Element {
   const {
     children,
     pressable = false,
@@ -39,42 +44,11 @@ const ListItemRoot = (props: ListItemRootProps): React.JSX.Element => {
   )
 }
 
-ListItemRoot.displayName = 'ListItem'
+ListItem.displayName = 'ListItem'
 
-interface ListItemSectionProps extends React.ComponentProps<typeof Block> {}
-
-const ListItemLeading = (props: ListItemSectionProps): React.JSX.Element => {
-  const { style, children, ...rest } = props
-  return (
-    <Block style={style} {...rest}>
-      {children}
-    </Block>
-  )
-}
-
-ListItemLeading.displayName = 'ListItem.Leading'
-
-const ListItemContent = (props: ListItemSectionProps): React.JSX.Element => {
-  const { style, children, ...rest } = props
-  return (
-    <Block flex={true} gap='space.050' style={style} {...rest}>
-      {children}
-    </Block>
-  )
-}
-
-ListItemContent.displayName = 'ListItem.Content'
-
-const ListItemTrailing = (props: ListItemSectionProps): React.JSX.Element => {
-  const { style, children, ...rest } = props
-  return (
-    <Block justify='flex-end' style={style} {...rest}>
-      {children}
-    </Block>
-  )
-}
-
-ListItemTrailing.displayName = 'ListItem.Trailing'
+ListItem.Content = ListItemContent
+ListItem.Leading = ListItemLeading
+ListItem.Trailing = ListItemTrailing
 
 const styles = StyleSheet.create({
   buttonReset: {
@@ -87,10 +61,4 @@ const styles = StyleSheet.create({
     paddingHorizontal: Spacing['space.200'],
     paddingVertical: Spacing['space.150']
   }
-})
-
-export const ListItem = Object.assign(ListItemRoot, {
-  Content: ListItemContent,
-  Leading: ListItemLeading,
-  Trailing: ListItemTrailing
 })

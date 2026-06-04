@@ -31,8 +31,10 @@ export function Tag({
   const variantStyle = VARIANT_STYLES[variant]
   const sizeStyle = SIZE_STYLES[size]
 
+  const contextValue = { size, variant }
+
   return (
-    <TagContext.Provider value={{ size, variant }}>
+    <TagContext.Provider value={contextValue}>
       <Block
         style={[
           styles.root,
