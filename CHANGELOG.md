@@ -1,6 +1,14 @@
 # Changelog
 
+## 2026-06-04
+
+### ♻️ Code Refactoring
+* components and improve context usage ([d3fdc13](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/d3fdc13ccc04753fd0151bfeba19a2d974881b2b))
+
 ## 2026-05-25
+
+### 🔨 Chores
+* update changelog [skip ci] ([65d3aaf](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/65d3aaff2f0de5e39f87c77009debe7da1c1d37e))
 
 ### ✨ Features
 * add enhanced message context and best practices for Lingui i18n ([586aefb](https://github.com/Kimei-Global-Co/react-native-boilerplate/commit/586aefbeb2888012b6d30f8e6159c37a1be8fa60))
