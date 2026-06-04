@@ -1,7 +1,7 @@
 import type { SpinnerProps } from './spinner-view'
 
 const SIZE_LG = 48
-export const SIZE_MD = 32
+const SIZE_MD = 32
 const SIZE_SM = 24
 const SIZE_SMXL = 12
 

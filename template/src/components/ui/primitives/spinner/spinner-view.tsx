@@ -1,6 +1,6 @@
 import { Colors } from '@theme/colors'
 import Svg, { Circle } from 'react-native-svg'
-import { SIZE_MD, spinnerSizeMap } from './spinner.utils'
+import { getSpinnerSize } from './spinner.utils'
 
 export type SpinnerProps = {
   size?: 'lg' | 'md' | 'sm' | 'smxl'
@@ -18,7 +18,7 @@ export const SpinnerView = ({
     ? Colors[secondaryColorProp]
     : Colors.whiteF0
 
-  const spinnerSize = spinnerSizeMap.get(size) ?? SIZE_MD
+  const spinnerSize = getSpinnerSize(size)
 
   return (
     <Svg height={spinnerSize} viewBox='0 0 32 32' width={spinnerSize}>

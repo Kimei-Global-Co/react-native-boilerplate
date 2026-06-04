@@ -29,6 +29,8 @@ export function Spinner({
     )
   }, [duration, transition])
 
+  const spinnerSize = getSpinnerSize(size)
+
   const animatedStyle = useAnimatedStyle(() => {
     return {
       transform: [{ rotateZ: `${transition.get()}deg` }]
@@ -38,13 +40,7 @@ export function Spinner({
   return (
     <Animated.View
       role='progressbar'
-      style={[
-        {
-          height: getSpinnerSize(size),
-          width: getSpinnerSize(size)
-        },
-        animatedStyle
-      ]}
+      style={[{ height: spinnerSize, width: spinnerSize }, animatedStyle]}
     >
       <SpinnerView size={size} {...rest} />
     </Animated.View>
